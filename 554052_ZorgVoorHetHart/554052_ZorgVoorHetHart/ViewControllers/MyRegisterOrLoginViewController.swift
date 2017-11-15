@@ -21,17 +21,32 @@ class MyRegisterOrLoginViewController: UIViewController
         self.title = "Inloggen / Registreren"
         
         txtOf.text = "of"
-        txtOf.textColor = UIColor.white
+        txtOf.textColor = UIColor.black
         txtOf.font = txtOf.font.withSize(18)
         
         btnLogin.setTitle("Inloggen", for: .normal)
-        btnLogin.backgroundColor = UIColor(rgb: 0xFFFFFF).withAlphaComponent(0.5)
+        btnLogin.setTitleColor(UIColor.white, for: .normal)
+        btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)
+        
+        btnRegister.setTitle("Account aanmaken", for: .normal)
+        btnLogin.setTitleColor(UIColor.white, for: .normal)
+        btnRegister.backgroundColor = UIColor(rgb: 0x1BC1B7)
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func unwindForm(sender: UIStoryboardSegue)
+    {
+        // ... 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        // ...
     }
     
 

@@ -1,20 +1,20 @@
 //
-//  MyRegisterViewController.swift
+//  MyRegisterStep2ViewController.swift
 //  554052_ZorgVoorHetHart
 //
-//  Created by Jeroen on 13/11/2017.
+//  Created by Jeroen on 15/11/2017.
 //  Copyright © 2017 Jeroen Roos. All rights reserved.
 //
 
 import UIKit
 
-class MyRegisterViewController: UIViewController
+class MyRegisterStep2ViewController: UIViewController
 {
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Registreren stap 1 van 2"
+        self.title = "Registreren stap 2 van 2"
     }
 
     override func didReceiveMemoryWarning()

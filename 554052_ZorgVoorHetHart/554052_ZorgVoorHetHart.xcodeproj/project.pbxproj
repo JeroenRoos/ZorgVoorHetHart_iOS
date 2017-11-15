@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900239FD1FBC93A600DFCD23 /* UIColorExtension.swift */; };
+		90023A001FBC9EDC00DFCD23 /* MyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */; };
+		90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A011FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift */; };
+		90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A031FBC9FC600DFCD23 /* MyRegisterStep1ViewController.swift */; };
+		90023A061FBCA9F100DFCD23 /* CheckboxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A051FBCA9F100DFCD23 /* CheckboxHelper.swift */; };
+		90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A071FBCD0D000DFCD23 /* RadioButtonHelper.swift */; };
 		90812AF41FBA444E00292F18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812AF31FBA444E00292F18 /* AppDelegate.swift */; };
 		90812AF91FBA444E00292F18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90812AF71FBA444E00292F18 /* Main.storyboard */; };
 		90812AFB1FBA444E00292F18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90812AFA1FBA444E00292F18 /* Assets.xcassets */; };
 		90812AFE1FBA444E00292F18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90812AFC1FBA444E00292F18 /* LaunchScreen.storyboard */; };
 		90812B091FBA444E00292F18 /* _54052_ZorgVoorHetHartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B081FBA444E00292F18 /* _54052_ZorgVoorHetHartTests.swift */; };
 		90812B141FBA444E00292F18 /* _54052_ZorgVoorHetHartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B131FBA444E00292F18 /* _54052_ZorgVoorHetHartUITests.swift */; };
-		90812B261FBA53CD00292F18 /* MyRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B251FBA53CD00292F18 /* MyRegisterViewController.swift */; };
 		90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B271FBA56A900292F18 /* MyRegisterOrLoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		900239FD1FBC93A600DFCD23 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginViewController.swift; sourceTree = "<group>"; };
+		90023A011FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterStep2ViewController.swift; sourceTree = "<group>"; };
+		90023A031FBC9FC600DFCD23 /* MyRegisterStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterStep1ViewController.swift; sourceTree = "<group>"; };
+		90023A051FBCA9F100DFCD23 /* CheckboxHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxHelper.swift; sourceTree = "<group>"; };
+		90023A071FBCD0D000DFCD23 /* RadioButtonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonHelper.swift; sourceTree = "<group>"; };
 		90812AF01FBA444D00292F18 /* 554052_ZorgVoorHetHart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 554052_ZorgVoorHetHart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90812AF31FBA444E00292F18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90812AF81FBA444E00292F18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,7 +58,6 @@
 		90812B0F1FBA444E00292F18 /* 554052_ZorgVoorHetHartUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 554052_ZorgVoorHetHartUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90812B131FBA444E00292F18 /* _54052_ZorgVoorHetHartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _54052_ZorgVoorHetHartUITests.swift; sourceTree = "<group>"; };
 		90812B151FBA444E00292F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		90812B251FBA53CD00292F18 /* MyRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterViewController.swift; sourceTree = "<group>"; };
 		90812B271FBA56A900292F18 /* MyRegisterOrLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterOrLoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,8 +144,10 @@
 		90812B211FBA537000292F18 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				90812B251FBA53CD00292F18 /* MyRegisterViewController.swift */,
 				90812B271FBA56A900292F18 /* MyRegisterOrLoginViewController.swift */,
+				90023A031FBC9FC600DFCD23 /* MyRegisterStep1ViewController.swift */,
+				90023A011FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift */,
+				900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -143,6 +155,8 @@
 		90812B221FBA538600292F18 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				90023A051FBCA9F100DFCD23 /* CheckboxHelper.swift */,
+				90023A071FBCD0D000DFCD23 /* RadioButtonHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -164,6 +178,7 @@
 		90812B291FBA5A1500292F18 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				900239FD1FBC93A600DFCD23 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -302,9 +317,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90812B261FBA53CD00292F18 /* MyRegisterViewController.swift in Sources */,
 				90812AF41FBA444E00292F18 /* AppDelegate.swift in Sources */,
 				90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */,
+				90023A061FBCA9F100DFCD23 /* CheckboxHelper.swift in Sources */,
+				900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */,
+				90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */,
+				90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */,
+				90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */,
+				90023A001FBC9EDC00DFCD23 /* MyLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
