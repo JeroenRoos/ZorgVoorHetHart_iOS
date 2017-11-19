@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    // Framework Search Path
+    // $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/DropDown"
+    // $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/DropDown"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

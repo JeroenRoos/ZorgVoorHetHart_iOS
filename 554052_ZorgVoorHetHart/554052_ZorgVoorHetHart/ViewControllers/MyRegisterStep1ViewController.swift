@@ -22,6 +22,11 @@ class MyRegisterStep1ViewController: UIViewController
         super.viewDidLoad()
         self.title = "Registreren stap 1 van 2"
         
+        // DROPDOWN CocaoThing
+        // https://github.com/nahuelDeveloper/DropDown
+        //let lstConsultans : [String] = ["", "Dhr. Pieters", "Dhr. Martens", "Dhr. van der Laan"]
+        // Add dropdown
+        
         btnNext.setTitle("Volgende", for: .normal)
         btnNext.setTitleColor(UIColor.white, for: .normal)
         btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)

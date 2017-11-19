@@ -13,6 +13,7 @@
 		90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A031FBC9FC600DFCD23 /* MyRegisterStep1ViewController.swift */; };
 		90023A061FBCA9F100DFCD23 /* CheckboxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A051FBCA9F100DFCD23 /* CheckboxHelper.swift */; };
 		90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A071FBCD0D000DFCD23 /* RadioButtonHelper.swift */; };
+		9065C5311FC22BDD00760062 /* MyRegisterFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9065C5301FC22BDD00760062 /* MyRegisterFinishedViewController.swift */; };
 		90812AF41FBA444E00292F18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812AF31FBA444E00292F18 /* AppDelegate.swift */; };
 		90812AF91FBA444E00292F18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90812AF71FBA444E00292F18 /* Main.storyboard */; };
 		90812AFB1FBA444E00292F18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90812AFA1FBA444E00292F18 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		90023A031FBC9FC600DFCD23 /* MyRegisterStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterStep1ViewController.swift; sourceTree = "<group>"; };
 		90023A051FBCA9F100DFCD23 /* CheckboxHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxHelper.swift; sourceTree = "<group>"; };
 		90023A071FBCD0D000DFCD23 /* RadioButtonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonHelper.swift; sourceTree = "<group>"; };
+		9065C5301FC22BDD00760062 /* MyRegisterFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterFinishedViewController.swift; sourceTree = "<group>"; };
 		90812AF01FBA444D00292F18 /* 554052_ZorgVoorHetHart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 554052_ZorgVoorHetHart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90812AF31FBA444E00292F18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90812AF81FBA444E00292F18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				90812B271FBA56A900292F18 /* MyRegisterOrLoginViewController.swift */,
 				90023A031FBC9FC600DFCD23 /* MyRegisterStep1ViewController.swift */,
 				90023A011FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift */,
+				9065C5301FC22BDD00760062 /* MyRegisterFinishedViewController.swift */,
 				900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */,
 			);
 			path = ViewControllers;
@@ -323,6 +326,7 @@
 				900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */,
 				90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */,
 				90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */,
+				9065C5311FC22BDD00760062 /* MyRegisterFinishedViewController.swift in Sources */,
 				90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */,
 				90023A001FBC9EDC00DFCD23 /* MyLoginViewController.swift in Sources */,
 			);
@@ -491,6 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHart";
@@ -505,6 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHart";
@@ -520,6 +526,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DropDown\"",
+				);
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartTests";
@@ -536,6 +546,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DropDown\"",
+				);
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartTests";
@@ -551,6 +565,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DropDown\"",
+				);
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartUITests";
@@ -566,6 +584,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DropDown\"",
+				);
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartUITests";

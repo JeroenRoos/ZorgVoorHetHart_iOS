@@ -39,8 +39,14 @@ class MyLoginViewController: UIViewController
         inputPassword.isSecureTextEntry = true
         inputPassword.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPassword.layer.borderWidth = 0
-        
     }
+    
+    @IBAction func btnLogin_OnClick(_ sender: Any)
+    {
+        
+        self.performSegue(withIdentifier: "loginFinish", sender: self)
+    }
+    
 
     override func didReceiveMemoryWarning()
     {
