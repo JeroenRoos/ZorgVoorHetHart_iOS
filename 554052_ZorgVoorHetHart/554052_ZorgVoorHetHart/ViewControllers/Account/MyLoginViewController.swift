@@ -54,6 +54,12 @@ class MyLoginViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+    //override func viewWillDisappear()
+    //{
+    //    super.viewWillDisappear()
+    //    self.navigationController?.viewControllers.removeAll()
+    //}
+    
 
     
 
