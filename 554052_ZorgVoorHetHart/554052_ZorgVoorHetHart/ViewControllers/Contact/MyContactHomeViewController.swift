@@ -1,34 +1,26 @@
 //
-//  MeasurementHomeViewController.swift
+//  ContactHomeViewController.swift
 //  554052_ZorgVoorHetHart
 //
-//  Created by Jeroen on 20/11/2017.
+//  Created by Jeroen on 23/11/2017.
 //  Copyright © 2017 Jeroen Roos. All rights reserved.
 //
 
 import UIKit
 
-class MyMeasurementHomeViewController: UIViewController
+class MyContactHomeViewController: UIViewController
 {
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Meting"
+        self.title = "Contact"
     }
-    
-
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-
-    @IBAction func bntClick(_ sender: Any)
-    {
-            self.performSegue(withIdentifier: "next", sender: self)
     }
     
 

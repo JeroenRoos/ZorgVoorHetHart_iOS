@@ -23,6 +23,9 @@
 		90812B091FBA444E00292F18 /* _54052_ZorgVoorHetHartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B081FBA444E00292F18 /* _54052_ZorgVoorHetHartTests.swift */; };
 		90812B141FBA444E00292F18 /* _54052_ZorgVoorHetHartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B131FBA444E00292F18 /* _54052_ZorgVoorHetHartUITests.swift */; };
 		90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B271FBA56A900292F18 /* MyRegisterOrLoginViewController.swift */; };
+		90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */; };
+		90C953171FC74454001FD3C2 /* MyContactHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953161FC74454001FD3C2 /* MyContactHomeViewController.swift */; };
+		90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953181FC7447B001FD3C2 /* MyServiceHomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		90812B131FBA444E00292F18 /* _54052_ZorgVoorHetHartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _54052_ZorgVoorHetHartUITests.swift; sourceTree = "<group>"; };
 		90812B151FBA444E00292F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90812B271FBA56A900292F18 /* MyRegisterOrLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterOrLoginViewController.swift; sourceTree = "<group>"; };
+		90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeasurementsDiaryHomeViewController.swift; sourceTree = "<group>"; };
+		90C953161FC74454001FD3C2 /* MyContactHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactHomeViewController.swift; sourceTree = "<group>"; };
+		90C953181FC7447B001FD3C2 /* MyServiceHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServiceHomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,16 +118,18 @@
 			path = Measurements;
 			sourceTree = "<group>";
 		};
-		90088C721FC30768003997B9 /* Measurements_Diary */ = {
+		90088C721FC30768003997B9 /* MeasurementsDiary */ = {
 			isa = PBXGroup;
 			children = (
+				90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */,
 			);
-			path = Measurements_Diary;
+			path = MeasurementsDiary;
 			sourceTree = "<group>";
 		};
 		90088C731FC3078A003997B9 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				90C953161FC74454001FD3C2 /* MyContactHomeViewController.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 		90088C741FC30791003997B9 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				90C953181FC7447B001FD3C2 /* MyServiceHomeViewController.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -194,7 +203,7 @@
 				90088C751FC30870003997B9 /* MyTabBarController.swift */,
 				90088C6E1FC3061A003997B9 /* Account */,
 				90088C6F1FC30687003997B9 /* Measurements */,
-				90088C721FC30768003997B9 /* Measurements_Diary */,
+				90088C721FC30768003997B9 /* MeasurementsDiary */,
 				90088C731FC3078A003997B9 /* Contact */,
 				90088C741FC30791003997B9 /* Service */,
 			);
@@ -367,14 +376,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				90088C711FC3074E003997B9 /* MyMeasurementHomeViewController.swift in Sources */,
+				90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */,
 				90812AF41FBA444E00292F18 /* AppDelegate.swift in Sources */,
 				90088C761FC30870003997B9 /* MyTabBarController.swift in Sources */,
 				90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */,
 				90023A061FBCA9F100DFCD23 /* CheckboxHelper.swift in Sources */,
 				900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */,
+				90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */,
 				90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */,
 				90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */,
 				9065C5311FC22BDD00760062 /* MyRegisterFinishedViewController.swift in Sources */,
+				90C953171FC74454001FD3C2 /* MyContactHomeViewController.swift in Sources */,
 				90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */,
 				90023A001FBC9EDC00DFCD23 /* MyLoginViewController.swift in Sources */,
 			);
@@ -574,10 +586,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/DropDown\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartTests";
@@ -594,10 +603,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/DropDown\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartTests";
@@ -613,10 +619,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/DropDown\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartUITests";
@@ -632,10 +635,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/DropDown\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartUITests";
