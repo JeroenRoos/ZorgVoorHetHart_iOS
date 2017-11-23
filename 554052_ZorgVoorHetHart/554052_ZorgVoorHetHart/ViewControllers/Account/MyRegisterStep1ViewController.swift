@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DropDown
 
 class MyRegisterStep1ViewController: UIViewController
 {
@@ -22,10 +23,10 @@ class MyRegisterStep1ViewController: UIViewController
         super.viewDidLoad()
         self.title = "Registreren stap 1 van 2"
         
-        // DROPDOWN CocaoThing
+        // DropDown CocaoPods & Tutorial
         // https://github.com/nahuelDeveloper/DropDown
-        //let lstConsultans : [String] = ["", "Dhr. Pieters", "Dhr. Martens", "Dhr. van der Laan"]
-        // Add dropdown
+        // https://www.raywenderlich.com/156971/cocoapods-tutorial-swift-getting-started
+        let lstConsultans : [String] = ["", "Dhr. Pieters", "Dhr. Martens", "Dhr. van der Laan"]
         
         btnNext.setTitle("Volgende", for: .normal)
         btnNext.setTitleColor(UIColor.white, for: .normal)

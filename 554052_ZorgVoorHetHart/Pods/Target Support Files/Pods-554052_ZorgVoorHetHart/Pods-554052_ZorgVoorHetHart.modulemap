@@ -1,0 +1,6 @@
+framework module Pods_554052_ZorgVoorHetHart {
+  umbrella header "Pods-554052_ZorgVoorHetHart-umbrella.h"
+
+  export *
+  module * { export * }
+}

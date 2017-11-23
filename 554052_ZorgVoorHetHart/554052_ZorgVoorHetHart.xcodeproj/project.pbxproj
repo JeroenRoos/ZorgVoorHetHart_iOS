@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		438D38075D222C443F3BD6CA /* Pods_554052_ZorgVoorHetHart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853732A528248DCE53234453 /* Pods_554052_ZorgVoorHetHart.framework */; };
 		900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900239FD1FBC93A600DFCD23 /* UIColorExtension.swift */; };
 		90023A001FBC9EDC00DFCD23 /* MyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */; };
 		90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A011FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift */; };
@@ -26,6 +27,8 @@
 		90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */; };
 		90C953171FC74454001FD3C2 /* MyContactHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953161FC74454001FD3C2 /* MyContactHomeViewController.swift */; };
 		90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953181FC7447B001FD3C2 /* MyServiceHomeViewController.swift */; };
+		D3AC3ACF9E3F96F9BED59469 /* Pods_554052_ZorgVoorHetHartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE40E8BA03BF932D40C8FCF7 /* Pods_554052_ZorgVoorHetHartUITests.framework */; };
+		EB76D1458FA2DFF0F6AAF29F /* Pods_554052_ZorgVoorHetHartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5A51588CB190E62BAD77D9 /* Pods_554052_ZorgVoorHetHartTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F76220C454CE6410E9C36C9 /* Pods-554052_ZorgVoorHetHart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart.debug.xcconfig"; sourceTree = "<group>"; };
+		3A65B9ED38169E06E463E185 /* Pods-554052_ZorgVoorHetHartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHartUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHartUITests/Pods-554052_ZorgVoorHetHartUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6B5A51588CB190E62BAD77D9 /* Pods_554052_ZorgVoorHetHartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		853732A528248DCE53234453 /* Pods_554052_ZorgVoorHetHart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		900239FD1FBC93A600DFCD23 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginViewController.swift; sourceTree = "<group>"; };
 		90023A011FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterStep2ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +78,11 @@
 		90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeasurementsDiaryHomeViewController.swift; sourceTree = "<group>"; };
 		90C953161FC74454001FD3C2 /* MyContactHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactHomeViewController.swift; sourceTree = "<group>"; };
 		90C953181FC7447B001FD3C2 /* MyServiceHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServiceHomeViewController.swift; sourceTree = "<group>"; };
+		9D5472F8D425C441EFAFD617 /* Pods-554052_ZorgVoorHetHartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHartTests/Pods-554052_ZorgVoorHetHartTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9FEEAB367736B44C3D9689C5 /* Pods-554052_ZorgVoorHetHartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHartTests/Pods-554052_ZorgVoorHetHartTests.release.xcconfig"; sourceTree = "<group>"; };
+		A55F7962B3C5FCF06E8D7E1A /* Pods-554052_ZorgVoorHetHart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHart.release.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart.release.xcconfig"; sourceTree = "<group>"; };
+		BCE7DB1D07DCBCE807F820BD /* Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHartUITests/Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BE40E8BA03BF932D40C8FCF7 /* Pods_554052_ZorgVoorHetHartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHartUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				438D38075D222C443F3BD6CA /* Pods_554052_ZorgVoorHetHart.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB76D1458FA2DFF0F6AAF29F /* Pods_554052_ZorgVoorHetHartTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,12 +106,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3AC3ACF9E3F96F9BED59469 /* Pods_554052_ZorgVoorHetHartUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46D246E2E32DDBEDD534065A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				853732A528248DCE53234453 /* Pods_554052_ZorgVoorHetHart.framework */,
+				6B5A51588CB190E62BAD77D9 /* Pods_554052_ZorgVoorHetHartTests.framework */,
+				BE40E8BA03BF932D40C8FCF7 /* Pods_554052_ZorgVoorHetHartUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		90088C6E1FC3061A003997B9 /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +174,8 @@
 				90812B071FBA444E00292F18 /* 554052_ZorgVoorHetHartTests */,
 				90812B121FBA444E00292F18 /* 554052_ZorgVoorHetHartUITests */,
 				90812AF11FBA444D00292F18 /* Products */,
+				C0EA46A70F94F074CDA5D343 /* Pods */,
+				46D246E2E32DDBEDD534065A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,6 +268,19 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C0EA46A70F94F074CDA5D343 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0F76220C454CE6410E9C36C9 /* Pods-554052_ZorgVoorHetHart.debug.xcconfig */,
+				A55F7962B3C5FCF06E8D7E1A /* Pods-554052_ZorgVoorHetHart.release.xcconfig */,
+				9D5472F8D425C441EFAFD617 /* Pods-554052_ZorgVoorHetHartTests.debug.xcconfig */,
+				9FEEAB367736B44C3D9689C5 /* Pods-554052_ZorgVoorHetHartTests.release.xcconfig */,
+				BCE7DB1D07DCBCE807F820BD /* Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig */,
+				3A65B9ED38169E06E463E185 /* Pods-554052_ZorgVoorHetHartUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,9 +288,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90812B181FBA444E00292F18 /* Build configuration list for PBXNativeTarget "554052_ZorgVoorHetHart" */;
 			buildPhases = (
+				C6F27BC548B9B0FEC43BBA42 /* [CP] Check Pods Manifest.lock */,
 				90812AEC1FBA444D00292F18 /* Sources */,
 				90812AED1FBA444D00292F18 /* Frameworks */,
 				90812AEE1FBA444D00292F18 /* Resources */,
+				9A43C0047D7580BA3F0330EB /* [CP] Embed Pods Frameworks */,
+				1F8E34C22F453444B21D2A9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,9 +308,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90812B1B1FBA444E00292F18 /* Build configuration list for PBXNativeTarget "554052_ZorgVoorHetHartTests" */;
 			buildPhases = (
+				DB89AE5E115754AB402FC994 /* [CP] Check Pods Manifest.lock */,
 				90812B001FBA444E00292F18 /* Sources */,
 				90812B011FBA444E00292F18 /* Frameworks */,
 				90812B021FBA444E00292F18 /* Resources */,
+				1D98C84B4B164FAD08456CE1 /* [CP] Embed Pods Frameworks */,
+				6D69E45C5D3A0B686C5B15B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -283,9 +329,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90812B1E1FBA444E00292F18 /* Build configuration list for PBXNativeTarget "554052_ZorgVoorHetHartUITests" */;
 			buildPhases = (
+				8DEEC96D247412AE692C5E0D /* [CP] Check Pods Manifest.lock */,
 				90812B0B1FBA444E00292F18 /* Sources */,
 				90812B0C1FBA444E00292F18 /* Frameworks */,
 				90812B0D1FBA444E00292F18 /* Resources */,
+				25252473FE81A12ECFC01333 /* [CP] Embed Pods Frameworks */,
+				1F5D27B800ACD4571D99C29A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -369,6 +418,156 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D98C84B4B164FAD08456CE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-554052_ZorgVoorHetHartTests/Pods-554052_ZorgVoorHetHartTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F5D27B800ACD4571D99C29A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-554052_ZorgVoorHetHartUITests/Pods-554052_ZorgVoorHetHartUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F8E34C22F453444B21D2A9C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25252473FE81A12ECFC01333 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-554052_ZorgVoorHetHartUITests/Pods-554052_ZorgVoorHetHartUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D69E45C5D3A0B686C5B15B4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-554052_ZorgVoorHetHartTests/Pods-554052_ZorgVoorHetHartTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DEEC96D247412AE692C5E0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-554052_ZorgVoorHetHartUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A43C0047D7580BA3F0330EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6F27BC548B9B0FEC43BBA42 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-554052_ZorgVoorHetHart-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB89AE5E115754AB402FC994 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-554052_ZorgVoorHetHartTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		90812AEC1FBA444D00292F18 /* Sources */ = {
@@ -552,10 +751,11 @@
 		};
 		90812B191FBA444E00292F18 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F76220C454CE6410E9C36C9 /* Pods-554052_ZorgVoorHetHart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHart";
@@ -567,10 +767,11 @@
 		};
 		90812B1A1FBA444E00292F18 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A55F7962B3C5FCF06E8D7E1A /* Pods-554052_ZorgVoorHetHart.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHart";
@@ -582,11 +783,12 @@
 		};
 		90812B1C1FBA444E00292F18 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D5472F8D425C441EFAFD617 /* Pods-554052_ZorgVoorHetHartTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartTests";
@@ -599,11 +801,12 @@
 		};
 		90812B1D1FBA444E00292F18 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FEEAB367736B44C3D9689C5 /* Pods-554052_ZorgVoorHetHartTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartTests";
@@ -616,10 +819,11 @@
 		};
 		90812B1F1FBA444E00292F18 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCE7DB1D07DCBCE807F820BD /* Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartUITests";
@@ -632,10 +836,11 @@
 		};
 		90812B201FBA444E00292F18 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A65B9ED38169E06E463E185 /* Pods-554052_ZorgVoorHetHartUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = "";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartUITests";

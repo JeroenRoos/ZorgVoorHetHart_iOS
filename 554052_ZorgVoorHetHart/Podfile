@@ -1,0 +1,16 @@
+platform :ios, '9.0'
+
+target '554052_ZorgVoorHetHart' do
+  use_frameworks!
+
+  pod 'DropDown'
+
+  target '554052_ZorgVoorHetHartTests' do
+    inherit! :search_paths
+  end
+
+  target '554052_ZorgVoorHetHartUITests' do
+    inherit! :search_paths
+  end
+
+end
