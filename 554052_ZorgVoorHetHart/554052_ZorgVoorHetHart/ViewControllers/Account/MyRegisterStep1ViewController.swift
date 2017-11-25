@@ -11,6 +11,7 @@ import DropDown
 
 class MyRegisterStep1ViewController: UIViewController
 {
+    @IBOutlet weak var testBtn: UIBarButtonItem!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var radioButtonWoman: RadioButtonHelper!
     @IBOutlet weak var radioButtonMan: RadioButtonHelper!
@@ -26,7 +27,14 @@ class MyRegisterStep1ViewController: UIViewController
         // DropDown CocaoPods & Tutorial
         // https://github.com/nahuelDeveloper/DropDown
         // https://www.raywenderlich.com/156971/cocoapods-tutorial-swift-getting-started
-        let lstConsultans : [String] = ["", "Dhr. Pieters", "Dhr. Martens", "Dhr. van der Laan"]
+        /* let lstConsultans : [String] = ["", "Dhr. Pieters", "Dhr. Martens", "Dhr. van der Laan"]
+        
+        let dropDown = DropDown()
+        // The view to which the drop down will appear on
+        dropDown.anchorView = testBtn // UIView or UIBarButtonItem
+        // The list of items to display. Can be changed dynamically
+        dropDown.dataSource = lstConsultans
+        dropDown.show() */
         
         btnNext.setTitle("Volgende", for: .normal)
         btnNext.setTitleColor(UIColor.white, for: .normal)

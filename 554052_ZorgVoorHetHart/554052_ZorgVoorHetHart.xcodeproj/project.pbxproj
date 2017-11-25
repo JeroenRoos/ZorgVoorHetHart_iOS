@@ -16,6 +16,7 @@
 		90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A071FBCD0D000DFCD23 /* RadioButtonHelper.swift */; };
 		90088C711FC3074E003997B9 /* MyMeasurementHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90088C701FC3074E003997B9 /* MyMeasurementHomeViewController.swift */; };
 		90088C761FC30870003997B9 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90088C751FC30870003997B9 /* MyTabBarController.swift */; };
+		902938801FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9029387F1FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift */; };
 		9065C5311FC22BDD00760062 /* MyRegisterFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9065C5301FC22BDD00760062 /* MyRegisterFinishedViewController.swift */; };
 		90812AF41FBA444E00292F18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812AF31FBA444E00292F18 /* AppDelegate.swift */; };
 		90812AF91FBA444E00292F18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90812AF71FBA444E00292F18 /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		90023A071FBCD0D000DFCD23 /* RadioButtonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonHelper.swift; sourceTree = "<group>"; };
 		90088C701FC3074E003997B9 /* MyMeasurementHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeasurementHomeViewController.swift; sourceTree = "<group>"; };
 		90088C751FC30870003997B9 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		9029387F1FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewMeasurementStep1ViewController.swift; sourceTree = "<group>"; };
 		9065C5301FC22BDD00760062 /* MyRegisterFinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterFinishedViewController.swift; sourceTree = "<group>"; };
 		90812AF01FBA444D00292F18 /* 554052_ZorgVoorHetHart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 554052_ZorgVoorHetHart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90812AF31FBA444E00292F18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				90088C701FC3074E003997B9 /* MyMeasurementHomeViewController.swift */,
+				9029387F1FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift */,
 			);
 			path = Measurements;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */,
 				90812AF41FBA444E00292F18 /* AppDelegate.swift in Sources */,
 				90088C761FC30870003997B9 /* MyTabBarController.swift in Sources */,
+				902938801FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift in Sources */,
 				90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */,
 				90023A061FBCA9F100DFCD23 /* CheckboxHelper.swift in Sources */,
 				900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */,
