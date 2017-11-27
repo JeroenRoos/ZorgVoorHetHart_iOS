@@ -99,7 +99,8 @@ class MyNewMeasurementStep1ViewController: UIViewController
     @IBAction func btnCancel_OnClick(_ sender: Any)
     {
         
-        self.performSegue(withIdentifier: "cancel", sender: self)
+        self.navigationController?.popViewController(animated: true)
+        //self.performSegue(withIdentifier: "cancel", sender: self)
     }
     
     @IBAction func btnNext_OnClick(_ sender: Any)
@@ -111,7 +112,8 @@ class MyNewMeasurementStep1ViewController: UIViewController
     @IBAction func btnCancelPopup_OnClick(_ sender: Any)
     {
         
-        self.performSegue(withIdentifier: "cancel", sender: self)
+        self.navigationController?.popViewController(animated: true)
+        //self.performSegue(withIdentifier: "cancel", sender: self)
     }
     
     @IBAction func btnContinuePopup_OnClick(_ sender: Any)

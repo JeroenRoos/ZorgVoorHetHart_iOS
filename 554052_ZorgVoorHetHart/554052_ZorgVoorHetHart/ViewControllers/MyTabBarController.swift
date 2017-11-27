@@ -62,22 +62,20 @@ class MyTabBarController: UITabBarController
         serviceTab.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor(rgb: 0x737474)], for: UIControlState.normal)
         serviceTab.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor(rgb: 0xE84A4A)], for: UIControlState.selected)
     }
+    
+    override var shouldAutorotate: Bool
+    {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask
+    {
+        return .portrait
+    }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

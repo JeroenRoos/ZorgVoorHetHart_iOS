@@ -25,8 +25,7 @@ class MyMeasurementHomeViewController: UIViewController
         
         txtUpperBar.text = "Goedenmiddag [patient]"
         txtUpperBar.font = txtUpperBar.font.withSize(14)
-        
-        
+    
         txtSquareMiddle.text = "Vul uw eerste meting in"
         txtSquareMiddle.font = txtSquareMiddle.font.withSize(11)
     }
@@ -49,7 +48,12 @@ class MyMeasurementHomeViewController: UIViewController
             self.performSegue(withIdentifier: "next", sender: self)
     }
     
-
+    @IBAction func btnInformation_OnClick(_ sender: Any)
+    {
+        
+        self.performSegue(withIdentifier: "information", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
