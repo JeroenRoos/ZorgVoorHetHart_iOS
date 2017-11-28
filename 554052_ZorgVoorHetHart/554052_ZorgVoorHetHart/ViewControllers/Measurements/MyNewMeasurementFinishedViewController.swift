@@ -32,8 +32,10 @@ class MyNewMeasurementFinishedViewController: UIViewController
     
     @IBAction func btnCheckDiary_OnClick(_ sender: Any)
     {
-        self.navigationController?.popToRootViewController(animated: true)
+        // ...
+        
         self.tabBarController?.selectedIndex = 1
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     override func didReceiveMemoryWarning()

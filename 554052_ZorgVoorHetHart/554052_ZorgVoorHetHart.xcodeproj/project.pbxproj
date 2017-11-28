@@ -33,6 +33,7 @@
 		90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */; };
 		90C953171FC74454001FD3C2 /* MyContactHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953161FC74454001FD3C2 /* MyContactHomeViewController.swift */; };
 		90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953181FC7447B001FD3C2 /* MyServiceHomeViewController.swift */; };
+		90E6E7351FCDAED800583804 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6E7341FCDAED800583804 /* UINavigationControllerExtension.swift */; };
 		D3AC3ACF9E3F96F9BED59469 /* Pods_554052_ZorgVoorHetHartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE40E8BA03BF932D40C8FCF7 /* Pods_554052_ZorgVoorHetHartUITests.framework */; };
 		EB76D1458FA2DFF0F6AAF29F /* Pods_554052_ZorgVoorHetHartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5A51588CB190E62BAD77D9 /* Pods_554052_ZorgVoorHetHartTests.framework */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,7 @@
 		90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeasurementsDiaryHomeViewController.swift; sourceTree = "<group>"; };
 		90C953161FC74454001FD3C2 /* MyContactHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactHomeViewController.swift; sourceTree = "<group>"; };
 		90C953181FC7447B001FD3C2 /* MyServiceHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServiceHomeViewController.swift; sourceTree = "<group>"; };
+		90E6E7341FCDAED800583804 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		9D5472F8D425C441EFAFD617 /* Pods-554052_ZorgVoorHetHartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHartTests/Pods-554052_ZorgVoorHetHartTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FEEAB367736B44C3D9689C5 /* Pods-554052_ZorgVoorHetHartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHartTests/Pods-554052_ZorgVoorHetHartTests.release.xcconfig"; sourceTree = "<group>"; };
 		A55F7962B3C5FCF06E8D7E1A /* Pods-554052_ZorgVoorHetHart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHart.release.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart.release.xcconfig"; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				900239FD1FBC93A600DFCD23 /* UIColorExtension.swift */,
+				90E6E7341FCDAED800583804 /* UINavigationControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */,
 				901821A11FCC9FD400937DDB /* MyNewMeasurementFinishedViewController.swift in Sources */,
 				9018219F1FCC610100937DDB /* MyNewMeasurementStep3ViewController.swift in Sources */,
+				90E6E7351FCDAED800583804 /* UINavigationControllerExtension.swift in Sources */,
 				90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */,
 				90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */,
 				9065C5311FC22BDD00760062 /* MyRegisterFinishedViewController.swift in Sources */,
