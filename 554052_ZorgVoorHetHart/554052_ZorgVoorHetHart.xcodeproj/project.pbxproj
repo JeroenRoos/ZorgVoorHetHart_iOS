@@ -30,6 +30,8 @@
 		90812B091FBA444E00292F18 /* _54052_ZorgVoorHetHartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B081FBA444E00292F18 /* _54052_ZorgVoorHetHartTests.swift */; };
 		90812B141FBA444E00292F18 /* _54052_ZorgVoorHetHartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B131FBA444E00292F18 /* _54052_ZorgVoorHetHartUITests.swift */; };
 		90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90812B271FBA56A900292F18 /* MyRegisterOrLoginViewController.swift */; };
+		908AD41B1FD1A6920047E1E7 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908AD41A1FD1A6920047E1E7 /* MyTableViewCell.swift */; };
+		908AD41D1FD1A8930047E1E7 /* MyMeasurementDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908AD41C1FD1A8930047E1E7 /* MyMeasurementDetailsViewController.swift */; };
 		90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */; };
 		90C953171FC74454001FD3C2 /* MyContactHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953161FC74454001FD3C2 /* MyContactHomeViewController.swift */; };
 		90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C953181FC7447B001FD3C2 /* MyServiceHomeViewController.swift */; };
@@ -88,6 +90,8 @@
 		90812B131FBA444E00292F18 /* _54052_ZorgVoorHetHartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _54052_ZorgVoorHetHartUITests.swift; sourceTree = "<group>"; };
 		90812B151FBA444E00292F18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90812B271FBA56A900292F18 /* MyRegisterOrLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterOrLoginViewController.swift; sourceTree = "<group>"; };
+		908AD41A1FD1A6920047E1E7 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		908AD41C1FD1A8930047E1E7 /* MyMeasurementDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeasurementDetailsViewController.swift; sourceTree = "<group>"; };
 		90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeasurementsDiaryHomeViewController.swift; sourceTree = "<group>"; };
 		90C953161FC74454001FD3C2 /* MyContactHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContactHomeViewController.swift; sourceTree = "<group>"; };
 		90C953181FC7447B001FD3C2 /* MyServiceHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyServiceHomeViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				90C953141FC743E9001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift */,
+				908AD41A1FD1A6920047E1E7 /* MyTableViewCell.swift */,
+				908AD41C1FD1A8930047E1E7 /* MyMeasurementDetailsViewController.swift */,
 			);
 			path = MeasurementsDiary;
 			sourceTree = "<group>";
@@ -598,12 +604,14 @@
 				90088C711FC3074E003997B9 /* MyMeasurementHomeViewController.swift in Sources */,
 				90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */,
 				90812AF41FBA444E00292F18 /* AppDelegate.swift in Sources */,
+				908AD41B1FD1A6920047E1E7 /* MyTableViewCell.swift in Sources */,
 				90088C761FC30870003997B9 /* MyTabBarController.swift in Sources */,
 				901821A51FCCB32200937DDB /* MyMessageSendViewController.swift in Sources */,
 				902938801FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift in Sources */,
 				901821A31FCCAAFA00937DDB /* MyNavigationController.swift in Sources */,
 				90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */,
 				90023A061FBCA9F100DFCD23 /* CheckboxHelper.swift in Sources */,
+				908AD41D1FD1A8930047E1E7 /* MyMeasurementDetailsViewController.swift in Sources */,
 				9018219D1FCC45D200937DDB /* MyNewMeasurementStep2ViewController.swift in Sources */,
 				900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */,
 				90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */,
@@ -782,12 +790,15 @@
 			baseConfigurationReference = 0F76220C454CE6410E9C36C9 /* Pods-554052_ZorgVoorHetHart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5C9KE4BY59;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHart";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -798,12 +809,15 @@
 			baseConfigurationReference = A55F7962B3C5FCF06E8D7E1A /* Pods-554052_ZorgVoorHetHart.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5C9KE4BY59;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHart";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -815,12 +829,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5C9KE4BY59;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/554052_ZorgVoorHetHart.app/554052_ZorgVoorHetHart";
@@ -833,12 +850,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5C9KE4BY59;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/554052_ZorgVoorHetHart.app/554052_ZorgVoorHetHart";
@@ -850,12 +870,15 @@
 			baseConfigurationReference = BCE7DB1D07DCBCE807F820BD /* Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5C9KE4BY59;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = 554052_ZorgVoorHetHart;
@@ -867,12 +890,15 @@
 			baseConfigurationReference = 3A65B9ED38169E06E463E185 /* Pods-554052_ZorgVoorHetHartUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5C9KE4BY59;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = 554052_ZorgVoorHetHartUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.inholland.-54052-ZorgVoorHetHartUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = 554052_ZorgVoorHetHart;
