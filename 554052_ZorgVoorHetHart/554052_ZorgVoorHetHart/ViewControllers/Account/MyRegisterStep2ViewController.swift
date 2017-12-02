@@ -15,6 +15,8 @@ class MyRegisterStep2ViewController: UIViewController
     @IBOutlet weak var inputPassword: UITextField!
     @IBOutlet weak var inputEmail: UITextField!
     
+     var user: User? = nil
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

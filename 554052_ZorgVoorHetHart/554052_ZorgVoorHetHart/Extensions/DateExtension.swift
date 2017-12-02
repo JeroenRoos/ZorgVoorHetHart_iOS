@@ -15,14 +15,35 @@ extension Date
         let date = Date()
         let calendar = Calendar.current
         let day = calendar.component(.day, from: date)
-        let month = calendar.component(.month, from: date)
+        let month = (Date().getMonthOfYear(monthInt: calendar.component(.month, from: date))!)
         let year = calendar.component(.year, from: date)
-        let weekDay = (Date().dayOfWeek()!)
-        let currentDate = weekDay + ", " + String(day) + " " + String(month) + " " + String(year)
+        let weekDay = (Date().getDayOfWeek()!)
+        
+        let currentDate = weekDay + ", " + String(day) + " " + month + " " + String(year)
         return currentDate
     }
     
-    private func dayOfWeek() -> String?
+    private func getMonthOfYear(monthInt: Int) -> String?
+    {
+        let months = [
+            "januari",
+            "februari",
+            "maart",
+            "april",
+            "mei",
+            "juni",
+            "juli",
+            "augustus",
+            "september",
+            "oktober",
+            "november",
+            "december"
+        ]
+        
+        return months[monthInt - 1]
+    }
+    
+    private func getDayOfWeek() -> String?
     {
         let weekdays = [
             "Zondag",

@@ -123,6 +123,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="inputDateofBirth_EditDidBegin:" destination="92Y-rX-HmI" eventType="editingDidBegin" id="sJW-A2-Dwv"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="txtGender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFt-bz-1hS" userLabel="txtGender">
                                 <rect key="frame" x="20" y="274" width="335" height="21"/>
@@ -1821,7 +1824,7 @@
         <image name="white" width="280" height="280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xcf-ud-zQs"/>
+        <segue reference="jFZ-5F-Aaa"/>
         <segue reference="MsM-Qu-r2h"/>
         <segue reference="3Bl-Uw-Ne3"/>
     </inferredMetricsTieBreakers>
