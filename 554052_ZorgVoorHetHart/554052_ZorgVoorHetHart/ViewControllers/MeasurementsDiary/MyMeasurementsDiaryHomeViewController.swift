@@ -10,10 +10,16 @@ import UIKit
 
 class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
-    
+    @IBOutlet weak var txtOnderdruk: UILabel!
+    @IBOutlet weak var txtBovendruk: UILabel!
+    @IBOutlet weak var imgOnderdruk: UIImageView!
+    @IBOutlet weak var imgBovendruk: UIImageView!
     @IBOutlet weak var btnMonthly: UIButton!
     @IBOutlet weak var btnWeekly: UIButton!
     @IBOutlet weak var tableViewMeasurements: UITableView!
+    
+    //var lstMeasurements: [Measurement] = []
+    //let service: Webservice = Webservice()
     
     override func viewDidLoad()
     {
@@ -34,12 +40,21 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         btnMonthly.layer.borderWidth = 1
         btnMonthly.layer.borderColor = UIColor.black.cgColor
         
+        txtOnderdruk.text = "Onderduk"
+        txtOnderdruk.font = txtOnderdruk.font.withSize(12)
+        imgOnderdruk.backgroundColor = UIColor(rgb: 0x491488)
+        
+        txtBovendruk.text = "Bovendruk"
+        txtBovendruk.font = txtBovendruk.font.withSize(12)
+        imgOnderdruk.backgroundColor = UIColor(rgb: 0x039BE6)
+        
         tableViewMeasurements.delegate = self
         tableViewMeasurements.dataSource = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        // return lstArticles.count
         return 7
     }
     
@@ -47,6 +62,11 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     {
         let customCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyTableViewCell
         
+        // (Date().getCurrentWeekdayAndDate())
+        
+        /* DispatchQueue.main.async {
+            self.tableView.reloadData()
+        } */
         
         return customCell
     }

@@ -1,5 +1,5 @@
 //
-//  MyMeasurementDetailsViewController.swift
+//  MyBloodPressureInformationViewController.swift
 //  554052_ZorgVoorHetHart
 //
 //  Created by Jeroen on 01/12/2017.
@@ -8,14 +8,16 @@
 
 import UIKit
 
-class MyMeasurementDetailsViewController: UIViewController
+class MyBloodPressureInformationViewController: UIViewController
 {
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.title = "Bloeddruk informatie"
         
-        // (Date().getCurrentWeekdayAndDate())
+        // Link voor de tekst
+        // www.bloeddruk.net/bloeddruk-meten.html
     }
 
     override func didReceiveMemoryWarning()

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		438D38075D222C443F3BD6CA /* Pods_554052_ZorgVoorHetHart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853732A528248DCE53234453 /* Pods_554052_ZorgVoorHetHart.framework */; };
+		90000AAD1FD2FF1000654235 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90000AAC1FD2FF1000654235 /* DateExtension.swift */; };
+		90000AAF1FD300DD00654235 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90000AAE1FD300DD00654235 /* StringExtension.swift */; };
+		900215B31FD1E61600D0E325 /* MyBloodPressureInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900215B21FD1E61600D0E325 /* MyBloodPressureInformationViewController.swift */; };
 		900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900239FD1FBC93A600DFCD23 /* UIColorExtension.swift */; };
 		90023A001FBC9EDC00DFCD23 /* MyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */; };
 		90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90023A011FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift */; };
@@ -62,6 +65,9 @@
 		3A65B9ED38169E06E463E185 /* Pods-554052_ZorgVoorHetHartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHartUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHartUITests/Pods-554052_ZorgVoorHetHartUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6B5A51588CB190E62BAD77D9 /* Pods_554052_ZorgVoorHetHartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		853732A528248DCE53234453 /* Pods_554052_ZorgVoorHetHart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90000AAC1FD2FF1000654235 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		90000AAE1FD300DD00654235 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		900215B21FD1E61600D0E325 /* MyBloodPressureInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBloodPressureInformationViewController.swift; sourceTree = "<group>"; };
 		900239FD1FBC93A600DFCD23 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginViewController.swift; sourceTree = "<group>"; };
 		90023A011FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterStep2ViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 				9018219C1FCC45D200937DDB /* MyNewMeasurementStep2ViewController.swift */,
 				9018219E1FCC610100937DDB /* MyNewMeasurementStep3ViewController.swift */,
 				901821A01FCC9FD300937DDB /* MyNewMeasurementFinishedViewController.swift */,
+				900215B21FD1E61600D0E325 /* MyBloodPressureInformationViewController.swift */,
 			);
 			path = Measurements;
 			sourceTree = "<group>";
@@ -291,6 +298,8 @@
 			children = (
 				900239FD1FBC93A600DFCD23 /* UIColorExtension.swift */,
 				90E6E7341FCDAED800583804 /* UINavigationControllerExtension.swift */,
+				90000AAC1FD2FF1000654235 /* DateExtension.swift */,
+				90000AAE1FD300DD00654235 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -612,8 +621,10 @@
 				90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */,
 				90023A061FBCA9F100DFCD23 /* CheckboxHelper.swift in Sources */,
 				908AD41D1FD1A8930047E1E7 /* MyMeasurementDetailsViewController.swift in Sources */,
+				90000AAD1FD2FF1000654235 /* DateExtension.swift in Sources */,
 				9018219D1FCC45D200937DDB /* MyNewMeasurementStep2ViewController.swift in Sources */,
 				900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */,
+				900215B31FD1E61600D0E325 /* MyBloodPressureInformationViewController.swift in Sources */,
 				90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */,
 				901821A11FCC9FD400937DDB /* MyNewMeasurementFinishedViewController.swift in Sources */,
 				9018219F1FCC610100937DDB /* MyNewMeasurementStep3ViewController.swift in Sources */,
@@ -623,6 +634,7 @@
 				9065C5311FC22BDD00760062 /* MyRegisterFinishedViewController.swift in Sources */,
 				90C953171FC74454001FD3C2 /* MyContactHomeViewController.swift in Sources */,
 				90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */,
+				90000AAF1FD300DD00654235 /* StringExtension.swift in Sources */,
 				90023A001FBC9EDC00DFCD23 /* MyLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

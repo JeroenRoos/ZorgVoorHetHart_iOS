@@ -10,7 +10,12 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell
 {
-
+    @IBOutlet weak var txtBloeddruk: UILabel!
+    @IBOutlet weak var txtOnderdruk: UILabel!
+    @IBOutlet weak var txtBovendruk: UILabel!
+    @IBOutlet weak var txtStatus: UILabel!
+    @IBOutlet weak var txtDate: UILabel!
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()

@@ -63,9 +63,7 @@ class MyNewMeasurementStep1ViewController: UIViewController
         btnCancelPopup.setTitleColor(UIColor.white, for: .normal)
         btnCancelPopup.backgroundColor = UIColor(rgb: 0xA9A9A9)
         
-        
-        
-        txtDate.text = "[datum]"
+        txtDate.text = (Date().getCurrentWeekdayAndDate())
         txtDate.font = txtDate.font.withSize(12)
         
         txtTitle.text = "1. Vul uw bloeddruk in (mmHg)"

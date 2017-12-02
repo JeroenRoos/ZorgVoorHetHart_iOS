@@ -21,7 +21,7 @@ class MyNewMeasurementStep3ViewController: UIViewController
         super.viewDidLoad()
         self.title = "Nieuwe meting: stap 3 van 3"
         
-        txtDate.text = "[datum]"
+        txtDate.text = (Date().getCurrentWeekdayAndDate())
         txtDate.font = txtDate.font.withSize(12)
         
         txtTitle.text = "3. Extra / Opmerkingen"
