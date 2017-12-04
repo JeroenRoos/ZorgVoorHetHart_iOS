@@ -49,7 +49,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnLogin_OnClick(_ sender: Any)
     {
-        let username = inputEmail.text
+        let email = inputEmail.text
         let password = inputPassword.text
         
         service.login(
@@ -58,7 +58,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
                 self.performSegue(withIdentifier: "loginFinish", sender: self)
         }, orFailure: { (error: String) in
             
-        }, andUsername: username!, andPassword: password!)
+        }, andEmail: email!, andPassword: password!)
     }
     
 

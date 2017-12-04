@@ -14,7 +14,7 @@ class UserService
     
     func login(withSuccess success: @escaping (User)->(), 
                   orFailure failure: @escaping (String)->(),
-                  andUsername username: String,
+                  andEmail email: String,
                   andPassword password: String)
     {
         manager.login(
@@ -22,7 +22,7 @@ class UserService
                 success(user)
         }, orFailure: { (error: String) in
             
-        }, andUsername: username, andPassword: password)
+        }, andEmail: email, andPassword: password)
     }
     
     func register(withSuccess success: @escaping (String)->(), 

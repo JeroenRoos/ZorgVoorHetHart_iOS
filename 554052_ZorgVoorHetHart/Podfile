@@ -4,6 +4,7 @@ target '554052_ZorgVoorHetHart' do
   use_frameworks!
 
   pod 'DropDown'
+  pod 'Alamofire', '~> 4.5'
 
   target '554052_ZorgVoorHetHartTests' do
     inherit! :search_paths

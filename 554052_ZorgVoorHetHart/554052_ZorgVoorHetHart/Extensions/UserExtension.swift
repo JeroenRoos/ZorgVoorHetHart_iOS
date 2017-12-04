@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-/*
+
 extension User
 {
    func encode(to encoder: Encoder) throws
@@ -23,7 +23,22 @@ extension User
         try container.encode(dateOfBirth, forKey: .dateOfBirth)
         try container.encode(gender, forKey: .gender)
     }
-}*/
+}
+extension User
+{
+    func convertToDictionary(user: User) -> Dictionary<String, Any> {
+        
+        return [
+            "emailAddress": user.emailAddress,
+            "password": user.password,
+            "firstName": user.firstName,
+            "lastName": user.lastName,
+            "consultantId": user.consultantId,
+            "dateOfBirth": user.dateOfBirth,
+            "gender": user.gender
+        ]
+    }
+}
 
 /*
 extension User: Decodable

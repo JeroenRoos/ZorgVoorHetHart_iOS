@@ -6,119 +6,168 @@
 //  Copyright © 2017 Jeroen Roos. All rights reserved.
 //
 
+import Alamofire
 import UIKit
 
 class UserManager
 {
     let baseURL = URL(string: "https://zvh-api.herokuapp.com/Users/")
     
+    // Try to login an user with an email and password
     func login(withSuccess success: @escaping (User)->(), 
                orFailure failure: @escaping (String)->(),
-               andUsername username: String,
+               andEmail email: String,
                andPassword password: String)
     {
+        // Serialize the JSON with email and password
         let url = URL(string: "login", relativeTo: baseURL)
-        var request = URLRequest(url : url!)
-        request.httpMethod = "POST"
-        
-        let json: [String: Any] = ["emailAddress" : username,
+        let json: [String: Any] = ["emailAddress" : email,
                                    "password" : password]
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        request.httpBody = jsonData
         
-        //let postString = "emailAddress=" + username + "&password=" + password
-        //request.httpBody = postString.data(using: .utf8)
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request, completionHandler:{(optData: Data?, response: URLResponse?, error: Error?) -> () in  
-            
-            if let data = optData
+        Alamofire.request(url!,
+                          method: .post,
+                          parameters: json,
+                          encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON { response in
+            print("Request: \(String(describing: response.request))")
+            print("Result: \(response.result)")
+            switch response.result
             {
-                do
-                {
-                    let result = try JSONDecoder().decode(User.self, from: data)
-                    success(result)
-                }
-                catch
-                {
-                    let error: String = "Something went wrong while logging in."
-                    failure(error)
-                }
-            }
-        })
-        
-        dataTask.resume()
-    }
-    
-    /*
-    let url = URL(string: "Users/login", relativeTo: baseURL)
-    var request = URLRequest(url : url!)
-    request.httpMethod = "POST"
-    let postString = "UserName=" + username + "&Password=" + password
-    request.httpBody = postString.data(using: .utf8)
-    
-    let session = URLSession.shared
-    let dataTask = session.dataTask(with: request, completionHandler:{(optData: Data?, response: URLResponse?, error: Error?) -> () in  
-        
-        if let data = optData
-        {
-            do
-            {
-                let result = try JSONDecoder().decode([String: String].self, from: data)
+                // Response code 200 ..< 300
+                case .success:
+                    if let data = response.data
+                    {
+                        do
+                        {
+                            // Try to decode the received data to a User object
+                            let result = try JSONDecoder().decode(User.self, from: data )
+                            success(result)
+                        }
+                        catch
+                        {
+                            let error: String = "Er is iets fout gegaan tijdens het inloggen."
+                            failure(error)
+                        }
+                    }
                 
-                if (result["AuthToken"] != nil)
-                {
-                    success(result["AuthToken"]!)
-                }
-                else
-                {
-                    failure(result["Message"]!)
-                }
+                case .failure(let error):
+                    print(error)
+                    failure("Er is iets fout gegaan tijdens het inloggen.")
             }
-            catch
-            {
-                let error: String = "Something went wrong while logging in."
-                failure(error)
-            }
         }
-    })
-    
-    dataTask.resume()
- */
+    }
     
     func register(withSuccess success: @escaping (String)->(), 
                   orFailure failure: @escaping (String)->(),
                   andUser: User)
     {
         let url = URL(string: "register", relativeTo: baseURL)
-        var request = URLRequest(url : url!)
-        request.httpMethod = "POST"
+        let userData = User().convertToDictionary(user: andUser)
         
+        Alamofire.request(url!,
+                          method: .post,
+                          parameters: userData,
+                          encoding: JSONEncoding.default)
+            .validate()
+            .responseString { response in       //responseJSON
+                print("Request: \(String(describing: response.request))")
+                print("Response: \(String(describing: response.response))")
+                print("Result: \(response.result)")
+                
+                if (response.result.isSuccess)
+                {
+                    success("Succes!")
+                }
+                else
+                {
+                    print(response.error!)
+                    print(response.result.error!)
+                    failure("Er is iets fout gegaan tijdens het inloggen.")
+                }
+                
+                /*
+                switch response.result
+                {
+                    // Response code 200 ..< 300
+                    case .success:
+                        success("Succes!")
+                    
+                    case .failure(let error):
+                        print(error)
+                        failure("Er is iets fout gegaan tijdens het inloggen.")
+                }
+ */
+        }
+    }
+    
+    /*
+     let url = URL(string: "register", relativeTo: baseURL)
+     var request = URLRequest(url : url!)
+     request.httpMethod = "POST"
+     
+     do
+     {
+     let userData: Data = try JSONEncoder().encode(andUser)
+     request.httpBody = userData
+     }
+     catch
+     {
+     print(error)
+     }
+     
+     let session = URLSession.shared
+     let dataTask = session.dataTask(with: request, completionHandler:{(optData: Data?, response: URLResponse?, error: Error?) -> () in  
+     
+     if (error == nil)
+     {
+     success("Succes!")
+     }
+     else
+     {
+     let error: String = "Er is iets fout gegaan tijdens het registreren van uw account."
+     failure(error)
+     }
+     
+     })
+     
+     dataTask.resume()
+     */
+}
+
+// Login Native Swift Style
+/*
+let url = URL(string: "login", relativeTo: baseURL)
+var request = URLRequest(url : url!)
+request.httpMethod = "POST"
+
+// Serialize the JSON with email and password and add to the httpBody
+let json: [String: Any] = ["emailAddress" : email,
+                           "password" : password]
+let jsonData = try? JSONSerialization.data(withJSONObject: json)
+request.httpBody = jsonData
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request, completionHandler:{(optData: Data?, response: URLResponse?, error: Error?) -> () in  
+    
+    if let data = optData
+    {
         do
         {
-            let userData: Data = try JSONEncoder().encode(andUser)
-            request.httpBody = userData
+            // Try to decode the received data to a User object
+            let result = try JSONDecoder().decode(User.self, from: data)
+            
+            // Return the user object in the success callback
+            success(result)
         }
         catch
         {
-            print(error)
-        }
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request, completionHandler:{(optData: Data?, response: URLResponse?, error: Error?) -> () in  
-            
-            if (error == nil)
-            {
-                success("Succes!")
-            }
-            else
-            {
-                let error: String = "Er is iets fout gegaan tijdens het registreren van uw account."
-                failure(error)
-            }
-            
-        })
-        
-        dataTask.resume()
+            // Return an error message in the failure callback
+            let error: String = "Er is iets fout gegaan tijdens het inloggen."
+            failure(error)
+        }
     }
-}
+})
+
+dataTask.resume()
+ */

@@ -55,11 +55,11 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         
         service.register(withSuccess: { (message: String) in
             
+            self.performSegue(withIdentifier: "registerFinish", sender: self)
         }, orFailure: { (error: String) in
             
         }, andUser: user!)
         
-        self.performSegue(withIdentifier: "registerFinish", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
