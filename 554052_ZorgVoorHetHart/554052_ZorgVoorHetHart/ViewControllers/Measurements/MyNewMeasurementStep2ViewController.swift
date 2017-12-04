@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyNewMeasurementStep2ViewController: UIViewController
+class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var txtDate: UILabel!
@@ -29,6 +29,7 @@ class MyNewMeasurementStep2ViewController: UIViewController
     {
         super.viewDidLoad()
         self.title = "Nieuwe meting: stap 2 van 3"
+        self.hideKeyboardWhenTappedAround()
         
         txtDate.text = (Date().getCurrentWeekdayAndDate())
         txtDate.font = txtDate.font.withSize(12)
@@ -68,6 +69,7 @@ class MyNewMeasurementStep2ViewController: UIViewController
         inputOther.placeholder = "0"
         inputOther.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOther.layer.borderWidth = 0
+        self.inputOther.delegate = self
         
         btnNext.setTitle("Volgende", for: .normal)
         btnNext.setTitleColor(UIColor.white, for: .normal)

@@ -9,7 +9,7 @@
 import UIKit
 import DropDown
 
-class MyRegisterStep1ViewController: UIViewController
+class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var testBtn: UIBarButtonItem!
     @IBOutlet weak var btnNext: UIButton!
@@ -19,14 +19,14 @@ class MyRegisterStep1ViewController: UIViewController
     @IBOutlet weak var inputDatefOfBirth: UITextField!
     @IBOutlet weak var inputName: UITextField!
     
-    //var user = try! User(from: JSONDecoder() as! Decoder)
     let decoder = JSONDecoder()
-    var user : User? = nil //= try! User(from: decoder)
+    var user: User? = nil
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.title = "Registreren stap 1 van 2"
+        self.hideKeyboardWhenTappedAround()
         user = User()
         
         // DropDown CocaoPods & Tutorial
@@ -60,10 +60,12 @@ class MyRegisterStep1ViewController: UIViewController
         inputDatefOfBirth.placeholder = "Uw geboortedatum"
         inputDatefOfBirth.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputDatefOfBirth.layer.borderWidth = 0
+        self.inputDatefOfBirth.delegate = self
         
         inputName.placeholder = "Vul uw naam in"
         inputName.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputName.layer.borderWidth = 0
+        self.inputName.delegate = self
     }
 
     override func didReceiveMemoryWarning()
@@ -74,13 +76,19 @@ class MyRegisterStep1ViewController: UIViewController
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
-        user?.firstName = inputName.text!
-        user?.lastName = inputName.text!
+        // Later veranderen als Dropdown er is
+        user?.consultantId = "5a0336f35f9123e60146b7d3"
+        
+        let fullName = inputName.text!
+        let fullnameArray = fullName.split(separator: " ", maxSplits: 1).map(String.init)
+        user?.firstName = fullnameArray[0]
+        user?.lastName = fullnameArray[1]
         
         let dateOfBirthString = inputDatefOfBirth.text
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        user?.dateOfBirth = formatter.date(from: dateOfBirthString!)!
+        user?.dateOfBirth = dateOfBirthString!
+        //let formatter = DateFormatter()
+        //formatter.dateFormat = "dd-MM-yyyy"
+        //user?.dateOfBirth = formatter.date(from: dateOfBirthString!)!
         
         if (radioButtonMan.isChecked)
         {

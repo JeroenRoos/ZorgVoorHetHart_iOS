@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyNewMeasurementStep1ViewController: UIViewController
+class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var inputOnderdruk: UITextField!
     @IBOutlet weak var txtOnderdruk: UILabel!
@@ -33,6 +33,7 @@ class MyNewMeasurementStep1ViewController: UIViewController
     {
         super.viewDidLoad()
         self.title = "Nieuwe meting: stap 1 van 3"
+        self.hideKeyboardWhenTappedAround()
         
         backgroundImage.alpha = 0.5
         
@@ -49,11 +50,13 @@ class MyNewMeasurementStep1ViewController: UIViewController
         inputLengte.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputLengte.layer.borderWidth = 0
         inputLengte.keyboardType = UIKeyboardType.numberPad
+        self.inputLengte.delegate = self
         
         inputGewicht.placeholder = "0"
         inputGewicht.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputGewicht.layer.borderWidth = 0
         inputGewicht.keyboardType = UIKeyboardType.numberPad
+        self.inputGewicht.delegate = self
         
         btnContinuePopup.setTitle("Doorgaan", for: .normal)
         btnContinuePopup.setTitleColor(UIColor.white, for: .normal)
@@ -79,11 +82,13 @@ class MyNewMeasurementStep1ViewController: UIViewController
         inputBovendruk.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputBovendruk.layer.borderWidth = 0
         inputBovendruk.keyboardType = UIKeyboardType.numberPad
+        self.inputBovendruk.delegate = self
         
         inputOnderdruk.placeholder = "0"
         inputOnderdruk.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOnderdruk.layer.borderWidth = 0
         inputOnderdruk.keyboardType = UIKeyboardType.numberPad
+        self.inputOnderdruk.delegate = self
         
         btnNext.setTitle("Volgende", for: .normal)
         btnNext.setTitleColor(UIColor.white, for: .normal)

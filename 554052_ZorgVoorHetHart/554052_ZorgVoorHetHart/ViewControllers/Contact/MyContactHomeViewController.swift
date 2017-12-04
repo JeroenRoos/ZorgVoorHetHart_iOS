@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyContactHomeViewController: UIViewController
+class MyContactHomeViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var txtOnderwerp: UILabel!
@@ -22,6 +22,7 @@ class MyContactHomeViewController: UIViewController
     {
         super.viewDidLoad()
         self.title = "Contact"
+        self.hideKeyboardWhenTappedAround()
         
         txtTitle.text = "Stuur een bericht naar uw consulent"
         txtTitle.font = txtTitle.font.withSize(12)
@@ -32,6 +33,7 @@ class MyContactHomeViewController: UIViewController
         inputOnderwerp.placeholder = ""
         inputOnderwerp.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOnderwerp.layer.borderWidth = 0
+        self.inputOnderwerp.delegate = self
         
         txtBericht.text = "Bericht"
         txtBericht.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
@@ -39,6 +41,7 @@ class MyContactHomeViewController: UIViewController
         inputBericht.placeholder = ""
         inputBericht.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputBericht.layer.borderWidth = 0
+        self.inputBericht.delegate = self
         
         btnSend.setTitle("Verzenden", for: .normal)
         btnSend.setTitleColor(UIColor.white, for: .normal)

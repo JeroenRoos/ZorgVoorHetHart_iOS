@@ -9,38 +9,40 @@
 import UIKit
 import Foundation
 
-class User : Decodable, Encodable
+class User : Codable
 {
-    var userId: String = "" //ObjectId
+    static var loggedinUser: User? = nil
+    
+    var userId: String = ""                 // ObjectId
     var emailAddress: String = ""
     var password: String = ""
-    var authToken: String = ""
+    var authToken: String?
     var firstName: String = ""
     var lastName: String = ""
-    var consultantId: String = "" //ObjectId
-    var dateOfBirth: Date = Date.distantPast
+    var consultantId: String = ""         // ObjectId
+    var dateOfBirth: String = ""
     var gender: Int = 0
-    var length: Int = 0
-    var weight: Int = 0
-    var resetPasswordToken: String = ""
-    var isActivate: Bool = false
+    var length: Int?
+    var weight: Int?
+    var resetPasswordToken: String?
+    var isActivated: Bool = false
     var activationToken: String = ""
     
     enum CodingKeys: String, CodingKey
     {
-        case userId = "userId"
+        case userId = "_id"
         case emailAddress = "emailAddress"
         case password = "password"
         case authToken = "authToken"
-        case firstName = "firstName"
-        case lastName = "lastName"
+        case firstName = "firstname"
+        case lastName = "lastname"
         case consultantId = "consultantId"
         case dateOfBirth = "dateOfBirth"
         case gender = "gender"
         case length = "length"
         case weight = "weight"
         case resetPasswordToken = "resetPasswordToken"
-        case isActivate = "isActivate"
+        case isActivated = "isActivated"
         case activationToken = "activationToken"
     }
 }

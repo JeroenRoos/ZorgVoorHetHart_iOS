@@ -17,6 +17,8 @@ class MyRegisterFinishedViewController: UIViewController
     @IBOutlet weak var txtTitleEmail: UILabel!
     @IBOutlet weak var imgCheckMark: UIImageView!
     
+    var user: User? = nil
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -30,13 +32,18 @@ class MyRegisterFinishedViewController: UIViewController
         txtTitleEmail.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         
         txtDescriptionEmail.text = "U heeft een email ontvangen op:"
-        txtEmail.font = txtEmail.font.withSize(12)
         
-        txtEmail.text = "placeholder@email.com"
+        if (user?.emailAddress != "")
+        {
+            txtEmail.text = user!.emailAddress
+        }
+        else
+        {
+            txtEmail.text = "placeholder@email.com"
+        }
         txtEmail.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
         txtActivate.text = "Hiermee kunt u uw account activeren"
-        txtEmail.font = txtEmail.font.withSize(12)
     }
 
     override func didReceiveMemoryWarning()

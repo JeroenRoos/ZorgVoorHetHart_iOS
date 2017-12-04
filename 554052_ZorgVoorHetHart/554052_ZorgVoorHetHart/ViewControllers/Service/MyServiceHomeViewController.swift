@@ -43,6 +43,7 @@ class MyServiceHomeViewController: UIViewController
     {
         super.viewDidLoad()
         self.title = "Service"
+        self.hideKeyboardWhenTappedAround()
         
         myView.backgroundColor = UIColor(rgb: 0xEBEBEB)
         myActualView.backgroundColor = UIColor(rgb: 0xEBEBEB)

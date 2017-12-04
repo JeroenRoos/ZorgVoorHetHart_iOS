@@ -23,7 +23,7 @@ class MyMeasurementHomeViewController: UIViewController
         btnNewMeasurement.setTitleColor(UIColor.white, for: .normal)
         btnNewMeasurement.backgroundColor = UIColor(rgb: 0xE84A4A)
         
-        txtUpperBar.text = "Goedenmiddag [patient]"
+        txtUpperBar.text = "Goedenmiddag " + (User.loggedinUser?.firstName)!
         txtUpperBar.font = txtUpperBar.font.withSize(14)
     
         txtSquareMiddle.text = "Vul uw eerste meting in"
