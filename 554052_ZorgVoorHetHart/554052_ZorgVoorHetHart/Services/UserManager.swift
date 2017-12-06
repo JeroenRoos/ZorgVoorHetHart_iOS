@@ -60,14 +60,24 @@ class UserManager
     
     func register(withSuccess success: @escaping (String)->(), 
                   orFailure failure: @escaping (String)->(),
-                  andUser: User)
+                  andUser user: User)
     {
         let url = URL(string: "register", relativeTo: baseURL)
-        let userData = User().convertToDictionary(user: andUser)
+        let dictUser = User().convertToDictionary(user: user)
+        
+        let json: [String: Any] = ["emailAddress": "test@test.com",
+                                "lastName": "Test",
+                                "firstName": "Jeroen",
+                                "consultantId": "5a0336f35f9123e60146b7d3",
+                                "dateOfBirth": "14-07-2017",
+                                "gender": 1,
+                                "password": "test"]
+        
+        let jsonUser: Data = try! JSONEncoder().encode(user)
         
         Alamofire.request(url!,
                           method: .post,
-                          parameters: userData,
+                          parameters: dictUser,
                           encoding: JSONEncoding.default)
             .validate()
             .responseString { response in       //responseJSON
@@ -85,20 +95,24 @@ class UserManager
                     print(response.result.error!)
                     failure("Er is iets fout gegaan tijdens het inloggen.")
                 }
-                
-                /*
-                switch response.result
-                {
-                    // Response code 200 ..< 300
-                    case .success:
-                        success("Succes!")
-                    
-                    case .failure(let error):
-                        print(error)
-                        failure("Er is iets fout gegaan tijdens het inloggen.")
-                }
- */
         }
+    }
+    
+    func updateLengthAndWeight(withSuccess success: @escaping (String)->(), 
+                  orFailure failure: @escaping (String)->(),
+                  andLength length: Int,
+                  andWeight weight: Int)
+    {
+        let json: [String: Any] = ["length" : length,
+                                   "weight" : weight]
+        
+        Alamofire.request(baseURL!,
+                          method: .put,
+                          parameters: json,
+                          encoding: JSONEncoding.default)
+            .validate()
+            .responseString
+ 
     }
     
     /*

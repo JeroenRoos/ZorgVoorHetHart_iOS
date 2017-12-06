@@ -8,8 +8,9 @@
 
 import UIKit
 import DropDown
+import Dropper
 
-class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
+class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, DropperDelegate
 {
     @IBOutlet weak var testBtn: UIBarButtonItem!
     @IBOutlet weak var btnNext: UIButton!
@@ -19,8 +20,14 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var inputDatefOfBirth: UITextField!
     @IBOutlet weak var inputName: UITextField!
     
-    let decoder = JSONDecoder()
-    var user: User? = nil
+    @IBOutlet weak var dropdown: UIButton!
+    private let decoder = JSONDecoder()
+    private var user: User? = nil
+    private var dropper: Dropper? = nil
+    private var lstConsultants : [Consultant] = []
+    private var lstConsultantsNames : [String] = []
+    
+    let service: ConsultantsService = ConsultantsService()
     
     override func viewDidLoad()
     {
@@ -29,18 +36,16 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         self.hideKeyboardWhenTappedAround()
         user = User()
         
-        // DropDown CocaoPods & Tutorial
-        // https://github.com/nahuelDeveloper/DropDown
-        // https://www.raywenderlich.com/156971/cocoapods-tutorial-swift-getting-started
-        /* let lstConsultans : [String] = ["", "Dhr. Pieters", "Dhr. Martens", "Dhr. van der Laan"]
+        dropdown.setTitle("  Selecteer uw consulent", for: .normal)
+        dropdown.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        dropdown.setTitleColor(UIColor.gray, for: .normal)
+        dropdown.layer.cornerRadius = 5
+        dropdown.contentHorizontalAlignment = .left
+        dropdown.isHidden = true
         
-        let dropDown = DropDown()
-        // The view to which the drop down will appear on
-        dropDown.anchorView = testBtn // UIView or UIBarButtonItem
-        // The list of items to display. Can be changed dynamically
-        dropDown.dataSource = lstConsultans
-        dropDown.show() */
-        
+        // https://github.com/kirkbyo/Dropper
+        dropper = Dropper(width: dropdown.frame.width - 40, height: 300)
+
         btnNext.setTitle("Volgende", for: .normal)
         btnNext.setTitleColor(UIColor.white, for: .normal)
         btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)
@@ -66,12 +71,62 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         inputName.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputName.layer.borderWidth = 0
         self.inputName.delegate = self
+        
+        fetchConsultants()
+    }
+    
+    private func fetchConsultants()
+    {
+        service.getConsultans(
+            withSuccess: { (consultants: [Consultant]) in
+                self.dropdown.isHidden = false
+                self.lstConsultants = consultants
+                self.getConsultantsNames()
+        }, orFailure: { (error: String) in
+                // Failure
+        })
+        
+    }
+    
+    private func getConsultantsNames()
+    {
+        for var index in 0 ..< lstConsultants.count
+        {
+            let name = lstConsultants[index].firstName
+                + " " + lstConsultants[index].lastName
+            self.lstConsultantsNames.append(name) //= name
+        }
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func DropdownAction(_ sender: Any)
+    {
+        dropper?.delegate = self
+        dropper?.cornerRadius = 5
+        dropper?.items = lstConsultantsNames
+        dropper?.maxHeight = 400
+        dropper?.showWithAnimation(0.15, options: Dropper.Alignment.center, button: dropdown)
+    }
+    
+    func DropperSelectedRow(_ path: IndexPath, contents: String, tag: Int)
+    {
+        let consultant = lstConsultantsNames[path.row]
+        dropdown.setTitle("  " + consultant, for: .normal)
+        
+        for var index in 0 ..< lstConsultants.count
+        {
+            let name = lstConsultants[index].firstName
+                + " " + lstConsultants[index].lastName
+            if (consultant == name)
+            {
+                user?.consultantId = lstConsultants[index].consultantId
+            }
+        }
     }
     
     @IBAction func btnNext_OnClick(_ sender: Any)
@@ -86,9 +141,6 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         
         let dateOfBirthString = inputDatefOfBirth.text
         user?.dateOfBirth = dateOfBirthString!
-        //let formatter = DateFormatter()
-        //formatter.dateFormat = "dd-MM-yyyy"
-        //user?.dateOfBirth = formatter.date(from: dateOfBirthString!)!
         
         if (radioButtonMan.isChecked)
         {

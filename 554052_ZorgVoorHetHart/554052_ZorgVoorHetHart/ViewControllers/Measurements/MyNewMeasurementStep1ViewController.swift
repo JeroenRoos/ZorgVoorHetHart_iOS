@@ -29,6 +29,8 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var inputGewicht: UITextField!
     @IBOutlet weak var imgMiddelSquare: UIImageView!
     
+    let service: UserService = UserService()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -121,15 +123,23 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnContinuePopup_OnClick(_ sender: Any)
     {
-        btnContinuePopup.isHidden = true
-        btnCancelPopup.isHidden = true
-        txtGewicht.isHidden = true
-        txtLengte.isHidden = true
-        txtTitlePopup.isHidden = true
-        backgroundImage.isHidden = true
-        inputLengte.isHidden = true
-        inputGewicht.isHidden = true
-        imgMiddelSquare.isHidden = true
+        let weight = Int(inputGewicht.text!)
+        let length = Int(inputLengte.text!)
+        
+        service.updateLengthAndWeight(
+            withSuccess: { (message: String) in
+                self.btnContinuePopup.isHidden = true
+                self.btnCancelPopup.isHidden = true
+                self.txtGewicht.isHidden = true
+                self.txtLengte.isHidden = true
+                self.txtTitlePopup.isHidden = true
+                self.backgroundImage.isHidden = true
+                self.inputLengte.isHidden = true
+                self.inputGewicht.isHidden = true
+                self.imgMiddelSquare.isHidden = true
+        }, orFailure: { (error: String) in
+            
+        }, andLength: length!, andWeight: weight!)
     }
     
     override func didReceiveMemoryWarning()

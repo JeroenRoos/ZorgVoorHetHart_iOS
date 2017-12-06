@@ -27,13 +27,26 @@ class UserService
     
     func register(withSuccess success: @escaping (String)->(), 
                   orFailure failure: @escaping (String)->(),
-                  andUser: User)
+                  andUser user: User)
     {
         manager.register(
             withSuccess: { (message: String) in
                 // Success code
         }, orFailure: { (error: String) in
                 // Failure code
-        }, andUser: andUser)
+        }, andUser: user)
+    }
+    
+    func updateLengthAndWeight(withSuccess success: @escaping (String)->(), 
+                               orFailure failure: @escaping (String)->(),
+                               andLength length: Int,
+                               andWeight weight: Int)
+    {
+        manager.updateLengthAndWeight(
+            withSuccess: { (message: String) in
+                // Success code
+        }, orFailure: { (error: String) in
+                // Failure code
+        }, andLength: length, andWeight: weight)
     }
 }

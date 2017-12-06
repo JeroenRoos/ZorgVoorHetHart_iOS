@@ -5,6 +5,7 @@ target '554052_ZorgVoorHetHart' do
 
   pod 'DropDown'
   pod 'Alamofire', '~> 4.5'
+  pod "Dropper"
 
   target '554052_ZorgVoorHetHartTests' do
     inherit! :search_paths

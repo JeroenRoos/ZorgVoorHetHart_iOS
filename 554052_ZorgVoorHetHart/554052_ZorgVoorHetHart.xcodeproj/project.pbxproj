@@ -45,6 +45,15 @@
 		90D34D5F1FD580C900A17271 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D34D5E1FD580C900A17271 /* UIViewControllerExtension.swift */; };
 		90E6E7351FCDAED800583804 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6E7341FCDAED800583804 /* UINavigationControllerExtension.swift */; };
 		D3AC3ACF9E3F96F9BED59469 /* Pods_554052_ZorgVoorHetHartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE40E8BA03BF932D40C8FCF7 /* Pods_554052_ZorgVoorHetHartUITests.framework */; };
+		E8702F0B1FD87C680044447C /* Consultant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0A1FD87C680044447C /* Consultant.swift */; };
+		E8702F0D1FD87DC40044447C /* ConsultantsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0C1FD87DC40044447C /* ConsultantsService.swift */; };
+		E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0E1FD87E470044447C /* ConsultantsManager.swift */; };
+		E8F79BFD1FD85C1500033926 /* MeasurementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79BFC1FD85C1500033926 /* MeasurementService.swift */; };
+		E8F79BFF1FD85C3300033926 /* MeasurementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79BFE1FD85C3300033926 /* MeasurementManager.swift */; };
+		E8F79C011FD85C5F00033926 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79C001FD85C5F00033926 /* ContactService.swift */; };
+		E8F79C031FD85C7C00033926 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79C021FD85C7C00033926 /* ContactManager.swift */; };
+		E8F79C051FD85C9100033926 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79C041FD85C9100033926 /* SettingsService.swift */; };
+		E8F79C071FD85CAC00033926 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79C061FD85CAC00033926 /* SettingsManager.swift */; };
 		EB76D1458FA2DFF0F6AAF29F /* Pods_554052_ZorgVoorHetHartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5A51588CB190E62BAD77D9 /* Pods_554052_ZorgVoorHetHartTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +126,15 @@
 		A55F7962B3C5FCF06E8D7E1A /* Pods-554052_ZorgVoorHetHart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHart.release.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart.release.xcconfig"; sourceTree = "<group>"; };
 		BCE7DB1D07DCBCE807F820BD /* Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHartUITests/Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BE40E8BA03BF932D40C8FCF7 /* Pods_554052_ZorgVoorHetHartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHartUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8702F0A1FD87C680044447C /* Consultant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consultant.swift; sourceTree = "<group>"; };
+		E8702F0C1FD87DC40044447C /* ConsultantsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsService.swift; sourceTree = "<group>"; };
+		E8702F0E1FD87E470044447C /* ConsultantsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsManager.swift; sourceTree = "<group>"; };
+		E8F79BFC1FD85C1500033926 /* MeasurementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementService.swift; sourceTree = "<group>"; };
+		E8F79BFE1FD85C3300033926 /* MeasurementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementManager.swift; sourceTree = "<group>"; };
+		E8F79C001FD85C5F00033926 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
+		E8F79C021FD85C7C00033926 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		E8F79C041FD85C9100033926 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		E8F79C061FD85CAC00033926 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				90000AB41FD33BF400654235 /* User.swift */,
+				E8702F0A1FD87C680044447C /* Consultant.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -302,6 +321,14 @@
 			children = (
 				90000AB01FD30B7900654235 /* UserService.swift */,
 				90000AB21FD30B9500654235 /* UserManager.swift */,
+				E8F79BFC1FD85C1500033926 /* MeasurementService.swift */,
+				E8F79BFE1FD85C3300033926 /* MeasurementManager.swift */,
+				E8F79C001FD85C5F00033926 /* ContactService.swift */,
+				E8F79C021FD85C7C00033926 /* ContactManager.swift */,
+				E8F79C041FD85C9100033926 /* SettingsService.swift */,
+				E8F79C061FD85CAC00033926 /* SettingsManager.swift */,
+				E8702F0C1FD87DC40044447C /* ConsultantsService.swift */,
+				E8702F0E1FD87E470044447C /* ConsultantsManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -573,11 +600,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -627,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8F79C031FD85C7C00033926 /* ContactManager.swift in Sources */,
 				90088C711FC3074E003997B9 /* MyMeasurementHomeViewController.swift in Sources */,
 				90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */,
 				90000AB31FD30B9500654235 /* UserManager.swift in Sources */,
@@ -635,13 +665,17 @@
 				908AD41B1FD1A6920047E1E7 /* MyTableViewCell.swift in Sources */,
 				90088C761FC30870003997B9 /* MyTabBarController.swift in Sources */,
 				901821A51FCCB32200937DDB /* MyMessageSendViewController.swift in Sources */,
+				E8F79BFF1FD85C3300033926 /* MeasurementManager.swift in Sources */,
 				90000AB51FD33BF400654235 /* User.swift in Sources */,
 				902938801FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift in Sources */,
+				E8F79BFD1FD85C1500033926 /* MeasurementService.swift in Sources */,
 				901821A31FCCAAFA00937DDB /* MyNavigationController.swift in Sources */,
 				90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */,
 				90023A061FBCA9F100DFCD23 /* CheckboxHelper.swift in Sources */,
+				E8F79C071FD85CAC00033926 /* SettingsManager.swift in Sources */,
 				908AD41D1FD1A8930047E1E7 /* MyMeasurementDetailsViewController.swift in Sources */,
 				90000AAD1FD2FF1000654235 /* DateExtension.swift in Sources */,
+				E8F79C051FD85C9100033926 /* SettingsService.swift in Sources */,
 				9018219D1FCC45D200937DDB /* MyNewMeasurementStep2ViewController.swift in Sources */,
 				900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */,
 				900215B31FD1E61600D0E325 /* MyBloodPressureInformationViewController.swift in Sources */,
@@ -650,14 +684,18 @@
 				90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */,
 				901821A11FCC9FD400937DDB /* MyNewMeasurementFinishedViewController.swift in Sources */,
 				9018219F1FCC610100937DDB /* MyNewMeasurementStep3ViewController.swift in Sources */,
+				E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */,
 				90E6E7351FCDAED800583804 /* UINavigationControllerExtension.swift in Sources */,
+				E8F79C011FD85C5F00033926 /* ContactService.swift in Sources */,
 				90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */,
 				90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */,
 				9065C5311FC22BDD00760062 /* MyRegisterFinishedViewController.swift in Sources */,
 				90C953171FC74454001FD3C2 /* MyContactHomeViewController.swift in Sources */,
+				E8702F0B1FD87C680044447C /* Consultant.swift in Sources */,
 				90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */,
 				90000AAF1FD300DD00654235 /* StringExtension.swift in Sources */,
 				90023A001FBC9EDC00DFCD23 /* MyLoginViewController.swift in Sources */,
+				E8702F0D1FD87DC40044447C /* ConsultantsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -73,7 +73,7 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let viewController = segue.destination as? MyMeasurementDetailsViewController
+        if let _ = segue.destination as? MyMeasurementDetailsViewController
         {
             //let clickedArticle = lstArticles[self.tableView.indexPathForSelectedRow!.row]
             //viewController.clickedArticle = clickedArticle

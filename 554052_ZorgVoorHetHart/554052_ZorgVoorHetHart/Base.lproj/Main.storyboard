@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GKA-f0-iep">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GKA-f0-iep">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -107,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FdN-3j-oqC" userLabel="inputName">
-                                <rect key="frame" x="20" y="154" width="335" height="35"/>
+                                <rect key="frame" x="20" y="149" width="335" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="8eV-XK-JV2"/>
                                 </constraints>
@@ -116,7 +116,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PSm-gE-1wN" userLabel="inputDateOfBirth">
-                                <rect key="frame" x="20" y="209" width="335" height="35"/>
+                                <rect key="frame" x="20" y="204" width="335" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="rRO-zK-NRj"/>
                                 </constraints>
@@ -128,13 +128,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="txtGender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFt-bz-1hS" userLabel="txtGender">
-                                <rect key="frame" x="20" y="274" width="335" height="21"/>
+                                <rect key="frame" x="20" y="269" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyu-zm-V2I" userLabel="btnNext">
-                                <rect key="frame" x="75" y="415" width="225" height="35"/>
+                                <rect key="frame" x="75" y="410" width="225" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="R4P-RE-ewf"/>
                                 </constraints>
@@ -144,12 +144,22 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5B-gS-VLn" userLabel="radioMan" customClass="RadioButtonHelper" customModule="_54052_ZorgVoorHetHart" customModuleProvider="target">
-                                <rect key="frame" x="20" y="310" width="335" height="30"/>
+                                <rect key="frame" x="20" y="305" width="335" height="30"/>
                                 <state key="normal" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OST-7S-JU2" userLabel="radioWoman" customClass="RadioButtonHelper" customModule="_54052_ZorgVoorHetHart" customModuleProvider="target">
-                                <rect key="frame" x="20" y="355" width="335" height="30"/>
+                                <rect key="frame" x="20" y="350" width="335" height="30"/>
                                 <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sd-Md-NK7" userLabel="dropdown">
+                                <rect key="frame" x="20" y="94" width="335" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ClC-hh-y23"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="DropdownAction:" destination="92Y-rX-HmI" eventType="touchUpInside" id="YEI-7j-3u1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,15 +171,18 @@
                             <constraint firstItem="YFt-bz-1hS" firstAttribute="leading" secondItem="UlA-SD-O27" secondAttribute="leading" constant="20" id="3k2-aQ-35w"/>
                             <constraint firstItem="UlA-SD-O27" firstAttribute="trailing" secondItem="hyu-zm-V2I" secondAttribute="trailing" constant="75" id="4bF-OL-Fxy"/>
                             <constraint firstItem="hyu-zm-V2I" firstAttribute="leading" secondItem="UlA-SD-O27" secondAttribute="leading" constant="75" id="5vG-T1-sC5"/>
-                            <constraint firstItem="FdN-3j-oqC" firstAttribute="top" secondItem="UlA-SD-O27" secondAttribute="top" constant="90" id="Dx8-kY-F0W"/>
                             <constraint firstItem="hyu-zm-V2I" firstAttribute="top" secondItem="OST-7S-JU2" secondAttribute="bottom" constant="30" id="FHF-bt-V8u"/>
                             <constraint firstItem="FdN-3j-oqC" firstAttribute="leading" secondItem="UlA-SD-O27" secondAttribute="leading" constant="20" id="JCH-jc-Nkh"/>
                             <constraint firstItem="UlA-SD-O27" firstAttribute="trailing" secondItem="OST-7S-JU2" secondAttribute="trailing" constant="20" id="MfG-Mv-kzU"/>
+                            <constraint firstItem="UlA-SD-O27" firstAttribute="trailing" secondItem="8Sd-Md-NK7" secondAttribute="trailing" constant="20" id="NLX-qu-vp6"/>
                             <constraint firstItem="UlA-SD-O27" firstAttribute="trailing" secondItem="e5B-gS-VLn" secondAttribute="trailing" constant="20" id="RzY-k9-NqI"/>
                             <constraint firstItem="e5B-gS-VLn" firstAttribute="top" secondItem="YFt-bz-1hS" secondAttribute="bottom" constant="15" id="W6m-yk-Oin"/>
+                            <constraint firstItem="8Sd-Md-NK7" firstAttribute="leading" secondItem="UlA-SD-O27" secondAttribute="leading" constant="20" id="Y8P-Fl-gnd"/>
                             <constraint firstItem="PSm-gE-1wN" firstAttribute="top" secondItem="FdN-3j-oqC" secondAttribute="bottom" constant="20" id="ZIM-FM-vK2"/>
+                            <constraint firstItem="FdN-3j-oqC" firstAttribute="top" secondItem="8Sd-Md-NK7" secondAttribute="bottom" constant="20" id="giZ-I9-LNL"/>
                             <constraint firstItem="PSm-gE-1wN" firstAttribute="leading" secondItem="UlA-SD-O27" secondAttribute="leading" constant="20" id="h7m-Ms-qQK"/>
                             <constraint firstItem="OST-7S-JU2" firstAttribute="top" secondItem="e5B-gS-VLn" secondAttribute="bottom" constant="15" id="ijn-nc-Rk5"/>
+                            <constraint firstItem="8Sd-Md-NK7" firstAttribute="top" secondItem="UlA-SD-O27" secondAttribute="top" constant="30" id="jid-HH-Fcq"/>
                             <constraint firstItem="UlA-SD-O27" firstAttribute="trailing" secondItem="YFt-bz-1hS" secondAttribute="trailing" constant="20" id="kGe-qA-jzB"/>
                             <constraint firstItem="YFt-bz-1hS" firstAttribute="top" secondItem="PSm-gE-1wN" secondAttribute="bottom" constant="30" id="rN8-yE-6GB"/>
                         </constraints>
@@ -181,6 +194,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnNext" destination="hyu-zm-V2I" id="Lcx-JE-OfR"/>
+                        <outlet property="dropdown" destination="8Sd-Md-NK7" id="SIo-wf-xMJ"/>
                         <outlet property="inputDatefOfBirth" destination="PSm-gE-1wN" id="UMR-ga-53g"/>
                         <outlet property="inputName" destination="FdN-3j-oqC" id="mEG-Cl-RNu"/>
                         <outlet property="radioButtonMan" destination="e5B-gS-VLn" id="gVf-83-jIq"/>
