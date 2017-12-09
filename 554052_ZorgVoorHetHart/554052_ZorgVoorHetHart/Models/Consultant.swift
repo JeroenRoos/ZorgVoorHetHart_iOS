@@ -20,6 +20,6 @@ class Consultant : Decodable
         case consultantId = "_id"
         case firstName = "firstname"
         case lastName = "lastname"
-        case emailAddress = "emailAdress"
+        case emailAddress = "emailAddress"
     }
 }

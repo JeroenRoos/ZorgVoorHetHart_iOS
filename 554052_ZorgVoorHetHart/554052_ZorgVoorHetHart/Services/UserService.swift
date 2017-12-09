@@ -44,7 +44,7 @@ class UserService
     {
         manager.updateLengthAndWeight(
             withSuccess: { (message: String) in
-                // Success code
+                success("")
         }, orFailure: { (error: String) in
                 // Failure code
         }, andLength: length, andWeight: weight)

@@ -17,6 +17,10 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var txtBericht: UILabel!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnSend: UIButton!
+    @IBOutlet weak var errorOnderwerp: UILabel!
+    @IBOutlet weak var errorBericht: UILabel!
+    
+    let service: ContactService = ContactService()
     
     override func viewDidLoad()
     {
@@ -33,7 +37,12 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         inputOnderwerp.placeholder = ""
         inputOnderwerp.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOnderwerp.layer.borderWidth = 0
+        inputOnderwerp.addTarget(self, action: #selector(subjectDidEndEditing(_:)), for: .editingDidEnd)
         self.inputOnderwerp.delegate = self
+        
+        errorOnderwerp.textColor = UIColor.red
+        errorOnderwerp.font = errorOnderwerp.font.withSize(10)
+        errorOnderwerp.isHidden = true
         
         txtBericht.text = "Bericht"
         txtBericht.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
@@ -41,7 +50,12 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         inputBericht.placeholder = ""
         inputBericht.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputBericht.layer.borderWidth = 0
+        inputBericht.addTarget(self, action: #selector(messageDidEndEditing(_:)), for: .editingDidEnd)
         self.inputBericht.delegate = self
+        
+        errorBericht.textColor = UIColor.red
+        errorBericht.font = errorBericht.font.withSize(10)
+        errorBericht.isHidden = true
         
         btnSend.setTitle("Verzenden", for: .normal)
         btnSend.setTitleColor(UIColor.white, for: .normal)
@@ -54,14 +68,59 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnCancel_OnClick(_ sender: Any)
     {
-        
         self.tabBarController?.selectedIndex = 0
     }
     
     @IBAction func btnSend_OnClick(_ sender: Any)
     {
+        var doRequest = true
+        var subject: String? = nil
+        var message: String? = nil
         
-        self.performSegue(withIdentifier: "send", sender: self)
+        if (!(inputBericht.text?.isEmpty)! && !(inputOnderwerp.text?.isEmpty)!)
+        {
+            subject = inputOnderwerp.text
+            message = inputBericht.text
+        }
+        else
+        {
+            doRequest = false
+        }
+        
+        if (doRequest)
+        {
+            service.sendMessage(withSuccess: { (message: String) in
+                self.performSegue(withIdentifier: "send", sender: self)
+            }, orFailure: { (error: String) in
+                
+            }, andSubject: subject!, andMessage: message!, andUserId: (User.loggedinUser?.userId)!)
+        }
+    }
+    
+    @objc func subjectDidEndEditing(_ textField: UITextField)
+    {
+        errorOnderwerp.isHidden = false
+        if ((textField.text?.isEmpty)!)
+        {
+            errorOnderwerp.text = "Onderwerp kan niet leeg zijn"
+        }
+        else
+        {
+            errorOnderwerp.isHidden = true
+        }
+    }
+    
+    @objc func messageDidEndEditing(_ textField: UITextField)
+    {
+        errorBericht.isHidden = false
+        if ((textField.text?.isEmpty)!)
+        {
+            errorBericht.text = "Bericht kan niet leeg zijn"
+        }
+        else
+        {
+            errorBericht.isHidden = true
+        }
     }
     
     override func didReceiveMemoryWarning()

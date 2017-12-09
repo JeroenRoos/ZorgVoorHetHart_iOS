@@ -29,7 +29,7 @@ class ConsultantsManager
                         {
                             do
                             {
-                                // Try to decode the received data to a User object
+                                // Try to decode the received data to a List of Consultans object
                                 let result = try JSONDecoder().decode([Consultant].self, from: data )
                                 success(result)
                             }

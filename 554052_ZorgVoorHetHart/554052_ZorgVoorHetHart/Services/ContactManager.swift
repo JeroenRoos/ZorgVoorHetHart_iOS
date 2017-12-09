@@ -7,9 +7,43 @@
 //
 
 import UIKit
+import Alamofire
 
 class ContactManager
 {
-    let baseURL = URL(string: "https://zvh-api.herokuapp.com/Contact/")
+    let baseURL = URL(string: "https://zvh-api.herokuapp.com/Messages/")
 
+    func sendMessage(withSuccess success: @escaping (String)->(), 
+                     orFailure failure: @escaping (String)->(),
+                     andSubject subject: String,
+                     andMessage message: String,
+                     andUserId userId: String)
+    {
+        
+        let parameter: [String: Any] = ["subject" : subject,
+                                        "message" : message,
+                                        "userId" : userId]
+        
+        Alamofire.request(baseURL!,
+                          method: .post,
+                          parameters: parameter,
+                          encoding: JSONEncoding.default)
+            .validate()
+            .responseString { response in
+                print("Request: \(response.request!)")
+                print("Response: \(String(describing: response.response))")
+                print("Result: \(response.result)")
+                
+                if (response.result.isSuccess)
+                {
+                    success("Succes!")
+                }
+                else
+                {
+                    print(response.error!)
+                    print(response.result.error!)
+                    failure("Er is iets fout gegaan tijdens het sturen van het bericht.")
+                }
+        }
+    }
 }

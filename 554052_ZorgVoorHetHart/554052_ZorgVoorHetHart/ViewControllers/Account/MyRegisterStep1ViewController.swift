@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DropDown
 import Dropper
 
 class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, DropperDelegate
