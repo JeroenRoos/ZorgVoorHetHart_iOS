@@ -116,9 +116,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnCancelPopup_OnClick(_ sender: Any)
     {
-        
         self.navigationController?.popViewController(animated: true)
-        //self.performSegue(withIdentifier: "cancel", sender: self)
     }
     
     @IBAction func btnContinuePopup_OnClick(_ sender: Any)

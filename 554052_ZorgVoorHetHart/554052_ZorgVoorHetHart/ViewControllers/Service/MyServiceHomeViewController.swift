@@ -39,6 +39,11 @@ class MyServiceHomeViewController: UIViewController
     
     @IBOutlet weak var txtWeightHeight: UILabel!
     @IBOutlet weak var imgWeightHeight: UIImageView!
+    
+    // Save Settings in UserDefaults
+    // https://www.hackingwithswift.com/example-code/system/how-to-save-user-settings-using-userdefaults
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -60,17 +65,20 @@ class MyServiceHomeViewController: UIViewController
         imgBigText.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtBigText.text = "Grotere tekst"
         txtBigText.font = txtBigText.font.withSize(12)
-        switchBigText.setOn(false, animated: false)
+        switchBigText.setOn(defaults.bool(forKey: "bigText"), animated: false)
+        switchDailyNotification.addTarget(self, action: #selector(switchBigTextChanged(_:)), for: .valueChanged)
         
         imgDailyNotification.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtDailyNotification.text = "Dagelijkse herinneringen voor uw metingen"
         txtDailyNotification.font = txtBigText.font.withSize(12)
-        switchDailyNotification.setOn(false, animated: false)
+        switchDailyNotification.setOn(defaults.bool(forKey: "dailyNotifications"), animated: false)
+        switchDailyNotification.addTarget(self, action: #selector(switchDailyNotificationChanged(_:)), for: .valueChanged)
         
         imgWeeklyMeasurement.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtWeeklyMeasurement.text = "Weekelijks uw metingen opsturen naar uw consulent"
         txtWeeklyMeasurement.font = txtBigText.font.withSize(12)
-        switchWeeklyMeasurement.setOn(false, animated: false)
+        switchWeeklyMeasurement.setOn(defaults.bool(forKey: "sendWeeklyMeasurement"), animated: false)
+        switchWeeklyMeasurement.addTarget(self, action: #selector(switchWeeklyMeasurementChanged(_:)), for: .valueChanged)
         
         imgWeightHeight.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtWeightHeight.text = "Uw lengte en gewicht aanpassen"
@@ -79,7 +87,8 @@ class MyServiceHomeViewController: UIViewController
         imgAutomaticLogin.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtAutomaticLogin.text = "Automatisch inloggen"
         txtAutomaticLogin.font = txtBigText.font.withSize(12)
-        switchAutomaticLogin.setOn(false, animated: false)
+        switchAutomaticLogin.setOn(defaults.bool(forKey: "automaticLogin"), animated: false)
+        switchAutomaticLogin.addTarget(self, action: #selector(switchAutomaticLoginChanged(_:)), for: .valueChanged)
         
         imgLogout.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtLogout.text = "Uitloggen"
@@ -87,6 +96,30 @@ class MyServiceHomeViewController: UIViewController
         
         txtDisclaimerInfo.text = "Deze app is met de grootst mogelijke zorgvuldigheid samengesteld. Wij kunnen echter niet garanderen dat de app altijd zonder onderbrekingen, fouten of gebreken beschikbaar zal zijn of werken en dat de verschafte informatie volledig, juist of up-to-date is."
         txtDisclaimerInfo.backgroundColor = UIColor(rgb: 0xF8F8F8)
+    }
+    
+    @objc func switchBigTextChanged(_ mySwitch: UISwitch)
+    {
+        let value = mySwitch.isOn
+        defaults.set(value, forKey: "bigText")
+    }
+    
+    @objc func switchDailyNotificationChanged(_ mySwitch: UISwitch)
+    {
+        let value = mySwitch.isOn
+        defaults.set(value, forKey: "dailyNotifications")
+    }
+    
+    @objc func switchWeeklyMeasurementChanged(_ mySwitch: UISwitch)
+    {
+        let value = mySwitch.isOn
+        defaults.set(value, forKey: "sendWeeklyMeasurement")
+    }
+    
+    @objc func switchAutomaticLoginChanged(_ mySwitch: UISwitch)
+    {
+        let value = mySwitch.isOn
+        defaults.set(value, forKey: "automaticLogin")
     }
 
     override func didReceiveMemoryWarning()

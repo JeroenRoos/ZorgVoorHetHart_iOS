@@ -130,9 +130,6 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
-        // Later veranderen als Dropdown er is
-        user?.consultantId = "5a0336f35f9123e60146b7d3"
-        
         let fullName = inputName.text!
         let fullnameArray = fullName.split(separator: " ", maxSplits: 1).map(String.init)
         user?.firstName = fullnameArray[0]
