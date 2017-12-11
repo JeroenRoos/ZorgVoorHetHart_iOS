@@ -21,19 +21,18 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     
     @IBOutlet weak var dropdown: UIButton!
     private let decoder = JSONDecoder()
-    private var user: User? = nil
+    private var user: User = User()
     private var dropper: Dropper? = nil
     private var lstConsultants : [Consultant] = []
     private var lstConsultantsNames : [String] = []
-    
-    let service: ConsultantsService = ConsultantsService()
+    private let service: ConsultantsService = ConsultantsService()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.title = "Registreren stap 1 van 2"
         self.hideKeyboardWhenTappedAround()
-        user = User()
+        //user = User()
         
         dropdown.setTitle("  Selecteer uw consulent", for: .normal)
         dropdown.backgroundColor = UIColor(rgb: 0xEBEBEB)
@@ -89,11 +88,11 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     
     private func getConsultantsNames()
     {
-        for var index in 0 ..< lstConsultants.count
+        for index in 0 ..< lstConsultants.count
         {
             let name = lstConsultants[index].firstName
                 + " " + lstConsultants[index].lastName
-            self.lstConsultantsNames.append(name) //= name
+            self.lstConsultantsNames.append(name)
         }
     }
 
@@ -117,13 +116,13 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
         let consultant = lstConsultantsNames[path.row]
         dropdown.setTitle("  " + consultant, for: .normal)
         
-        for var index in 0 ..< lstConsultants.count
+        for index in 0 ..< lstConsultants.count
         {
             let name = lstConsultants[index].firstName
                 + " " + lstConsultants[index].lastName
             if (consultant == name)
             {
-                user?.consultantId = lstConsultants[index].consultantId
+                user.consultantId = lstConsultants[index].consultantId
             }
         }
     }
@@ -132,19 +131,19 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     {
         let fullName = inputName.text!
         let fullnameArray = fullName.split(separator: " ", maxSplits: 1).map(String.init)
-        user?.firstName = fullnameArray[0]
-        user?.lastName = fullnameArray[1]
+        user.firstName = fullnameArray[0]
+        user.lastName = fullnameArray[1]
         
         let dateOfBirthString = inputDatefOfBirth.text
-        user?.dateOfBirth = dateOfBirthString!
+        user.dateOfBirth = dateOfBirthString!
         
         if (radioButtonMan.isChecked)
         {
-            user?.gender = 1
+            user.gender = 1
         }
         else
         {
-            user?.gender = 2
+            user.gender = 2
         }
         
         self.performSegue(withIdentifier: "registerNext", sender: self)

@@ -10,7 +10,7 @@ import UIKit
 
 class ConsultantsService
 {
-    let manager: ConsultantsManager = ConsultantsManager()
+    private let manager: ConsultantsManager = ConsultantsManager()
     
     func getConsultans(withSuccess success: @escaping ([Consultant])->(), 
                        orFailure failure: @escaping (String)->())

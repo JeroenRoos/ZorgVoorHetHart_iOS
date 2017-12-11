@@ -109,8 +109,23 @@ class UserManager
                           parameters: json,
                           encoding: JSONEncoding.default)
             .validate()
-            .responseString
- 
+            .responseString { response in       //responseJSON
+                print("Request: \(response.request!)")
+                print("Response: \(String(describing: response.response))")
+                print("Result: \(response.result)")
+                
+                if (response.result.isSuccess)
+                {
+                    success("Succes!")
+                }
+                else
+                {
+                    print(response.error!)
+                    print(response.result.error!)
+                    failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.")
+                }
+        }
+        
         success("")
     }
     

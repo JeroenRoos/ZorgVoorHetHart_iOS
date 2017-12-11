@@ -29,7 +29,8 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var inputGewicht: UITextField!
     @IBOutlet weak var imgMiddelSquare: UIImageView!
     
-    let service: UserService = UserService()
+    private let service: UserService = UserService()
+    private var measurement: Measurement = Measurement()
     
     override func viewDidLoad()
     {
@@ -110,8 +111,22 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
+        measurement.bloodPressureLower = Int(inputOnderdruk.text!)!
+        measurement.bloodPressureUpper = Int(inputBovendruk.text!)!
         
-        self.performSegue(withIdentifier: "next", sender: self)
+        self.performSegue(withIdentifier: "measurementNext", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        // Pass user to next ViewController
+        if(segue.identifier == "measurementNext")
+        {
+            if let viewController = segue.destination as? MyNewMeasurementStep2ViewController
+            {
+                viewController.measurement = measurement
+            }
+        }
     }
     
     @IBAction func btnCancelPopup_OnClick(_ sender: Any)
@@ -136,7 +151,15 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
                 self.inputGewicht.isHidden = true
                 self.imgMiddelSquare.isHidden = true
         }, orFailure: { (error: String) in
-            
+            self.btnContinuePopup.isHidden = true
+            self.btnCancelPopup.isHidden = true
+            self.txtGewicht.isHidden = true
+            self.txtLengte.isHidden = true
+            self.txtTitlePopup.isHidden = true
+            self.backgroundImage.isHidden = true
+            self.inputLengte.isHidden = true
+            self.inputGewicht.isHidden = true
+            self.imgMiddelSquare.isHidden = true
         }, andLength: length!, andWeight: weight!)
     }
     

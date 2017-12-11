@@ -908,7 +908,7 @@
                         <outlet property="txtTitle" destination="to8-Jv-AYj" id="gco-Zl-EER"/>
                         <outlet property="txtTitlePopup" destination="XaP-11-yMA" id="IfF-OU-oU1"/>
                         <segue destination="Vgt-iA-LsB" kind="show" identifier="cancel" id="3Bl-Uw-Ne3"/>
-                        <segue destination="4PA-cW-Z87" kind="show" identifier="next" id="PCl-1s-MTi"/>
+                        <segue destination="4PA-cW-Z87" kind="show" identifier="measurementNext" id="PCl-1s-MTi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbR-dL-dbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1073,7 +1073,7 @@
                         <outlet property="txtOther" destination="Ibr-KH-p5K" id="uT5-IT-P58"/>
                         <outlet property="txtTitle" destination="bxi-TJ-rEW" id="MbZ-vv-QAs"/>
                         <segue destination="Grg-UB-bhU" kind="show" identifier="back" id="MsM-Qu-r2h"/>
-                        <segue destination="xv2-uN-QMx" kind="show" identifier="next" id="v0A-Ap-YGM"/>
+                        <segue destination="i4O-ng-iIX" kind="show" identifier="measurementFinish" id="lLp-v3-bRb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPX-Ht-pbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1879,6 +1879,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jFZ-5F-Aaa"/>
+        <segue reference="lLp-v3-bRb"/>
         <segue reference="MsM-Qu-r2h"/>
         <segue reference="3Bl-Uw-Ne3"/>
     </inferredMetricsTieBreakers>

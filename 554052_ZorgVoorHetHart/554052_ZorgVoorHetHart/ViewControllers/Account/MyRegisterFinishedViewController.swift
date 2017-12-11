@@ -23,6 +23,7 @@ class MyRegisterFinishedViewController: UIViewController
     {
         super.viewDidLoad()
         self.title = "Registratie afgerond"
+        self.navigationItem.setHidesBackButton(true, animated: true)
         
         btnLogin.setTitle("Inloggen", for: .normal)
         btnLogin.setTitleColor(UIColor.white, for: .normal)

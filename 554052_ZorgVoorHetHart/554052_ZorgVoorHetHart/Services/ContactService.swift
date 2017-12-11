@@ -10,7 +10,7 @@ import UIKit
 
 class ContactService
 {
-    let manager: ContactManager = ContactManager()
+    private let manager: ContactManager = ContactManager()
     
     func sendMessage(withSuccess success: @escaping (String)->(), 
                      orFailure failure: @escaping (String)->(),

@@ -45,6 +45,10 @@
 		90D34D5F1FD580C900A17271 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D34D5E1FD580C900A17271 /* UIViewControllerExtension.swift */; };
 		90E6E7351FCDAED800583804 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6E7341FCDAED800583804 /* UINavigationControllerExtension.swift */; };
 		D3AC3ACF9E3F96F9BED59469 /* Pods_554052_ZorgVoorHetHartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE40E8BA03BF932D40C8FCF7 /* Pods_554052_ZorgVoorHetHartUITests.framework */; };
+		E812C5111FDEEBB400553E9D /* HealthIssuesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812C5101FDEEBB400553E9D /* HealthIssuesService.swift */; };
+		E812C5131FDEEBE000553E9D /* HealthIssuesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812C5121FDEEBE000553E9D /* HealthIssuesManager.swift */; };
+		E812C5151FDEEE4200553E9D /* HealthIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812C5141FDEEE4200553E9D /* HealthIssue.swift */; };
+		E812C5171FDEF8E400553E9D /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812C5161FDEF8E400553E9D /* Measurement.swift */; };
 		E8702F0B1FD87C680044447C /* Consultant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0A1FD87C680044447C /* Consultant.swift */; };
 		E8702F0D1FD87DC40044447C /* ConsultantsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0C1FD87DC40044447C /* ConsultantsService.swift */; };
 		E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0E1FD87E470044447C /* ConsultantsManager.swift */; };
@@ -125,6 +129,10 @@
 		A55F7962B3C5FCF06E8D7E1A /* Pods-554052_ZorgVoorHetHart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHart.release.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart.release.xcconfig"; sourceTree = "<group>"; };
 		BCE7DB1D07DCBCE807F820BD /* Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-554052_ZorgVoorHetHartUITests/Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BE40E8BA03BF932D40C8FCF7 /* Pods_554052_ZorgVoorHetHartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHartUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E812C5101FDEEBB400553E9D /* HealthIssuesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthIssuesService.swift; sourceTree = "<group>"; };
+		E812C5121FDEEBE000553E9D /* HealthIssuesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthIssuesManager.swift; sourceTree = "<group>"; };
+		E812C5141FDEEE4200553E9D /* HealthIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthIssue.swift; sourceTree = "<group>"; };
+		E812C5161FDEF8E400553E9D /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		E8702F0A1FD87C680044447C /* Consultant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consultant.swift; sourceTree = "<group>"; };
 		E8702F0C1FD87DC40044447C /* ConsultantsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsService.swift; sourceTree = "<group>"; };
 		E8702F0E1FD87E470044447C /* ConsultantsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsManager.swift; sourceTree = "<group>"; };
@@ -310,6 +318,8 @@
 			children = (
 				90000AB41FD33BF400654235 /* User.swift */,
 				E8702F0A1FD87C680044447C /* Consultant.swift */,
+				E812C5141FDEEE4200553E9D /* HealthIssue.swift */,
+				E812C5161FDEF8E400553E9D /* Measurement.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -325,6 +335,8 @@
 				E8F79C021FD85C7C00033926 /* ContactManager.swift */,
 				E8702F0C1FD87DC40044447C /* ConsultantsService.swift */,
 				E8702F0E1FD87E470044447C /* ConsultantsManager.swift */,
+				E812C5101FDEEBB400553E9D /* HealthIssuesService.swift */,
+				E812C5121FDEEBE000553E9D /* HealthIssuesManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -655,8 +667,10 @@
 				90088C711FC3074E003997B9 /* MyMeasurementHomeViewController.swift in Sources */,
 				90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */,
 				90000AB31FD30B9500654235 /* UserManager.swift in Sources */,
+				E812C5131FDEEBE000553E9D /* HealthIssuesManager.swift in Sources */,
 				90000AB11FD30B7900654235 /* UserService.swift in Sources */,
 				90812AF41FBA444E00292F18 /* AppDelegate.swift in Sources */,
+				E812C5151FDEEE4200553E9D /* HealthIssue.swift in Sources */,
 				908AD41B1FD1A6920047E1E7 /* MyTableViewCell.swift in Sources */,
 				E879722B1FDAECA5002A8A2E /* UITextFieldExtension.swift in Sources */,
 				90088C761FC30870003997B9 /* MyTabBarController.swift in Sources */,
@@ -687,9 +701,11 @@
 				90C953171FC74454001FD3C2 /* MyContactHomeViewController.swift in Sources */,
 				E8702F0B1FD87C680044447C /* Consultant.swift in Sources */,
 				90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */,
+				E812C5171FDEF8E400553E9D /* Measurement.swift in Sources */,
 				90000AAF1FD300DD00654235 /* StringExtension.swift in Sources */,
 				90023A001FBC9EDC00DFCD23 /* MyLoginViewController.swift in Sources */,
 				E8702F0D1FD87DC40044447C /* ConsultantsService.swift in Sources */,
+				E812C5111FDEEBB400553E9D /* HealthIssuesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

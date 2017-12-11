@@ -20,7 +20,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var errorOnderwerp: UILabel!
     @IBOutlet weak var errorBericht: UILabel!
     
-    let service: ContactService = ContactService()
+    private let service: ContactService = ContactService()
     
     override func viewDidLoad()
     {

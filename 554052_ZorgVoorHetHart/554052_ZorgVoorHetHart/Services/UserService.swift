@@ -10,7 +10,7 @@ import UIKit
 
 class UserService
 {
-    let manager: UserManager = UserManager()
+    private let manager: UserManager = UserManager()
     
     func login(withSuccess success: @escaping (User)->(), 
                   orFailure failure: @escaping (String)->(),

@@ -16,7 +16,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var inputEmail: UITextField!
     
     
-    let service: UserService = UserService()
+    private let service: UserService = UserService()
     var user: User? = nil
     
     override func viewDidLoad()

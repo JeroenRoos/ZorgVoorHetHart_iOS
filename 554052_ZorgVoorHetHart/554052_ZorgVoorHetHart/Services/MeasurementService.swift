@@ -10,6 +10,17 @@ import UIKit
 
 class MeasurementService
 {
-    let manager: MeasurementManager = MeasurementManager()
+    private let manager: MeasurementManager = MeasurementManager()
+    
+    func postNewMeasurement(withSuccess success: @escaping (String)->(), 
+                            orFailure failure: @escaping (String)->(),
+                            andMeasurement measurement: Measurement)
+    {
+        manager.postNewMeasurement(withSuccess: { (message: String) in
+            success(message)
+        }, orFailure: { (error: String) in
+            failure(error)
+        }, andMeasurement: measurement)
+    }
 
 }

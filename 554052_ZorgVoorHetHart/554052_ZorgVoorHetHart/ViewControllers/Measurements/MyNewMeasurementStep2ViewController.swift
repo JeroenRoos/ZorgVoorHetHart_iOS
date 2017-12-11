@@ -25,6 +25,12 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var radioComplaints: RadioButtonHelper!
     @IBOutlet weak var radioNoComplaints: RadioButtonHelper!
     
+    private var lstCheckboxes : [CheckboxHelper] = []
+    private var lstHealthIssues : [HealthIssue] = []
+    private let service: HealthIssuesService = HealthIssuesService()
+    private let measurementService: MeasurementService = MeasurementService()
+    var measurement: Measurement? = nil
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -49,19 +55,12 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         radioNoComplaints?.alternateButton = [radioComplaints!]
         radioNoComplaints.layer.borderWidth = 0
         
-        var lstCheckboxes : [CheckboxHelper] = []
         lstCheckboxes.append(checkComplaint01)
         lstCheckboxes.append(checkComplaint02)
         lstCheckboxes.append(checkComplaint03)
         lstCheckboxes.append(checkComplaint04)
         lstCheckboxes.append(checkComplaint05)
         lstCheckboxes.append(checkComplaint06)
-        
-        for checkbox in lstCheckboxes
-        {
-            checkbox.setTitle("[placeholder]", for: .normal)
-            checkbox.setTitleColor(UIColor.black, for: .normal)
-        }
         
         txtOther.text = "Anders, namelijk:"
         txtOther.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
@@ -79,8 +78,28 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         btnBack.setTitleColor(UIColor.white, for: .normal)
         btnBack.backgroundColor = UIColor(rgb: 0xA9A9A9)
         
-        
         complaintsHiddenStateChange(state: true)
+        getHealthIssues()
+    }
+    
+    private func getHealthIssues()
+    {
+        service.getHealthIssues(
+            withSuccess: { (healthIssues: [HealthIssue]) in
+                self.lstHealthIssues = healthIssues
+                
+                for i in 0 ..< self.lstHealthIssues.count
+                {
+                    self.lstCheckboxes[i].setTitle(self.lstHealthIssues[i].name, for: .normal)
+                    self.lstCheckboxes[i].accessibilityIdentifier = self.lstHealthIssues[i].issueId
+                }
+        }, orFailure: { (error: String) in
+            for checkbox in self.lstCheckboxes
+            {
+                checkbox.setTitle("[placeholder]", for: .normal)
+                checkbox.setTitleColor(UIColor.black, for: .normal)
+            }
+        })
     }
 
     override func didReceiveMemoryWarning()
@@ -96,13 +115,37 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
+        for checkbox in lstCheckboxes
+        {
+            if (checkbox.isChecked)
+            {
+                print(checkbox.accessibilityIdentifier!)
+                measurement?.healthIssuesIds.append(checkbox.accessibilityIdentifier ?? "fucked")
+            }
+        }
+        if (!(inputOther.text?.isEmpty)!)
+        {
+            measurement?.healthIssueOther = inputOther.text
+        }
         
-        self.performSegue(withIdentifier: "next", sender: self)
+        measurement?.userId = (User.loggedinUser?.userId)!
+        measurementService.postNewMeasurement(withSuccess: { (message: String) in
+            
+            self.performSegue(withIdentifier: "measurementFinish", sender: self)
+        }, orFailure: { (error: String) in
+            
+        }, andMeasurement: measurement!)
     }
     
     @IBAction func radioNoComplaints_OnClick(_ sender: Any)
     {
         complaintsHiddenStateChange(state: true)
+        
+        for checkbox in lstCheckboxes
+        {
+            checkbox.isChecked = false
+        }
+        inputOther.text = ""
     }
     
     @IBAction func radioComplaints_OnClick(_ sender: Any)

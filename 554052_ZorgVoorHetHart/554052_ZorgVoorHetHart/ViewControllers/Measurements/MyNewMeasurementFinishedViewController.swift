@@ -18,6 +18,7 @@ class MyNewMeasurementFinishedViewController: UIViewController
     {
         super.viewDidLoad()
         self.title = "Nieuwe meting afgerond"
+        self.navigationItem.setHidesBackButton(true, animated: true)
         
         btnCheckDiary.setTitle("Bekijk dagboek", for: .normal)
         btnCheckDiary.setTitleColor(UIColor.white, for: .normal)
