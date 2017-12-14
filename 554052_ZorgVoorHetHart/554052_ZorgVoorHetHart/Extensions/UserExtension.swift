@@ -31,8 +31,8 @@ extension User
         return [
             "emailAddress": user.emailAddress,
             "password": user.password,
-            "firstName": user.firstName,
-            "lastName": user.lastName,
+            "firstname": user.firstName,
+            "lastname": user.lastName,
             "consultantId": user.consultantId,
             "dateOfBirth": user.dateOfBirth,
             "gender": user.gender

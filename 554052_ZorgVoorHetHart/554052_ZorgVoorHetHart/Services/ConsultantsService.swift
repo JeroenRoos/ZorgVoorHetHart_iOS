@@ -17,10 +17,9 @@ class ConsultantsService
     {
         manager.getConsultans(
             withSuccess: { (lstConsultants: [Consultant]) in
-                // Success
                 success(lstConsultants)
         }, orFailure: { (error: String) in
-                // Failure
+                failure(error)
         })
     }
 }

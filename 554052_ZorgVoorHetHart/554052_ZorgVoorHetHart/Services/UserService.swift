@@ -31,9 +31,9 @@ class UserService
     {
         manager.register(
             withSuccess: { (message: String) in
-                // Success code
+                success(message)
         }, orFailure: { (error: String) in
-                // Failure code
+                failure(error)
         }, andUser: user)
     }
     
@@ -44,9 +44,9 @@ class UserService
     {
         manager.updateLengthAndWeight(
             withSuccess: { (message: String) in
-                success("")
+                success(message)
         }, orFailure: { (error: String) in
-                // Failure code
+                failure(error)
         }, andLength: length, andWeight: weight)
     }
 }

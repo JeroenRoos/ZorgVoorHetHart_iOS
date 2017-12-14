@@ -9,6 +9,9 @@
 import Alamofire
 import UIKit
 
+// Debugging response
+// po String(data: response.request!.httpBody!, encoding: String.Encoding.utf8)
+
 class UserManager
 {
     let baseURL = URL(string: "https://zvh-api.herokuapp.com/Users/")
@@ -65,7 +68,7 @@ class UserManager
         let url = URL(string: "register", relativeTo: baseURL)
         let dictUser = User().convertToDictionary(user: user)
         
-        let _ : [String: Any] = ["emailAddress": "test@test.com",
+        let json : [String: Any] = ["emailAddress": "test@test.com",
                                 "lastName": "Test",
                                 "firstName": "Jeroen",
                                 "consultantId": "5a0336f35f9123e60146b7d3",
@@ -77,18 +80,33 @@ class UserManager
                           method: .post,
                           parameters: dictUser,
                           encoding: JSONEncoding.default)
-            .validate()
-            .responseString { response in       //responseJSON
-                print("Request: \(response.request!)")
-                print("Response: \(String(describing: response.response))")
+            .validate() //statusCode: 200 ..< 600)
+            .responseJSON { response in
+                print("Request: \(String(describing: response.request))")
                 print("Result: \(response.result)")
-                
-                if (response.result.isSuccess)
+                switch response.result
                 {
-                    success("Succes!")
-                }
-                else
-                {
+                // Response code 200 ..< 300
+                case .success:
+                    if let data = response.data
+                    {
+                        do
+                        {
+                            // Try to decode the received data to a User object
+                            let result = try JSONDecoder().decode(User.self, from: data )
+                            success("result")
+                        }
+                        catch
+                        {
+                            print(response.error!)
+                            print(response.result.error!)
+                            let error: String = "Er is iets fout gegaan tijdens het registreren."
+                            failure(error)
+                        }
+                    }
+                    
+                case .failure(let error):
+                    print(error)
                     print(response.error!)
                     print(response.result.error!)
                     failure("Er is iets fout gegaan tijdens het inloggen.")
@@ -101,13 +119,15 @@ class UserManager
                   andLength length: Int,
                   andWeight weight: Int)
     {
-        let json: [String: Any] = ["length" : length,
-                                   "weight" : weight]
+        let parameters: [String: Any] = ["length" : length,
+                                         "weight" : weight]
+        let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         
         Alamofire.request(baseURL!,
                           method: .put,
-                          parameters: json,
-                          encoding: JSONEncoding.default)
+                          parameters: parameters,
+                          encoding: JSONEncoding.default,
+                          headers: headers)
             .validate()
             .responseString { response in       //responseJSON
                 print("Request: \(response.request!)")
@@ -126,7 +146,7 @@ class UserManager
                 }
         }
         
-        success("")
+        //success("")
     }
     
     /*

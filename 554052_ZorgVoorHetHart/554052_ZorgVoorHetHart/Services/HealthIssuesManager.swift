@@ -16,9 +16,12 @@ class HealthIssuesManager
     func getHealthIssues(withSuccess success: @escaping ([HealthIssue])->(), 
                        orFailure failure: @escaping (String)->())
     {
+        let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
+        
         Alamofire.request(baseURL!,
                           parameters: nil,
-                          encoding: JSONEncoding.default)
+                          encoding: JSONEncoding.default,
+                          headers: headers)
             .validate()
             .responseJSON { response in
                 switch response.result

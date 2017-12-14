@@ -17,10 +17,9 @@ class HealthIssuesService
     {
         manager.getHealthIssues(
             withSuccess: { (lstHealthIssues: [HealthIssue]) in
-                // Success
                 success(lstHealthIssues)
         }, orFailure: { (error: String) in
-            // Failure
+                failure(error)
         })
     }
 }

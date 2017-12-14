@@ -22,12 +22,15 @@ class MeasurementManager
                                          "healthIssuesIds" : measurement.healthIssuesIds,
                                          "healthIssueOther" : measurement.healthIssueOther ?? "",]
         
+        let headers = ["x-authtoken" : User.loggedinUser?.authToken ?? ""]
+        
         Alamofire.request(baseURL!,
                           method: .post,
                           parameters: parameters,
-                          encoding: JSONEncoding.default)
+                          encoding: JSONEncoding.default,
+                          headers: headers)
             .validate()
-            .responseString { response in       //responseJSON
+            .responseString { response in
                 print("Request: \(response.request!)")
                 print("Response: \(String(describing: response.response))")
                 print("Result: \(response.result)")

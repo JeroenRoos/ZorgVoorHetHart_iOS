@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -72,7 +72,7 @@
 		14D5A5169B4CC1ED44B3D33431099700 /* Pods-554052_ZorgVoorHetHart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-554052_ZorgVoorHetHart-umbrella.h"; sourceTree = "<group>"; };
 		1538F791172247FB5D1C406552A5ED38 /* Pods-554052_ZorgVoorHetHartTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-554052_ZorgVoorHetHartTests-frameworks.sh"; sourceTree = "<group>"; };
 		16DD76F5E48C957CA6CEB003FFAC81C0 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		1C3214062979F0E8733A77D4CB67F353 /* Pods-554052_ZorgVoorHetHartTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-554052_ZorgVoorHetHartTests.modulemap"; sourceTree = "<group>"; };
+		1C3214062979F0E8733A77D4CB67F353 /* Pods-554052_ZorgVoorHetHartTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-554052_ZorgVoorHetHartTests.modulemap"; sourceTree = "<group>"; };
 		22CB2CCF74F9468D37B6ABB3E5E6D569 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
 		2559BF74A98235B4825273D3927B2122 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		255FF84CE629DE677B5408634AA81CF3 /* Pods-554052_ZorgVoorHetHart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-554052_ZorgVoorHetHart.debug.xcconfig"; sourceTree = "<group>"; };
@@ -80,11 +80,11 @@
 		2C2D68617B901C197DBA89DC464B226A /* Pods-554052_ZorgVoorHetHart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-554052_ZorgVoorHetHart-dummy.m"; sourceTree = "<group>"; };
 		3DBCD6E501333E9905810C89214AE762 /* Dropper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dropper.swift; path = Pod/Classes/Dropper.swift; sourceTree = "<group>"; };
 		3EDE2B9D1B641EDC77E4DD29DA3F1281 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
-		3F0C8913BFFCD6DEDD19F6F82A1ECD63 /* Pods-554052_ZorgVoorHetHart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-554052_ZorgVoorHetHart.modulemap"; sourceTree = "<group>"; };
+		3F0C8913BFFCD6DEDD19F6F82A1ECD63 /* Pods-554052_ZorgVoorHetHart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-554052_ZorgVoorHetHart.modulemap"; sourceTree = "<group>"; };
 		505ACA2F020ACD350F4DA5EEB860BB1E /* Pods-554052_ZorgVoorHetHartTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-554052_ZorgVoorHetHartTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		535BE1C1E86F8102A5F2998C4B05DCE2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		57997ECA9C89283078515F8B4840E01D /* Pods_554052_ZorgVoorHetHartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_554052_ZorgVoorHetHartUITests.framework; path = "Pods-554052_ZorgVoorHetHartUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B766EC66F1FA6DC9D7417480007D622 /* Dropper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Dropper.modulemap; sourceTree = "<group>"; };
+		535BE1C1E86F8102A5F2998C4B05DCE2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57997ECA9C89283078515F8B4840E01D /* Pods_554052_ZorgVoorHetHartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHartUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B766EC66F1FA6DC9D7417480007D622 /* Dropper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Dropper.modulemap; sourceTree = "<group>"; };
 		600ABCCA6FD3DD055CAE36085972AA70 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		64150989BBFB158E1513394DADC31750 /* Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-554052_ZorgVoorHetHartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -95,11 +95,11 @@
 		6CEA0F0D5DC636F82D5CE0A55CF2582A /* Pods-554052_ZorgVoorHetHartTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-554052_ZorgVoorHetHartTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		85A7EDD3A20591BCBFF973E646ECB909 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		91A0988FCA69A46794FFEF0F8CFA0F77 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		97AC5781338D76031A54E3E545E4459C /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		9FA6AA9065C9E067C1FE4CD74F037B8C /* Dropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Dropper.framework; path = Dropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA6AA9065C9E067C1FE4CD74F037B8C /* Dropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D6F93C6E51390A8F11B481320A621C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A3C7BCD4C4F6020A0164F62F2C143DED /* Pods_554052_ZorgVoorHetHartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_554052_ZorgVoorHetHartTests.framework; path = "Pods-554052_ZorgVoorHetHartTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3C7BCD4C4F6020A0164F62F2C143DED /* Pods_554052_ZorgVoorHetHartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5ED2AC137D0F9D17751BF3C2B57A03 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		B286E87664DD15FD51F28A21D091C2B1 /* Dropper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Dropper-umbrella.h"; sourceTree = "<group>"; };
 		B299276DE0D0AC08D6D0EAC2D6E7B325 /* Pods-554052_ZorgVoorHetHartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-554052_ZorgVoorHetHartTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		B7F72DCB5284FB465B47C76C3C56C57B /* Pods-554052_ZorgVoorHetHartUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-554052_ZorgVoorHetHartUITests-dummy.m"; sourceTree = "<group>"; };
 		B8E345A8C289F862BB57D87708344079 /* Dropper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Dropper.xcconfig; sourceTree = "<group>"; };
 		BDDEB438270A1700EB105056F6F2E8C5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C37AD4799BD1F8E9D1DEAB0F66E3BD71 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		C37AD4799BD1F8E9D1DEAB0F66E3BD71 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		C555EC02EB3A11F022A13F33F7F3BF0C /* Pods-554052_ZorgVoorHetHart-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-554052_ZorgVoorHetHart-resources.sh"; sourceTree = "<group>"; };
 		C64F37674E5145723BD3D295102C4BDE /* Pods-554052_ZorgVoorHetHartUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-554052_ZorgVoorHetHartUITests-frameworks.sh"; sourceTree = "<group>"; };
 		C6F15F6544DA46CD8EED51513B383DA5 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
@@ -118,13 +118,13 @@
 		C7B85566A211C54F1D572CDEFFA21AD4 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		CBF0D87633863D153524622B026787CE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D03F17F9D5C9BCBC2D504D99B7955D64 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		D170ABEA1B3A7B2D1C86F2F651C23115 /* Pods_554052_ZorgVoorHetHart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_554052_ZorgVoorHetHart.framework; path = "Pods-554052_ZorgVoorHetHart.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D170ABEA1B3A7B2D1C86F2F651C23115 /* Pods_554052_ZorgVoorHetHart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_554052_ZorgVoorHetHart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA3FDE54D0A5B76D8DD3143EB09DAC0B /* DropperDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropperDelegate.swift; path = Pod/Classes/DropperDelegate.swift; sourceTree = "<group>"; };
 		DE0A1FF528E3D3F39D2BC498DEA3D7FC /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		DEE99FFD636BF5E9DA0F661294CCDB11 /* Pods-554052_ZorgVoorHetHartUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-554052_ZorgVoorHetHartUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E10CDA885EC03E786AAB1DE3D7A566EA /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		E1810B10358127A21CE77D0DD275BDD1 /* Pods-554052_ZorgVoorHetHartUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-554052_ZorgVoorHetHartUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E2972CCA95736A144C2187138974BEC9 /* Pods-554052_ZorgVoorHetHartUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-554052_ZorgVoorHetHartUITests.modulemap"; sourceTree = "<group>"; };
+		E2972CCA95736A144C2187138974BEC9 /* Pods-554052_ZorgVoorHetHartUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-554052_ZorgVoorHetHartUITests.modulemap"; sourceTree = "<group>"; };
 		E9F2A422FCDD62D6E509494049B8EAEB /* Pods-554052_ZorgVoorHetHartUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-554052_ZorgVoorHetHartUITests-umbrella.h"; sourceTree = "<group>"; };
 		EBDC0CAB35C7E9B1450946541B28570B /* Pods-554052_ZorgVoorHetHart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-554052_ZorgVoorHetHart.release.xcconfig"; sourceTree = "<group>"; };
 		F11E717FF91FDA1D403BA413194FD687 /* Pods-554052_ZorgVoorHetHartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-554052_ZorgVoorHetHartTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -331,7 +331,6 @@
 				13834C1D7BA9FD31174546125A373F84 /* Validation.swift */,
 				9341278FF43FA0B060C3AC977779A306 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -344,7 +343,6 @@
 				FD2D4BC8CE97304D0EC5F10E2CFB7A8D /* DropperExtensions.swift */,
 				DACF17B661A2939FCBDEBEB180DC2DEF /* Support Files */,
 			);
-			name = Dropper;
 			path = Dropper;
 			sourceTree = "<group>";
 		};
@@ -498,7 +496,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -751,6 +749,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

@@ -119,19 +119,20 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         {
             if (checkbox.isChecked)
             {
-                print(checkbox.accessibilityIdentifier!)
-                measurement?.healthIssuesIds.append(checkbox.accessibilityIdentifier ?? "fucked")
+                print(checkbox.accessibilityIdentifier ?? "")
+                measurement?.healthIssuesIds.append(checkbox.accessibilityIdentifier!)
             }
         }
         if (!(inputOther.text?.isEmpty)!)
         {
             measurement?.healthIssueOther = inputOther.text
         }
-        
         measurement?.userId = (User.loggedinUser?.userId)!
-        measurementService.postNewMeasurement(withSuccess: { (message: String) in
-            
+        
+        measurementService.postNewMeasurement(
+            withSuccess: { (message: String) in
             self.performSegue(withIdentifier: "measurementFinish", sender: self)
+                
         }, orFailure: { (error: String) in
             
         }, andMeasurement: measurement!)
