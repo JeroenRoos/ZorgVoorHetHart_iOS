@@ -13,10 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    // Framework Search Path
-    // $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/DropDown"
-    // $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/DropDown"
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -47,6 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    // Used for opening the application from a URL
+    func application (_ application: UIApplication,
+                      open url: URL,
+                      sourceApplication: String?,
+                      annotation: Any) -> Bool
+    {
+        let urlString = url.absoluteString
+        let array = urlString.split(separator: "=")
+        print(array[1])
+        return false
     }
 
 
