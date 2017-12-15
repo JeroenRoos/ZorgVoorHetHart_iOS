@@ -18,8 +18,8 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var btnWeekly: UIButton!
     @IBOutlet weak var tableViewMeasurements: UITableView!
     
-    //var lstMeasurements: [Measurement] = []
-    //let service: Webservice = Webservice()
+    var lstMeasurements: [Measurement] = []
+    let service: MeasurementService = MeasurementService()
     
     override func viewDidLoad()
     {
@@ -50,12 +50,27 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         
         tableViewMeasurements.delegate = self
         tableViewMeasurements.dataSource = self
+        
+        fetchMeasurements()
+    }
+    
+    private func fetchMeasurements()
+    {
+        service.getMeasurements(
+            withSuccess: { (measurements: [Measurement]) in
+                self.lstMeasurements = measurements
+                
+                DispatchQueue.main.async {
+                    self.tableViewMeasurements.reloadData()
+                }
+        }, orFailure: { (error: String) in
+            // Failure
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        // return lstArticles.count
-        return 7
+        return lstMeasurements.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -64,32 +79,26 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         
         // (Date().getCurrentWeekdayAndDate())
         
-        /* DispatchQueue.main.async {
-            self.tableView.reloadData()
-        } */
-        
         return customCell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let _ = segue.destination as? MyMeasurementDetailsViewController
+        if let viewController = segue.destination as? MyMeasurementDetailsViewController
         {
-            //let clickedArticle = lstArticles[self.tableView.indexPathForSelectedRow!.row]
-            //viewController.clickedArticle = clickedArticle
+            let clickedMeasurement = lstMeasurements[self.tableViewMeasurements.indexPathForSelectedRow!.row]
+            viewController.clickedMeasurement = clickedMeasurement
         }
     }
     
     @IBAction func btnWeekly_OnClick(_ sender: Any)
     {
-        
         btnWeekly.backgroundColor = UIColor(rgb: 0xEEEEEE)
         btnMonthly.backgroundColor = UIColor(rgb: 0xFFFFFF)
     }
     
     @IBAction func btnMonthly_OnClick(_ sender: Any)
     {
-        
         btnWeekly.backgroundColor = UIColor(rgb: 0xFFFFFF)
         btnMonthly.backgroundColor = UIColor(rgb: 0xEEEEEE)
     }

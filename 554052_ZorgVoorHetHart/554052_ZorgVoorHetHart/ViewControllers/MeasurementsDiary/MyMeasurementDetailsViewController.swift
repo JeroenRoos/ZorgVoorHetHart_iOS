@@ -10,7 +10,8 @@ import UIKit
 
 class MyMeasurementDetailsViewController: UIViewController
 {
-
+    var clickedMeasurement: Measurement? = nil
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

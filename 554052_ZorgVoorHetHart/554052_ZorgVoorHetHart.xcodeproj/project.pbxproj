@@ -53,6 +53,7 @@
 		E8702F0D1FD87DC40044447C /* ConsultantsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0C1FD87DC40044447C /* ConsultantsService.swift */; };
 		E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0E1FD87E470044447C /* ConsultantsManager.swift */; };
 		E879722B1FDAECA5002A8A2E /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */; };
+		E8DF1B521FE42E1E000C8229 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */; };
 		E8F79BFD1FD85C1500033926 /* MeasurementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79BFC1FD85C1500033926 /* MeasurementService.swift */; };
 		E8F79BFF1FD85C3300033926 /* MeasurementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79BFE1FD85C3300033926 /* MeasurementManager.swift */; };
 		E8F79C011FD85C5F00033926 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79C001FD85C5F00033926 /* ContactService.swift */; };
@@ -137,6 +138,7 @@
 		E8702F0C1FD87DC40044447C /* ConsultantsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsService.swift; sourceTree = "<group>"; };
 		E8702F0E1FD87E470044447C /* ConsultantsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsManager.swift; sourceTree = "<group>"; };
 		E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		E8F79BFC1FD85C1500033926 /* MeasurementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementService.swift; sourceTree = "<group>"; };
 		E8F79BFE1FD85C3300033926 /* MeasurementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementManager.swift; sourceTree = "<group>"; };
 		E8F79C001FD85C5F00033926 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				90000AAC1FD2FF1000654235 /* DateExtension.swift */,
 				90000AAE1FD300DD00654235 /* StringExtension.swift */,
 				90000AB61FD35CF100654235 /* UserExtension.swift */,
+				E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				E8F79BFF1FD85C3300033926 /* MeasurementManager.swift in Sources */,
 				90000AB51FD33BF400654235 /* User.swift in Sources */,
 				902938801FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift in Sources */,
+				E8DF1B521FE42E1E000C8229 /* UIScrollViewExtension.swift in Sources */,
 				E8F79BFD1FD85C1500033926 /* MeasurementService.swift in Sources */,
 				901821A31FCCAAFA00937DDB /* MyNavigationController.swift in Sources */,
 				90812B281FBA56A900292F18 /* MyRegisterOrLoginViewController.swift in Sources */,

@@ -15,11 +15,10 @@ class HealthIssuesService
     func getHealthIssues(withSuccess success: @escaping ([HealthIssue])->(), 
                        orFailure failure: @escaping (String)->())
     {
-        manager.getHealthIssues(
-            withSuccess: { (lstHealthIssues: [HealthIssue]) in
-                success(lstHealthIssues)
+        manager.getHealthIssues(withSuccess: { (lstHealthIssues: [HealthIssue]) in
+            success(lstHealthIssues)
         }, orFailure: { (error: String) in
-                failure(error)
+            failure(error)
         })
     }
 }

@@ -22,5 +22,25 @@ class MeasurementService
             failure(error)
         }, andMeasurement: measurement)
     }
-
+    
+    func getMeasurements(withSuccess success: @escaping ([Measurement])->(), 
+                         orFailure failure: @escaping (String)->())
+    {
+        manager.getMeasurements(withSuccess: { (lstMeasurements: [Measurement]) in
+            success(lstMeasurements)
+        }, orFailure: { (error: String) in
+            failure(error)
+        })
+    }
+    
+    func updateMeasurement(withSuccess success: @escaping (String)->(), 
+                           orFailure failure: @escaping (String)->(),
+                           andMeasurement measurement: Measurement)
+    {
+        manager.updateMeasurement(withSuccess: { (message: String) in
+            success(message)
+        }, orFailure: { (error: String) in
+            failure(error)
+        }, andMeasurement: measurement)
+    }
 }

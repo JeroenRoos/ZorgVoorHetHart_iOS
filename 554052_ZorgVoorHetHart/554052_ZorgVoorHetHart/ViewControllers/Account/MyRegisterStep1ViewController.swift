@@ -83,7 +83,6 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
         }, orFailure: { (error: String) in
                 // Failure
         })
-        
     }
     
     private func getConsultantsNames()

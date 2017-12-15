@@ -11,13 +11,12 @@ import Alamofire
 
 class ConsultantsManager
 {
-    let baseURL = URL(string: "https://zvh-api.herokuapp.com/Consultants/")
+    private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Consultants/")
     
     func getConsultans(withSuccess success: @escaping ([Consultant])->(), 
                      orFailure failure: @escaping (String)->())
     {
         Alamofire.request(baseURL!,
-                          parameters: nil,
                           encoding: JSONEncoding.default)
             .validate()
             .responseJSON { response in

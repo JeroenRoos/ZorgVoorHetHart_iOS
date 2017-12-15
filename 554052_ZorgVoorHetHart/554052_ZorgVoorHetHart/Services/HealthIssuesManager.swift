@@ -11,7 +11,7 @@ import Alamofire
 
 class HealthIssuesManager
 {
-    let baseURL = URL(string: "https://zvh-api.herokuapp.com/Healthissues/")
+    private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Healthissues/")
 
     func getHealthIssues(withSuccess success: @escaping ([HealthIssue])->(), 
                        orFailure failure: @escaping (String)->())
@@ -19,7 +19,6 @@ class HealthIssuesManager
         let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         
         Alamofire.request(baseURL!,
-                          parameters: nil,
                           encoding: JSONEncoding.default,
                           headers: headers)
             .validate()

@@ -15,11 +15,10 @@ class ConsultantsService
     func getConsultans(withSuccess success: @escaping ([Consultant])->(), 
                        orFailure failure: @escaping (String)->())
     {
-        manager.getConsultans(
-            withSuccess: { (lstConsultants: [Consultant]) in
-                success(lstConsultants)
+        manager.getConsultans(withSuccess: { (lstConsultants: [Consultant]) in
+            success(lstConsultants)
         }, orFailure: { (error: String) in
-                failure(error)
+            failure(error)
         })
     }
 }

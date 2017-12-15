@@ -14,7 +14,7 @@ import UIKit
 
 class UserManager
 {
-    let baseURL = URL(string: "https://zvh-api.herokuapp.com/Users/")
+    private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Users/")
     
     // Try to login an user with an email and password
     func login(withSuccess success: @escaping (User)->(), 
@@ -68,14 +68,6 @@ class UserManager
         let url = URL(string: "register", relativeTo: baseURL)
         let dictUser = User().convertToDictionary(user: user)
         
-        let json : [String: Any] = ["emailAddress": "test@test.com",
-                                "lastName": "Test",
-                                "firstName": "Jeroen",
-                                "consultantId": "5a0336f35f9123e60146b7d3",
-                                "dateOfBirth": "14-07-2017",
-                                "gender": 1,
-                                "password": "test"]
-        
         Alamofire.request(url!,
                           method: .post,
                           parameters: dictUser,
@@ -93,7 +85,7 @@ class UserManager
                         do
                         {
                             // Try to decode the received data to a User object
-                            let result = try JSONDecoder().decode(User.self, from: data )
+                            _ = try JSONDecoder().decode(User.self, from: data )
                             success("result")
                         }
                         catch
@@ -145,40 +137,5 @@ class UserManager
                     failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.")
                 }
         }
-        
-        //success("")
     }
-    
-    /*
-     let url = URL(string: "register", relativeTo: baseURL)
-     var request = URLRequest(url : url!)
-     request.httpMethod = "POST"
-     
-     do
-     {
-     let userData: Data = try JSONEncoder().encode(andUser)
-     request.httpBody = userData
-     }
-     catch
-     {
-     print(error)
-     }
-     
-     let session = URLSession.shared
-     let dataTask = session.dataTask(with: request, completionHandler:{(optData: Data?, response: URLResponse?, error: Error?) -> () in  
-     
-     if (error == nil)
-     {
-     success("Succes!")
-     }
-     else
-     {
-     let error: String = "Er is iets fout gegaan tijdens het registreren van uw account."
-     failure(error)
-     }
-     
-     })
-     
-     dataTask.resume()
-     */
 }

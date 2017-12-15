@@ -11,12 +11,14 @@ import UIKit
 class MyServiceHomeViewController: UIViewController
 {
     @IBOutlet weak var myActualView: UIView!
+    @IBOutlet weak var myScrollView: UIScrollView!
     
     @IBOutlet weak var txtDisclaimerInfo: UITextView!
     @IBOutlet weak var txtDisclaimerTitle: UILabel!
     
     @IBOutlet weak var txtLogout: UILabel!
     @IBOutlet weak var imgLogout: UIImageView!
+    @IBOutlet weak var btnLogout: UIButton!
     
     @IBOutlet weak var imgAutomaticLogin: UIImageView!
     @IBOutlet weak var switchAutomaticLogin: UISwitch!
@@ -39,6 +41,7 @@ class MyServiceHomeViewController: UIViewController
     
     @IBOutlet weak var txtWeightHeight: UILabel!
     @IBOutlet weak var imgWeightHeight: UIImageView!
+    @IBOutlet weak var btnWeightHeight: UIButton!
     
     // Save Settings in UserDefaults
     // https://www.hackingwithswift.com/example-code/system/how-to-save-user-settings-using-userdefaults
@@ -121,7 +124,17 @@ class MyServiceHomeViewController: UIViewController
         let value = mySwitch.isOn
         defaults.set(value, forKey: "automaticLogin")
     }
-
+    
+    @IBAction func btnLogout_OnClick(_ sender: Any)
+    {
+        myScrollView.scrollToTop(animated: true)
+    }
+    
+    @IBAction func btnWeightHeight_OnClick(_ sender: Any)
+    {
+        myScrollView.scrollToTop(animated: true)
+    }
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()

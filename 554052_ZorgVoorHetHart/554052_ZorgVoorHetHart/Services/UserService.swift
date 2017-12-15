@@ -17,11 +17,10 @@ class UserService
                   andEmail email: String,
                   andPassword password: String)
     {
-        manager.login(
-            withSuccess: { (user: User) in
-                success(user)
+        manager.login(withSuccess: { (user: User) in
+            success(user)
         }, orFailure: { (error: String) in
-            
+            failure(error)
         }, andEmail: email, andPassword: password)
     }
     
@@ -29,11 +28,10 @@ class UserService
                   orFailure failure: @escaping (String)->(),
                   andUser user: User)
     {
-        manager.register(
-            withSuccess: { (message: String) in
-                success(message)
+        manager.register(withSuccess: { (message: String) in
+            success(message)
         }, orFailure: { (error: String) in
-                failure(error)
+            failure(error)
         }, andUser: user)
     }
     
@@ -42,11 +40,10 @@ class UserService
                                andLength length: Int,
                                andWeight weight: Int)
     {
-        manager.updateLengthAndWeight(
-            withSuccess: { (message: String) in
-                success(message)
+        manager.updateLengthAndWeight(withSuccess: { (message: String) in
+            success(message)
         }, orFailure: { (error: String) in
-                failure(error)
+            failure(error)
         }, andLength: length, andWeight: weight)
     }
 }
