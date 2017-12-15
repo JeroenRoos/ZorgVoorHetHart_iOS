@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyServiceHomeViewController: UIViewController
+class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var myActualView: UIView!
     @IBOutlet weak var myScrollView: UIScrollView!
@@ -43,9 +43,23 @@ class MyServiceHomeViewController: UIViewController
     @IBOutlet weak var imgWeightHeight: UIImageView!
     @IBOutlet weak var btnWeightHeight: UIButton!
     
+    var popupLogoutActive: Bool = false
+    var popupLengthWeightActive: Bool = false
+    @IBOutlet weak var imgPopupBackground: UIImageView!
+    @IBOutlet weak var imgPopup: UIImageView!
+    @IBOutlet weak var txtPopupTitle: UILabel!
+    @IBOutlet weak var txtPopupLength: UILabel!
+    @IBOutlet weak var txtPopupWeight: UILabel!
+    @IBOutlet weak var inputPopupLength: UITextField!
+    @IBOutlet weak var inputPopupWeight: UITextField!
+    @IBOutlet weak var btnPopupLeft: UIButton!
+    @IBOutlet weak var btnPopupRight: UIButton!
+    
+    
     // Save Settings in UserDefaults
     // https://www.hackingwithswift.com/example-code/system/how-to-save-user-settings-using-userdefaults
     let defaults = UserDefaults.standard
+    private let service: UserService = UserService()
     
     override func viewDidLoad()
     {
@@ -99,6 +113,135 @@ class MyServiceHomeViewController: UIViewController
         
         txtDisclaimerInfo.text = "Deze app is met de grootst mogelijke zorgvuldigheid samengesteld. Wij kunnen echter niet garanderen dat de app altijd zonder onderbrekingen, fouten of gebreken beschikbaar zal zijn of werken en dat de verschafte informatie volledig, juist of up-to-date is."
         txtDisclaimerInfo.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        
+        setPopupUI()
+    }
+    
+    private func setPopupUI()
+    {
+        imgPopupBackground.alpha = 0.5
+        
+        txtPopupLength.text = "Lengte (cm)"
+        txtPopupLength.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        
+        txtPopupWeight.text = "Gewicht (KG)"
+        txtPopupWeight.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        
+        inputPopupLength.placeholder = "0"
+        inputPopupLength.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputPopupLength.layer.borderWidth = 0
+        inputPopupLength.keyboardType = UIKeyboardType.numberPad
+        self.inputPopupLength.delegate = self
+        
+        inputPopupWeight.placeholder = "0"
+        inputPopupWeight.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputPopupWeight.layer.borderWidth = 0
+        inputPopupWeight.keyboardType = UIKeyboardType.numberPad
+        self.inputPopupWeight.delegate = self
+        
+        setPopupActive(withValue: true)
+    }
+    
+    @IBAction func btnLogout_OnClick(_ sender: Any)
+    {
+        popupLogoutActive = true
+        imgPopupBackground.isHidden = false
+        imgPopup.isHidden = false
+        txtPopupTitle.isHidden = false
+        txtPopupLength.isHidden = true
+        txtPopupWeight.isHidden = true
+        inputPopupLength.isHidden = true
+        inputPopupWeight.isHidden = true
+        btnPopupLeft.isHidden = false
+        btnPopupRight.isHidden = false
+        
+        txtPopupTitle.text = "Weet u zeker dat u wilt uitloggen?"
+        txtPopupTitle.font = txtPopupTitle.font.withSize(12)
+        
+        btnPopupRight.setTitle("Annuleren", for: .normal)
+        btnPopupRight.setTitleColor(UIColor.white, for: .normal)
+        btnPopupRight.backgroundColor = UIColor(rgb: 0xE84A4A)
+        
+        btnPopupLeft.setTitle("Uitloggen", for: .normal)
+        btnPopupLeft.setTitleColor(UIColor.white, for: .normal)
+        btnPopupLeft.backgroundColor = UIColor(rgb: 0xA9A9A9)
+        
+        myScrollView.scrollToTop(animated: true)
+        myScrollView.isScrollEnabled = false
+    }
+    
+    @IBAction func btnWeightHeight_OnClick(_ sender: Any)
+    {
+        setPopupActive(withValue: false)
+        popupLengthWeightActive = true
+        
+        txtPopupTitle.text = "Uw lengte en gewicht aanpassen"
+        txtPopupTitle.font = txtPopupTitle.font.withSize(12)
+        
+        btnPopupRight.setTitle("Opslaan", for: .normal)
+        btnPopupRight.setTitleColor(UIColor.white, for: .normal)
+        btnPopupRight.backgroundColor = UIColor(rgb: 0xE84A4A)
+        
+        btnPopupLeft.setTitle("Annuleren", for: .normal)
+        btnPopupLeft.setTitleColor(UIColor.white, for: .normal)
+        btnPopupLeft.backgroundColor = UIColor(rgb: 0xA9A9A9)
+        
+        myScrollView.scrollToTop(animated: true)
+        myScrollView.isScrollEnabled = false
+    }
+    
+    @IBAction func btnPopupRight_OnClick(_ sender: Any)
+    {
+        if (popupLengthWeightActive)
+        {
+            // Update lenght and weight
+            let weight = Int(inputPopupWeight.text!)
+            let length = Int(inputPopupLength.text!)
+            
+            service.updateLengthAndWeight(withSuccess: { (message: String) in
+                self.setPopupActive(withValue: true)
+                self.popupLogoutActive = false
+                self.myScrollView.isScrollEnabled = true
+            }, orFailure: { (error: String) in
+                // failure
+            }, andLength: length!, andWeight: weight!)
+        }
+        else
+        {
+            setPopupActive(withValue: true)
+            popupLogoutActive = false
+            myScrollView.isScrollEnabled = true
+        }
+    }
+    
+    @IBAction func btnPopupLeft_OnClick(_ sender: Any)
+    {
+        if (popupLengthWeightActive)
+        {
+            inputPopupLength.text = ""
+            inputPopupWeight.text = ""
+            popupLengthWeightActive = false
+            setPopupActive(withValue: true)
+        }
+        else
+        {
+            // Perform logout code (clear caches if they exist, clear loggedinUser)
+            self.performSegue(withIdentifier: "logout", sender: self)
+        }
+        myScrollView.isScrollEnabled = true
+    }
+    
+    private func setPopupActive(withValue value: Bool)
+    {
+        imgPopupBackground.isHidden = value
+        imgPopup.isHidden = value
+        txtPopupTitle.isHidden = value
+        txtPopupLength.isHidden = value
+        txtPopupWeight.isHidden = value
+        inputPopupLength.isHidden = value
+        inputPopupWeight.isHidden = value
+        btnPopupLeft.isHidden = value
+        btnPopupRight.isHidden = value
     }
     
     @objc func switchBigTextChanged(_ mySwitch: UISwitch)
@@ -123,16 +266,6 @@ class MyServiceHomeViewController: UIViewController
     {
         let value = mySwitch.isOn
         defaults.set(value, forKey: "automaticLogin")
-    }
-    
-    @IBAction func btnLogout_OnClick(_ sender: Any)
-    {
-        myScrollView.scrollToTop(animated: true)
-    }
-    
-    @IBAction func btnWeightHeight_OnClick(_ sender: Any)
-    {
-        myScrollView.scrollToTop(animated: true)
     }
     
     override func didReceiveMemoryWarning()
