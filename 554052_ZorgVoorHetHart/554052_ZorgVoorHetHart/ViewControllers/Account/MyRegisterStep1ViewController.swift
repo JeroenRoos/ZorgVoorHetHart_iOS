@@ -18,6 +18,9 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     @IBOutlet weak var txtGender: UILabel!
     @IBOutlet weak var inputDatefOfBirth: UITextField!
     @IBOutlet weak var inputName: UITextField!
+    @IBOutlet weak var errorName: UILabel!
+    @IBOutlet weak var errorDateOfBirth: UILabel!
+    @IBOutlet weak var errorConsultant: UILabel!
     
     @IBOutlet weak var dropdown: UIButton!
     private let decoder = JSONDecoder()
@@ -32,7 +35,10 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
         super.viewDidLoad()
         self.title = "Registreren stap 1 van 2"
         self.hideKeyboardWhenTappedAround()
-        //user = User()
+        
+        errorConsultant.textColor = UIColor.red
+        errorConsultant.font = errorConsultant.font.withSize(10)
+        errorConsultant.isHidden = true
         
         dropdown.setTitle("  Selecteer uw consulent", for: .normal)
         dropdown.backgroundColor = UIColor(rgb: 0xEBEBEB)
@@ -60,15 +66,25 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
         radioButtonWoman?.alternateButton = [radioButtonMan!]
         radioButtonWoman.layer.borderWidth = 0
         
+        errorDateOfBirth.textColor = UIColor.red
+        errorDateOfBirth.font = errorDateOfBirth.font.withSize(10)
+        errorDateOfBirth.isHidden = true
+        
         inputDatefOfBirth.placeholder = "Uw geboortedatum"
         inputDatefOfBirth.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputDatefOfBirth.layer.borderWidth = 0
+        inputDatefOfBirth.addTarget(self, action: #selector(dateOfBirthDidEndEditing(_:)), for: .editingDidEnd)
         self.inputDatefOfBirth.delegate = self
+        
+        errorName.textColor = UIColor.red
+        errorName.font = errorName.font.withSize(10)
+        errorName.isHidden = true
         
         inputName.placeholder = "Vul uw naam in"
         inputName.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputName.layer.borderWidth = 0
         self.inputName.delegate = self
+        inputName.addTarget(self, action: #selector(nameDidEndEditing(_:)), for: .editingDidEnd)
         
         fetchConsultants()
     }
@@ -81,7 +97,8 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
                 self.lstConsultants = consultants
                 self.getConsultantsNames()
         }, orFailure: { (error: String) in
-                // Failure
+            self.errorConsultant.isHidden = false
+            self.errorConsultant.text = "Er is iets fout gegaan bij het ophalen van de consulenten"
         })
     }
     
@@ -128,24 +145,40 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
-        let fullName = inputName.text!
-        let fullnameArray = fullName.split(separator: " ", maxSplits: 1).map(String.init)
-        user.firstName = fullnameArray[0]
-        user.lastName = fullnameArray[1]
+        var gotoNextStep = true
         
-        let dateOfBirthString = inputDatefOfBirth.text
-        user.dateOfBirth = dateOfBirthString!
-        
-        if (radioButtonMan.isChecked)
+        if (!(inputName.text?.isEmpty)! && !(inputDatefOfBirth.text?.isEmpty)! &&
+            !(user.consultantId.isEmpty))
         {
-            user.gender = 1
+            if (!(inputName.text?.contains(" "))!)
+            {
+                let fullName = inputName.text!
+                let fullnameArray = fullName.split(separator: " ", maxSplits: 1).map(String.init)
+                user.firstName = fullnameArray[0]
+                user.lastName = fullnameArray[1]
+                
+                let dateOfBirthString = inputDatefOfBirth.text
+                user.dateOfBirth = dateOfBirthString!
+                
+                if (radioButtonMan.isChecked)
+                {
+                    user.gender = 1
+                }
+                else
+                {
+                    user.gender = 2
+                }
+            }
         }
         else
         {
-            user.gender = 2
+            gotoNextStep = false
         }
         
-        self.performSegue(withIdentifier: "registerNext", sender: self)
+        if (gotoNextStep)
+        {
+            self.performSegue(withIdentifier: "registerNext", sender: self)
+        }
     }
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -159,6 +192,22 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
             }
         }
     }
+    
+    @objc func nameDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorName, errorText: "Naam kan niet leeg zijn")
+        
+        // Check and set error message if the name is not valid
+        textField.setErrorMessageInvalidName(errorLabel: errorName, errorText: "Voer uw voor- en achternaam in")
+    }
+    
+    @objc func dateOfBirthDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorDateOfBirth, errorText: "Geboortedatum kan niet leeg zijn")
+    }
+    
     
     @IBAction func inputDateofBirth_EditDidBegin(_ sender: UITextField)
     {

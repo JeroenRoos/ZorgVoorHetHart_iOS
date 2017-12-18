@@ -20,17 +20,56 @@ extension UITextField
         return emailTest.evaluate(with: self.text)
     }
     
-    /*
-    var isEmailAddress : Bool?
+    func setErrorMessageEmptyField(errorLabel: UILabel, errorText: String)
     {
-        get
+        errorLabel.isHidden = false
+        if ((self.text?.isEmpty)!)
         {
-            return objc_getAssociatedObject(self, &xoAssociationKey) as? Bool
+            errorLabel.text = errorText
         }
-        set (newValue)
+        else
         {
-             objc_setAssociatedObject(self, &xoAssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+            errorLabel.isHidden = true
         }
     }
-    */
+    
+    func setErrorMessageInvalidName(errorLabel: UILabel, errorText: String)
+    {
+        errorLabel.isHidden = false
+        let nameArray = self.text?.split(separator: " ", maxSplits: 1).map(String.init)
+        if (nameArray?.count ?? 0 < 2)
+        {
+            errorLabel.text = errorText
+        }
+        else
+        {
+            errorLabel.isHidden = true
+        }
+    }
+    
+    func setErrorMessageInvalidEmail(errorLabel: UILabel, errorText: String)
+    {
+        errorLabel.isHidden = false
+        if (!self.isValidEmail())
+        {
+            errorLabel.text = errorText
+        }
+        else
+        {
+            errorLabel.isHidden = true
+        }
+    }
+    
+    func setErrorMessagePasswordIdentical(errorLabel: UILabel, errorText: String, otherPassword: UITextField)
+    {
+        errorLabel.isHidden = false
+        if (self.text != otherPassword.text)
+        {
+            errorLabel.text = errorText
+        }
+        else
+        {
+            errorLabel.isHidden = true
+        }
+    }
 }

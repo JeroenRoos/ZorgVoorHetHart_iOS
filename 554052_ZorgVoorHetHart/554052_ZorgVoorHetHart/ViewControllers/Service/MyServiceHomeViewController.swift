@@ -226,7 +226,9 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         else
         {
             // Perform logout code (clear caches if they exist, clear loggedinUser)
-            self.performSegue(withIdentifier: "logout", sender: self)
+            self.dismiss(animated: true, completion:{ })
+            User.loggedinUser = nil
+            //self.performSegue(withIdentifier: "logout", sender: self)
         }
         myScrollView.isScrollEnabled = true
     }

@@ -45,6 +45,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         inputEmail.layer.borderWidth = 0
         inputEmail.keyboardType = UIKeyboardType.emailAddress
         self.inputEmail.delegate = self
+        inputEmail.text = ""
         inputEmail.addTarget(self, action: #selector(emailDidEndEditing(_:)), for: .editingDidEnd)
       
         errorPassword.textColor = UIColor.red
@@ -57,6 +58,12 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         inputPassword.layer.borderWidth = 0
         inputPassword.addTarget(self, action: #selector(passwordDidEndEditing(_:)), for: .editingDidEnd)
         self.inputPassword.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        inputEmail.text = ""
+        inputPassword.text = ""
     }
     
     @IBAction func btnLogin_OnClick(_ sender: Any)
@@ -97,32 +104,17 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
     
     @objc func emailDidEndEditing(_ textField: UITextField)
     {
-        errorEmail.isHidden = false
-        if ((textField.text?.isEmpty)!)
-        {
-            errorEmail.text = "Emailadres kan niet leeg zijn"
-        }
-        else if (!textField.isValidEmail())
-        {
-            errorEmail.text = "Dit is geen correct emailadres"
-        }
-        else
-        {
-            errorEmail.isHidden = true
-        }
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorEmail, errorText: "Email kan niet leeg zijn")
+        
+        // Check and set error message if the email address is not valid
+        textField.setErrorMessageInvalidEmail(errorLabel: errorEmail, errorText: "Dit is geen correct emailadres")
     }
     
     @objc func passwordDidEndEditing(_ textField: UITextField)
     {
-        errorPassword.isHidden = false
-        if ((textField.text?.isEmpty)!)
-        {
-            errorPassword.text = "Wachtwoord kan niet leeg zijn"
-        }
-        else
-        {
-            errorPassword.isHidden = true
-        }
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorPassword, errorText: "Wachtwoord kan niet leeg zijn")
     }
 
     override func didReceiveMemoryWarning()

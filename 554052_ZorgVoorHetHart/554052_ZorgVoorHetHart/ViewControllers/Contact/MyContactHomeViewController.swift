@@ -99,28 +99,14 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
     
     @objc func subjectDidEndEditing(_ textField: UITextField)
     {
-        errorOnderwerp.isHidden = false
-        if ((textField.text?.isEmpty)!)
-        {
-            errorOnderwerp.text = "Onderwerp kan niet leeg zijn"
-        }
-        else
-        {
-            errorOnderwerp.isHidden = true
-        }
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorOnderwerp, errorText: "Onderwerp kan niet leeg zijn")
     }
     
     @objc func messageDidEndEditing(_ textField: UITextField)
     {
-        errorBericht.isHidden = false
-        if ((textField.text?.isEmpty)!)
-        {
-            errorBericht.text = "Bericht kan niet leeg zijn"
-        }
-        else
-        {
-            errorBericht.isHidden = true
-        }
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorBericht, errorText: "Bericht kan niet leeg zijn")
     }
     
     override func didReceiveMemoryWarning()
