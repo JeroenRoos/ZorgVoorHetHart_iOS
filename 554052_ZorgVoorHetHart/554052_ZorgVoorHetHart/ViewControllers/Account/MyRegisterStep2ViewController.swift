@@ -67,16 +67,24 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
 
     @IBAction func btnFinish_OnClick(_ sender: Any)
     {
-        user?.emailAddress = inputEmail.text!
-        user?.password = inputPassword.text!
-        
-        service.register(withSuccess: { (message: String) in
+        if (!(inputEmail.text?.isEmpty)! &&
+            !(inputPassword.text?.isEmpty)! &&
+            !(inputPasswordCheck.text?.isEmpty)! &&
+            inputEmail.isValidEmail() &&
+            inputPassword.text == inputPasswordCheck.text)
+        {
+            let email = inputEmail.text!
+            let trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)
             
-            self.performSegue(withIdentifier: "registerFinish", sender: self)
-        }, orFailure: { (error: String) in
+            user?.emailAddress = trimmedEmail
+            user?.password = inputPassword.text!
             
-        }, andUser: user!)
-        
+            service.register(withSuccess: { (message: String) in
+                self.performSegue(withIdentifier: "registerFinish", sender: self)
+            }, orFailure: { (error: String) in
+                
+            }, andUser: user!)
+        }
     }
     
     @objc func emailDidEndEditing(_ textField: UITextField)

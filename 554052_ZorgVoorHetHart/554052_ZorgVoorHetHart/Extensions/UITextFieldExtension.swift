@@ -20,6 +20,19 @@ extension UITextField
         return emailTest.evaluate(with: self.text)
     }
     
+    func isValidName() -> Bool
+    {
+        let nameArray = self.text?.split(separator: " ", maxSplits: 1).map(String.init)
+        if (nameArray?.count ?? 0 <= 1)
+        {
+            return false
+        }
+        else
+        {
+            return true
+        }
+    }
+    
     func setErrorMessageEmptyField(errorLabel: UILabel, errorText: String)
     {
         errorLabel.isHidden = false
@@ -35,28 +48,33 @@ extension UITextField
     
     func setErrorMessageInvalidName(errorLabel: UILabel, errorText: String)
     {
-        errorLabel.isHidden = false
-        let nameArray = self.text?.split(separator: " ", maxSplits: 1).map(String.init)
-        if (nameArray?.count ?? 0 < 2)
+        if (!(self.text?.isEmpty)!)
         {
-            errorLabel.text = errorText
-        }
-        else
-        {
-            errorLabel.isHidden = true
+            errorLabel.isHidden = false
+            if (!self.isValidName())
+            {
+                errorLabel.text = errorText
+            }
+            else
+            {
+                errorLabel.isHidden = true
+            }
         }
     }
     
     func setErrorMessageInvalidEmail(errorLabel: UILabel, errorText: String)
     {
-        errorLabel.isHidden = false
-        if (!self.isValidEmail())
+        if (!(self.text?.isEmpty)!)
         {
-            errorLabel.text = errorText
-        }
-        else
-        {
-            errorLabel.isHidden = true
+            errorLabel.isHidden = false
+            if (!self.isValidEmail())
+            {
+                errorLabel.text = errorText
+            }
+            else
+            {
+                errorLabel.isHidden = true
+            }
         }
     }
     

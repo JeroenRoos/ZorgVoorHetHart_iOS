@@ -18,6 +18,8 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var errorBovendruk: UILabel!
+    @IBOutlet weak var errorOnderdruk: UILabel!
     
     @IBOutlet weak var btnContinuePopup: UIButton!
     @IBOutlet weak var btnCancelPopup: UIButton!
@@ -81,16 +83,26 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         txtOnderdruk.text = "Onderdruk / DIA"
         txtOnderdruk.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
+        errorBovendruk.textColor = UIColor.red
+        errorBovendruk.font = errorBovendruk.font.withSize(10)
+        errorBovendruk.isHidden = true
+        
         inputBovendruk.placeholder = "0"
         inputBovendruk.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputBovendruk.layer.borderWidth = 0
         inputBovendruk.keyboardType = UIKeyboardType.numberPad
+        inputBovendruk.addTarget(self, action: #selector(bovendrukDidEndEditing(_:)), for: .editingDidEnd)
         self.inputBovendruk.delegate = self
+        
+        errorOnderdruk.textColor = UIColor.red
+        errorOnderdruk.font = errorOnderdruk.font.withSize(10)
+        errorOnderdruk.isHidden = true
         
         inputOnderdruk.placeholder = "0"
         inputOnderdruk.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOnderdruk.layer.borderWidth = 0
         inputOnderdruk.keyboardType = UIKeyboardType.numberPad
+        inputOnderdruk.addTarget(self, action: #selector(onderdrukDidEndEditing(_:)), for: .editingDidEnd)
         self.inputOnderdruk.delegate = self
         
         btnNext.setTitle("Volgende", for: .normal)
@@ -104,17 +116,19 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnCancel_OnClick(_ sender: Any)
     {
-        
         self.navigationController?.popViewController(animated: true)
-        //self.performSegue(withIdentifier: "cancel", sender: self)
     }
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
-        measurement.bloodPressureLower = Int(inputOnderdruk.text!)!
-        measurement.bloodPressureUpper = Int(inputBovendruk.text!)!
-        
-        self.performSegue(withIdentifier: "measurementNext", sender: self)
+        if (!(inputOnderdruk.text?.isEmpty)! &&
+            !(inputBovendruk.text?.isEmpty)!)
+        {
+            measurement.bloodPressureLower = Int(inputOnderdruk.text!)!
+            measurement.bloodPressureUpper = Int(inputBovendruk.text!)!
+            
+            self.performSegue(withIdentifier: "measurementNext", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -151,16 +165,20 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
                 self.inputGewicht.isHidden = true
                 self.imgMiddelSquare.isHidden = true
         }, orFailure: { (error: String) in
-            self.btnContinuePopup.isHidden = true
-            self.btnCancelPopup.isHidden = true
-            self.txtGewicht.isHidden = true
-            self.txtLengte.isHidden = true
-            self.txtTitlePopup.isHidden = true
-            self.backgroundImage.isHidden = true
-            self.inputLengte.isHidden = true
-            self.inputGewicht.isHidden = true
-            self.imgMiddelSquare.isHidden = true
+            // Failure
         }, andLength: length!, andWeight: weight!)
+    }
+    
+    @objc func bovendrukDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorBovendruk, errorText: "Bovendruk kan niet leeg zijn")
+    }
+    
+    @objc func onderdrukDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorOnderdruk, errorText: "Onderdruk kan niet leeg zijn")
     }
     
     override func didReceiveMemoryWarning()

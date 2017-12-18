@@ -68,30 +68,17 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnLogin_OnClick(_ sender: Any)
     {
-        var doRequest = true
         var trimmedEmail : String? = nil
         var password : String? = nil
         
-        if (!(inputEmail.text?.isEmpty)! && !(inputPassword.text?.isEmpty)!)
+        if (!(inputEmail.text?.isEmpty)! &&
+            !(inputPassword.text?.isEmpty)!)
+           // && inputEmail.isValidEmail())
         {
-            //if (inputEmail.isValidEmail())
-            //{
-                let email = inputEmail.text!
-                trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)
-                password = inputPassword.text
-            //}
-            //else
-            //{
-            //    doRequest = false
-            //}
-        }
-        else
-        {
-            doRequest = false
-        }
-        
-        if (doRequest)
-        {
+            let email = inputEmail.text!
+            trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)
+            password = inputPassword.text
+            
             service.login(
                 withSuccess: { (user: User) in
                     User.loggedinUser = user

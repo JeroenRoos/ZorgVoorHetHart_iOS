@@ -145,42 +145,32 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
-        var gotoNextStep = true
-        
-        if (!(inputName.text?.isEmpty)! && !(inputDatefOfBirth.text?.isEmpty)! &&
-            !(user.consultantId.isEmpty))
+        if (!(inputName.text?.isEmpty)! &&
+            !(inputDatefOfBirth.text?.isEmpty)! &&
+            !(user.consultantId.isEmpty) &&
+            inputName.isValidName())
         {
-            if (!(inputName.text?.contains(" "))!)
+            let fullName = inputName.text!
+            let fullnameArray = fullName.split(separator: " ", maxSplits: 1).map(String.init)
+            user.firstName = fullnameArray[0]
+            user.lastName = fullnameArray[1]
+                
+            let dateOfBirthString = inputDatefOfBirth.text
+            user.dateOfBirth = dateOfBirthString!
+                
+            if (radioButtonMan.isChecked)
             {
-                let fullName = inputName.text!
-                let fullnameArray = fullName.split(separator: " ", maxSplits: 1).map(String.init)
-                user.firstName = fullnameArray[0]
-                user.lastName = fullnameArray[1]
-                
-                let dateOfBirthString = inputDatefOfBirth.text
-                user.dateOfBirth = dateOfBirthString!
-                
-                if (radioButtonMan.isChecked)
-                {
-                    user.gender = 1
-                }
-                else
-                {
-                    user.gender = 2
-                }
+                user.gender = 1
             }
-        }
-        else
-        {
-            gotoNextStep = false
-        }
-        
-        if (gotoNextStep)
-        {
+            else
+            {
+                user.gender = 2
+            }
+            
             self.performSegue(withIdentifier: "registerNext", sender: self)
         }
     }
-        
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         // Pass user to next ViewController
