@@ -52,14 +52,19 @@ class MyMeasurementDetailsViewController: UIViewController
         txtKlachten.text = ""
         txtKlachten.font = txtKlachten.font.withSize(12)
         
-        let date = clickedMeasurement?.measurementDateTime
-        txtDatum.text = ""
+        // di, 31 okt 2017
+        let date = Date().getDateInCorrectFormat(myDate: (clickedMeasurement?.measurementDateTime)!)
+        txtDatum.text = date
         txtDatum.font = txtDatum.font.withSize(12)
         
         // Berekening over hoe goed de bloeddruk is
         txtStatus.text = "Uw bloeddruk was prima!"
         txtStatus.font = txtStatus.font.withSize(12)
-        txtStatus.textColor = UIColor.green
+        txtStatus.textColor = UIColor(rgb: 0x35C264)
+        imgBackground.backgroundColor = UIColor(rgb: 0xE7F6EC)
+        // Red background color = 0xF8E2E3
+        // Red text color       = 0xEB6666
+        
         
         if (!(clickedMeasurement?.healthIssueIds?.isEmpty)!)
         {

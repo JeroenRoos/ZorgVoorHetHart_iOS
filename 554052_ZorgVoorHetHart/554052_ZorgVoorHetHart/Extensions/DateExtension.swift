@@ -10,12 +10,24 @@ import UIKit
 
 extension Date
 {
+    func getDateInCorrectFormat(myDate: String) -> String?
+    {
+        let dateAndTimeArray = myDate.split(separator: "T")
+        let dateArray = dateAndTimeArray[0].split(separator: "-")
+        let year = dateArray[0]
+        let month = Date().getMonthOfYear(monthInt: Int(dateArray[1])!, fullString: false)
+        let day = dateArray[2]
+        var currentDate = String(day) + " "
+        currentDate += month! + " " + String(year)
+        return currentDate
+    }
+    
     func getCurrentWeekdayAndDate() -> String?
     {
         let date = Date()
         let calendar = Calendar.current
         let day = calendar.component(.day, from: date)
-        let month = (Date().getMonthOfYear(monthInt: calendar.component(.month, from: date))!)
+        let month = (Date().getMonthOfYear(monthInt: calendar.component(.month, from: date), fullString: true)!)
         let year = calendar.component(.year, from: date)
         let weekDay = (Date().getDayOfWeek()!)
         
@@ -23,7 +35,7 @@ extension Date
         return currentDate
     }
     
-    private func getMonthOfYear(monthInt: Int) -> String?
+    private func getMonthOfYear(monthInt: Int, fullString: Bool) -> String?
     {
         let months = [
             "januari",
@@ -40,7 +52,15 @@ extension Date
             "december"
         ]
         
-        return months[monthInt - 1]
+        if (fullString)
+        {
+            return months[monthInt - 1]
+        }
+        else
+        {
+            let month = months[monthInt - 1]
+            return month[0 ..< 3]
+        }
     }
     
     private func getDayOfWeek() -> String?
@@ -59,14 +79,4 @@ extension Date
         let dayString = weekdays[dayNumber! - 1]
         return dayString[0 ..< 2]
     }
-    
-    
-    /*
-    private func dayOfWeek() -> String?
-    {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        let weekDay = dateFormatter.string(from: self).capitalized
-        return weekDay[0 ..< 2]
-    } */
 }

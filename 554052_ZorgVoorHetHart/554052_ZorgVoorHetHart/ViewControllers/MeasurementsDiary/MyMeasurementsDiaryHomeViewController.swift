@@ -40,11 +40,11 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         btnMonthly.layer.borderWidth = 1
         btnMonthly.layer.borderColor = UIColor.black.cgColor
         
-        txtOnderdruk.text = "Onderduk"
+        txtOnderdruk.text = "Onderduk "
         txtOnderdruk.font = txtOnderdruk.font.withSize(12)
         imgOnderdruk.backgroundColor = UIColor(rgb: 0x491488)
         
-        txtBovendruk.text = "Bovendruk"
+        txtBovendruk.text = "Bovendruk "
         txtBovendruk.font = txtBovendruk.font.withSize(12)
         imgOnderdruk.backgroundColor = UIColor(rgb: 0x039BE6)
         
@@ -76,8 +76,7 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let customCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyTableViewCell
-        
-        // (Date().getCurrentWeekdayAndDate())
+        customCell.initUserInterface(measurement: lstMeasurements[indexPath.row])
         
         return customCell
     }
