@@ -133,11 +133,21 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         inputPopupLength.keyboardType = UIKeyboardType.numberPad
         self.inputPopupLength.delegate = self
         
+        if (User.loggedinUser?.length != nil)
+        {
+            inputPopupLength.text = String((User.loggedinUser?.length)!)
+        }
+        
         inputPopupWeight.placeholder = "0"
         inputPopupWeight.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPopupWeight.layer.borderWidth = 0
         inputPopupWeight.keyboardType = UIKeyboardType.numberPad
         self.inputPopupWeight.delegate = self
+        
+        if (User.loggedinUser?.weight != nil)
+        {
+            inputPopupWeight.text = String((User.loggedinUser?.weight)!)
+        }
         
         setPopupActive(withValue: true)
     }
@@ -228,7 +238,6 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
             // Perform logout code (clear caches if they exist, clear loggedinUser)
             self.dismiss(animated: true, completion:{ })
             User.loggedinUser = nil
-            //self.performSegue(withIdentifier: "logout", sender: self)
         }
         myScrollView.isScrollEnabled = true
     }

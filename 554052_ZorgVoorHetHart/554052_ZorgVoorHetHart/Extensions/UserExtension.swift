@@ -35,7 +35,9 @@ extension User
             "lastname": user.lastName,
             "consultantId": user.consultantId,
             "dateOfBirth": user.dateOfBirth,
-            "gender": user.gender
+            "gender": user.gender,
+            "length" : user.length,
+            "weight" : user.weight
         ]
     }
 }

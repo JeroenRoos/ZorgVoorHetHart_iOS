@@ -19,7 +19,7 @@ class MeasurementManager
     {
         let parameters: [String: Any] = ["bloodPressureLower" : measurement.bloodPressureLower,
                                          "bloodPressureUpper" : measurement.bloodPressureLower,
-                                         "healthIssuesIds" : measurement.healthIssuesIds,
+                                         "healthIssuesIds" : measurement.healthIssueIds ?? [],
                                          "healthIssueOther" : measurement.healthIssueOther ?? "",]
         
         let headers = ["x-authtoken" : User.loggedinUser?.authToken ?? ""]
@@ -90,7 +90,7 @@ class MeasurementManager
     {
         let parameters: [String: Any] = ["bloodPressureLower" : measurement.bloodPressureLower,
                                          "bloodPressureUpper" : measurement.bloodPressureLower,
-                                         "healthIssuesIds" : measurement.healthIssuesIds,
+                                         "healthIssuesIds" : measurement.healthIssueIds ?? [],
                                          "healthIssueOther" : measurement.healthIssueOther ?? "",]
         let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         

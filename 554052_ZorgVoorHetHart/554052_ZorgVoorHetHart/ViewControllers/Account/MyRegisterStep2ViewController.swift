@@ -10,7 +10,7 @@ import UIKit
 
 class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
 {
-    @IBOutlet weak var btnFinish: UIButton!
+    @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var inputPasswordCheck: UITextField!
     @IBOutlet weak var inputPassword: UITextField!
     @IBOutlet weak var inputEmail: UITextField!
@@ -18,22 +18,21 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var errorPassword: UILabel!
     @IBOutlet weak var errorPasswordCheck: UILabel!
     
-    private let service: UserService = UserService()
     var user: User? = nil
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Registreren stap 2 van 2"
+        self.title = "Registreren stap 2 van 3"
         self.hideKeyboardWhenTappedAround()
         
         errorEmail.textColor = UIColor.red
         errorEmail.font = errorEmail.font.withSize(10)
         errorEmail.isHidden = true
         
-        btnFinish.setTitle("Registratie afronden", for: .normal)
-        btnFinish.setTitleColor(UIColor.white, for: .normal)
-        btnFinish.backgroundColor = UIColor(rgb: 0x1BC1B7)
+        btnNext.setTitle("Volgende", for: .normal)
+        btnNext.setTitleColor(UIColor.white, for: .normal)
+        btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)
         
         inputEmail.placeholder = "Vul uw email in"
         inputEmail.backgroundColor = UIColor(rgb: 0xEBEBEB)
@@ -65,7 +64,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         self.inputPasswordCheck.delegate = self
     }
 
-    @IBAction func btnFinish_OnClick(_ sender: Any)
+    @IBAction func btnNext_OnClick(_ sender: Any)
     {
         if (!(inputEmail.text?.isEmpty)! &&
             !(inputPassword.text?.isEmpty)! &&
@@ -79,11 +78,8 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
             user?.emailAddress = trimmedEmail
             user?.password = inputPassword.text!
             
-            service.register(withSuccess: { (message: String) in
-                self.performSegue(withIdentifier: "registerFinish", sender: self)
-            }, orFailure: { (error: String) in
-                
-            }, andUser: user!)
+            
+            self.performSegue(withIdentifier: "registerNext2", sender: self)
         }
     }
     
@@ -114,9 +110,9 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         // Pass user to next ViewController
-        if(segue.identifier == "registerFinish")
+        if(segue.identifier == "registerNext2")
         {
-            if let viewController = segue.destination as? MyRegisterFinishedViewController
+            if let viewController = segue.destination as? MyRegisterStep3ViewController
             {
                 viewController.user = user
             }

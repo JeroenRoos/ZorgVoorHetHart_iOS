@@ -22,8 +22,8 @@ class User : Codable
     var consultantId: String = ""         // ObjectId
     var dateOfBirth: String = ""
     var gender: Int = 0
-    var length: Int?
-    var weight: Int?
+    var length: Int = 0
+    var weight: Int = 0
     var resetPasswordToken: String?
     var isActivated: Bool = false
     var activationToken: String = ""

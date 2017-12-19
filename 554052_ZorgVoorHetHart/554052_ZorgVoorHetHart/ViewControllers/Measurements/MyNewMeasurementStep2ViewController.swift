@@ -36,6 +36,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         self.title = "Nieuwe meting: stap 2 van 3"
         self.hideKeyboardWhenTappedAround()
+        measurement?.healthIssueIds = []
         
         txtDate.text = (Date().getCurrentWeekdayAndDate())
         txtDate.font = txtDate.font.withSize(12)
@@ -86,6 +87,8 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     {
         service.getHealthIssues(
             withSuccess: { (healthIssues: [HealthIssue]) in
+                
+                // Sla deze health issues later opnieuw op
                 self.lstHealthIssues = healthIssues
                 
                 for i in 0 ..< self.lstHealthIssues.count
@@ -120,7 +123,8 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
             if (checkbox.isChecked)
             {
                 print(checkbox.accessibilityIdentifier ?? "")
-                measurement?.healthIssuesIds.append(checkbox.accessibilityIdentifier!)
+                measurement?.healthIssueIds?.append(checkbox.accessibilityIdentifier!)
+                
             }
         }
         if (!(inputOther.text?.isEmpty)!)

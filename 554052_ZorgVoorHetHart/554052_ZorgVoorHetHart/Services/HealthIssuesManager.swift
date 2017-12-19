@@ -23,9 +23,7 @@ class HealthIssuesManager
                           headers: headers)
             .validate()
             .responseJSON { response in
-                switch response.result
-                {
-                // Response code 200 ..< 300
+                switch response.result {
                 case .success:
                     if let data = response.data
                     {

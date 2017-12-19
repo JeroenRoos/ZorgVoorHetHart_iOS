@@ -33,7 +33,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Registreren stap 1 van 2"
+        self.title = "Registreren stap 1 van 3"
         self.hideKeyboardWhenTappedAround()
         
         errorConsultant.textColor = UIColor.red

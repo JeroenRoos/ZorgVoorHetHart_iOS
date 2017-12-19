@@ -112,6 +112,17 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         btnCancel.setTitle("Annuleren", for: .normal)
         btnCancel.setTitleColor(UIColor.white, for: .normal)
         btnCancel.backgroundColor = UIColor(rgb: 0xA9A9A9)
+        
+        // Voor nu wordt lengte en gewicht verplaatst naar registreren
+        self.btnContinuePopup.isHidden = true
+        self.btnCancelPopup.isHidden = true
+        self.txtGewicht.isHidden = true
+        self.txtLengte.isHidden = true
+        self.txtTitlePopup.isHidden = true
+        self.backgroundImage.isHidden = true
+        self.inputLengte.isHidden = true
+        self.inputGewicht.isHidden = true
+        self.imgMiddelSquare.isHidden = true
     }
     
     @IBAction func btnCancel_OnClick(_ sender: Any)
@@ -143,6 +154,8 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         }
     }
     
+    
+    /* Voor nu wordt lengte en gewicht verplaatst naar registreren
     @IBAction func btnCancelPopup_OnClick(_ sender: Any)
     {
         self.navigationController?.popViewController(animated: true)
@@ -168,6 +181,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
             // Failure
         }, andLength: length!, andWeight: weight!)
     }
+    */
     
     @objc func bovendrukDidEndEditing(_ textField: UITextField)
     {

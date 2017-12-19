@@ -53,6 +53,8 @@
 		E8702F0D1FD87DC40044447C /* ConsultantsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0C1FD87DC40044447C /* ConsultantsService.swift */; };
 		E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0E1FD87E470044447C /* ConsultantsManager.swift */; };
 		E879722B1FDAECA5002A8A2E /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */; };
+		E881A4B11FE991620056E893 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E881A4B01FE991620056E893 /* ArrayExtension.swift */; };
+		E8C7050F1FE9444A009806F2 /* MyRegisterStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C7050E1FE9444A009806F2 /* MyRegisterStep3ViewController.swift */; };
 		E8DF1B521FE42E1E000C8229 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */; };
 		E8F79BFD1FD85C1500033926 /* MeasurementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79BFC1FD85C1500033926 /* MeasurementService.swift */; };
 		E8F79BFF1FD85C3300033926 /* MeasurementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79BFE1FD85C3300033926 /* MeasurementManager.swift */; };
@@ -138,6 +140,8 @@
 		E8702F0C1FD87DC40044447C /* ConsultantsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsService.swift; sourceTree = "<group>"; };
 		E8702F0E1FD87E470044447C /* ConsultantsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsManager.swift; sourceTree = "<group>"; };
 		E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		E881A4B01FE991620056E893 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		E8C7050E1FE9444A009806F2 /* MyRegisterStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterStep3ViewController.swift; sourceTree = "<group>"; };
 		E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		E8F79BFC1FD85C1500033926 /* MeasurementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementService.swift; sourceTree = "<group>"; };
 		E8F79BFE1FD85C3300033926 /* MeasurementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementManager.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				90812B271FBA56A900292F18 /* MyRegisterOrLoginViewController.swift */,
 				90023A031FBC9FC600DFCD23 /* MyRegisterStep1ViewController.swift */,
 				90023A011FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift */,
+				E8C7050E1FE9444A009806F2 /* MyRegisterStep3ViewController.swift */,
 				9065C5301FC22BDD00760062 /* MyRegisterFinishedViewController.swift */,
 				900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */,
 			);
@@ -354,6 +359,7 @@
 				90000AAE1FD300DD00654235 /* StringExtension.swift */,
 				90000AB61FD35CF100654235 /* UserExtension.swift */,
 				E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */,
+				E881A4B01FE991620056E893 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -679,6 +685,7 @@
 				90088C761FC30870003997B9 /* MyTabBarController.swift in Sources */,
 				901821A51FCCB32200937DDB /* MyMessageSendViewController.swift in Sources */,
 				E8F79BFF1FD85C3300033926 /* MeasurementManager.swift in Sources */,
+				E8C7050F1FE9444A009806F2 /* MyRegisterStep3ViewController.swift in Sources */,
 				90000AB51FD33BF400654235 /* User.swift in Sources */,
 				902938801FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift in Sources */,
 				E8DF1B521FE42E1E000C8229 /* UIScrollViewExtension.swift in Sources */,
@@ -698,6 +705,7 @@
 				9018219F1FCC610100937DDB /* MyNewMeasurementStep3ViewController.swift in Sources */,
 				E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */,
 				90E6E7351FCDAED800583804 /* UINavigationControllerExtension.swift in Sources */,
+				E881A4B11FE991620056E893 /* ArrayExtension.swift in Sources */,
 				E8F79C011FD85C5F00033926 /* ContactService.swift in Sources */,
 				90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */,
 				90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */,

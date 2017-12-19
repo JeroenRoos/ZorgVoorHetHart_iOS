@@ -13,17 +13,17 @@ class Measurement: Decodable
     var measurementId: String = ""                 // ObjectId
     var bloodPressureLower: Int = 0
     var bloodPressureUpper: Int = 0
-    var healthIssuesIds: [String] = []
+    var healthIssueIds: [String]?
     var healthIssueOther: String?
     var userId: String = ""                         // ObjectId
-    var measurementDateTime: Date = Date.distantPast
+    var measurementDateTime: String = ""//Date = Date.distantPast
     
     enum CodingKeys: String, CodingKey
     {
         case measurementId = "_id"
         case bloodPressureLower = "bloodPressureLower"
         case bloodPressureUpper = "bloodPressureUpper"
-        case healthIssuesIds = "healthIssuesIds"
+        case healthIssueIds = "healthIssueIds"
         case healthIssueOther = "healthIssueOther"
         case userId = "userId"
         case measurementDateTime = "measurementDateTime"

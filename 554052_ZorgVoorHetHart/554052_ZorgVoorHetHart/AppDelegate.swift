@@ -56,7 +56,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(array[1])
         return false
     }
-
-
 }
 
