@@ -56,6 +56,6 @@ class MyRegisterFinishedViewController: UIViewController
     @IBAction func btnLogin_OnClick(_ sender: Any)
     {
         
-        self.performSegue(withIdentifier: "continueLogin", sender: self)
+        self.performSegue(withIdentifier: "waitingActivation", sender: self)
     }
 }

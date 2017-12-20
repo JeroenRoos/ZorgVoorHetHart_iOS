@@ -138,4 +138,33 @@ class UserManager
                 }
         }
     }
+    
+    func activateAccount(withSuccess success: @escaping (String)->(), 
+                         orFailure failure: @escaping (String)->(),
+                         andToken token: String)
+    {
+        var url = baseURL!.absoluteString
+        url += "activate?token=" + token
+        
+        
+        Alamofire.request(url,
+                          encoding: JSONEncoding.default)
+            .validate()
+            .responseString { response in
+                print("Request: \(response.request!)")
+                print("Response: \(String(describing: response.response))")
+                print("Result: \(response.result)")
+                
+                if (response.result.isSuccess)
+                {
+                    success("Succes!")
+                }
+                else
+                {
+                    print(response.error!)
+                    print(response.result.error!)
+                    failure("Er is iets fout gegaan tijdens het activeren van uw account.")
+                }
+        }
+    }
 }

@@ -25,7 +25,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJO-Kt-4iE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1468" y="117"/>
+            <point key="canvasLocation" x="-1786" y="116"/>
         </scene>
         <!--My Register Or Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-618" y="116"/>
+            <point key="canvasLocation" x="-1004" y="116"/>
         </scene>
         <!--My Register Step1 View Controller-->
         <scene sceneID="QUP-D7-E01">
@@ -481,7 +481,7 @@
                         <outlet property="txtDescriptionEmail" destination="Z4x-Bs-5aV" id="7FZ-Vl-MZH"/>
                         <outlet property="txtEmail" destination="KGE-9E-Aw2" id="TVX-5s-tJ6"/>
                         <outlet property="txtTitleEmail" destination="9hS-AI-lQH" id="SBh-vi-eeS"/>
-                        <segue destination="XQ9-uC-j7Q" kind="show" identifier="continueLogin" id="xcf-ud-zQs"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="waitingActivation" id="ifF-e1-jKc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAT-uN-mbe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2127,6 +2127,71 @@
             </objects>
             <point key="canvasLocation" x="2190" y="-913"/>
         </scene>
+        <!--My Account Activated View Controller-->
+        <scene sceneID="La7-92-8ax">
+            <objects>
+                <viewController storyboardIdentifier="activateAccountViewController" id="set-rr-hzh" customClass="MyAccountActivatedViewController" customModule="_54052_ZorgVoorHetHart" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="93q-ce-Glb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bedankt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMl-yA-g4Z" userLabel="txtTitle">
+                                <rect key="frame" x="20" y="181" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email ontvangen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5L-c4-X69" userLabel="txtDescription">
+                                <rect key="frame" x="20" y="232" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pM1-AK-MIh" userLabel="btnLogin">
+                                <rect key="frame" x="75" y="383" width="225" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="db8-fp-Dfx"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnLogin_OnClick:" destination="syb-zJ-q8y" eventType="touchUpInside" id="opm-1J-sE9"/>
+                                    <action selector="btnLogin_OnClick:" destination="set-rr-hzh" eventType="touchUpInside" id="xWG-IG-j5f"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="msx-0h-dUY" userLabel="imgCheckMark">
+                                <rect key="frame" x="90" y="60" width="195" height="101"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pM1-AK-MIh" firstAttribute="top" secondItem="S5L-c4-X69" secondAttribute="bottom" constant="130" id="4eH-rB-NO9"/>
+                            <constraint firstItem="FMl-yA-g4Z" firstAttribute="top" secondItem="msx-0h-dUY" secondAttribute="bottom" constant="20" id="7TO-Fi-eRK"/>
+                            <constraint firstItem="msx-0h-dUY" firstAttribute="top" secondItem="h1w-ft-iu3" secondAttribute="top" constant="40" id="9eN-fW-EPW"/>
+                            <constraint firstItem="FMl-yA-g4Z" firstAttribute="top" secondItem="msx-0h-dUY" secondAttribute="bottom" constant="20" id="F7x-F1-dsc"/>
+                            <constraint firstItem="FMl-yA-g4Z" firstAttribute="leading" secondItem="h1w-ft-iu3" secondAttribute="leading" constant="20" id="Ub6-Hp-K1U"/>
+                            <constraint firstItem="S5L-c4-X69" firstAttribute="top" secondItem="FMl-yA-g4Z" secondAttribute="bottom" constant="30" id="Vqh-Ay-JbL"/>
+                            <constraint firstItem="msx-0h-dUY" firstAttribute="leading" secondItem="h1w-ft-iu3" secondAttribute="leading" constant="90" id="b1g-aN-GAN"/>
+                            <constraint firstItem="pM1-AK-MIh" firstAttribute="leading" secondItem="h1w-ft-iu3" secondAttribute="leading" constant="75" id="cbP-2s-Jj8"/>
+                            <constraint firstItem="S5L-c4-X69" firstAttribute="top" secondItem="FMl-yA-g4Z" secondAttribute="bottom" constant="30" id="dsB-D3-3Us"/>
+                            <constraint firstItem="h1w-ft-iu3" firstAttribute="trailing" secondItem="pM1-AK-MIh" secondAttribute="trailing" constant="75" id="dyX-oE-pIl"/>
+                            <constraint firstItem="h1w-ft-iu3" firstAttribute="trailing" secondItem="FMl-yA-g4Z" secondAttribute="trailing" constant="20" id="eKb-6N-Flq"/>
+                            <constraint firstItem="h1w-ft-iu3" firstAttribute="trailing" secondItem="S5L-c4-X69" secondAttribute="trailing" constant="20" id="hQa-5l-os0"/>
+                            <constraint firstItem="h1w-ft-iu3" firstAttribute="trailing" secondItem="msx-0h-dUY" secondAttribute="trailing" constant="90" id="iSH-KC-Aqj"/>
+                            <constraint firstItem="S5L-c4-X69" firstAttribute="leading" secondItem="h1w-ft-iu3" secondAttribute="leading" constant="20" id="imx-lI-OP5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h1w-ft-iu3"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnLogin" destination="pM1-AK-MIh" id="FGB-64-yBH"/>
+                        <outlet property="txtDescription" destination="S5L-c4-X69" id="xv8-pO-xyc"/>
+                        <outlet property="txtTitle" destination="FMl-yA-g4Z" id="66m-jB-XPd"/>
+                        <segue destination="XQ9-uC-j7Q" kind="show" identifier="continueLogin" id="ZPI-ZD-IOp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z4m-Vq-xyb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="-15"/>
+        </scene>
         <!--My Login View Controller-->
         <scene sceneID="Rd4-Az-zyq">
             <objects>
@@ -2223,7 +2288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56g-4k-njX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="116"/>
+            <point key="canvasLocation" x="694" y="116"/>
         </scene>
         <!--Item-->
         <scene sceneID="h6j-z9-lhJ">
@@ -2257,10 +2322,10 @@
         <image name="white" width="280" height="280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xcf-ud-zQs"/>
+        <segue reference="ZPI-ZD-IOp"/>
         <segue reference="lLp-v3-bRb"/>
         <segue reference="MsM-Qu-r2h"/>
         <segue reference="3Bl-Uw-Ne3"/>
-        <segue reference="tnK-BW-Yzp"/>
+        <segue reference="ifF-e1-jKc"/>
     </inferredMetricsTieBreakers>
 </document>

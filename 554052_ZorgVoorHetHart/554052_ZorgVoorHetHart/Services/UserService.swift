@@ -46,4 +46,15 @@ class UserService
             failure(error)
         }, andLength: length, andWeight: weight)
     }
+    
+    func activateAccount(withSuccess success: @escaping (String)->(), 
+                         orFailure failure: @escaping (String)->(),
+                         andToken token: String)
+    {
+        manager.activateAccount(withSuccess: { (message) in
+            success(message)
+        }, orFailure: { (error) in
+            failure(error)
+        }, andToken: token)
+    }
 }
