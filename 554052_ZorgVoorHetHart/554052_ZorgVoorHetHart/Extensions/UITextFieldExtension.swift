@@ -33,6 +33,19 @@ extension UITextField
         }
     }
     
+    func isValidNumberInput(minValue: Int, maxValue: Int) -> Bool
+    {
+        let input = Int(self.text!)!
+        if input > minValue && input < maxValue
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    
     func setErrorMessageEmptyField(errorLabel: UILabel, errorText: String)
     {
         errorLabel.isHidden = false
@@ -90,4 +103,71 @@ extension UITextField
             errorLabel.isHidden = true
         }
     }
+    
+    func setErrorMessageInvalidWeight(errorLabel: UILabel, errorText: String)
+    {
+        if (!(self.text?.isEmpty)!)
+        {
+            errorLabel.isHidden = false
+            // Heaviest man living = 594 kg
+            if (!self.isValidNumberInput(minValue: 30, maxValue: 594))
+            {
+                errorLabel.text = errorText
+            }
+            else
+            {
+                errorLabel.isHidden = true
+            }
+        }
+    }
+    
+    func setErrorMessageInvalidLength(errorLabel: UILabel, errorText: String)
+    {
+        if (!(self.text?.isEmpty)!)
+        {
+            errorLabel.isHidden = false
+            // Smallest man living = 67 cm & Tallest man living = 251 cm
+            if (!self.isValidNumberInput(minValue: 67, maxValue: 251))
+            {
+                errorLabel.text = errorText
+            }
+            else
+            {
+                errorLabel.isHidden = true
+            }
+        }
+    }
+    
+    func setErrorMessageInvalidBloodPressureLower(errorLabel: UILabel, errorText: String)
+    {
+        if (!(self.text?.isEmpty)!)
+        {
+            errorLabel.isHidden = false
+            if (!self.isValidNumberInput(minValue: 30, maxValue: 110))
+            {
+                errorLabel.text = errorText
+            }
+            else
+            {
+                errorLabel.isHidden = true
+            }
+        }
+    }
+    
+    func setErrorMessageInvalidBloodPressureUpper(errorLabel: UILabel, errorText: String)
+    {
+        if (!(self.text?.isEmpty)!)
+        {
+            errorLabel.isHidden = false
+            if (!self.isValidNumberInput(minValue: 60, maxValue: 200))
+            {
+                errorLabel.text = errorText
+            }
+            else
+            {
+                errorLabel.isHidden = true
+            }
+        }
+    }
+
 }

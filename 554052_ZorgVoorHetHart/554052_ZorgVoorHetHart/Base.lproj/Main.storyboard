@@ -379,16 +379,34 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dH-9s-1Aj" userLabel="errorLengte">
+                                <rect key="frame" x="20" y="26" width="325" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xt-QY-i7N" userLabel="errorGewicht">
+                                <rect key="frame" x="20" y="81" width="325" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sNn-sG-guB" firstAttribute="top" secondItem="PoO-vs-7PH" secondAttribute="bottom" constant="30" id="93g-MU-p3t"/>
+                            <constraint firstItem="3xt-QY-i7N" firstAttribute="leading" secondItem="7Oy-g0-0ty" secondAttribute="leading" constant="20" id="ANy-zD-tAj"/>
                             <constraint firstItem="sNn-sG-guB" firstAttribute="leading" secondItem="7Oy-g0-0ty" secondAttribute="leading" constant="75" id="GQW-rq-Fw8"/>
                             <constraint firstItem="PoO-vs-7PH" firstAttribute="leading" secondItem="7Oy-g0-0ty" secondAttribute="leading" constant="20" id="H8w-3D-oZ4"/>
                             <constraint firstItem="HGP-8i-Lw8" firstAttribute="leading" secondItem="7Oy-g0-0ty" secondAttribute="leading" constant="20" id="Itb-SF-BHc"/>
+                            <constraint firstItem="5dH-9s-1Aj" firstAttribute="leading" secondItem="7Oy-g0-0ty" secondAttribute="leading" constant="20" id="KRd-eT-BiL"/>
+                            <constraint firstItem="HGP-8i-Lw8" firstAttribute="top" secondItem="5dH-9s-1Aj" secondAttribute="bottom" constant="2" id="RgV-VK-23S"/>
                             <constraint firstItem="7Oy-g0-0ty" firstAttribute="trailing" secondItem="sNn-sG-guB" secondAttribute="trailing" constant="75" id="Xo6-16-xEg"/>
+                            <constraint firstItem="7Oy-g0-0ty" firstAttribute="trailing" secondItem="3xt-QY-i7N" secondAttribute="trailing" constant="30" id="a4H-Qe-aE4"/>
                             <constraint firstItem="7Oy-g0-0ty" firstAttribute="trailing" secondItem="HGP-8i-Lw8" secondAttribute="trailing" constant="20" id="b7A-0r-wAM"/>
+                            <constraint firstItem="PoO-vs-7PH" firstAttribute="top" secondItem="3xt-QY-i7N" secondAttribute="bottom" constant="2" id="bMf-tp-axn"/>
                             <constraint firstItem="HGP-8i-Lw8" firstAttribute="top" secondItem="7Oy-g0-0ty" secondAttribute="top" constant="20" id="f2I-Ia-BjT"/>
+                            <constraint firstItem="7Oy-g0-0ty" firstAttribute="trailing" secondItem="5dH-9s-1Aj" secondAttribute="trailing" constant="30" id="m3B-A1-Yne"/>
                             <constraint firstItem="PoO-vs-7PH" firstAttribute="top" secondItem="HGP-8i-Lw8" secondAttribute="bottom" constant="20" id="vwP-7D-m3X"/>
                             <constraint firstItem="7Oy-g0-0ty" firstAttribute="trailing" secondItem="PoO-vs-7PH" secondAttribute="trailing" constant="20" id="yQW-Af-Gel"/>
                         </constraints>
@@ -396,6 +414,8 @@
                     </view>
                     <connections>
                         <outlet property="btnFinish" destination="sNn-sG-guB" id="zba-hx-K83"/>
+                        <outlet property="errorGewicht" destination="3xt-QY-i7N" id="PrQ-BF-SSk"/>
+                        <outlet property="errorLengte" destination="5dH-9s-1Aj" id="Nal-gq-tK8"/>
                         <outlet property="inputGewicht" destination="PoO-vs-7PH" id="x1N-Hf-5k2"/>
                         <outlet property="inputLengte" destination="HGP-8i-Lw8" id="9jq-Cm-kQd"/>
                         <segue destination="syb-zJ-q8y" kind="show" identifier="registerFinish" id="O43-fM-hm5"/>
@@ -2322,6 +2342,7 @@
         <image name="white" width="280" height="280"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="O43-fM-hm5"/>
         <segue reference="ZPI-ZD-IOp"/>
         <segue reference="lLp-v3-bRb"/>
         <segue reference="MsM-Qu-r2h"/>

@@ -73,22 +73,12 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnSend_OnClick(_ sender: Any)
     {
-        var doRequest = true
-        var subject: String? = nil
-        var message: String? = nil
-        
-        if (!(inputBericht.text?.isEmpty)! && !(inputOnderwerp.text?.isEmpty)!)
+        if (!(inputBericht.text?.isEmpty)!
+            && !(inputOnderwerp.text?.isEmpty)!)
         {
-            subject = inputOnderwerp.text
-            message = inputBericht.text
-        }
-        else
-        {
-            doRequest = false
-        }
-        
-        if (doRequest)
-        {
+            let subject = inputOnderwerp.text
+            let message = inputBericht.text
+            
             service.sendMessage(withSuccess: { (message: String) in
                 self.performSegue(withIdentifier: "send", sender: self)
             }, orFailure: { (error: String) in

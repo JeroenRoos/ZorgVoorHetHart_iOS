@@ -133,7 +133,9 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
         if (!(inputOnderdruk.text?.isEmpty)! &&
-            !(inputBovendruk.text?.isEmpty)!)
+            !(inputBovendruk.text?.isEmpty)! &&
+            inputBovendruk.isValidNumberInput(minValue: 60, maxValue: 200) &&
+            inputOnderdruk.isValidNumberInput(minValue: 30, maxValue: 110))
         {
             measurement.bloodPressureLower = Int(inputOnderdruk.text!)!
             measurement.bloodPressureUpper = Int(inputBovendruk.text!)!
@@ -144,7 +146,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        // Pass user to next ViewController
+        // Pass measurement to next ViewController
         if(segue.identifier == "measurementNext")
         {
             if let viewController = segue.destination as? MyNewMeasurementStep2ViewController
@@ -154,45 +156,20 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         }
     }
     
-    
-    /* Voor nu wordt lengte en gewicht verplaatst naar registreren
-    @IBAction func btnCancelPopup_OnClick(_ sender: Any)
-    {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func btnContinuePopup_OnClick(_ sender: Any)
-    {
-        let weight = Int(inputGewicht.text!)
-        let length = Int(inputLengte.text!)
-        
-        service.updateLengthAndWeight(
-            withSuccess: { (message: String) in
-                self.btnContinuePopup.isHidden = true
-                self.btnCancelPopup.isHidden = true
-                self.txtGewicht.isHidden = true
-                self.txtLengte.isHidden = true
-                self.txtTitlePopup.isHidden = true
-                self.backgroundImage.isHidden = true
-                self.inputLengte.isHidden = true
-                self.inputGewicht.isHidden = true
-                self.imgMiddelSquare.isHidden = true
-        }, orFailure: { (error: String) in
-            // Failure
-        }, andLength: length!, andWeight: weight!)
-    }
-    */
-    
     @objc func bovendrukDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
         textField.setErrorMessageEmptyField(errorLabel: errorBovendruk, errorText: "Bovendruk kan niet leeg zijn")
+        
+        textField.setErrorMessageInvalidBloodPressureUpper(errorLabel: errorBovendruk, errorText: "Geen geldige waarde")
     }
     
     @objc func onderdrukDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
         textField.setErrorMessageEmptyField(errorLabel: errorOnderdruk, errorText: "Onderdruk kan niet leeg zijn")
+        
+        textField.setErrorMessageInvalidBloodPressureLower(errorLabel: errorOnderdruk, errorText: "Geen geldige waarde")
     }
     
     override func didReceiveMemoryWarning()
@@ -201,3 +178,33 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         // Dispose of any resources that can be recreated.
     }
 }
+
+
+
+/* Voor nu wordt lengte en gewicht verplaatst naar registreren
+ @IBAction func btnCancelPopup_OnClick(_ sender: Any)
+ {
+ self.navigationController?.popViewController(animated: true)
+ }
+ 
+ @IBAction func btnContinuePopup_OnClick(_ sender: Any)
+ {
+ let weight = Int(inputGewicht.text!)
+ let length = Int(inputLengte.text!)
+ 
+ service.updateLengthAndWeight(
+ withSuccess: { (message: String) in
+ self.btnContinuePopup.isHidden = true
+ self.btnCancelPopup.isHidden = true
+ self.txtGewicht.isHidden = true
+ self.txtLengte.isHidden = true
+ self.txtTitlePopup.isHidden = true
+ self.backgroundImage.isHidden = true
+ self.inputLengte.isHidden = true
+ self.inputGewicht.isHidden = true
+ self.imgMiddelSquare.isHidden = true
+ }, orFailure: { (error: String) in
+ // Failure
+ }, andLength: length!, andWeight: weight!)
+ }
+ */
