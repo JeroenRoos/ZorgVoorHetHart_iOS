@@ -52,6 +52,8 @@
 		E8702F0B1FD87C680044447C /* Consultant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0A1FD87C680044447C /* Consultant.swift */; };
 		E8702F0D1FD87DC40044447C /* ConsultantsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0C1FD87DC40044447C /* ConsultantsService.swift */; };
 		E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0E1FD87E470044447C /* ConsultantsManager.swift */; };
+		E879213E1FEFE85E0022F0FE /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879213D1FEFE85E0022F0FE /* KeychainService.swift */; };
+		E87921451FEFEFB20022F0FE /* KeychainServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87921441FEFEFB20022F0FE /* KeychainServiceExtension.swift */; };
 		E879722B1FDAECA5002A8A2E /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */; };
 		E881A4B11FE991620056E893 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E881A4B01FE991620056E893 /* ArrayExtension.swift */; };
 		E8C6CEB31FEAB021003E07A7 /* MyAccountActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */; };
@@ -140,6 +142,8 @@
 		E8702F0A1FD87C680044447C /* Consultant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consultant.swift; sourceTree = "<group>"; };
 		E8702F0C1FD87DC40044447C /* ConsultantsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsService.swift; sourceTree = "<group>"; };
 		E8702F0E1FD87E470044447C /* ConsultantsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsManager.swift; sourceTree = "<group>"; };
+		E879213D1FEFE85E0022F0FE /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		E87921441FEFEFB20022F0FE /* KeychainServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceExtension.swift; sourceTree = "<group>"; };
 		E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		E881A4B01FE991620056E893 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountActivatedViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +272,7 @@
 		90812AF21FBA444D00292F18 /* 554052_ZorgVoorHetHart */ = {
 			isa = PBXGroup;
 			children = (
+				E87921431FEFEDC00022F0FE /* Keychain */,
 				90812B291FBA5A1500292F18 /* Extensions */,
 				90812B241FBA539900292F18 /* Services */,
 				90812B231FBA539000292F18 /* Models */,
@@ -363,6 +368,7 @@
 				90000AB61FD35CF100654235 /* UserExtension.swift */,
 				E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */,
 				E881A4B01FE991620056E893 /* ArrayExtension.swift */,
+				E87921441FEFEFB20022F0FE /* KeychainServiceExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,6 +384,14 @@
 				3A65B9ED38169E06E463E185 /* Pods-554052_ZorgVoorHetHartUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E87921431FEFEDC00022F0FE /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				E879213D1FEFE85E0022F0FE /* KeychainService.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -704,9 +718,11 @@
 				900215B31FD1E61600D0E325 /* MyBloodPressureInformationViewController.swift in Sources */,
 				90D34D5F1FD580C900A17271 /* UIViewControllerExtension.swift in Sources */,
 				90000AB71FD35CF100654235 /* UserExtension.swift in Sources */,
+				E879213E1FEFE85E0022F0FE /* KeychainService.swift in Sources */,
 				90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */,
 				901821A11FCC9FD400937DDB /* MyNewMeasurementFinishedViewController.swift in Sources */,
 				9018219F1FCC610100937DDB /* MyNewMeasurementStep3ViewController.swift in Sources */,
+				E87921451FEFEFB20022F0FE /* KeychainServiceExtension.swift in Sources */,
 				E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */,
 				90E6E7351FCDAED800583804 /* UINavigationControllerExtension.swift in Sources */,
 				E881A4B11FE991620056E893 /* ArrayExtension.swift in Sources */,

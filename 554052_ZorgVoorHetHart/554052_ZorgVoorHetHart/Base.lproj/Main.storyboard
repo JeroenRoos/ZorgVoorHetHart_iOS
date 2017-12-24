@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splashscreen" translatesAutoresizingMaskIntoConstraints="NO" id="Wnl-SF-UwD">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GlK-JU-CIf" userLabel="btnLogin">
                                 <rect key="frame" x="75" y="310" width="225" height="35"/>
@@ -92,6 +92,7 @@
                         <outlet property="btnLogin" destination="GlK-JU-CIf" id="FtH-xM-Hmk"/>
                         <outlet property="btnRegister" destination="7ep-8V-3lt" id="JHa-Qj-Sfl"/>
                         <outlet property="txtOf" destination="0hN-0f-QQV" id="fxR-i3-s92"/>
+                        <segue destination="pDZ-Sd-4Oj" kind="presentation" identifier="automaticLogin" id="ovo-7w-7EB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -2342,8 +2343,9 @@
         <image name="white" width="280" height="280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O43-fM-hm5"/>
-        <segue reference="ZPI-ZD-IOp"/>
+        <segue reference="pwQ-Qa-kdK"/>
+        <segue reference="jFZ-5F-Aaa"/>
+        <segue reference="ovo-7w-7EB"/>
         <segue reference="lLp-v3-bRb"/>
         <segue reference="MsM-Qu-r2h"/>
         <segue reference="3Bl-Uw-Ne3"/>

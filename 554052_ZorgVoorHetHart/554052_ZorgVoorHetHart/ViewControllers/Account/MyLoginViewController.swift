@@ -19,6 +19,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var errorEmail: UILabel!
     
     let service: UserService = UserService()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad()
     {
@@ -32,6 +33,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         
         checkboxStayLoggedin.setTitle("Ingelogd blijven", for: .normal)
         checkboxStayLoggedin.setTitleColor(UIColor.black, for: .normal)
+        checkboxStayLoggedin.isChecked = defaults.bool(forKey: "automaticLogin")
         
         btnForgotPassword.setTitle("Wachtwoord vergeten?", for: .normal)
         btnForgotPassword.setTitleColor(UIColor.black, for: .normal)
@@ -81,12 +83,32 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
             
             service.login(
                 withSuccess: { (user: User) in
+                    
+                    let value = self.checkboxStayLoggedin.isChecked
+                    self.defaults.set(value, forKey: "automaticLogin")
+                    
+                    if (value)
+                    {
+                        self.storeCredentialsInKeyChain(withPassword: password!, andEmail: trimmedEmail!)
+                    }
+                    
                     User.loggedinUser = user
                     self.performSegue(withIdentifier: "loginFinish", sender: self)
             }, orFailure: { (error: String) in
                 
             }, andEmail: trimmedEmail!, andPassword: password!)
         }
+    }
+    
+    private func storeCredentialsInKeyChain(withPassword password: String,
+                                            andEmail email: String)
+    {
+        let passwordService = KeychainService().passwordService
+        let emailService = KeychainService().emailService
+        let account = KeychainService().keychainAccount
+        
+        KeychainService.save(service: passwordService, account: account, data: password)
+        KeychainService.save(service: emailService, account: account, data: email)
     }
     
     @objc func emailDidEndEditing(_ textField: UITextField)
