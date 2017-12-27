@@ -27,10 +27,13 @@ class MyAccountActivatedViewController: UIViewController
         btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)
         txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         txtDescription.font = txtDescription.font.withSize(12)
+        txtTitle.text = "Uw account is geactiveerd!"
+        txtDescription.text = "U kunt nu inloggen met uw account."
         
-        activateAccount()
+        //activateAccount()
     }
     
+    /*
     private func activateAccount()
     {
         service.activateAccount(withSuccess: { (message) in
@@ -40,7 +43,7 @@ class MyAccountActivatedViewController: UIViewController
             self.txtTitle.text = "Er is iets fout gegaan tijdens het activeren van uw account"
             self.txtDescription.text = "Probeer het opnieuw door de link in de mail opnieuw te openen."
         }, andToken: activationToken!)
-    }
+    } */
 
     override func didReceiveMemoryWarning()
     {

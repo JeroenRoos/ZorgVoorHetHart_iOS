@@ -52,16 +52,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                       annotation: Any) -> Bool
     {
         let urlString = url.absoluteString
-        let array = urlString.split(separator: "=")
+        let array = urlString.split(separator: ":")
         print(array[1])
             
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if (array[1] == "//login")
+        {
+            let destinationViewController = storyboard.instantiateViewController(withIdentifier: "activateAccountViewController") as! MyAccountActivatedViewController
+            destinationViewController.activationToken = String(array[1])
             
-        let destinationViewController = storyboard.instantiateViewController(withIdentifier: "activateAccountViewController") as! MyAccountActivatedViewController
-        destinationViewController.activationToken = String(array[1])
-            
-        let navigationController = self.window?.rootViewController as! UINavigationController
-        navigationController.pushViewController(destinationViewController, animated: true)
+            let navigationController = self.window?.rootViewController as! UINavigationController
+            navigationController.pushViewController(destinationViewController, animated: true)
+        }
         
         return true
     }

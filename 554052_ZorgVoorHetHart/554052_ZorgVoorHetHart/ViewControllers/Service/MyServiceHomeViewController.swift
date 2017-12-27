@@ -241,7 +241,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         }
         myScrollView.isScrollEnabled = true
     }
-    
+    //vanaf 16
     private func setPopupActive(withValue value: Bool)
     {
         imgPopupBackground.isHidden = value
