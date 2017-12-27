@@ -93,14 +93,17 @@ extension UITextField
     
     func setErrorMessagePasswordIdentical(errorLabel: UILabel, errorText: String, otherPassword: UITextField)
     {
-        errorLabel.isHidden = false
-        if (self.text != otherPassword.text)
+        if (!(self.text?.isEmpty)!)
         {
-            errorLabel.text = errorText
-        }
-        else
-        {
-            errorLabel.isHidden = true
+            errorLabel.isHidden = false
+            if (self.text != otherPassword.text)
+            {
+                errorLabel.text = errorText
+            }
+            else
+            {
+                errorLabel.isHidden = true
+            }
         }
     }
     

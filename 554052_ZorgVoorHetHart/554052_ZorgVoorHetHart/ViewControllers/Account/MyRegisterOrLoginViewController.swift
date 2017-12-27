@@ -18,6 +18,7 @@ class MyRegisterOrLoginViewController: UIViewController
     private var retrievedPassword: String = ""
     private var retrievedEmail: String = ""
     let service: UserService = UserService()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad()
     {
@@ -53,7 +54,9 @@ class MyRegisterOrLoginViewController: UIViewController
     
     private func tryAutomaticLogin()
     {
-        if (retrievedEmail != "" && retrievedPassword != "")
+        if (retrievedEmail != ""
+            && retrievedPassword != ""
+            && defaults.bool(forKey: "automaticLogin"))
         {
             service.login(withSuccess: { (user: User) in
                 User.loggedinUser = user

@@ -17,6 +17,10 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var errorEmail: UILabel!
     @IBOutlet weak var errorPassword: UILabel!
     @IBOutlet weak var errorPasswordCheck: UILabel!
+    @IBOutlet weak var txtTitle: UILabel!
+    @IBOutlet weak var txtPasswordCheck: UILabel!
+    @IBOutlet weak var txtPassword: UILabel!
+    @IBOutlet weak var txtEmail: UILabel!
     
     var user: User? = nil
     
@@ -25,6 +29,9 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         self.title = "Registreren stap 2 van 3"
         self.hideKeyboardWhenTappedAround()
+        
+        txtTitle.text = "Logingegevens"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         
         errorEmail.textColor = UIColor.red
         errorEmail.font = errorEmail.font.withSize(10)

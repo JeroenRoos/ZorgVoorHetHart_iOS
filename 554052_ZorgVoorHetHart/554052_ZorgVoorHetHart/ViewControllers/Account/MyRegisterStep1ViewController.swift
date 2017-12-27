@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Dropper
+//import Dropper
 
-class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, DropperDelegate
+class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate//, DropperDelegate
 {
     @IBOutlet weak var testBtn: UIBarButtonItem!
     @IBOutlet weak var btnNext: UIButton!
@@ -20,39 +20,35 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     @IBOutlet weak var inputName: UITextField!
     @IBOutlet weak var errorName: UILabel!
     @IBOutlet weak var errorDateOfBirth: UILabel!
-    @IBOutlet weak var errorConsultant: UILabel!
     
-    @IBOutlet weak var dropdown: UIButton!
+    @IBOutlet weak var txtTitle: UILabel!
+    @IBOutlet weak var inputGewicht: UITextField!
+    @IBOutlet weak var inputLengte: UITextField!
+    @IBOutlet weak var errorLengte: UILabel!
+    @IBOutlet weak var errorGewicht: UILabel!
+    private var user: User = User()
+    //@IBOutlet weak var errorConsultant: UILabel!
+    
+    /*@IBOutlet weak var dropdown: UIButton!
     private let decoder = JSONDecoder()
     private var user: User = User()
     private var dropper: Dropper? = nil
     private var lstConsultants : [Consultant] = []
     private var lstConsultantsNames : [String] = []
-    private let service: ConsultantsService = ConsultantsService()
+    private let service: ConsultantsService = ConsultantsService() */
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.title = "Registreren stap 1 van 3"
         self.hideKeyboardWhenTappedAround()
-        
-        errorConsultant.textColor = UIColor.red
-        errorConsultant.font = errorConsultant.font.withSize(10)
-        errorConsultant.isHidden = true
-        
-        dropdown.setTitle("  Selecteer uw consulent", for: .normal)
-        dropdown.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        dropdown.setTitleColor(UIColor.gray, for: .normal)
-        dropdown.layer.cornerRadius = 5
-        dropdown.contentHorizontalAlignment = .left
-        dropdown.isHidden = true
-        
-        // https://github.com/kirkbyo/Dropper
-        dropper = Dropper(width: dropdown.frame.width - 40, height: 300)
 
         btnNext.setTitle("Volgende", for: .normal)
         btnNext.setTitleColor(UIColor.white, for: .normal)
         btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)
+        
+        txtTitle.text = "Persoonsgegevens"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         
         txtGender.text = "Geslacht bij geboorte"
         
@@ -86,30 +82,27 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
         self.inputName.delegate = self
         inputName.addTarget(self, action: #selector(nameDidEndEditing(_:)), for: .editingDidEnd)
         
-        fetchConsultants()
-    }
-    
-    private func fetchConsultants()
-    {
-        service.getConsultans(
-            withSuccess: { (consultants: [Consultant]) in
-                self.dropdown.isHidden = false
-                self.lstConsultants = consultants
-                self.getConsultantsNames()
-        }, orFailure: { (error: String) in
-            self.errorConsultant.isHidden = false
-            self.errorConsultant.text = "Er is iets fout gegaan bij het ophalen van de consulenten"
-        })
-    }
-    
-    private func getConsultantsNames()
-    {
-        for index in 0 ..< lstConsultants.count
-        {
-            let name = lstConsultants[index].firstName
-                + " " + lstConsultants[index].lastName
-            self.lstConsultantsNames.append(name)
-        }
+        errorLengte.textColor = UIColor.red
+        errorLengte.font = errorLengte.font.withSize(10)
+        errorLengte.isHidden = true
+        
+        inputLengte.placeholder = "Vul uw lengte in (cm)"
+        inputLengte.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputLengte.layer.borderWidth = 0
+        inputLengte.keyboardType = UIKeyboardType.numberPad
+        self.inputLengte.delegate = self
+        inputLengte.addTarget(self, action: #selector(lengteDidEndEditing(_:)), for: .editingDidEnd)
+        
+        errorGewicht.textColor = UIColor.red
+        errorGewicht.font = errorGewicht.font.withSize(10)
+        errorGewicht.isHidden = true
+        
+        inputGewicht.placeholder = "Vul uw gewicht in (KG)"
+        inputGewicht.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputGewicht.layer.borderWidth = 0
+        inputGewicht.keyboardType = UIKeyboardType.numberPad
+        self.inputGewicht.delegate = self
+        inputGewicht.addTarget(self, action: #selector(gewichtDidEndEditing(_:)), for: .editingDidEnd)
     }
 
     override func didReceiveMemoryWarning()
@@ -118,37 +111,15 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func DropdownAction(_ sender: Any)
-    {
-        dropper?.delegate = self
-        dropper?.cornerRadius = 5
-        dropper?.items = lstConsultantsNames
-        dropper?.maxHeight = 400
-        dropper?.showWithAnimation(0.15, options: Dropper.Alignment.center, button: dropdown)
-    }
-    
-    func DropperSelectedRow(_ path: IndexPath, contents: String, tag: Int)
-    {
-        let consultant = lstConsultantsNames[path.row]
-        dropdown.setTitle("  " + consultant, for: .normal)
-        
-        for index in 0 ..< lstConsultants.count
-        {
-            let name = lstConsultants[index].firstName
-                + " " + lstConsultants[index].lastName
-            if (consultant == name)
-            {
-                user.consultantId = lstConsultants[index].consultantId
-            }
-        }
-    }
-    
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
         if (!(inputName.text?.isEmpty)! &&
             !(inputDatefOfBirth.text?.isEmpty)! &&
-            !(user.consultantId.isEmpty) &&
-            inputName.isValidName())
+            inputName.isValidName() &&
+            !(inputLengte.text?.isEmpty)! &&
+            !(inputGewicht.text?.isEmpty)! &&
+            inputLengte.isValidNumberInput(minValue: 67, maxValue: 251) &&
+            inputGewicht.isValidNumberInput(minValue: 30, maxValue: 594))
         {
             let fullName = inputName.text!
             let fullnameArray = fullName.split(separator: " ", maxSplits: 1).map(String.init)
@@ -166,6 +137,9 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
             {
                 user.gender = 2
             }
+            
+            user.length = Int(inputLengte.text!)!
+            user.weight = Int(inputGewicht.text!)!
             
             self.performSegue(withIdentifier: "registerNext", sender: self)
         }
@@ -196,6 +170,24 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate, Drop
     {
         // Check and set error message if the textfield is empty
         textField.setErrorMessageEmptyField(errorLabel: errorDateOfBirth, errorText: "Geboortedatum kan niet leeg zijn")
+    }
+    
+    @objc func lengteDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorLengte, errorText: "Lengte kan niet leeg zijn")
+        
+        // Check and set error message if the length is not valid
+        textField.setErrorMessageInvalidLength(errorLabel: errorLengte, errorText: "Lengte heeft geen geldige waarde")
+    }
+    
+    @objc func gewichtDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorGewicht, errorText: "Gewicht kan niet leeg zijn")
+        
+        // Check and set error message if the weight is not valid
+        textField.setErrorMessageInvalidWeight(errorLabel: errorGewicht, errorText: "Gewicht heeft geen geldige waarde")
     }
     
     

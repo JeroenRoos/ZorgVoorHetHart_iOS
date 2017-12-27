@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import Dropper
 
-class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate
+class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, DropperDelegate
 {
+    @IBOutlet weak var errorConsultant: UILabel!
     @IBOutlet weak var btnFinish: UIButton!
-    @IBOutlet weak var inputGewicht: UITextField!
-    @IBOutlet weak var inputLengte: UITextField!
-    @IBOutlet weak var errorLengte: UILabel!
-    @IBOutlet weak var errorGewicht: UILabel!
+    @IBOutlet weak var txtTitle: UILabel!
+    @IBOutlet weak var txtDescription: UILabel!
     
-    private let service: UserService = UserService()
+    @IBOutlet weak var dropdown: UIButton!
+    private let decoder = JSONDecoder()
+    //private var user: User = User()
+    private var dropper: Dropper? = nil
+    private var lstConsultants : [Consultant] = []
+    private var lstConsultantsNames : [String] = []
+    private let service: ConsultantsService = ConsultantsService()
+    private let userService: UserService = UserService()
     var user: User? = nil
     
     override func viewDidLoad()
@@ -25,63 +32,86 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate
         self.title = "Registreren stap 3 van 3"
         self.hideKeyboardWhenTappedAround()
         
+        txtTitle.text = "Consultent"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+        
+        txtDescription.text = "Uw consulent bij het St. Antonius Ziekenhuis"
+        txtDescription.font = txtDescription.font.withSize(12)
+        
         btnFinish.setTitle("Afronden", for: .normal)
         btnFinish.setTitleColor(UIColor.white, for: .normal)
         btnFinish.backgroundColor = UIColor(rgb: 0x1BC1B7)
         
-        errorLengte.textColor = UIColor.red
-        errorLengte.font = errorLengte.font.withSize(10)
-        errorLengte.isHidden = true
+        errorConsultant.textColor = UIColor.red
+        errorConsultant.font = errorConsultant.font.withSize(10)
+        errorConsultant.isHidden = true
         
-        inputLengte.placeholder = "Vul uw lengte in (cm)"
-        inputLengte.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputLengte.layer.borderWidth = 0
-        inputLengte.keyboardType = UIKeyboardType.numberPad
-        self.inputLengte.delegate = self
-        inputLengte.addTarget(self, action: #selector(lengteDidEndEditing(_:)), for: .editingDidEnd)
+        dropdown.setTitle("  Selecteer uw consulent", for: .normal)
+        dropdown.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        dropdown.setTitleColor(UIColor.gray, for: .normal)
+        dropdown.layer.cornerRadius = 5
+        dropdown.contentHorizontalAlignment = .left
+        dropdown.isHidden = true
         
-        errorGewicht.textColor = UIColor.red
-        errorGewicht.font = errorGewicht.font.withSize(10)
-        errorGewicht.isHidden = true
+        // https://github.com/kirkbyo/Dropper
+        dropper = Dropper(width: dropdown.frame.width - 40, height: 300)
         
-        inputGewicht.placeholder = "Vul uw gewicht in (KG)"
-        inputGewicht.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputGewicht.layer.borderWidth = 0
-        inputGewicht.keyboardType = UIKeyboardType.numberPad
-        self.inputGewicht.delegate = self
-        inputGewicht.addTarget(self, action: #selector(gewichtDidEndEditing(_:)), for: .editingDidEnd)
-    }
+        fetchConsultants()
+ }
     
-    @objc func lengteDidEndEditing(_ textField: UITextField)
+    private func fetchConsultants()
     {
-        // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorLengte, errorText: "Lengte kan niet leeg zijn")
-        
-        // Check and set error message if the length is not valid
-        textField.setErrorMessageInvalidLength(errorLabel: errorLengte, errorText: "Lengte heeft geen geldige waarde")
+        service.getConsultans(
+            withSuccess: { (consultants: [Consultant]) in
+                self.dropdown.isHidden = false
+                self.lstConsultants = consultants
+                self.getConsultantsNames()
+        }, orFailure: { (error: String) in
+            self.errorConsultant.isHidden = false
+            self.errorConsultant.text = "Er is iets fout gegaan bij het ophalen van de consulenten"
+        })
     }
     
-    @objc func gewichtDidEndEditing(_ textField: UITextField)
+    private func getConsultantsNames()
     {
-        // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorGewicht, errorText: "Gewicht kan niet leeg zijn")
-        
-        // Check and set error message if the weight is not valid
-        textField.setErrorMessageInvalidWeight(errorLabel: errorGewicht, errorText: "Gewicht heeft geen geldige waarde")
+        for index in 0 ..< lstConsultants.count
+        {
+            let name = lstConsultants[index].firstName
+                + " " + lstConsultants[index].lastName
+            self.lstConsultantsNames.append(name)
+        }
     }
     
-    // registerFinish
+    @IBAction func DropdownAction(_ sender: Any)
+    {
+        dropper?.delegate = self
+        dropper?.cornerRadius = 5
+        dropper?.items = lstConsultantsNames
+        dropper?.maxHeight = 400
+        dropper?.showWithAnimation(0.15, options: Dropper.Alignment.center, button: dropdown)
+    }
+    
+    func DropperSelectedRow(_ path: IndexPath, contents: String, tag: Int)
+    {
+        let consultant = lstConsultantsNames[path.row]
+        dropdown.setTitle("  " + consultant, for: .normal)
+        
+        for index in 0 ..< lstConsultants.count
+        {
+            let name = lstConsultants[index].firstName
+                + " " + lstConsultants[index].lastName
+            if (consultant == name)
+            {
+                user?.consultantId = lstConsultants[index].consultantId
+            }
+        }
+    }
+
     @IBAction func btnFinish_OnClick(_ sender: Any)
     {
-        if (!(inputLengte.text?.isEmpty)! &&
-            !(inputGewicht.text?.isEmpty)! &&
-            inputLengte.isValidNumberInput(minValue: 67, maxValue: 251) &&
-            inputGewicht.isValidNumberInput(minValue: 30, maxValue: 594))
+        if (!(user?.consultantId.isEmpty)!)
         {
-            user?.length = Int(inputLengte.text!)!
-            user?.weight = Int(inputGewicht.text!)!
-            
-            service.register(withSuccess: { (message: String) in
+            userService.register(withSuccess: { (message: String) in
                 self.performSegue(withIdentifier: "registerFinish", sender: self)
             }, orFailure: { (error: String) in
                 
