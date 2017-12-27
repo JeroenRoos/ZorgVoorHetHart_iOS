@@ -56,6 +56,7 @@
 		E87921451FEFEFB20022F0FE /* KeychainServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87921441FEFEFB20022F0FE /* KeychainServiceExtension.swift */; };
 		E879722B1FDAECA5002A8A2E /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */; };
 		E881A4B11FE991620056E893 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E881A4B01FE991620056E893 /* ArrayExtension.swift */; };
+		E8B2E2411FF40DC4005E6057 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2E2401FF40DC4005E6057 /* SessionManager.swift */; };
 		E8C6CEB31FEAB021003E07A7 /* MyAccountActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */; };
 		E8C7050F1FE9444A009806F2 /* MyRegisterStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C7050E1FE9444A009806F2 /* MyRegisterStep3ViewController.swift */; };
 		E8DF1B521FE42E1E000C8229 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */; };
@@ -146,6 +147,7 @@
 		E87921441FEFEFB20022F0FE /* KeychainServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceExtension.swift; sourceTree = "<group>"; };
 		E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		E881A4B01FE991620056E893 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		E8B2E2401FF40DC4005E6057 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountActivatedViewController.swift; sourceTree = "<group>"; };
 		E8C7050E1FE9444A009806F2 /* MyRegisterStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterStep3ViewController.swift; sourceTree = "<group>"; };
 		E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				E8702F0E1FD87E470044447C /* ConsultantsManager.swift */,
 				E812C5101FDEEBB400553E9D /* HealthIssuesService.swift */,
 				E812C5121FDEEBE000553E9D /* HealthIssuesManager.swift */,
+				E8B2E2401FF40DC4005E6057 /* SessionManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -725,6 +728,7 @@
 				900239FE1FBC93A600DFCD23 /* UIColorExtension.swift in Sources */,
 				900215B31FD1E61600D0E325 /* MyBloodPressureInformationViewController.swift in Sources */,
 				90D34D5F1FD580C900A17271 /* UIViewControllerExtension.swift in Sources */,
+				E8B2E2411FF40DC4005E6057 /* SessionManager.swift in Sources */,
 				90000AB71FD35CF100654235 /* UserExtension.swift in Sources */,
 				E879213E1FEFE85E0022F0FE /* KeychainService.swift in Sources */,
 				90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */,

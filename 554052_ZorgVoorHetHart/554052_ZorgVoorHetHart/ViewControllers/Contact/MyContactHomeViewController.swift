@@ -39,6 +39,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         inputOnderwerp.layer.borderWidth = 0
         inputOnderwerp.addTarget(self, action: #selector(subjectDidEndEditing(_:)), for: .editingDidEnd)
         self.inputOnderwerp.delegate = self
+        inputOnderwerp.layer.borderColor = UIColor.red.cgColor
         
         errorOnderwerp.textColor = UIColor.red
         errorOnderwerp.font = errorOnderwerp.font.withSize(10)
@@ -52,6 +53,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         inputBericht.layer.borderWidth = 0
         inputBericht.addTarget(self, action: #selector(messageDidEndEditing(_:)), for: .editingDidEnd)
         self.inputBericht.delegate = self
+        inputBericht.layer.borderColor = UIColor.red.cgColor
         
         errorBericht.textColor = UIColor.red
         errorBericht.font = errorBericht.font.withSize(10)

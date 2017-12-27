@@ -47,6 +47,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         inputEmail.keyboardType = UIKeyboardType.emailAddress
         inputEmail.addTarget(self, action: #selector(emailDidEndEditing(_:)), for: .editingDidEnd)
         self.inputEmail.delegate = self
+        inputEmail.layer.borderColor = UIColor.red.cgColor
         
         errorPassword.textColor = UIColor.red
         errorPassword.font = errorPassword.font.withSize(10)
@@ -58,6 +59,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         inputPassword.isSecureTextEntry = true
         inputPassword.addTarget(self, action: #selector(passwordDidEndEditing(_:)), for: .editingDidEnd)
         self.inputPassword.delegate = self
+        inputPassword.layer.borderColor = UIColor.red.cgColor
         
         errorPasswordCheck.textColor = UIColor.red
         errorPasswordCheck.font = errorPasswordCheck.font.withSize(10)
@@ -69,6 +71,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         inputPasswordCheck.isSecureTextEntry = true
         inputPasswordCheck.addTarget(self, action: #selector(passwordCheckDidEndEditing(_:)), for: .editingDidEnd)
         self.inputPasswordCheck.delegate = self
+        inputPasswordCheck.layer.borderColor = UIColor.red.cgColor
     }
 
     @IBAction func btnNext_OnClick(_ sender: Any)

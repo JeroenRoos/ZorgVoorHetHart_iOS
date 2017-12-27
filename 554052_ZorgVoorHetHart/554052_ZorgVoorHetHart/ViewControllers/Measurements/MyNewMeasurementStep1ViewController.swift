@@ -93,6 +93,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         inputBovendruk.keyboardType = UIKeyboardType.numberPad
         inputBovendruk.addTarget(self, action: #selector(bovendrukDidEndEditing(_:)), for: .editingDidEnd)
         self.inputBovendruk.delegate = self
+        inputBovendruk.layer.borderColor = UIColor.red.cgColor
         
         errorOnderdruk.textColor = UIColor.red
         errorOnderdruk.font = errorOnderdruk.font.withSize(10)
@@ -104,6 +105,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         inputOnderdruk.keyboardType = UIKeyboardType.numberPad
         inputOnderdruk.addTarget(self, action: #selector(onderdrukDidEndEditing(_:)), for: .editingDidEnd)
         self.inputOnderdruk.delegate = self
+        inputOnderdruk.layer.borderColor = UIColor.red.cgColor
         
         btnNext.setTitle("Volgende", for: .normal)
         btnNext.setTitleColor(UIColor.white, for: .normal)

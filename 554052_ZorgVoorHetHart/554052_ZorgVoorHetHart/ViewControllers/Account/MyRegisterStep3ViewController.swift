@@ -15,10 +15,8 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
     @IBOutlet weak var btnFinish: UIButton!
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var txtDescription: UILabel!
-    
     @IBOutlet weak var dropdown: UIButton!
-    private let decoder = JSONDecoder()
-    //private var user: User = User()
+    
     private var dropper: Dropper? = nil
     private var lstConsultants : [Consultant] = []
     private var lstConsultantsNames : [String] = []
@@ -52,6 +50,7 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         dropdown.layer.cornerRadius = 5
         dropdown.contentHorizontalAlignment = .left
         dropdown.isHidden = true
+        dropdown.layer.borderColor = UIColor.red.cgColor
         
         // https://github.com/kirkbyo/Dropper
         dropper = Dropper(width: dropdown.frame.width - 40, height: 300)
@@ -69,6 +68,7 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         }, orFailure: { (error: String) in
             self.errorConsultant.isHidden = false
             self.errorConsultant.text = "Er is iets fout gegaan bij het ophalen van de consulenten"
+            self.dropper?.layer.borderWidth = 1
         })
     }
     

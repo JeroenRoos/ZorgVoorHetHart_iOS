@@ -49,6 +49,8 @@ extension UITextField
     func setErrorMessageEmptyField(errorLabel: UILabel, errorText: String)
     {
         errorLabel.isHidden = false
+        self.layer.borderWidth = 1
+        
         if ((self.text?.isEmpty)!)
         {
             errorLabel.text = errorText
@@ -56,6 +58,7 @@ extension UITextField
         else
         {
             errorLabel.isHidden = true
+            self.layer.borderWidth = 0
         }
     }
     
@@ -64,6 +67,8 @@ extension UITextField
         if (!(self.text?.isEmpty)!)
         {
             errorLabel.isHidden = false
+            self.layer.borderWidth = 1
+            
             if (!self.isValidName())
             {
                 errorLabel.text = errorText
@@ -71,6 +76,7 @@ extension UITextField
             else
             {
                 errorLabel.isHidden = true
+                self.layer.borderWidth = 0
             }
         }
     }
@@ -80,6 +86,7 @@ extension UITextField
         if (!(self.text?.isEmpty)!)
         {
             errorLabel.isHidden = false
+            self.layer.borderWidth = 1
             if (!self.isValidEmail())
             {
                 errorLabel.text = errorText
@@ -87,6 +94,7 @@ extension UITextField
             else
             {
                 errorLabel.isHidden = true
+                self.layer.borderWidth = 0
             }
         }
     }
@@ -96,6 +104,7 @@ extension UITextField
         if (!(self.text?.isEmpty)!)
         {
             errorLabel.isHidden = false
+            self.layer.borderWidth = 1
             if (self.text != otherPassword.text)
             {
                 errorLabel.text = errorText
@@ -103,6 +112,7 @@ extension UITextField
             else
             {
                 errorLabel.isHidden = true
+                self.layer.borderWidth = 0
             }
         }
     }
@@ -112,6 +122,7 @@ extension UITextField
         if (!(self.text?.isEmpty)!)
         {
             errorLabel.isHidden = false
+            self.layer.borderWidth = 1
             // Heaviest man living = 594 kg
             if (!self.isValidNumberInput(minValue: 30, maxValue: 594))
             {
@@ -120,6 +131,7 @@ extension UITextField
             else
             {
                 errorLabel.isHidden = true
+                self.layer.borderWidth = 0
             }
         }
     }
@@ -129,6 +141,7 @@ extension UITextField
         if (!(self.text?.isEmpty)!)
         {
             errorLabel.isHidden = false
+            self.layer.borderWidth = 1
             // Smallest man living = 67 cm & Tallest man living = 251 cm
             if (!self.isValidNumberInput(minValue: 67, maxValue: 251))
             {
@@ -137,6 +150,7 @@ extension UITextField
             else
             {
                 errorLabel.isHidden = true
+                self.layer.borderWidth = 0
             }
         }
     }
@@ -146,6 +160,7 @@ extension UITextField
         if (!(self.text?.isEmpty)!)
         {
             errorLabel.isHidden = false
+            self.layer.borderWidth = 1
             if (!self.isValidNumberInput(minValue: 30, maxValue: 110))
             {
                 errorLabel.text = errorText
@@ -153,6 +168,7 @@ extension UITextField
             else
             {
                 errorLabel.isHidden = true
+                self.layer.borderWidth = 0
             }
         }
     }
@@ -162,6 +178,7 @@ extension UITextField
         if (!(self.text?.isEmpty)!)
         {
             errorLabel.isHidden = false
+            self.layer.borderWidth = 1
             if (!self.isValidNumberInput(minValue: 60, maxValue: 200))
             {
                 errorLabel.text = errorText
@@ -169,6 +186,7 @@ extension UITextField
             else
             {
                 errorLabel.isHidden = true
+                self.layer.borderWidth = 0
             }
         }
     }

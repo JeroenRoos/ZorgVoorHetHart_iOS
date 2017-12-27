@@ -49,6 +49,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         self.inputEmail.delegate = self
         inputEmail.text = ""
         inputEmail.addTarget(self, action: #selector(emailDidEndEditing(_:)), for: .editingDidEnd)
+        inputEmail.layer.borderColor = UIColor.red.cgColor
       
         errorPassword.textColor = UIColor.red
         errorPassword.font = errorPassword.font.withSize(10)
@@ -60,6 +61,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         inputPassword.layer.borderWidth = 0
         inputPassword.addTarget(self, action: #selector(passwordDidEndEditing(_:)), for: .editingDidEnd)
         self.inputPassword.delegate = self
+        inputPassword.layer.borderColor = UIColor.red.cgColor
     }
     
     override func viewWillAppear(_ animated: Bool)

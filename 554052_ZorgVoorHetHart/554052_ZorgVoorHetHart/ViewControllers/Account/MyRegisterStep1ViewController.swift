@@ -7,9 +7,8 @@
 //
 
 import UIKit
-//import Dropper
 
-class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate//, DropperDelegate
+class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
 {
     @IBOutlet weak var testBtn: UIBarButtonItem!
     @IBOutlet weak var btnNext: UIButton!
@@ -27,15 +26,6 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate//, Dr
     @IBOutlet weak var errorLengte: UILabel!
     @IBOutlet weak var errorGewicht: UILabel!
     private var user: User = User()
-    //@IBOutlet weak var errorConsultant: UILabel!
-    
-    /*@IBOutlet weak var dropdown: UIButton!
-    private let decoder = JSONDecoder()
-    private var user: User = User()
-    private var dropper: Dropper? = nil
-    private var lstConsultants : [Consultant] = []
-    private var lstConsultantsNames : [String] = []
-    private let service: ConsultantsService = ConsultantsService() */
     
     override func viewDidLoad()
     {
@@ -71,6 +61,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate//, Dr
         inputDatefOfBirth.layer.borderWidth = 0
         inputDatefOfBirth.addTarget(self, action: #selector(dateOfBirthDidEndEditing(_:)), for: .editingDidEnd)
         self.inputDatefOfBirth.delegate = self
+        inputDatefOfBirth.layer.borderColor = UIColor.red.cgColor
         
         errorName.textColor = UIColor.red
         errorName.font = errorName.font.withSize(10)
@@ -81,6 +72,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate//, Dr
         inputName.layer.borderWidth = 0
         self.inputName.delegate = self
         inputName.addTarget(self, action: #selector(nameDidEndEditing(_:)), for: .editingDidEnd)
+        inputName.layer.borderColor = UIColor.red.cgColor
         
         errorLengte.textColor = UIColor.red
         errorLengte.font = errorLengte.font.withSize(10)
@@ -92,6 +84,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate//, Dr
         inputLengte.keyboardType = UIKeyboardType.numberPad
         self.inputLengte.delegate = self
         inputLengte.addTarget(self, action: #selector(lengteDidEndEditing(_:)), for: .editingDidEnd)
+        inputLengte.layer.borderColor = UIColor.red.cgColor
         
         errorGewicht.textColor = UIColor.red
         errorGewicht.font = errorGewicht.font.withSize(10)
@@ -103,6 +96,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate//, Dr
         inputGewicht.keyboardType = UIKeyboardType.numberPad
         self.inputGewicht.delegate = self
         inputGewicht.addTarget(self, action: #selector(gewichtDidEndEditing(_:)), for: .editingDidEnd)
+        inputGewicht.layer.borderColor = UIColor.red.cgColor
     }
 
     override func didReceiveMemoryWarning()
