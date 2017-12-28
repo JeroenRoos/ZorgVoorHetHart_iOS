@@ -33,8 +33,17 @@ class MyNewMeasurementFinishedViewController: UIViewController
     
     @IBAction func btnCheckDiary_OnClick(_ sender: Any)
     {
-        // ...
+        let lstViewControllers = self.tabBarController?.viewControllers!
+        //[1] as! MyMeasurementsDiaryHomeViewController
         
+        let navC = lstViewControllers![1]
+        let vc = navC.childViewControllers[0] as! MyMeasurementsDiaryHomeViewController
+        vc.updateMeasurements = true
+        
+        //.splitViewController[0] as! MyMeasurementsDiaryHomeViewController
+        
+        //let viewController = lstViewControllers![1] as! MyMeasurementsDiaryHomeViewController
+        //viewController.updateMeasurements = true
         self.tabBarController?.selectedIndex = 1
         self.navigationController?.popToRootViewController(animated: true)
     }

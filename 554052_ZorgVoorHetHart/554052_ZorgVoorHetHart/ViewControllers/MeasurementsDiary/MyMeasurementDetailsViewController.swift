@@ -66,14 +66,16 @@ class MyMeasurementDetailsViewController: UIViewController
         // Red text color       = 0xEB6666
         
         
-        if (!(clickedMeasurement?.healthIssueIds?.isEmpty)!)
+        if (clickedMeasurement?.healthIssueIds != nil &&
+            !(clickedMeasurement?.healthIssueIds?.isEmpty)!)
         {
             getHealthIssues()
         }
         else
         {
-            self.txtKlachten.isHidden = true
-            self.txtKlachtenTitle.isHidden = true
+            //self.txtKlachten.isHidden = true
+            //self.txtKlachtenTitle.isHidden = false
+            self.txtKlachten.text = "U had geen gezondheidsklachten."
         }
     }
     

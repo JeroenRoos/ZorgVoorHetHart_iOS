@@ -18,7 +18,7 @@ class MeasurementManager
                                andMeasurement measurement: Measurement)
     {
         let parameters: [String: Any] = ["bloodPressureLower" : measurement.bloodPressureLower,
-                                         "bloodPressureUpper" : measurement.bloodPressureLower,
+                                         "bloodPressureUpper" : measurement.bloodPressureUpper,
                                          "healthIssuesIds" : measurement.healthIssueIds ?? [],
                                          "healthIssueOther" : measurement.healthIssueOther ?? "",]
         

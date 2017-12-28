@@ -36,7 +36,10 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         self.title = "Nieuwe meting: stap 2 van 3"
         self.hideKeyboardWhenTappedAround()
-        measurement?.healthIssueIds = []
+        
+
+            measurement?.healthIssueIds = []
+            measurement?.healthIssueOther = ""
         
         txtDate.text = (Date().getCurrentWeekdayAndDate())
         txtDate.font = txtDate.font.withSize(12)
@@ -129,7 +132,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         }
         if (!(inputOther.text?.isEmpty)!)
         {
-            measurement?.healthIssueOther = inputOther.text
+            measurement?.healthIssueOther? = inputOther.text!
         }
         measurement?.userId = (User.loggedinUser?.userId)!
         

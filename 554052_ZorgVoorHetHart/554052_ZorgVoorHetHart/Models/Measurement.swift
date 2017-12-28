@@ -23,7 +23,7 @@ class Measurement: Decodable
         case measurementId = "_id"
         case bloodPressureLower = "bloodPressureLower"
         case bloodPressureUpper = "bloodPressureUpper"
-        case healthIssueIds = "healthIssueIds"
+        case healthIssueIds = "healthIssuesIds"
         case healthIssueOther = "healthIssueOther"
         case userId = "userId"
         case measurementDateTime = "measurementDateTime"

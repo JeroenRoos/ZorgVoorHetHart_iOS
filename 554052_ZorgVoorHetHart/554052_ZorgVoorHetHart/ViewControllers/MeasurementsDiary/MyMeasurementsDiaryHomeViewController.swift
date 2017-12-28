@@ -20,6 +20,7 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     
     var lstMeasurements: [Measurement] = []
     let service: MeasurementService = MeasurementService()
+    var updateMeasurements: Bool = false
     
     override func viewDidLoad()
     {
@@ -54,12 +55,22 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         fetchMeasurements()
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        if (updateMeasurements)
+        {
+            lstMeasurements.removeAll()
+            fetchMeasurements()
+            updateMeasurements = false
+        }
+    }
+    
     private func fetchMeasurements()
     {
         service.getMeasurements(
             withSuccess: { (measurements: [Measurement]) in
                 self.lstMeasurements = measurements
-                
+                self.lstMeasurements.reverse()
                 DispatchQueue.main.async {
                     self.tableViewMeasurements.reloadData()
                 }

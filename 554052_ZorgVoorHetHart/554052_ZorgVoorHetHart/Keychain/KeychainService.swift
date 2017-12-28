@@ -48,6 +48,9 @@ class KeychainService: NSObject
         // Instantiate a new default keychain query
         let keychainQuery: NSMutableDictionary = NSMutableDictionary(objects: [kSecClassGenericPasswordValue, service, account, kCFBooleanTrue, kSecMatchLimitOneValue], forKeys: [kSecClassValue, kSecAttrServiceValue, kSecAttrAccountValue, kSecReturnDataValue, kSecMatchLimitValue])
         
+        keychainQuery.removeObject(forKey: kSecReturnDataValue)
+        keychainQuery.removeObject(forKey: kSecMatchLimitValue)
+        
         // Delete any existing items
         let status = SecItemDelete(keychainQuery as CFDictionary)
         if (status != errSecSuccess)

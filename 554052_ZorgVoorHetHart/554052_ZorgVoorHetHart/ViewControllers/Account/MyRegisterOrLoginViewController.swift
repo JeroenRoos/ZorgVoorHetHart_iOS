@@ -25,19 +25,22 @@ class MyRegisterOrLoginViewController: UIViewController
         super.viewDidLoad()
         self.title = "Inloggen / Registreren"
         
-        // Retrieve Email and Password if they exist in the keychain
-        let passwordService = KeychainService().passwordService
-        let emailService = KeychainService().emailService
-        let account = KeychainService().keychainAccount
-        if let str = KeychainService.load(service: passwordService, account: account)
+        if (defaults.bool(forKey: "automaticLogin"))
         {
-            retrievedPassword = str
+            // Retrieve Email and Password if they exist in the keychain
+            let passwordService = KeychainService().passwordService
+            let emailService = KeychainService().emailService
+            let account = KeychainService().keychainAccount
+            if let str = KeychainService.load(service: passwordService, account: account)
+            {
+                retrievedPassword = str
+            }
+            if let str = KeychainService.load(service: emailService, account: account)
+            {
+                retrievedEmail = str
+            }
+            tryAutomaticLogin()
         }
-        if let str = KeychainService.load(service: emailService, account: account)
-        {
-            retrievedEmail = str
-        }
-        tryAutomaticLogin()
         
         txtOf.text = "of"
         txtOf.textColor = UIColor.black
@@ -55,8 +58,7 @@ class MyRegisterOrLoginViewController: UIViewController
     private func tryAutomaticLogin()
     {
         if (retrievedEmail != ""
-            && retrievedPassword != ""
-            && defaults.bool(forKey: "automaticLogin"))
+            && retrievedPassword != "")
         {
             service.login(withSuccess: { (user: User) in
                 User.loggedinUser = user
