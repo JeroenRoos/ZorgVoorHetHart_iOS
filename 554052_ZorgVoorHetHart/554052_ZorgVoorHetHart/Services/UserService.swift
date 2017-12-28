@@ -21,7 +21,8 @@ class UserService
             success(user)
         }, orFailure: { (error: String) in
             failure(error)
-        }, andEmail: email, andPassword: password)
+        }, andEmail: email,
+           andPassword: password)
     }
     
     func register(withSuccess success: @escaping (String)->(), 
@@ -44,7 +45,34 @@ class UserService
             success(message)
         }, orFailure: { (error: String) in
             failure(error)
-        }, andLength: length, andWeight: weight)
+        }, andLength: length,
+           andWeight: weight)
+    }
+    
+    func forgotPassword(withSuccess success: @escaping (String)->(), 
+                        orFailure failure: @escaping (String)->(),
+                        andEmail email: String)
+    {
+        manager.forgotPassword(withSuccess: { (message: String) in
+            success(message)
+        }, orFailure: { (error: String) in
+            failure(error)
+        }, andEmail: email)
+    }
+    
+    func resetPassword(withSuccess success: @escaping (String)->(), 
+                       orFailure failure: @escaping (String)->(),
+                       andPassword password: String,
+                       andPasswordCheck confirmPassword: String,
+                       andToken token: String)
+    {
+        manager.resetPassword(withSuccess: { (message: String) in
+            success(message)
+        }, orFailure: { (error: String) in
+            failure(error)
+        }, andPassword: password,
+           andPasswordCheck: confirmPassword,
+           andToken: token)
     }
     
     func activateAccount(withSuccess success: @escaping (String)->(), 

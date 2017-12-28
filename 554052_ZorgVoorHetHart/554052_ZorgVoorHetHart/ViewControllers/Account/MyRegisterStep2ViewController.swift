@@ -65,7 +65,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         errorPasswordCheck.font = errorPasswordCheck.font.withSize(10)
         errorPasswordCheck.isHidden = true
         
-        inputPasswordCheck.placeholder = "Vul uw wachtwoord in"
+        inputPasswordCheck.placeholder = "Herhaal uw wachtwoord in"
         inputPasswordCheck.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPasswordCheck.layer.borderWidth = 0
         inputPasswordCheck.isSecureTextEntry = true

@@ -85,7 +85,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
                 self.performSegue(withIdentifier: "send", sender: self)
             }, orFailure: { (error: String) in
                 
-            }, andSubject: subject!, andMessage: message!, andUserId: (User.loggedinUser?.userId)!)
+            }, andSubject: subject!, andMessage: message!)
         }
     }
     

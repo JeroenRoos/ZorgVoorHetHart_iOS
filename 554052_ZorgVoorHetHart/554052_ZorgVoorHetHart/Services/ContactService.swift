@@ -15,14 +15,13 @@ class ContactService
     func sendMessage(withSuccess success: @escaping (String)->(), 
                      orFailure failure: @escaping (String)->(),
                      andSubject subject: String,
-                     andMessage message: String,
-                     andUserId userId: String)
+                     andMessage message: String)
     {
         manager.sendMessage(withSuccess: { (message: String) in
             success(message)
         }, orFailure: { (error: String) in
             failure(message)
-        }, andSubject: subject, andMessage: message, andUserId: userId)
+        }, andSubject: subject, andMessage: message)
     }
 
 }

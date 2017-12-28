@@ -139,6 +139,84 @@ class UserManager
         }
     }
     
+    func forgotPassword(withSuccess success: @escaping (String)->(), 
+                         orFailure failure: @escaping (String)->(),
+                         andEmail email: String)
+    {
+        var url = baseURL!.absoluteString
+        url += "forgotPassword?emailAddress=" + email
+        
+        Alamofire.request(url,
+                          method: .post,
+                          encoding: JSONEncoding.default)
+            .validate()
+            .responseString { response in
+                print("Request: \(response.request!)")
+                print("Response: \(String(describing: response.response))")
+                print("Result: \(response.result)")
+                
+                if (response.result.isSuccess)
+                {
+                    success("Succes!")
+                }
+                else
+                {
+                    print(response.error!)
+                    print(response.result.error!)
+                    failure("Er is iets fout gegaan tijdens het versturen van de email.")
+                }
+        }
+    }
+    
+    func resetPassword(withSuccess success: @escaping (String)->(), 
+                        orFailure failure: @escaping (String)->(),
+                        andPassword password: String,
+                        andPasswordCheck confirmPassword: String,
+                        andToken token: String)
+    {
+        let url = URL(string: "resetPassword", relativeTo: baseURL)
+        let parameters: [String: Any] = ["password" : password,
+                                        "confirmedPassword" : confirmPassword,
+                                        "token" : token]
+        
+        Alamofire.request(url!,
+                          method: .put,
+                          parameters: parameters,
+                          encoding: JSONEncoding.default)
+            .validate() 
+            .responseJSON { response in
+                print("Request: \(String(describing: response.request))")
+                print("Result: \(response.result)")
+                switch response.result
+                {
+                // Response code 200 ..< 300
+                case .success:
+                    if let data = response.data
+                    {
+                        do
+                        {
+                            // Try to decode the received data to a User object
+                            _ = try JSONDecoder().decode(User.self, from: data )
+                            success("result")
+                        }
+                        catch
+                        {
+                            print(response.error!)
+                            print(response.result.error!)
+                            let error: String = "Er is iets fout gegaan tijdens het aanpassen van uw wachtwoord."
+                            failure(error)
+                        }
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                    print(response.error!)
+                    print(response.result.error!)
+                    failure("Er is iets fout gegaan tijdens het aanpassen van uw wachtwoord")
+                }
+        }
+    }
+    
     func activateAccount(withSuccess success: @escaping (String)->(), 
                          orFailure failure: @escaping (String)->(),
                          andToken token: String)

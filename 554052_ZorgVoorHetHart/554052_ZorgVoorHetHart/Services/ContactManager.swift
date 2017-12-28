@@ -16,13 +16,11 @@ class ContactManager
     func sendMessage(withSuccess success: @escaping (String)->(), 
                      orFailure failure: @escaping (String)->(),
                      andSubject subject: String,
-                     andMessage message: String,
-                     andUserId userId: String)
+                     andMessage message: String)
     {
         
         let parameter: [String: Any] = ["subject" : subject,
-                                        "message" : message,
-                                        "userId" : userId]
+                                        "message" : message]
         
         Alamofire.request(baseURL!,
                           method: .post,

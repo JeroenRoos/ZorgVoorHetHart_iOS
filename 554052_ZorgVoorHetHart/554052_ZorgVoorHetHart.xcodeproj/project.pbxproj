@@ -59,6 +59,10 @@
 		E8B2E2411FF40DC4005E6057 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2E2401FF40DC4005E6057 /* SessionManager.swift */; };
 		E8C6CEB31FEAB021003E07A7 /* MyAccountActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */; };
 		E8C7050F1FE9444A009806F2 /* MyRegisterStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C7050E1FE9444A009806F2 /* MyRegisterStep3ViewController.swift */; };
+		E8CF342B1FF52EB7000D57F3 /* MyPasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF342A1FF52EB7000D57F3 /* MyPasswordResetViewController.swift */; };
+		E8CF342D1FF53188000D57F3 /* MyPasswordResetEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF342C1FF53188000D57F3 /* MyPasswordResetEmailViewController.swift */; };
+		E8CF342F1FF544DB000D57F3 /* MyPasswordResetDeeplinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF342E1FF544DB000D57F3 /* MyPasswordResetDeeplinkViewController.swift */; };
+		E8CF34311FF54B98000D57F3 /* MyPasswordResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF34301FF54B98000D57F3 /* MyPasswordResetSuccessViewController.swift */; };
 		E8DF1B521FE42E1E000C8229 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */; };
 		E8F79BFD1FD85C1500033926 /* MeasurementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79BFC1FD85C1500033926 /* MeasurementService.swift */; };
 		E8F79BFF1FD85C3300033926 /* MeasurementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F79BFE1FD85C3300033926 /* MeasurementManager.swift */; };
@@ -150,6 +154,10 @@
 		E8B2E2401FF40DC4005E6057 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountActivatedViewController.swift; sourceTree = "<group>"; };
 		E8C7050E1FE9444A009806F2 /* MyRegisterStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterStep3ViewController.swift; sourceTree = "<group>"; };
+		E8CF342A1FF52EB7000D57F3 /* MyPasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasswordResetViewController.swift; sourceTree = "<group>"; };
+		E8CF342C1FF53188000D57F3 /* MyPasswordResetEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasswordResetEmailViewController.swift; sourceTree = "<group>"; };
+		E8CF342E1FF544DB000D57F3 /* MyPasswordResetDeeplinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasswordResetDeeplinkViewController.swift; sourceTree = "<group>"; };
+		E8CF34301FF54B98000D57F3 /* MyPasswordResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasswordResetSuccessViewController.swift; sourceTree = "<group>"; };
 		E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		E8F79BFC1FD85C1500033926 /* MeasurementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementService.swift; sourceTree = "<group>"; };
 		E8F79BFE1FD85C3300033926 /* MeasurementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementManager.swift; sourceTree = "<group>"; };
@@ -205,6 +213,10 @@
 				9065C5301FC22BDD00760062 /* MyRegisterFinishedViewController.swift */,
 				E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */,
 				900239FF1FBC9EDC00DFCD23 /* MyLoginViewController.swift */,
+				E8CF342A1FF52EB7000D57F3 /* MyPasswordResetViewController.swift */,
+				E8CF342C1FF53188000D57F3 /* MyPasswordResetEmailViewController.swift */,
+				E8CF342E1FF544DB000D57F3 /* MyPasswordResetDeeplinkViewController.swift */,
+				E8CF34301FF54B98000D57F3 /* MyPasswordResetSuccessViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -732,16 +744,20 @@
 				90000AB71FD35CF100654235 /* UserExtension.swift in Sources */,
 				E879213E1FEFE85E0022F0FE /* KeychainService.swift in Sources */,
 				90C953151FC743EA001FD3C2 /* MyMeasurementsDiaryHomeViewController.swift in Sources */,
+				E8CF342F1FF544DB000D57F3 /* MyPasswordResetDeeplinkViewController.swift in Sources */,
 				901821A11FCC9FD400937DDB /* MyNewMeasurementFinishedViewController.swift in Sources */,
 				9018219F1FCC610100937DDB /* MyNewMeasurementStep3ViewController.swift in Sources */,
 				E87921451FEFEFB20022F0FE /* KeychainServiceExtension.swift in Sources */,
 				E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */,
 				90E6E7351FCDAED800583804 /* UINavigationControllerExtension.swift in Sources */,
+				E8CF342D1FF53188000D57F3 /* MyPasswordResetEmailViewController.swift in Sources */,
 				E881A4B11FE991620056E893 /* ArrayExtension.swift in Sources */,
 				E8F79C011FD85C5F00033926 /* ContactService.swift in Sources */,
+				E8CF34311FF54B98000D57F3 /* MyPasswordResetSuccessViewController.swift in Sources */,
 				90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */,
 				90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */,
 				9065C5311FC22BDD00760062 /* MyRegisterFinishedViewController.swift in Sources */,
+				E8CF342B1FF52EB7000D57F3 /* MyPasswordResetViewController.swift in Sources */,
 				90C953171FC74454001FD3C2 /* MyContactHomeViewController.swift in Sources */,
 				E8702F0B1FD87C680044447C /* Consultant.swift in Sources */,
 				90023A021FBC9F8F00DFCD23 /* MyRegisterStep2ViewController.swift in Sources */,

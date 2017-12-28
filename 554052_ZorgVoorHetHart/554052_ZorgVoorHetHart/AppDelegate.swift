@@ -52,18 +52,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                       annotation: Any) -> Bool
     {
         let urlString = url.absoluteString
-        let array = urlString.split(separator: ":")
+        let array = urlString.split(separator: ":", maxSplits: 1).map(String.init)
         print(array[1])
             
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        if (array[1] == "//login")
+        if (array[1].contains("login"))
         {
             let destinationViewController = storyboard.instantiateViewController(withIdentifier: "activateAccountViewController") as! MyAccountActivatedViewController
             destinationViewController.activationToken = String(array[1])
             
             let navigationController = self.window?.rootViewController as! UINavigationController
             navigationController.pushViewController(destinationViewController, animated: true)
+        }
+        else if (array[1].contains("resetpassword"))
+        {
+            let path = array[1].split(separator: "/")
+            print(path[0])
+            print(path[1])
+            
+            let destinationViewController = storyboard.instantiateViewController(withIdentifier: "passwordResetDeeplinkViewController") as! MyPasswordResetDeeplinkViewController
+            destinationViewController.resetToken = String(path[1])
+            
+            let navigationController = self.window?.rootViewController as! UINavigationController
+            navigationController.pushViewController(destinationViewController, animated: true)
+        }
+        else
+        {
+            // Something went wrong
         }
         
         return true

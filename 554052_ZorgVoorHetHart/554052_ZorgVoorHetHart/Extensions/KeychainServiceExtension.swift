@@ -20,6 +20,11 @@ extension KeychainService
         return "ZvhHKeychainEmailService"
     }
     
+    var consultantService: String
+    {
+        return "ZvhHKeychainConsultantService"
+    }
+    
     var keychainAccount: String
     {
         return "ZvhHLoggedinAccount"

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//private var xoAssociationKey: UInt8 = 0
 
 extension UITextField
 {
@@ -59,6 +58,7 @@ extension UITextField
         {
             errorLabel.isHidden = true
             self.layer.borderWidth = 0
+
         }
     }
     
