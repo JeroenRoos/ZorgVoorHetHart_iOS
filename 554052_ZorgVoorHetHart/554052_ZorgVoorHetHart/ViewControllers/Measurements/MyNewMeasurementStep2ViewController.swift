@@ -30,16 +30,13 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     private let service: HealthIssuesService = HealthIssuesService()
     private let measurementService: MeasurementService = MeasurementService()
     var measurement: Measurement? = nil
+    var editingMeasurement: Bool = false
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.title = "Nieuwe meting: stap 2 van 3"
         self.hideKeyboardWhenTappedAround()
-        
-
-            measurement?.healthIssueIds = []
-            measurement?.healthIssueOther = ""
         
         txtDate.text = (Date().getCurrentWeekdayAndDate())
         txtDate.font = txtDate.font.withSize(12)
@@ -99,6 +96,16 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                     self.lstCheckboxes[i].setTitle(self.lstHealthIssues[i].name, for: .normal)
                     self.lstCheckboxes[i].accessibilityIdentifier = self.lstHealthIssues[i].issueId
                 }
+                
+                if (!self.editingMeasurement)
+                {
+                    self.measurement?.healthIssueIds = []
+                    self.measurement?.healthIssueOther = ""
+                }
+                else if (self.editingMeasurement && !(self.measurement?.healthIssueIds?.isEmpty)!)
+                {
+                    self.setCheckboxesAndTextField()
+                }
         }, orFailure: { (error: String) in
             for checkbox in self.lstCheckboxes
             {
@@ -106,6 +113,31 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                 checkbox.setTitleColor(UIColor.black, for: .normal)
             }
         })
+    }
+    
+    private func setCheckboxesAndTextField()
+    {
+        complaintsHiddenStateChange(state: false)
+        radioComplaints.isChecked = true
+        radioNoComplaints.isChecked = false
+        
+        for i in 0 ..< (self.measurement?.healthIssueIds?.count)!
+        {
+            for checkbox in lstCheckboxes
+            {
+                print(checkbox.accessibilityIdentifier ?? "")
+                if (checkbox.accessibilityIdentifier! == measurement?.healthIssueIds![i])
+                {
+                    checkbox.isChecked = true
+                    break
+                }
+            }
+        }
+        
+        if (measurement?.healthIssueOther != "")
+        {
+            inputOther.text = measurement?.healthIssueOther!
+        }
     }
 
     override func didReceiveMemoryWarning()
@@ -121,6 +153,8 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
+        // Check if the list with ID's already contains the ID (needed when editing the measurement)
+        measurement?.healthIssueIds?.removeAll()
         for checkbox in lstCheckboxes
         {
             if (checkbox.isChecked)

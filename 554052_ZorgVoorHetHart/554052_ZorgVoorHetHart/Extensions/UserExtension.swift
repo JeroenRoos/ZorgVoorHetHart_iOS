@@ -24,9 +24,10 @@ extension User
         try container.encode(gender, forKey: .gender)
     }
 }
+
 extension User
 {
-    func convertToDictionary(user: User) -> Dictionary<String, Any> {
+    func convertToDictionary(withUser user: User) -> Dictionary<String, Any> {
         
         return [
             "emailAddress": user.emailAddress,
@@ -41,25 +42,3 @@ extension User
         ]
     }
 }
-
-/*
-extension User: Decodable
-{
-    init(from decoder: Decoder) throws
-    {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        emailAddress = try values.decode(String.self, forKey: .emailAddress)
-        password = try values.decode(String.self, forKey: .password)
-        authToken = try values.decode(String.self, forKey: .authToken)
-        firstName = try values.decode(String.self, forKey: .firstName)
-        lastName = try values.decode(String.self, forKey: .lastName)
-        consultantId = try values.decode(String.self, forKey: .consultantId)
-        dateOfBirth = try values.decode(Date.self, forKey: .dateOfBirth)
-        gender = try values.decode(Int.self, forKey: .gender)
-        length = try values.decode(Int.self, forKey: .length)
-        weight = try values.decode(Int.self, forKey: .weight)
-        resetPasswordToken = try values.decode(String.self, forKey: .resetPasswordToken)
-        isActivated = try values.decode(Bool.self, forKey: .isActivated)
-        activationToken = try values.decode(String.self, forKey: .activationToken)
-    }
-}*/

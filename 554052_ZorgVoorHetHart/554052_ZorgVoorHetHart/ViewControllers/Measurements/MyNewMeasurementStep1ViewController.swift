@@ -32,12 +32,12 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var imgMiddelSquare: UIImageView!
     
     private let service: UserService = UserService()
-    private var measurement: Measurement = Measurement()
+    var measurement: Measurement? = nil
+    var editingMeasurement: Bool = false
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Nieuwe meting: stap 1 van 3"
         self.hideKeyboardWhenTappedAround()
         
         backgroundImage.alpha = 0.5
@@ -115,6 +115,19 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         btnCancel.setTitleColor(UIColor.white, for: .normal)
         btnCancel.backgroundColor = UIColor(rgb: 0xA9A9A9)
         
+        if (measurement == nil)
+        {
+            measurement = Measurement()
+            self.title = "Nieuwe meting: stap 1 van 3"
+        }
+        else
+        {
+            inputBovendruk.text = String((measurement?.bloodPressureUpper)!)
+            inputOnderdruk.text = String((measurement?.bloodPressureLower)!)
+            editingMeasurement = true
+            self.title = "Meting aanpassen: stap 1 van 3"
+        }
+        
         // Voor nu wordt lengte en gewicht verplaatst naar registreren
         self.btnContinuePopup.isHidden = true
         self.btnCancelPopup.isHidden = true
@@ -139,8 +152,8 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
             inputBovendruk.isValidNumberInput(minValue: 60, maxValue: 200) &&
             inputOnderdruk.isValidNumberInput(minValue: 30, maxValue: 110))
         {
-            measurement.bloodPressureLower = Int(inputOnderdruk.text!)!
-            measurement.bloodPressureUpper = Int(inputBovendruk.text!)!
+            measurement?.bloodPressureLower = Int(inputOnderdruk.text!)!
+            measurement?.bloodPressureUpper = Int(inputBovendruk.text!)!
             
             self.performSegue(withIdentifier: "measurementNext", sender: self)
         }
@@ -154,6 +167,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
             if let viewController = segue.destination as? MyNewMeasurementStep2ViewController
             {
                 viewController.measurement = measurement
+                viewController.editingMeasurement = editingMeasurement
             }
         }
     }

@@ -66,7 +66,7 @@ class UserManager
                   andUser user: User)
     {
         let url = URL(string: "register", relativeTo: baseURL)
-        let dictUser = User().convertToDictionary(user: user)
+        let dictUser = User().convertToDictionary(withUser: user)
         
         Alamofire.request(url!,
                           method: .post,

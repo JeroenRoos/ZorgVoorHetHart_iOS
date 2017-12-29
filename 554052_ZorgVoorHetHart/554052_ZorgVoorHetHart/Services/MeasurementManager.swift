@@ -17,11 +17,11 @@ class MeasurementManager
                                orFailure failure: @escaping (String)->(),
                                andMeasurement measurement: Measurement)
     {
-        let parameters: [String: Any] = ["bloodPressureLower" : measurement.bloodPressureLower,
+        /*let parameters: [String: Any] = ["bloodPressureLower" : measurement.bloodPressureLower,
                                          "bloodPressureUpper" : measurement.bloodPressureUpper,
                                          "healthIssuesIds" : measurement.healthIssueIds ?? [],
-                                         "healthIssueOther" : measurement.healthIssueOther ?? "",]
-        
+                                         "healthIssueOther" : measurement.healthIssueOther ?? ""] */
+        let parameters = Measurement().convertToDictionary(withMeasurement: measurement)
         let headers = ["x-authtoken" : User.loggedinUser?.authToken ?? ""]
         
         Alamofire.request(baseURL!,
@@ -88,10 +88,11 @@ class MeasurementManager
                            orFailure failure: @escaping (String)->(),
                            andMeasurement measurement: Measurement)
     {
-        let parameters: [String: Any] = ["bloodPressureLower" : measurement.bloodPressureLower,
-                                         "bloodPressureUpper" : measurement.bloodPressureLower,
-                                         "healthIssuesIds" : measurement.healthIssueIds ?? [],
-                                         "healthIssueOther" : measurement.healthIssueOther ?? "",]
+        //let parameters: [String: Any] = ["bloodPressureLower" : measurement.bloodPressureLower,
+          //                               "bloodPressureUpper" : measurement.bloodPressureLower,
+            //                             "healthIssuesIds" : measurement.healthIssueIds ?? [],
+              //                           "healthIssueOther" : measurement.healthIssueOther ?? "",]
+        let parameters = Measurement().convertToDictionary(withMeasurement: measurement)
         let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         
         Alamofire.request(baseURL!,

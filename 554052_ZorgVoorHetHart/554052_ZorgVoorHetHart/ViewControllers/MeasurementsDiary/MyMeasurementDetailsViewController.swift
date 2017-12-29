@@ -96,7 +96,29 @@ class MyMeasurementDetailsViewController: UIViewController
             self.txtKlachten.isHidden = true
         })
     }
-
+    
+    @IBAction func btnEdit_OnClick(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "editMeasurement", sender: self)
+    }
+    
+    @IBAction func btnBack_OnClick(_ sender: Any)
+    {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        // Pass measurement to next ViewController
+        if(segue.identifier == "editMeasurement")
+        {
+            if let viewController = segue.destination as? MyNewMeasurementStep1ViewController
+            {
+                viewController.measurement = clickedMeasurement
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()

@@ -49,6 +49,7 @@
 		E812C5131FDEEBE000553E9D /* HealthIssuesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812C5121FDEEBE000553E9D /* HealthIssuesManager.swift */; };
 		E812C5151FDEEE4200553E9D /* HealthIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812C5141FDEEE4200553E9D /* HealthIssue.swift */; };
 		E812C5171FDEF8E400553E9D /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812C5161FDEF8E400553E9D /* Measurement.swift */; };
+		E83889BB1FF66AD6006993FB /* MeasurementExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83889BA1FF66AD6006993FB /* MeasurementExtension.swift */; };
 		E8702F0B1FD87C680044447C /* Consultant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0A1FD87C680044447C /* Consultant.swift */; };
 		E8702F0D1FD87DC40044447C /* ConsultantsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0C1FD87DC40044447C /* ConsultantsService.swift */; };
 		E8702F0F1FD87E470044447C /* ConsultantsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8702F0E1FD87E470044447C /* ConsultantsManager.swift */; };
@@ -144,6 +145,7 @@
 		E812C5121FDEEBE000553E9D /* HealthIssuesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthIssuesManager.swift; sourceTree = "<group>"; };
 		E812C5141FDEEE4200553E9D /* HealthIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthIssue.swift; sourceTree = "<group>"; };
 		E812C5161FDEF8E400553E9D /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
+		E83889BA1FF66AD6006993FB /* MeasurementExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementExtension.swift; sourceTree = "<group>"; };
 		E8702F0A1FD87C680044447C /* Consultant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consultant.swift; sourceTree = "<group>"; };
 		E8702F0C1FD87DC40044447C /* ConsultantsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsService.swift; sourceTree = "<group>"; };
 		E8702F0E1FD87E470044447C /* ConsultantsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultantsManager.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				90000AAC1FD2FF1000654235 /* DateExtension.swift */,
 				90000AAE1FD300DD00654235 /* StringExtension.swift */,
 				90000AB61FD35CF100654235 /* UserExtension.swift */,
+				E83889BA1FF66AD6006993FB /* MeasurementExtension.swift */,
 				E8DF1B511FE42E1E000C8229 /* UIScrollViewExtension.swift */,
 				E881A4B01FE991620056E893 /* ArrayExtension.swift */,
 				E87921441FEFEFB20022F0FE /* KeychainServiceExtension.swift */,
@@ -729,6 +732,7 @@
 				E8C7050F1FE9444A009806F2 /* MyRegisterStep3ViewController.swift in Sources */,
 				90000AB51FD33BF400654235 /* User.swift in Sources */,
 				902938801FCA08D200785E17 /* MyNewMeasurementStep1ViewController.swift in Sources */,
+				E83889BB1FF66AD6006993FB /* MeasurementExtension.swift in Sources */,
 				E8DF1B521FE42E1E000C8229 /* UIScrollViewExtension.swift in Sources */,
 				E8F79BFD1FD85C1500033926 /* MeasurementService.swift in Sources */,
 				901821A31FCCAAFA00937DDB /* MyNavigationController.swift in Sources */,

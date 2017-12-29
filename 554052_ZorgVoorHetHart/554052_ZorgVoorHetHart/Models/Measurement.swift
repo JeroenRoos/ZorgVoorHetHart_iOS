@@ -16,7 +16,7 @@ class Measurement: Decodable
     var healthIssueIds: [String]?
     var healthIssueOther: String?
     var userId: String = ""                         // ObjectId
-    var measurementDateTime: String = ""//Date = Date.distantPast
+    var measurementDateTime: String = ""
     
     enum CodingKeys: String, CodingKey
     {
