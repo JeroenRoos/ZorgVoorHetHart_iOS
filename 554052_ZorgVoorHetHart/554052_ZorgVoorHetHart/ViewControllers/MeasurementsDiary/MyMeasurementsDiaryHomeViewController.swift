@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Charts
 
-class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
+class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate
 {
     @IBOutlet weak var txtOnderdruk: UILabel!
     @IBOutlet weak var txtBovendruk: UILabel!
@@ -18,14 +19,40 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var btnWeekly: UIButton!
     @IBOutlet weak var tableViewMeasurements: UITableView!
     
+    // Everything BarChart!
+    //@IBOutlet weak var barChartView: BarChartView!
+    var months: [String]!
+    
     var lstMeasurements: [Measurement] = []
     let service: MeasurementService = MeasurementService()
     var updateMeasurements: Bool = false
+    
+    // SCROLLING
+    @IBOutlet weak var myScrollView: UIScrollView!
+    let screenHeight = UIScreen.main.bounds.height
+    let scrollViewContentHeight = 1200 as CGFloat
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.title = "Mijn Dagboek"
+        
+        //Set table height to cover entire view
+        //if navigation bar is not translucent, reduce navigation bar height from view height
+        //tableHeight.constant = self.view.frame.height-64
+        //tableViewMeasurements.isScrollEnabled = false
+        //tableViewMeasurements.contentSize.height = 800 as CGFloat
+        //myScrollView.bounces = false
+        //tableViewMeasurements.bounces = true
+        tableViewMeasurements.delegate = self
+        tableViewMeasurements.dataSource = self
+        
+        
+        //myScrollView.contentSize = CGSizeMake(scrollViewContentWidth, scrollViewContentHeight)
+        //tableViewMeasurements.bounces = false
+        //tableViewMeasurements.scrollEnabled = false
+        //myScrollView.bounces = false
+        //myScrollView.delegate = self
         
         btnWeekly.setTitle("Week overzicht", for: .normal)
         btnWeekly.setTitleColor(UIColor.black, for: .normal)
@@ -49,11 +76,22 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         txtBovendruk.font = txtBovendruk.font.withSize(12)
         imgOnderdruk.backgroundColor = UIColor(rgb: 0x039BE6)
         
-        tableViewMeasurements.delegate = self
-        tableViewMeasurements.dataSource = self
-        
+        //initBarChart()
         fetchMeasurements()
     }
+    
+    /*func scrollViewDidScroll(_ scrollView: UIScrollView)
+    {
+        if scrollView == self.myScrollView
+        {
+            tableViewMeasurements.isScrollEnabled = (self.myScrollView.contentOffset.y >= 200)
+        }
+        
+        if scrollView == self.tableViewMeasurements
+        {
+            self.tableViewMeasurements.isScrollEnabled = (tableViewMeasurements.contentOffset.y > 0)
+        }
+    }*/
     
     override func viewWillAppear(_ animated: Bool)
     {
@@ -78,6 +116,22 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
             // Failure
         })
     }
+    
+    /*private func initBarChart()
+    {
+        let entry1 = BarChartDataEntry(x: 1.0, y: Double(55.0))
+        let entry2 = BarChartDataEntry(x: 2.0, y: Double(45.0))
+        let entry3 = BarChartDataEntry(x: 3.0, y: Double(50.0))
+        let dataSet = BarChartDataSet(values: [entry1, entry2, entry3], label: "Widgets Type")
+        let data = BarChartData(dataSets: [dataSet])
+        barChartView.data = data
+        barChartView.chartDescription?.text = "Number of Widgets by Type"
+        
+        //All other additions to this function will go here
+        
+        //This must stay at end of function
+        barChartView.notifyDataSetChanged()
+    }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
