@@ -21,11 +21,13 @@ class ContactManager
         
         let parameter: [String: Any] = ["subject" : subject,
                                         "message" : message]
+        let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         
         Alamofire.request(baseURL!,
                           method: .post,
                           parameters: parameter,
-                          encoding: JSONEncoding.default)
+                          encoding: JSONEncoding.default,
+                          headers: headers)
             .validate()
             .responseString { response in
                 print("Request: \(response.request!)")
