@@ -31,6 +31,7 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     @IBOutlet weak var myScrollView: UIScrollView!
     let screenHeight = UIScreen.main.bounds.height
     let scrollViewContentHeight = 1200 as CGFloat
+    private var showMonthly: Bool = false
     
     override func viewDidLoad()
     {
@@ -135,7 +136,21 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return lstMeasurements.count
+        if (showMonthly)
+        {
+            return lstMeasurements.count
+        }
+        else
+        {
+            if (lstMeasurements.count < 7)
+            {
+                return lstMeasurements.count
+            }
+            else
+            {
+                return 7
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -159,12 +174,24 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     {
         btnWeekly.backgroundColor = UIColor(rgb: 0xEEEEEE)
         btnMonthly.backgroundColor = UIColor(rgb: 0xFFFFFF)
+        
+        if (showMonthly)
+        {
+            showMonthly = false
+            tableViewMeasurements.reloadData()
+        }
     }
     
     @IBAction func btnMonthly_OnClick(_ sender: Any)
     {
         btnWeekly.backgroundColor = UIColor(rgb: 0xFFFFFF)
         btnMonthly.backgroundColor = UIColor(rgb: 0xEEEEEE)
+        
+        if (!showMonthly)
+        {
+            showMonthly = true
+            tableViewMeasurements.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning()
