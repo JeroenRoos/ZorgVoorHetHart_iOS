@@ -28,13 +28,13 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         self.title = "Contact"
         self.hideKeyboardWhenTappedAround()
         
-        txtTitle.text = "Stuur een bericht naar uw consulent"
+        txtTitle.text = "Heeft u vragen of wilt u een afspraak maken? Dan kunt u via dit formulier een bericht sturen naar uw consulent. In geval van spoed kunt u hte beste telefonisch contact opnemen met uw ziekenhuis of 112 bellen"
         txtTitle.font = txtTitle.font.withSize(12)
         
         txtOnderwerp.text = "Onderwerp"
         txtOnderwerp.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
-        inputOnderwerp.placeholder = ""
+        inputOnderwerp.placeholder = "Vul een onderwerp in"
         inputOnderwerp.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOnderwerp.layer.borderWidth = 0
         inputOnderwerp.addTarget(self, action: #selector(subjectDidEndEditing(_:)), for: .editingDidEnd)
@@ -48,7 +48,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         txtBericht.text = "Bericht"
         txtBericht.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
-        inputBericht.placeholder = ""
+        inputBericht.placeholder = "Schrijf hier uw bericht"
         inputBericht.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputBericht.layer.borderWidth = 0
         inputBericht.addTarget(self, action: #selector(messageDidEndEditing(_:)), for: .editingDidEnd)
