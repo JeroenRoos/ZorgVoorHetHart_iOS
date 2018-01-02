@@ -88,11 +88,9 @@ class MeasurementManager
                            orFailure failure: @escaping (String)->(),
                            andMeasurement measurement: Measurement)
     {
-        //let parameters: [String: Any] = ["bloodPressureLower" : measurement.bloodPressureLower,
-          //                               "bloodPressureUpper" : measurement.bloodPressureLower,
-            //                             "healthIssuesIds" : measurement.healthIssueIds ?? [],
-              //                           "healthIssueOther" : measurement.healthIssueOther ?? "",]
-        let parameters = Measurement().convertToDictionary(withMeasurement: measurement)
+        var parameters = Measurement().convertToDictionary(withMeasurement: measurement)
+        parameters.updateValue(measurement.measurementId, forKey: "_id")
+        
         let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         
         Alamofire.request(baseURL!,

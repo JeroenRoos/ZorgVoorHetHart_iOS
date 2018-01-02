@@ -22,6 +22,7 @@ class MyPasswordResetEmailViewController: UIViewController
     {
         super.viewDidLoad()
         self.title = "Email verzonden"
+        self.navigationItem.setHidesBackButton(true, animated: true)
         
         btnLogin.setTitle("Inloggen", for: .normal)
         btnLogin.setTitleColor(UIColor.white, for: .normal)

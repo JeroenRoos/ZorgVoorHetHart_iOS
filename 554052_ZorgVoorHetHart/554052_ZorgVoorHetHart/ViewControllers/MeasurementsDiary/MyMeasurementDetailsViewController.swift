@@ -53,7 +53,8 @@ class MyMeasurementDetailsViewController: UIViewController
         txtKlachten.font = txtKlachten.font.withSize(12)
         
         // di, 31 okt 2017
-        let date = Date().getDateInCorrectFormat(myDate: (clickedMeasurement?.measurementDateTime)!)
+        let date = clickedMeasurement?.measurementDateTimeFormatted
+            //Date().getDateInCorrectFormat(myDate: (clickedMeasurement?.measurementDateTime)!)
         txtDatum.text = date
         txtDatum.font = txtDatum.font.withSize(12)
         
@@ -89,6 +90,11 @@ class MyMeasurementDetailsViewController: UIViewController
                 {
                     let issue = self.lstHealthIssues.filterHealthIssueForId(id: id)
                     self.txtKlachten.text?.append(issue.name + "\n")
+                }
+                
+                if (self.clickedMeasurement?.healthIssueOther != "")
+                {
+                    self.txtKlachten.text?.append("\n\nAndere klachten: \n" + (self.clickedMeasurement?.healthIssueOther)!)
                 }
                 
         }, orFailure: { (error: String) in

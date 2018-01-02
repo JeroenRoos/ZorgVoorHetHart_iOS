@@ -171,19 +171,30 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                 
             }
         }
-        if (!(inputOther.text?.isEmpty)!)
-        {
-            measurement?.healthIssueOther? = inputOther.text!
-        }
+        
+        measurement?.healthIssueOther? = inputOther.text!
         measurement?.userId = (User.loggedinUser?.userId)!
         
-        measurementService.postNewMeasurement(
-            withSuccess: { (message: String) in
-            self.performSegue(withIdentifier: "measurementFinish", sender: self)
+        if (!editingMeasurement)
+        {
+            measurementService.postNewMeasurement(
+                withSuccess: { (message: String) in
+                self.performSegue(withIdentifier: "measurementFinish", sender: self)
+                    
+            }, orFailure: { (error: String) in
                 
-        }, orFailure: { (error: String) in
-            
-        }, andMeasurement: measurement!)
+            }, andMeasurement: measurement!)
+        }
+        else
+        {
+            measurementService.updateMeasurement(
+                withSuccess: { (message: String) in
+                    self.performSegue(withIdentifier: "measurementFinish", sender: self)
+                    
+            }, orFailure: { (error: String) in
+                
+            }, andMeasurement: measurement!)
+        }
     }
     
     @IBAction func radioNoComplaints_OnClick(_ sender: Any)

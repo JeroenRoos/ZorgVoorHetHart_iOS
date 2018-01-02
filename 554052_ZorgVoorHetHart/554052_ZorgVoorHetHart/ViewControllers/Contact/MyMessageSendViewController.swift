@@ -18,6 +18,7 @@ class MyMessageSendViewController: UIViewController
     {
         super.viewDidLoad()
         self.title = "Bericht verzonden"
+        self.navigationItem.setHidesBackButton(true, animated: true)
         
         btnDone.setTitle("Klaar", for: .normal)
         btnDone.setTitleColor(UIColor.white, for: .normal)

@@ -26,7 +26,8 @@ class MyTableViewCell: UITableViewCell
     {
         txtBloeddruk.text = "Bloeddruk"
         txtBloeddruk.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
-        txtDate.text = Date().getDateInCorrectFormat(myDate: measurement.measurementDateTime)
+        txtDate.text = measurement.measurementDateTimeFormatted
+            //Date().getDateInCorrectFormat(myDate: measurement.measurementDateTime)
         txtOnderdruk.text = "Onderdruk: " + String(measurement.bloodPressureLower)
         txtBovendruk.text = "Bovendruk: " + String(measurement.bloodPressureUpper)
         

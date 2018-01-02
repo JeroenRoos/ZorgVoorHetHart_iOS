@@ -19,6 +19,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var errorOnderwerp: UILabel!
     @IBOutlet weak var errorBericht: UILabel!
+    @IBOutlet weak var txtConsultantInfo: UILabel!
     
     private let service: ContactService = ContactService()
     
@@ -33,6 +34,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         
         txtOnderwerp.text = "Onderwerp"
         txtOnderwerp.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        txtOnderwerp.isHidden = true
         
         inputOnderwerp.placeholder = "Vul een onderwerp in"
         inputOnderwerp.backgroundColor = UIColor(rgb: 0xEBEBEB)
@@ -47,6 +49,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         
         txtBericht.text = "Bericht"
         txtBericht.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        txtBericht.isHidden = true
         
         inputBericht.placeholder = "Schrijf hier uw bericht"
         inputBericht.backgroundColor = UIColor(rgb: 0xEBEBEB)
@@ -66,6 +69,11 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         btnCancel.setTitle("Annuleren", for: .normal)
         btnCancel.setTitleColor(UIColor.white, for: .normal)
         btnCancel.backgroundColor = UIColor(rgb: 0xA9A9A9)
+        
+        let name = (User.loggedinUser?.consultant?.firstName)! + " " + (User.loggedinUser?.consultant?.lastName)!
+        let email = User.loggedinUser?.consultant?.emailAddress
+        txtConsultantInfo.text = "Uw bericht wordt verstuurd naar: " + name + " - " + email!
+        txtConsultantInfo.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
     }
     
     @IBAction func btnCancel_OnClick(_ sender: Any)
