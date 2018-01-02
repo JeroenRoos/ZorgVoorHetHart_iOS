@@ -51,8 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 // Configure the trigger for a 7am wakeup.
                 var dateInfo = DateComponents()
-                dateInfo.hour = 22
-                dateInfo.minute = 58
+                dateInfo.hour = 18
+                dateInfo.minute = 00
                 let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
                 
                 // Create the request object.
