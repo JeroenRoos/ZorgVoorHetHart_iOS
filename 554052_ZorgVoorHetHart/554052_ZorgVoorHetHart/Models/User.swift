@@ -27,6 +27,7 @@ class User : Codable
     var resetPasswordToken: String?
     var isActivated: Bool = false
     var activationToken: String = ""
+    var consultant: Consultant? = nil
     
     enum CodingKeys: String, CodingKey
     {
@@ -44,5 +45,6 @@ class User : Codable
         case resetPasswordToken = "resetPasswordToken"
         case isActivated = "isActivated"
         case activationToken = "activationToken"
+        case consultant = "consultant"
     }
 }

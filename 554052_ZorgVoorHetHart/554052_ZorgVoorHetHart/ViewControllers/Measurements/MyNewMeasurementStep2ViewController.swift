@@ -35,10 +35,8 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Nieuwe meting: stap 2 van 3"
         self.hideKeyboardWhenTappedAround()
         
-        txtDate.text = (Date().getCurrentWeekdayAndDate())
         txtDate.font = txtDate.font.withSize(12)
         
         txtTitle.text = "2. Gezondheidsklachten"
@@ -91,7 +89,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                 // Sla deze health issues later opnieuw op
                 self.lstHealthIssues = healthIssues
                 
-                for i in 0 ..< self.lstHealthIssues.count
+                for i in 0 ..< self.lstHealthIssues.count - 1
                 {
                     self.lstCheckboxes[i].setTitle(self.lstHealthIssues[i].name, for: .normal)
                     self.lstCheckboxes[i].accessibilityIdentifier = self.lstHealthIssues[i].issueId
@@ -99,14 +97,23 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                 
                 if (!self.editingMeasurement)
                 {
+                    self.title = "Nieuwe meting: stap 2 van 2"
                     self.measurement?.healthIssueIds = []
                     self.measurement?.healthIssueOther = ""
+                    self.txtDate.text = (Date().getCurrentWeekdayAndDate())
                 }
-                else if (self.editingMeasurement && !(self.measurement?.healthIssueIds?.isEmpty)!)
+                else
                 {
-                    self.setCheckboxesAndTextField()
+                    self.title = "Meting aanpassen: stap 2 van 2"
+                    self.txtDate.text = "Datum originele meting: " + Date().getDateInCorrectFormat(myDate: (self.measurement?.measurementDateTime)!)!
+                    
+                    if (!(self.measurement?.healthIssueIds?.isEmpty)!)
+                    {
+                        self.setCheckboxesAndTextField()
+                    }
                 }
         }, orFailure: { (error: String) in
+            self.title = "Nieuwe meting: stap 2 van 3"
             for checkbox in self.lstCheckboxes
             {
                 checkbox.setTitle("[placeholder]", for: .normal)

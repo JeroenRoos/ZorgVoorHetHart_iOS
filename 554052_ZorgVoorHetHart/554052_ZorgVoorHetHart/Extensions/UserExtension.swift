@@ -22,6 +22,7 @@ extension User
         try container.encode(consultantId, forKey: .consultantId)
         try container.encode(dateOfBirth, forKey: .dateOfBirth)
         try container.encode(gender, forKey: .gender)
+        try container.encode(consultant, forKey: .consultant)
     }
 }
 

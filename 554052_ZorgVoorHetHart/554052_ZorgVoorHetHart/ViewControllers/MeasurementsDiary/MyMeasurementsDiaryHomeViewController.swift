@@ -37,23 +37,9 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     {
         super.viewDidLoad()
         self.title = "Mijn Dagboek"
-        
-        //Set table height to cover entire view
-        //if navigation bar is not translucent, reduce navigation bar height from view height
-        //tableHeight.constant = self.view.frame.height-64
-        //tableViewMeasurements.isScrollEnabled = false
-        //tableViewMeasurements.contentSize.height = 800 as CGFloat
-        //myScrollView.bounces = false
-        //tableViewMeasurements.bounces = true
+     
         tableViewMeasurements.delegate = self
         tableViewMeasurements.dataSource = self
-        
-        
-        //myScrollView.contentSize = CGSizeMake(scrollViewContentWidth, scrollViewContentHeight)
-        //tableViewMeasurements.bounces = false
-        //tableViewMeasurements.scrollEnabled = false
-        //myScrollView.bounces = false
-        //myScrollView.delegate = self
         
         btnWeekly.setTitle("Week overzicht", for: .normal)
         btnWeekly.setTitleColor(UIColor.black, for: .normal)
@@ -77,22 +63,22 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         txtBovendruk.font = txtBovendruk.font.withSize(12)
         imgOnderdruk.backgroundColor = UIColor(rgb: 0x039BE6)
         
-        //initBarChart()
         fetchMeasurements()
-    }
-    
-    /*func scrollViewDidScroll(_ scrollView: UIScrollView)
-    {
-        if scrollView == self.myScrollView
-        {
-            tableViewMeasurements.isScrollEnabled = (self.myScrollView.contentOffset.y >= 200)
-        }
         
-        if scrollView == self.tableViewMeasurements
-        {
-            self.tableViewMeasurements.isScrollEnabled = (tableViewMeasurements.contentOffset.y > 0)
-        }
-    }*/
+        //Set table height to cover entire view
+        //if navigation bar is not translucent, reduce navigation bar height from view height
+        //tableHeight.constant = self.view.frame.height-64
+        //tableViewMeasurements.isScrollEnabled = false
+        //tableViewMeasurements.contentSize.height = 800 as CGFloat
+        //myScrollView.bounces = false
+        //tableViewMeasurements.bounces = true
+        //myScrollView.contentSize = CGSizeMake(scrollViewContentWidth, scrollViewContentHeight)
+        //tableViewMeasurements.bounces = false
+        //tableViewMeasurements.scrollEnabled = false
+        //myScrollView.bounces = false
+        //myScrollView.delegate = self
+        //initBarChart()
+    }
     
     override func viewWillAppear(_ animated: Bool)
     {
@@ -117,22 +103,6 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
             // Failure
         })
     }
-    
-    /*private func initBarChart()
-    {
-        let entry1 = BarChartDataEntry(x: 1.0, y: Double(55.0))
-        let entry2 = BarChartDataEntry(x: 2.0, y: Double(45.0))
-        let entry3 = BarChartDataEntry(x: 3.0, y: Double(50.0))
-        let dataSet = BarChartDataSet(values: [entry1, entry2, entry3], label: "Widgets Type")
-        let data = BarChartData(dataSets: [dataSet])
-        barChartView.data = data
-        barChartView.chartDescription?.text = "Number of Widgets by Type"
-        
-        //All other additions to this function will go here
-        
-        //This must stay at end of function
-        barChartView.notifyDataSetChanged()
-    }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -199,4 +169,33 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    /*func scrollViewDidScroll(_ scrollView: UIScrollView)
+     {
+        if scrollView == self.myScrollView
+        {
+            tableViewMeasurements.isScrollEnabled = (self.myScrollView.contentOffset.y >= 200)
+        }
+     
+        if scrollView == self.tableViewMeasurements
+        {
+            self.tableViewMeasurements.isScrollEnabled = (tableViewMeasurements.contentOffset.y > 0)
+        }
+     }*/
+    
+    /*private func initBarChart()
+     {
+        let entry1 = BarChartDataEntry(x: 1.0, y: Double(55.0))
+        let entry2 = BarChartDataEntry(x: 2.0, y: Double(45.0))
+        let entry3 = BarChartDataEntry(x: 3.0, y: Double(50.0))
+        let dataSet = BarChartDataSet(values: [entry1, entry2, entry3], label: "Widgets Type")
+        let data = BarChartData(dataSets: [dataSet])
+        barChartView.data = data
+        barChartView.chartDescription?.text = "Number of Widgets by Type"
+     
+        //All other additions to this function will go here
+     
+        //This must stay at end of function
+        barChartView.notifyDataSetChanged()
+     }*/
 }

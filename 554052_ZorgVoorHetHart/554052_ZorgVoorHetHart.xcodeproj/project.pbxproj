@@ -288,7 +288,6 @@
 		90812AF21FBA444D00292F18 /* 554052_ZorgVoorHetHart */ = {
 			isa = PBXGroup;
 			children = (
-				E8CD4AF41FF3E1790047D0EA /* Protocols */,
 				E87921431FEFEDC00022F0FE /* Keychain */,
 				90812B291FBA5A1500292F18 /* Extensions */,
 				90812B241FBA539900292F18 /* Services */,
@@ -411,13 +410,6 @@
 				E879213D1FEFE85E0022F0FE /* KeychainService.swift */,
 			);
 			path = Keychain;
-			sourceTree = "<group>";
-		};
-		E8CD4AF41FF3E1790047D0EA /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

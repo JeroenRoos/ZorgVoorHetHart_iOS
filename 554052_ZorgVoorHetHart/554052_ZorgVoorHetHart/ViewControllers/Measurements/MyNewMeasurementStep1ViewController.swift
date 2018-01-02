@@ -71,7 +71,6 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         btnCancelPopup.setTitleColor(UIColor.white, for: .normal)
         btnCancelPopup.backgroundColor = UIColor(rgb: 0xA9A9A9)
         
-        txtDate.text = (Date().getCurrentWeekdayAndDate())
         txtDate.font = txtDate.font.withSize(12)
         
         txtTitle.text = "1. Vul uw bloeddruk in (mmHg)"
@@ -118,14 +117,16 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         if (measurement == nil)
         {
             measurement = Measurement()
-            self.title = "Nieuwe meting: stap 1 van 3"
+            txtDate.text = (Date().getCurrentWeekdayAndDate())
+            self.title = "Nieuwe meting: stap 1 van 2"
         }
         else
         {
             inputBovendruk.text = String((measurement?.bloodPressureUpper)!)
             inputOnderdruk.text = String((measurement?.bloodPressureLower)!)
+            txtDate.text = "Datum originele meting: " + Date().getDateInCorrectFormat(myDate: (measurement?.measurementDateTime)!)!
             editingMeasurement = true
-            self.title = "Meting aanpassen: stap 1 van 3"
+            self.title = "Meting aanpassen: stap 1 van 2"
         }
         
         // Voor nu wordt lengte en gewicht verplaatst naar registreren
