@@ -31,6 +31,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     private let measurementService: MeasurementService = MeasurementService()
     var measurement: Measurement? = nil
     var editingMeasurement: Bool = false
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad()
     {
@@ -180,7 +181,10 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
             measurementService.postNewMeasurement(
                 withSuccess: { (message: String) in
                 self.performSegue(withIdentifier: "measurementFinish", sender: self)
+                    print(Date())
                     
+                    let key = (User.loggedinUser?.userId)! + "date"
+                    self.defaults.set(Date(), forKey: key)
             }, orFailure: { (error: String) in
                 
             }, andMeasurement: measurement!)

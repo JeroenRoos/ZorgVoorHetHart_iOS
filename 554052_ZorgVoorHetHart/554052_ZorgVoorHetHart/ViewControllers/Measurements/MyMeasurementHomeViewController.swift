@@ -19,15 +19,34 @@ class MyMeasurementHomeViewController: UIViewController
         super.viewDidLoad()
         self.title = "Meting"
         
-        btnNewMeasurement.setTitle("Start nieuwe meting", for: .normal)
+        txtSquareMiddle.font = txtSquareMiddle.font.withSize(11)
         btnNewMeasurement.setTitleColor(UIColor.white, for: .normal)
         btnNewMeasurement.backgroundColor = UIColor(rgb: 0xE84A4A)
+        btnNewMeasurement.setTitle("Start nieuwe meting", for: .normal)
+        txtSquareMiddle.text = "Vul uw eerste meting in"
         
+        let key = (User.loggedinUser?.userId)! + "date"
+        let dateLastMeasurement = UserDefaults.standard.object(forKey: key)
+        
+        if (dateLastMeasurement != nil)
+        {
+            let sameDay = Calendar.current.isDateInToday(dateLastMeasurement as! Date)
+            
+           // if (!sameDay)
+           // {
+           //     btnNewMeasurement.setTitle("Start nieuwe meting", for: .normal)
+            //    txtSquareMiddle.text = "Vul uw eerste meting in"
+           // }
+            if (sameDay)
+            {
+                btnNewMeasurement.isHidden = true
+                txtSquareMiddle.text = "U heeft vandaag al een meting gedaan. U kunt uw meting bekijken in uw dagboek"
+            }
+        }
+
         txtUpperBar.text = "Goedenmiddag " + (User.loggedinUser?.firstName)!
         txtUpperBar.font = txtUpperBar.font.withSize(14)
     
-        txtSquareMiddle.text = "Vul uw eerste meting in"
-        txtSquareMiddle.font = txtSquareMiddle.font.withSize(11)
     }
     
     @IBAction func btnNewMeasuremnt_OnClick(_ sender: Any)
