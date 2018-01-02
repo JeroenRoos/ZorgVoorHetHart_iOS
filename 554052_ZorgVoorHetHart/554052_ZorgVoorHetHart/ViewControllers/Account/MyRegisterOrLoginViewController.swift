@@ -28,6 +28,10 @@ class MyRegisterOrLoginViewController: UIViewController
         if (defaults.bool(forKey: "automaticLogin"))
         {
             // Retrieve Email and Password if they exist in the keychain
+            btnLogin.isHidden = true
+            btnRegister.isHidden = true
+            txtOf.isHidden = true
+            
             let passwordService = KeychainService().passwordService
             let emailService = KeychainService().emailService
             let account = KeychainService().keychainAccount
@@ -64,7 +68,9 @@ class MyRegisterOrLoginViewController: UIViewController
                 User.loggedinUser = user
                 self.performSegue(withIdentifier: "automaticLogin", sender: self)
             }, orFailure: { (error: String) in
-                
+                self.btnLogin.isHidden = false
+                self.btnRegister.isHidden = false
+                self.txtOf.isHidden = false
             }, andEmail: retrievedEmail, andPassword: retrievedPassword)
         }
     }

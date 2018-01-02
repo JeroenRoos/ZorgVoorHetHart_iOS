@@ -15,7 +15,7 @@ extension Measurement
         return [
             "bloodPressureLower" : measurement.bloodPressureLower,
             "bloodPressureUpper" : measurement.bloodPressureUpper,
-            "healthIssuesIds" : measurement.healthIssueIds ?? [],
+            "healthIssueIds" : measurement.healthIssueIds ?? [],
             "healthIssueOther" : measurement.healthIssueOther ?? ""]
             //"measurementDateTime" : measurement.measurementDateTime ?? ""]
     }

@@ -68,7 +68,8 @@ class MyMeasurementDetailsViewController: UIViewController
         
         
         if (clickedMeasurement?.healthIssueIds != nil &&
-            !(clickedMeasurement?.healthIssueIds?.isEmpty)!)
+            !(clickedMeasurement?.healthIssueIds?.isEmpty)! ||
+            clickedMeasurement?.healthIssueOther != "")
         {
             getHealthIssues()
         }
@@ -76,7 +77,7 @@ class MyMeasurementDetailsViewController: UIViewController
         {
             //self.txtKlachten.isHidden = true
             //self.txtKlachtenTitle.isHidden = false
-            self.txtKlachten.text = "U had geen gezondheidsklachten."
+            self.txtKlachten.text = "U had geen andere gezondheidsklachten."
         }
     }
     

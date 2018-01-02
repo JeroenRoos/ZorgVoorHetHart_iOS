@@ -235,13 +235,13 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         }
         else
         {
-            // Perform logout code (clear caches if they exist, clear loggedinUser)
-            self.dismiss(animated: true, completion:{ })
-            User.loggedinUser = nil
-            
             defaults.set(false, forKey: "automaticLogin")
             KeychainService.remove(service: KeychainService().emailService, account: KeychainService().keychainAccount)
             KeychainService.remove(service: KeychainService().passwordService, account: KeychainService().keychainAccount)
+            
+            // Perform logout code (clear caches if they exist, clear loggedinUser)
+            self.dismiss(animated: true, completion:{ })
+            User.loggedinUser = nil
         }
         myScrollView.isScrollEnabled = true
     }

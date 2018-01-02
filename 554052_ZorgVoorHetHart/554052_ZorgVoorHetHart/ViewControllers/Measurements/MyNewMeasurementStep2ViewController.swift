@@ -108,7 +108,10 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                     self.title = "Meting aanpassen: stap 2 van 2"
                     self.txtDate.text = "Datum originele meting: " + Date().getDateInCorrectFormat(myDate: (self.measurement?.measurementDateTime)!)!
                     
-                    if (!(self.measurement?.healthIssueIds?.isEmpty)!)
+                    if (self.measurement?.healthIssueIds != nil &&
+                        !(self.measurement?.healthIssueIds?.isEmpty)! ||
+                        self.measurement?.healthIssueOther != "")
+                        //(!(self.measurement?.healthIssueIds?.isEmpty)!)
                     {
                         self.setCheckboxesAndTextField()
                     }

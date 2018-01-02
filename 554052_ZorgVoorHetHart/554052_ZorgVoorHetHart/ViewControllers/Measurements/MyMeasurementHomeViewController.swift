@@ -25,7 +25,7 @@ class MyMeasurementHomeViewController: UIViewController
         btnNewMeasurement.setTitle("Start nieuwe meting", for: .normal)
         txtSquareMiddle.text = "Vul uw eerste meting in"
         
-        let key = (User.loggedinUser?.userId)! + "date"
+        /*let key = (User.loggedinUser?.userId)! + "date"
         let dateLastMeasurement = UserDefaults.standard.object(forKey: key)
         
         if (dateLastMeasurement != nil)
@@ -36,7 +36,7 @@ class MyMeasurementHomeViewController: UIViewController
                 btnNewMeasurement.isHidden = true
                 txtSquareMiddle.text = "U heeft vandaag al een meting gedaan. U kunt uw meting bekijken in uw dagboek"
             }
-        }
+        }*/
 
         txtUpperBar.text = "Goedenmiddag " + (User.loggedinUser?.firstName)!
         txtUpperBar.font = txtUpperBar.font.withSize(14)
