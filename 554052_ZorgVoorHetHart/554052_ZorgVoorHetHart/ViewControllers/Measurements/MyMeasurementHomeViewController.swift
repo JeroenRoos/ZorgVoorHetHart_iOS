@@ -31,12 +31,6 @@ class MyMeasurementHomeViewController: UIViewController
         if (dateLastMeasurement != nil)
         {
             let sameDay = Calendar.current.isDateInToday(dateLastMeasurement as! Date)
-            
-           // if (!sameDay)
-           // {
-           //     btnNewMeasurement.setTitle("Start nieuwe meting", for: .normal)
-            //    txtSquareMiddle.text = "Vul uw eerste meting in"
-           // }
             if (sameDay)
             {
                 btnNewMeasurement.isHidden = true
