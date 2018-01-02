@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +21,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
+        initNotifications()
+        
         return true
+    }
+    
+    // Because users can change the notification settings for your app at any time, you can use the getNotificationSettingsWithCompletionHandler: method of the shared UNUserNotificationCenter object to get your app’s authorization status at any time.
+    private func initNotifications()
+    {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+            if (granted)
+            {
+                let generalCategory = UNNotificationCategory(identifier: "GENERAL",
+                                                             actions: [],
+                                                             intentIdentifiers: [],
+                                                             options: .customDismissAction)
+                
+                // Register the category.
+                center.setNotificationCategories([generalCategory])
+                
+                let content = UNMutableNotificationContent()
+                content.sound = UNNotificationSound.default()
+                content.categoryIdentifier = "dailyMeasurement"
+                content.title = NSString.localizedUserNotificationString(forKey: "Bloeddruk meting", arguments: nil)
+                content.body = NSString.localizedUserNotificationString(forKey: "Het is weer tijd voor uw dagelijkse meting!",
+                                                                        arguments: nil)
+                
+                // Configure the trigger for a 7am wakeup.
+                var dateInfo = DateComponents()
+                dateInfo.hour = 22
+                dateInfo.minute = 58
+                let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+                
+                // Create the request object.
+                let request = UNNotificationRequest(identifier: "dailyMeasurement", content: content, trigger: trigger)
+                
+                center.add(request) { (error : Error?) in
+                    if let theError = error {
+                        print(theError.localizedDescription)
+                    }
+                }
+            }
+            else
+            {
+                
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
