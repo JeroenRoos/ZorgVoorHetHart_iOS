@@ -10,10 +10,10 @@ import UIKit
 
 class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate
 {
-    @IBOutlet weak var txtOnderdruk: UILabel!
-    @IBOutlet weak var txtBovendruk: UILabel!
-    @IBOutlet weak var imgOnderdruk: UIImageView!
-    @IBOutlet weak var imgBovendruk: UIImageView!
+    //@IBOutlet weak var txtOnderdruk: UILabel!
+    //@IBOutlet weak var txtBovendruk: UILabel!
+    //@IBOutlet weak var imgOnderdruk: UIImageView!
+    //@IBOutlet weak var imgBovendruk: UIImageView!
     @IBOutlet weak var btnMonthly: UIButton!
     @IBOutlet weak var btnWeekly: UIButton!
     @IBOutlet weak var tableViewMeasurements: UITableView!
