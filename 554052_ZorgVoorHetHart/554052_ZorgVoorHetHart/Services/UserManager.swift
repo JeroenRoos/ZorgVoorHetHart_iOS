@@ -56,7 +56,15 @@ class UserManager
                 
                 case .failure(let error):
                     print(error)
-                    failure("Er is iets fout gegaan tijdens het inloggen.")
+                    
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het inloggen.")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.")
+                    }
             }
         }
     }

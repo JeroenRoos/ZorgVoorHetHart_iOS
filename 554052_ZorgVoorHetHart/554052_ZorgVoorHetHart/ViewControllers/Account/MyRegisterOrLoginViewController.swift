@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MyRegisterOrLoginViewController: UIViewController
 {
@@ -71,6 +72,7 @@ class MyRegisterOrLoginViewController: UIViewController
                 self.btnLogin.isHidden = false
                 self.btnRegister.isHidden = false
                 self.txtOf.isHidden = false
+                
             }, andEmail: retrievedEmail, andPassword: retrievedPassword)
         }
     }

@@ -31,6 +31,10 @@ class HealthIssuesManager
                         {
                             // Try to decode the received data to a List of Healthissues objects
                             let result = try JSONDecoder().decode([HealthIssue].self, from: data )
+                            
+                            //let cache = NSCache<NSArray, [HealthIssue]>()
+                            //cache.setObject(result, forKey: "")
+                            
                             success(result)
                         }
                         catch

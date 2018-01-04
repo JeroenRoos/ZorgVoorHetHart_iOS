@@ -11,6 +11,7 @@ import Alamofire
 
 class ContactManager
 {
+    private let connectionManager = NetworkReachabilityManager(host: "www.apple.com")
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Messages/")
 
     func sendMessage(withSuccess success: @escaping (String)->(), 

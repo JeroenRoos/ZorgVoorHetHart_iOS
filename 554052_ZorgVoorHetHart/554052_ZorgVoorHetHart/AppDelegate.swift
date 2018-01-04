@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
+        // Start listening for changes in Network
+        //SessionManager.instance.listenForReachability()
         initNotifications()
         
         return true
@@ -34,45 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.
             if (granted)
-            {
-                /*
-                let generalCategory = UNNotificationCategory(identifier: "GENERAL",
-                                                             actions: [],
-                                                             intentIdentifiers: [],
-                                                             options: .customDismissAction)
-                
-                // Register the category.
-                center.setNotificationCategories([generalCategory])
-                
-                let content = UNMutableNotificationContent()
-                content.sound = UNNotificationSound.default()
-                content.categoryIdentifier = "dailyMeasurement"
-                content.title = NSString.localizedUserNotificationString(forKey: "Bloeddruk meting", arguments: nil)
-                content.body = NSString.localizedUserNotificationString(forKey: "Het is weer tijd voor uw dagelijkse meting!",
-                                                                        arguments: nil)
-                 
-                // Configures a notification at 10:00am
-                //var dateInfo = DateComponents()
-                //dateInfo.hour = 10
-                //dateInfo.minute = 00
-                //let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
-                
-                // Configures a notification relative to the current time
-                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
-                
-                // Create the request object.
-                let request = UNNotificationRequest(identifier: "dailyMeasurement", content: content, trigger: trigger)
-                
-                center.add(request) { (error : Error?) in
-                    if let theError = error {
-                        print(theError.localizedDescription)
-                    }
-                }*/
-            }
+            { }
             else
-            {
-                
-            }
+            { }
         }
     }
 
