@@ -55,13 +55,13 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         btnMonthly.layer.borderWidth = 1
         btnMonthly.layer.borderColor = UIColor.black.cgColor
         
-        txtOnderdruk.text = "Onderduk "
-        txtOnderdruk.font = txtOnderdruk.font.withSize(12)
-        imgOnderdruk.backgroundColor = UIColor(rgb: 0x491488)
+        //txtOnderdruk.text = "Onderduk "
+        //txtOnderdruk.font = txtOnderdruk.font.withSize(12)
+        //imgOnderdruk.backgroundColor = UIColor(rgb: 0x491488)
         
-        txtBovendruk.text = "Bovendruk "
-        txtBovendruk.font = txtBovendruk.font.withSize(12)
-        imgOnderdruk.backgroundColor = UIColor(rgb: 0x039BE6)
+        //txtBovendruk.text = "Bovendruk "
+        //txtBovendruk.font = txtBovendruk.font.withSize(12)
+        //imgOnderdruk.backgroundColor = UIColor(rgb: 0x039BE6)
         
         fetchMeasurements()
         
@@ -95,7 +95,6 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         service.getMeasurements(
             withSuccess: { (measurements: [Measurement]) in
                 self.lstMeasurements = measurements
-                self.lstMeasurements.reverse()
                 DispatchQueue.main.async {
                     self.tableViewMeasurements.reloadData()
                 }

@@ -585,7 +585,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ii-ZZ-9DA">
-                                <rect key="frame" x="20" y="269" width="335" height="329"/>
+                                <rect key="frame" x="20" y="149" width="335" height="449"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="100" id="iCf-fA-Ztt" customClass="MyTableViewCell" customModule="_54052_ZorgVoorHetHart" customModuleProvider="target">
@@ -652,55 +652,19 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Onderdruk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdi-eq-Mx5" userLabel="txtOnderdruk">
-                                <rect key="frame" x="160" y="142" width="60.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aG0-GH-nZx" userLabel="imgOnderdruk">
-                                <rect key="frame" x="310" y="139" width="45" height="20"/>
-                                <color key="backgroundColor" red="0.2827737306" green="1" blue="0.32887739519999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="hSc-LK-6oZ"/>
-                                    <constraint firstAttribute="width" constant="45" id="qYf-Qt-0OU"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DWa-vK-XaR" userLabel="imgBovendruk">
-                                <rect key="frame" x="310" y="169" width="45" height="20"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="Yza-f3-9jE"/>
-                                    <constraint firstAttribute="height" constant="20" id="sUj-2u-B0w"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bovendruk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ng0-f2-zCg" userLabel="txtBovendruk">
-                                <rect key="frame" x="160" y="172" width="60.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Tdi-eq-Mx5" firstAttribute="leading" secondItem="ckO-ie-PVs" secondAttribute="leading" constant="160" id="1sj-C1-7R4"/>
-                            <constraint firstItem="ckO-ie-PVs" firstAttribute="trailing" secondItem="aG0-GH-nZx" secondAttribute="trailing" constant="20" id="DbZ-3k-mO0"/>
-                            <constraint firstItem="9Ii-ZZ-9DA" firstAttribute="top" secondItem="xPq-2e-xYH" secondAttribute="bottom" constant="150" id="IO3-11-Zgw"/>
+                            <constraint firstItem="9Ii-ZZ-9DA" firstAttribute="top" secondItem="xPq-2e-xYH" secondAttribute="bottom" constant="30" id="IO3-11-Zgw"/>
                             <constraint firstItem="xPq-2e-xYH" firstAttribute="width" secondItem="qtv-nn-sab" secondAttribute="width" id="K7q-kU-pn5"/>
-                            <constraint firstItem="Tdi-eq-Mx5" firstAttribute="top" secondItem="xPq-2e-xYH" secondAttribute="bottom" constant="23" id="KL0-Sj-qP9"/>
                             <constraint firstItem="qtv-nn-sab" firstAttribute="leading" secondItem="xPq-2e-xYH" secondAttribute="trailing" constant="20" id="LGr-ZH-dul"/>
                             <constraint firstItem="ckO-ie-PVs" firstAttribute="bottom" secondItem="9Ii-ZZ-9DA" secondAttribute="bottom" constant="20" id="QlZ-df-dzj"/>
-                            <constraint firstItem="ckO-ie-PVs" firstAttribute="trailing" secondItem="DWa-vK-XaR" secondAttribute="trailing" constant="20" id="T9J-Fr-Gyp"/>
-                            <constraint firstItem="DWa-vK-XaR" firstAttribute="top" secondItem="aG0-GH-nZx" secondAttribute="bottom" constant="10" id="WXd-Qs-Lb8"/>
                             <constraint firstItem="qtv-nn-sab" firstAttribute="leading" secondItem="xPq-2e-xYH" secondAttribute="trailing" constant="20" id="YWM-sI-oIy"/>
-                            <constraint firstItem="Ng0-f2-zCg" firstAttribute="top" secondItem="Tdi-eq-Mx5" secondAttribute="bottom" constant="15.5" id="ad4-IA-UHR"/>
                             <constraint firstItem="ckO-ie-PVs" firstAttribute="trailing" secondItem="qtv-nn-sab" secondAttribute="trailing" constant="20" id="bfC-bR-f8b"/>
                             <constraint firstItem="xPq-2e-xYH" firstAttribute="top" secondItem="ckO-ie-PVs" secondAttribute="top" constant="20" id="cQx-8c-28u"/>
-                            <constraint firstItem="aG0-GH-nZx" firstAttribute="top" secondItem="qtv-nn-sab" secondAttribute="bottom" constant="20" id="dPT-Ys-sLM"/>
                             <constraint firstItem="ckO-ie-PVs" firstAttribute="trailing" secondItem="9Ii-ZZ-9DA" secondAttribute="trailing" constant="20" id="dnt-uJ-PcW"/>
                             <constraint firstItem="9Ii-ZZ-9DA" firstAttribute="leading" secondItem="ckO-ie-PVs" secondAttribute="leading" constant="20" id="fKL-kw-OEC"/>
                             <constraint firstItem="xPq-2e-xYH" firstAttribute="leading" secondItem="ckO-ie-PVs" secondAttribute="leading" constant="20" id="jjN-qc-JRb"/>
-                            <constraint firstItem="Ng0-f2-zCg" firstAttribute="leading" secondItem="ckO-ie-PVs" secondAttribute="leading" constant="160" id="jmy-UD-wA0"/>
                             <constraint firstItem="qtv-nn-sab" firstAttribute="top" secondItem="ckO-ie-PVs" secondAttribute="top" constant="20" id="rGo-9a-Ozk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ckO-ie-PVs"/>
@@ -710,11 +674,7 @@
                     <connections>
                         <outlet property="btnMonthly" destination="qtv-nn-sab" id="5fx-nO-9p5"/>
                         <outlet property="btnWeekly" destination="xPq-2e-xYH" id="Z0O-cc-ehk"/>
-                        <outlet property="imgBovendruk" destination="DWa-vK-XaR" id="laS-Ky-dag"/>
-                        <outlet property="imgOnderdruk" destination="aG0-GH-nZx" id="p3H-Bw-U4k"/>
                         <outlet property="tableViewMeasurements" destination="9Ii-ZZ-9DA" id="cDQ-UV-zzB"/>
-                        <outlet property="txtBovendruk" destination="Ng0-f2-zCg" id="IFE-vn-Qpn"/>
-                        <outlet property="txtOnderdruk" destination="Tdi-eq-Mx5" id="e0C-LL-c77"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nvd-Ra-nCI" userLabel="First Responder" sceneMemberID="firstResponder"/>

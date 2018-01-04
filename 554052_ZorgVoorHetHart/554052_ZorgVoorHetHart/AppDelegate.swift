@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Enable or disable features based on authorization.
             if (granted)
             {
+                /*
                 let generalCategory = UNNotificationCategory(identifier: "GENERAL",
                                                              actions: [],
                                                              intentIdentifiers: [],
@@ -48,12 +49,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 content.title = NSString.localizedUserNotificationString(forKey: "Bloeddruk meting", arguments: nil)
                 content.body = NSString.localizedUserNotificationString(forKey: "Het is weer tijd voor uw dagelijkse meting!",
                                                                         arguments: nil)
+                 
+                // Configures a notification at 10:00am
+                //var dateInfo = DateComponents()
+                //dateInfo.hour = 10
+                //dateInfo.minute = 00
+                //let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
                 
-                // Configure the trigger for a 7am wakeup.
-                var dateInfo = DateComponents()
-                dateInfo.hour = 18
-                dateInfo.minute = 00
-                let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+                // Configures a notification relative to the current time
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
                 
                 // Create the request object.
                 let request = UNNotificationRequest(identifier: "dailyMeasurement", content: content, trigger: trigger)
@@ -62,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if let theError = error {
                         print(theError.localizedDescription)
                     }
-                }
+                }*/
             }
             else
             {

@@ -29,7 +29,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         self.title = "Contact"
         self.hideKeyboardWhenTappedAround()
         
-        txtTitle.text = "Heeft u vragen of wilt u een afspraak maken? Dan kunt u via dit formulier een bericht sturen naar uw consulent. In geval van spoed kunt u hte beste telefonisch contact opnemen met uw ziekenhuis of 112 bellen"
+        txtTitle.text = "Heeft u vragen of wilt u een afspraak maken? Dan kunt u via dit formulier een bericht sturen naar uw consulent. In geval van spoed kunt u het best telefonisch contact opnemen met uw ziekenhuis of 112 bellen"
         txtTitle.font = txtTitle.font.withSize(12)
         
         txtOnderwerp.text = "Onderwerp"
@@ -74,6 +74,12 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         let email = User.loggedinUser?.consultant?.emailAddress
         txtConsultantInfo.text = "Uw bericht wordt verstuurd naar: " + name + " - " + email!
         txtConsultantInfo.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        inputBericht.text = ""
+        inputOnderwerp.text = ""
     }
     
     @IBAction func btnCancel_OnClick(_ sender: Any)

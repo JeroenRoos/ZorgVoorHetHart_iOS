@@ -65,7 +65,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         txtOther.text = "Anders, namelijk:"
         txtOther.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
-        inputOther.placeholder = "0"
+        inputOther.placeholder = "Vul hier uw andere gezondsheidsklachten in, als u deze heeft"
         inputOther.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOther.layer.borderWidth = 0
         self.inputOther.delegate = self
@@ -90,7 +90,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                 // Sla deze health issues later opnieuw op
                 self.lstHealthIssues = healthIssues
                 
-                for i in 0 ..< self.lstHealthIssues.count - 1
+                for i in 0 ..< self.lstHealthIssues.count
                 {
                     self.lstCheckboxes[i].setTitle(self.lstHealthIssues[i].name, for: .normal)
                     self.lstCheckboxes[i].accessibilityIdentifier = self.lstHealthIssues[i].issueId
@@ -111,7 +111,6 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                     if (self.measurement?.healthIssueIds != nil &&
                         !(self.measurement?.healthIssueIds?.isEmpty)! ||
                         self.measurement?.healthIssueOther != "")
-                        //(!(self.measurement?.healthIssueIds?.isEmpty)!)
                     {
                         self.setCheckboxesAndTextField()
                     }

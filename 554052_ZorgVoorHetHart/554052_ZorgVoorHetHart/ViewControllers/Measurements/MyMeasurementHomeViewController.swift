@@ -19,15 +19,21 @@ class MyMeasurementHomeViewController: UIViewController
         super.viewDidLoad()
         self.title = "Meting"
         
-        txtSquareMiddle.font = txtSquareMiddle.font.withSize(11)
+        txtSquareMiddle.font = txtSquareMiddle.font.withSize(12)
         btnNewMeasurement.setTitleColor(UIColor.white, for: .normal)
         btnNewMeasurement.backgroundColor = UIColor(rgb: 0xE84A4A)
         btnNewMeasurement.setTitle("Start nieuwe meting", for: .normal)
         txtSquareMiddle.text = "Vul uw eerste meting in"
-        
-        /*let key = (User.loggedinUser?.userId)! + "date"
+
+        txtUpperBar.text = "Goedenmiddag " + (User.loggedinUser?.firstName)!
+        txtUpperBar.font = txtUpperBar.font.withSize(14)
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        // This needs to be called not only on viewDidLoad but on viewDidAppear
+        let key = (User.loggedinUser?.userId)! + "date"
         let dateLastMeasurement = UserDefaults.standard.object(forKey: key)
-        
         if (dateLastMeasurement != nil)
         {
             let sameDay = Calendar.current.isDateInToday(dateLastMeasurement as! Date)
@@ -36,11 +42,7 @@ class MyMeasurementHomeViewController: UIViewController
                 btnNewMeasurement.isHidden = true
                 txtSquareMiddle.text = "U heeft vandaag al een meting gedaan. U kunt uw meting bekijken in uw dagboek"
             }
-        }*/
-
-        txtUpperBar.text = "Goedenmiddag " + (User.loggedinUser?.firstName)!
-        txtUpperBar.font = txtUpperBar.font.withSize(14)
-    
+        }
     }
     
     @IBAction func btnNewMeasuremnt_OnClick(_ sender: Any)

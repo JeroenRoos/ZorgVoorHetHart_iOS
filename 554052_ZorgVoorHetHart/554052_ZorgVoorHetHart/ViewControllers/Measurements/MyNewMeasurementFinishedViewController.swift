@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import UserNotifications
+let defaults = UserDefaults.standard
 
 class MyNewMeasurementFinishedViewController: UIViewController
 {
@@ -29,21 +31,54 @@ class MyNewMeasurementFinishedViewController: UIViewController
         
         txtInfo.text = "U kunt gemakkelijk een overzicht van al uw metingen zien onder dagboek"
         txtInfo.font = txtInfo.font.withSize(12)
+        
+        // Set the notifications for a reminder of the measurement the next day
+        setNotificationNextMeasurement()
+    }
+    
+    private func setNotificationNextMeasurement()
+    {
+        // Because users can change the notification settings for your app at any time, check if the app is authorized
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { (settings) in
+            if (settings.authorizationStatus == .authorized &&
+                defaults.bool(forKey: "dailyNotifications"))
+            {
+                let generalCategory = UNNotificationCategory(identifier: "GENERAL",
+                                                             actions: [],
+                                                             intentIdentifiers: [],
+                                                             options: .customDismissAction)
+                
+                // Register the category.
+                center.setNotificationCategories([generalCategory])
+                
+                let content = UNMutableNotificationContent()
+                content.sound = UNNotificationSound.default()
+                content.categoryIdentifier = "dailyMeasurement"
+                content.title = NSString.localizedUserNotificationString(forKey: "Bloeddruk meting", arguments: nil)
+                content.body = NSString.localizedUserNotificationString(forKey: "Het is weer tijd voor uw dagelijkse meting!", arguments: nil)
+                
+                // Configures a notification relative to the current time (84600 seconds == 23h 30m)
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 84600, repeats: false)
+                
+                // Create the request object.
+                let request = UNNotificationRequest(identifier: "dailyMeasurement", content: content, trigger: trigger)
+                
+                center.add(request) { (error : Error?) in
+                    if let theError = error {
+                        print(theError.localizedDescription)
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func btnCheckDiary_OnClick(_ sender: Any)
     {
         let lstViewControllers = self.tabBarController?.viewControllers!
-        //[1] as! MyMeasurementsDiaryHomeViewController
-        
-        let navC = lstViewControllers![1]
-        let vc = navC.childViewControllers[0] as! MyMeasurementsDiaryHomeViewController
-        vc.updateMeasurements = true
-        
-        //.splitViewController[0] as! MyMeasurementsDiaryHomeViewController
-        
-        //let viewController = lstViewControllers![1] as! MyMeasurementsDiaryHomeViewController
-        //viewController.updateMeasurements = true
+        let navigationController = lstViewControllers![1]
+        let viewController = navigationController.childViewControllers[0] as! MyMeasurementsDiaryHomeViewController
+        viewController.updateMeasurements = true
         self.tabBarController?.selectedIndex = 1
         self.navigationController?.popToRootViewController(animated: true)
     }
