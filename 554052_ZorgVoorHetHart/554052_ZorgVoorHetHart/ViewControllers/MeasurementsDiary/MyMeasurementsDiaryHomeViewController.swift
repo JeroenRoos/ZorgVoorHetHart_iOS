@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Charts
 
 class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate
 {
