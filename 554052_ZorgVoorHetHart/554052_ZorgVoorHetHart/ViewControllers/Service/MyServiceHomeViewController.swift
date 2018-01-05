@@ -208,12 +208,12 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
             let weight = Int(inputPopupWeight.text!)
             let length = Int(inputPopupLength.text!)
             
-            service.updateLengthAndWeight(withSuccess: { (message: String) in
+            service.updateLengthAndWeight(withSuccess: { () in
                 self.setPopupActive(withValue: true)
                 self.popupLogoutActive = false
                 self.myScrollView.isScrollEnabled = true
-            }, orFailure: { (error: String) in
-                // failure
+            }, orFailure: { (error: String, title: String) in
+                self.showAlertBox(withMessage: error, andTitle: title)
             }, andLength: length!, andWeight: weight!)
         }
         else

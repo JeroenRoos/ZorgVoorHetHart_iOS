@@ -13,76 +13,82 @@ class UserService
     private let manager: UserManager = UserManager()
     
     func login(withSuccess success: @escaping (User)->(), 
-                  orFailure failure: @escaping (String)->(),
+                  orFailure failure: @escaping (String, String)->(),
                   andEmail email: String,
                   andPassword password: String)
     {
         manager.login(withSuccess: { (user: User) in
             success(user)
-        }, orFailure: { (error: String) in
-            failure(error)
+        }, orFailure: { (error: String, title: String) in
+            failure(error, title)
         }, andEmail: email,
            andPassword: password)
     }
     
-    func register(withSuccess success: @escaping (String)->(), 
-                  orFailure failure: @escaping (String)->(),
+    func register(withSuccess success: @escaping ()->(), 
+                  orFailure failure: @escaping (String, String)->(),
                   andUser user: User)
     {
-        manager.register(withSuccess: { (message: String) in
-            success(message)
-        }, orFailure: { (error: String) in
-            failure(error)
+        manager.register(withSuccess: { () in
+            success()
+        }, orFailure: { (error: String, title: String) in
+            failure(error, title)
         }, andUser: user)
     }
     
-    func updateLengthAndWeight(withSuccess success: @escaping (String)->(), 
-                               orFailure failure: @escaping (String)->(),
+    func updateLengthAndWeight(withSuccess success: @escaping ()->(), 
+                               orFailure failure: @escaping (String, String)->(),
                                andLength length: Int,
                                andWeight weight: Int)
     {
-        manager.updateLengthAndWeight(withSuccess: { (message: String) in
-            success(message)
-        }, orFailure: { (error: String) in
-            failure(error)
+        manager.updateLengthAndWeight(withSuccess: { () in
+            success()
+        }, orFailure: { (error: String, title: String) in
+            failure(error, title)
         }, andLength: length,
            andWeight: weight)
     }
     
-    func forgotPassword(withSuccess success: @escaping (String)->(), 
-                        orFailure failure: @escaping (String)->(),
+    func forgotPassword(withSuccess success: @escaping ()->(), 
+                        orFailure failure: @escaping (String, String)->(),
                         andEmail email: String)
     {
-        manager.forgotPassword(withSuccess: { (message: String) in
-            success(message)
-        }, orFailure: { (error: String) in
-            failure(error)
+        manager.forgotPassword(withSuccess: { () in
+            
+            success()
+        }, orFailure: { (error: String, title: String) in
+            
+            failure(error, title)
         }, andEmail: email)
     }
     
-    func resetPassword(withSuccess success: @escaping (String)->(), 
-                       orFailure failure: @escaping (String)->(),
+    func resetPassword(withSuccess success: @escaping ()->(), 
+                       orFailure failure: @escaping (String, String)->(),
                        andPassword password: String,
                        andPasswordCheck confirmPassword: String,
                        andToken token: String)
     {
-        manager.resetPassword(withSuccess: { (message: String) in
-            success(message)
-        }, orFailure: { (error: String) in
-            failure(error)
+        manager.resetPassword(withSuccess: { () in
+            
+            success()
+        }, orFailure: { (error: String, title: String) in
+            
+            failure(error, title)
         }, andPassword: password,
            andPasswordCheck: confirmPassword,
            andToken: token)
     }
     
-    func activateAccount(withSuccess success: @escaping (String)->(), 
-                         orFailure failure: @escaping (String)->(),
+    func activateAccount(withSuccess success: @escaping ()->(), 
+                         orFailure failure: @escaping (String, String)->(),
                          andToken token: String)
     {
-        manager.activateAccount(withSuccess: { (message) in
-            success(message)
-        }, orFailure: { (error) in
-            failure(error)
+        manager.activateAccount(withSuccess: { () in
+            
+            success()
+        }, orFailure: { (error: String, title: String) in
+            
+            failure(error, title)
         }, andToken: token)
     }
 }

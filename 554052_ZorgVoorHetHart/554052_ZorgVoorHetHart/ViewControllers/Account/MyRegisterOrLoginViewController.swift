@@ -66,13 +66,17 @@ class MyRegisterOrLoginViewController: UIViewController
             && retrievedPassword != "")
         {
             service.login(withSuccess: { (user: User) in
+                self.btnLogin.isHidden = false
+                self.btnRegister.isHidden = false
+                self.txtOf.isHidden = false
                 User.loggedinUser = user
                 self.performSegue(withIdentifier: "automaticLogin", sender: self)
-            }, orFailure: { (error: String) in
+            }, orFailure: { (error: String, title: String) in
                 self.btnLogin.isHidden = false
                 self.btnRegister.isHidden = false
                 self.txtOf.isHidden = false
                 
+                self.showAlertBox(withMessage: error, andTitle: title)
             }, andEmail: retrievedEmail, andPassword: retrievedPassword)
         }
     }

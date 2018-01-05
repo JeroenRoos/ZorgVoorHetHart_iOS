@@ -14,8 +14,8 @@ class ContactManager
     private let connectionManager = NetworkReachabilityManager(host: "www.apple.com")
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Messages/")
 
-    func sendMessage(withSuccess success: @escaping (String)->(), 
-                     orFailure failure: @escaping (String)->(),
+    func sendMessage(withSuccess success: @escaping ()->(), 
+                     orFailure failure: @escaping (String, String)->(),
                      andSubject subject: String,
                      andMessage message: String)
     {
@@ -37,13 +37,21 @@ class ContactManager
                 
                 if (response.result.isSuccess)
                 {
-                    success("Succes!")
+                    success()
                 }
                 else
                 {
                     print(response.error!)
                     print(response.result.error!)
-                    failure("Er is iets fout gegaan tijdens het sturen van het bericht.")
+                    
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het sturen van het bericht.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }

@@ -82,6 +82,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
             let email = inputEmail.text!
             trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)
             password = inputPassword.text
+            self.btnLogin.isEnabled = false
             
             service.login(
                 withSuccess: { (user: User) in
@@ -95,9 +96,12 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
                     }
                     
                     User.loggedinUser = user
+                    self.btnLogin.isEnabled = true
                     self.performSegue(withIdentifier: "loginFinish", sender: self)
-            }, orFailure: { (error: String) in
+            }, orFailure: { (error: String, title: String) in
                 
+                self.showAlertBox(withMessage: error, andTitle: title)
+                self.btnLogin.isEnabled = true
             }, andEmail: trimmedEmail!, andPassword: password!)
         }
     }

@@ -98,7 +98,8 @@ class MyMeasurementDetailsViewController: UIViewController
                     self.txtKlachten.text?.append("\n\nAndere klachten: \n" + (self.clickedMeasurement?.healthIssueOther)!)
                 }
                 
-        }, orFailure: { (error: String) in
+        }, orFailure: { (error: String, title: String) in
+            self.showAlertBox(withMessage: error, andTitle: title)
             self.txtKlachtenTitle.text = "Er is fout gegaan bij het ophalen van de gezondheidsklachten"
             self.txtKlachten.isHidden = true
         })

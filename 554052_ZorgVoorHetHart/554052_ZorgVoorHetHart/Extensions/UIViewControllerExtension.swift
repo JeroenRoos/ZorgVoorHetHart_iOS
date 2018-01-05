@@ -27,4 +27,25 @@ extension UIViewController
         view.endEditing(true)
         return false
     }
+    
+    func showAlertBox(withMessage message: String, andTitle title: String)// -> Bool
+    {
+        
+        //var shouldRetry = false
+        DispatchQueue.main.async() {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            
+            let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            //let retryAction = UIAlertAction(title: "Opnieuw", style: .default, handler: {action in
+            //    shouldRetry = true
+            //})
+            
+            alertController.addAction(dismissAction)
+            //alertController.addAction(retryAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        //return shouldRetry
+    }
 }

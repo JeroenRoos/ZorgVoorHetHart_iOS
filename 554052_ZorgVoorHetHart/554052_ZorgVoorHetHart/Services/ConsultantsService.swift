@@ -13,12 +13,12 @@ class ConsultantsService
     private let manager: ConsultantsManager = ConsultantsManager()
     
     func getConsultans(withSuccess success: @escaping ([Consultant])->(), 
-                       orFailure failure: @escaping (String)->())
+                       orFailure failure: @escaping (String, String)->())
     {
         manager.getConsultans(withSuccess: { (lstConsultants: [Consultant]) in
             success(lstConsultants)
-        }, orFailure: { (error: String) in
-            failure(error)
+        }, orFailure: { (error: String, title: String) in
+            failure(error, title)
         })
     }
 }

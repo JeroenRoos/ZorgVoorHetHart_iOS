@@ -14,7 +14,7 @@ class HealthIssuesManager
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Healthissues/")
 
     func getHealthIssues(withSuccess success: @escaping ([HealthIssue])->(), 
-                       orFailure failure: @escaping (String)->())
+                       orFailure failure: @escaping (String, String)->())
     {
         let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         
@@ -32,22 +32,25 @@ class HealthIssuesManager
                             // Try to decode the received data to a List of Healthissues objects
                             let result = try JSONDecoder().decode([HealthIssue].self, from: data )
                             
-                            //let cache = NSCache<NSArray, [HealthIssue]>()
-                            //cache.setObject(result, forKey: "")
-                            
                             success(result)
                         }
                         catch
                         {
-                            let error: String = "Er is iets fout gegaan tijdens het ophalen van de gezondheidsproblemen."
-                            failure(error)
+                            failure("Er is iets fout gegaan tijdens het ophalen van de gezondheidsproblemen.", "Sorry")
                         }
                     }
                     
                 case .failure(let error):
                     print(error)
-                    let error: String = "Er is iets fout gegaan tijdens het ophalen van de gezondheidsproblemen."
-                    failure(error)
+                    
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het ophalen van de gezondheidsproblemen.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }

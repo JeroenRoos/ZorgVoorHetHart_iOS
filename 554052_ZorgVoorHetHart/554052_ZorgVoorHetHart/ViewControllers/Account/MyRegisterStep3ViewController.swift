@@ -65,7 +65,8 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
                 self.dropdown.isHidden = false
                 self.lstConsultants = consultants
                 self.getConsultantsNames()
-        }, orFailure: { (error: String) in
+        }, orFailure: { (error: String, title: String) in
+            self.showAlertBox(withMessage: error, andTitle: title)
             self.errorConsultant.isHidden = false
             self.errorConsultant.text = "Er is iets fout gegaan bij het ophalen van de consulenten"
             self.dropper?.layer.borderWidth = 1
@@ -111,10 +112,13 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
     {
         if (!(user?.consultantId.isEmpty)!)
         {
-            userService.register(withSuccess: { (message: String) in
+            self.btnFinish.isEnabled = false
+            userService.register(withSuccess: { () in
+                self.btnFinish.isEnabled = true
                 self.performSegue(withIdentifier: "registerFinish", sender: self)
-            }, orFailure: { (error: String) in
-                
+            }, orFailure: { (error: String, title: String) in
+                self.btnFinish.isEnabled = true
+                self.showAlertBox(withMessage: error, andTitle: title)
             }, andUser: user!)
         }
     }

@@ -12,35 +12,35 @@ class MeasurementService
 {
     private let manager: MeasurementManager = MeasurementManager()
     
-    func postNewMeasurement(withSuccess success: @escaping (String)->(), 
-                            orFailure failure: @escaping (String)->(),
+    func postNewMeasurement(withSuccess success: @escaping ()->(), 
+                            orFailure failure: @escaping (String, String)->(),
                             andMeasurement measurement: Measurement)
     {
-        manager.postNewMeasurement(withSuccess: { (message: String) in
-            success(message)
-        }, orFailure: { (error: String) in
-            failure(error)
+        manager.postNewMeasurement(withSuccess: { () in
+            success()
+        }, orFailure: { (error: String, title: String) in
+            failure(error, title)
         }, andMeasurement: measurement)
     }
     
     func getMeasurements(withSuccess success: @escaping ([Measurement])->(), 
-                         orFailure failure: @escaping (String)->())
+                         orFailure failure: @escaping (String, String)->())
     {
         manager.getMeasurements(withSuccess: { (lstMeasurements: [Measurement]) in
             success(lstMeasurements)
-        }, orFailure: { (error: String) in
-            failure(error)
+        }, orFailure: { (error: String, title: String) in
+            failure(error, title)
         })
     }
     
-    func updateMeasurement(withSuccess success: @escaping (String)->(), 
-                           orFailure failure: @escaping (String)->(),
+    func updateMeasurement(withSuccess success: @escaping ()->(), 
+                           orFailure failure: @escaping (String, String)->(),
                            andMeasurement measurement: Measurement)
     {
-        manager.updateMeasurement(withSuccess: { (message: String) in
-            success(message)
-        }, orFailure: { (error: String) in
-            failure(error)
+        manager.updateMeasurement(withSuccess: { () in
+            success()
+        }, orFailure: { (error: String, title: String) in
+            failure(error, title)
         }, andMeasurement: measurement)
     }
 }

@@ -115,13 +115,14 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                         self.setCheckboxesAndTextField()
                     }
                 }
-        }, orFailure: { (error: String) in
+        }, orFailure: { (error: String, title) in
             self.title = "Nieuwe meting: stap 2 van 3"
             for checkbox in self.lstCheckboxes
             {
                 checkbox.setTitle("[placeholder]", for: .normal)
                 checkbox.setTitleColor(UIColor.black, for: .normal)
             }
+            self.showAlertBox(withMessage: error, andTitle: title)
         })
     }
     
@@ -178,27 +179,30 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         measurement?.healthIssueOther? = inputOther.text!
         measurement?.userId = (User.loggedinUser?.userId)!
         
+        self.btnBack.isEnabled = false
         if (!editingMeasurement)
         {
             measurementService.postNewMeasurement(
-                withSuccess: { (message: String) in
-                self.performSegue(withIdentifier: "measurementFinish", sender: self)
-                    print(Date())
-                    
+                withSuccess: { () in
                     let key = (User.loggedinUser?.userId)! + "date"
                     self.defaults.set(Date(), forKey: key)
-            }, orFailure: { (error: String) in
-                
+                    self.btnBack.isEnabled = true
+                    self.performSegue(withIdentifier: "measurementFinish", sender: self)
+                    print(Date())
+            }, orFailure: { (error: String, title: String) in
+                self.btnBack.isEnabled = true
+                self.showAlertBox(withMessage: error, andTitle: title)
             }, andMeasurement: measurement!)
         }
         else
         {
             measurementService.updateMeasurement(
-                withSuccess: { (message: String) in
+                withSuccess: { () in
+                    self.btnBack.isEnabled = true
                     self.performSegue(withIdentifier: "measurementFinish", sender: self)
-                    
-            }, orFailure: { (error: String) in
-                
+            }, orFailure: { (error: String, title: String) in
+                self.btnBack.isEnabled = true
+                self.showAlertBox(withMessage: error, andTitle: title)
             }, andMeasurement: measurement!)
         }
     }

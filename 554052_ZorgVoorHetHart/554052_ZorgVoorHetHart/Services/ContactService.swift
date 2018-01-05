@@ -12,15 +12,15 @@ class ContactService
 {
     private let manager: ContactManager = ContactManager()
     
-    func sendMessage(withSuccess success: @escaping (String)->(), 
-                     orFailure failure: @escaping (String)->(),
+    func sendMessage(withSuccess success: @escaping ()->(), 
+                     orFailure failure: @escaping (String, String)->(),
                      andSubject subject: String,
                      andMessage message: String)
     {
-        manager.sendMessage(withSuccess: { (message: String) in
-            success(message)
-        }, orFailure: { (error: String) in
-            failure(message)
+        manager.sendMessage(withSuccess: { () in
+            success()
+        }, orFailure: { (error: String, title: String) in
+            failure(error, title)
         }, andSubject: subject, andMessage: message)
     }
 

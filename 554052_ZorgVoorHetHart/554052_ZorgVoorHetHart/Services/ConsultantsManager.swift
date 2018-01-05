@@ -14,7 +14,7 @@ class ConsultantsManager
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Consultants/")
     
     func getConsultans(withSuccess success: @escaping ([Consultant])->(), 
-                     orFailure failure: @escaping (String)->())
+                     orFailure failure: @escaping (String, String)->())
     {
         Alamofire.request(baseURL!,
                           encoding: JSONEncoding.default)
@@ -34,16 +34,22 @@ class ConsultantsManager
                             }
                             catch
                             {
-                                let error: String = "Er is iets fout gegaan tijdens het ophalen van de consulenten."
-                                failure(error)
+                                failure("Er is iets fout gegaan tijdens het ophalen van de consulenten.", "Sorry")
                             }
                         }
                         
                     case .failure(let error):
                         print(error)
-                        let error: String = "Er is iets fout gegaan tijdens het ophalen van de consulenten."
-                        failure(error)
-                    }
+                       
+                        if (SessionManager.isConnectedToInternet)
+                        {
+                            failure("Er is iets fout gegaan tijdens het ophalen van de consulenten.", "Sorry")
+                        }
+                        else
+                        {
+                            failure("U heeft geen internet verbinding.", "Helaas")
+                        }
+                }
         }
     }
 }

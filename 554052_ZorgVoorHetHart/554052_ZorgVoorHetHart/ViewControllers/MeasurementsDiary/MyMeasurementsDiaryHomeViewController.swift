@@ -97,8 +97,8 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
                 DispatchQueue.main.async {
                     self.tableViewMeasurements.reloadData()
                 }
-        }, orFailure: { (error: String) in
-            // Failure
+        }, orFailure: { (error: String, title: String) in
+            self.showAlertBox(withMessage: error, andTitle: title)
         })
     }
     

@@ -51,11 +51,14 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
             inputEmail.isValidEmail())
         {
             emailAddress = inputEmail.text!
+            self.btnSendEmail.isEnabled = false
             
-            service.forgotPassword(withSuccess: { (message: String) in
+            service.forgotPassword(withSuccess: { () in
+                self.btnSendEmail.isEnabled = true
                 self.performSegue(withIdentifier: "forgotPassword", sender: self)
-            }, orFailure: { (error: String) in
-                // Failure
+            }, orFailure: { (error: String, title: String) in
+                self.btnSendEmail.isEnabled = true
+                self.showAlertBox(withMessage: error, andTitle: title)
             }, andEmail: emailAddress)
         }
     }

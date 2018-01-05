@@ -81,11 +81,14 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
         {
             let password = inputPassword.text!
             let passwordCheck = inputPasswordCheck.text!
+            self.btnFinish.isEnabled = false
             
-            service.resetPassword(withSuccess: { (message: String) in
+            service.resetPassword(withSuccess: { () in
+                self.btnFinish.isEnabled = true
                 self.performSegue(withIdentifier: "resetSuccess", sender: self)
-            }, orFailure: { (error: String) in
-                // Failure
+            }, orFailure: { (error: String, title: String) in
+                self.btnFinish.isEnabled = true
+                self.showAlertBox(withMessage: error, andTitle: title)
             }, andPassword: password,
                andPasswordCheck: passwordCheck,
                andToken: resetToken)

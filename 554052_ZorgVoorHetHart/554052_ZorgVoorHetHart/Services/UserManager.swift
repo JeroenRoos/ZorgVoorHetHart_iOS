@@ -18,7 +18,7 @@ class UserManager
     
     // Try to login an user with an email and password
     func login(withSuccess success: @escaping (User)->(), 
-               orFailure failure: @escaping (String)->(),
+               orFailure failure: @escaping (String, String)->(),
                andEmail email: String,
                andPassword password: String)
     {
@@ -49,8 +49,7 @@ class UserManager
                         }
                         catch
                         {
-                            let error: String = "Er is iets fout gegaan tijdens het inloggen."
-                            failure(error)
+                            failure("Er is iets fout gegaan tijdens het inloggen.", "Sorry")
                         }
                     }
                 
@@ -59,18 +58,18 @@ class UserManager
                     
                     if (SessionManager.isConnectedToInternet)
                     {
-                        failure("Er is iets fout gegaan tijdens het inloggen.")
+                        failure("Er is iets fout gegaan tijdens het inloggen.", "Sorry")
                     }
                     else
                     {
-                        failure("U heeft geen internet verbinding.")
+                        failure("U heeft geen internet verbinding.", "Helaas")
                     }
             }
         }
     }
     
-    func register(withSuccess success: @escaping (String)->(), 
-                  orFailure failure: @escaping (String)->(),
+    func register(withSuccess success: @escaping ()->(), 
+                  orFailure failure: @escaping (String, String)->(),
                   andUser user: User)
     {
         let url = URL(string: "register", relativeTo: baseURL)
@@ -94,14 +93,13 @@ class UserManager
                         {
                             // Try to decode the received data to a User object
                             _ = try JSONDecoder().decode(User.self, from: data )
-                            success("result")
+                            success()
                         }
                         catch
                         {
                             print(response.error!)
                             print(response.result.error!)
-                            let error: String = "Er is iets fout gegaan tijdens het registreren."
-                            failure(error)
+                            failure("Er is iets fout gegaan tijdens het registreren.", "Sorry")
                         }
                     }
                     
@@ -109,13 +107,21 @@ class UserManager
                     print(error)
                     print(response.error!)
                     print(response.result.error!)
-                    failure("Er is iets fout gegaan tijdens het inloggen.")
+                    
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het registreren.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }
     
-    func updateLengthAndWeight(withSuccess success: @escaping (String)->(), 
-                  orFailure failure: @escaping (String)->(),
+    func updateLengthAndWeight(withSuccess success: @escaping ()->(), 
+                  orFailure failure: @escaping (String, String)->(),
                   andLength length: Int,
                   andWeight weight: Int)
     {
@@ -136,19 +142,27 @@ class UserManager
                 
                 if (response.result.isSuccess)
                 {
-                    success("Succes!")
+                    success()
                 }
                 else
                 {
                     print(response.error!)
                     print(response.result.error!)
-                    failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.")
+                    
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }
     
-    func forgotPassword(withSuccess success: @escaping (String)->(), 
-                         orFailure failure: @escaping (String)->(),
+    func forgotPassword(withSuccess success: @escaping ()->(), 
+                         orFailure failure: @escaping (String, String)->(),
                          andEmail email: String)
     {
         var url = baseURL!.absoluteString
@@ -165,19 +179,26 @@ class UserManager
                 
                 if (response.result.isSuccess)
                 {
-                    success("Succes!")
+                    success()
                 }
                 else
                 {
                     print(response.error!)
                     print(response.result.error!)
-                    failure("Er is iets fout gegaan tijdens het versturen van de email.")
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het versturen van de email.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }
     
-    func resetPassword(withSuccess success: @escaping (String)->(), 
-                        orFailure failure: @escaping (String)->(),
+    func resetPassword(withSuccess success: @escaping ()->(), 
+                        orFailure failure: @escaping (String, String)->(),
                         andPassword password: String,
                         andPasswordCheck confirmPassword: String,
                         andToken token: String)
@@ -205,14 +226,13 @@ class UserManager
                         {
                             // Try to decode the received data to a User object
                             _ = try JSONDecoder().decode(User.self, from: data )
-                            success("result")
+                            success()
                         }
                         catch
                         {
                             print(response.error!)
                             print(response.result.error!)
-                            let error: String = "Er is iets fout gegaan tijdens het aanpassen van uw wachtwoord."
-                            failure(error)
+                            failure("Er is iets fout gegaan tijdens het aanpassen van uw wachtwoord.", "Sorry")
                         }
                     }
                     
@@ -220,13 +240,20 @@ class UserManager
                     print(error)
                     print(response.error!)
                     print(response.result.error!)
-                    failure("Er is iets fout gegaan tijdens het aanpassen van uw wachtwoord")
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het aanpassen van uw wachtwoord", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }
     
-    func activateAccount(withSuccess success: @escaping (String)->(), 
-                         orFailure failure: @escaping (String)->(),
+    func activateAccount(withSuccess success: @escaping ()->(), 
+                         orFailure failure: @escaping (String, String)->(),
                          andToken token: String)
     {
         var url = baseURL!.absoluteString
@@ -243,13 +270,21 @@ class UserManager
                 
                 if (response.result.isSuccess)
                 {
-                    success("Succes!")
+                    success()
                 }
                 else
                 {
                     print(response.error!)
                     print(response.result.error!)
-                    failure("Er is iets fout gegaan tijdens het activeren van uw account.")
+                    
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het activeren van uw account.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }

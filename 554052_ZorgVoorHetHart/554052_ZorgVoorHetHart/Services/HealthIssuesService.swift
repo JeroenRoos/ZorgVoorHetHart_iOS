@@ -13,12 +13,12 @@ class HealthIssuesService
     private let manager: HealthIssuesManager = HealthIssuesManager()
     
     func getHealthIssues(withSuccess success: @escaping ([HealthIssue])->(), 
-                       orFailure failure: @escaping (String)->())
+                       orFailure failure: @escaping (String, String)->())
     {
         manager.getHealthIssues(withSuccess: { (lstHealthIssues: [HealthIssue]) in
             success(lstHealthIssues)
-        }, orFailure: { (error: String) in
-            failure(error)
+        }, orFailure: { (error: String, title: String) in
+            failure(error, title)
         })
     }
 }

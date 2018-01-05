@@ -13,14 +13,10 @@ class MeasurementManager
 {
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Measurements/")
 
-    func postNewMeasurement(withSuccess success: @escaping (String)->(), 
-                               orFailure failure: @escaping (String)->(),
+    func postNewMeasurement(withSuccess success: @escaping ()->(), 
+                               orFailure failure: @escaping (String, String)->(),
                                andMeasurement measurement: Measurement)
     {
-        /*let parameters: [String: Any] = ["bloodPressureLower" : measurement.bloodPressureLower,
-                                         "bloodPressureUpper" : measurement.bloodPressureUpper,
-                                         "healthIssuesIds" : measurement.healthIssueIds ?? [],
-                                         "healthIssueOther" : measurement.healthIssueOther ?? ""] */
         let parameters = Measurement().convertToDictionary(withMeasurement: measurement)
         let headers = ["x-authtoken" : User.loggedinUser?.authToken ?? ""]
         
@@ -37,19 +33,27 @@ class MeasurementManager
                 
                 if (response.result.isSuccess)
                 {
-                    success("Succes!")
+                    success()
                 }
                 else
                 {
                     print(response.error!)
                     print(response.result.error!)
-                    failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.")
+
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                    failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }
     
     func getMeasurements(withSuccess success: @escaping ([Measurement])->(), 
-                         orFailure failure: @escaping (String)->())
+                         orFailure failure: @escaping (String, String)->())
     {
         let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         
@@ -71,21 +75,27 @@ class MeasurementManager
                         }
                         catch
                         {
-                            let error: String = "Er is iets fout gegaan tijdens het ophalen van de metingen."
-                            failure(error)
+                            failure("Er is iets fout gegaan tijdens het ophalen van de metingen.", "Sorry")
                         }
                     }
                     
                 case .failure(let error):
                     print(error)
-                    let error: String = "Er is iets fout gegaan tijdens het ophalen van de metingen."
-                    failure(error)
+
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het ophalen van de metingen.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }
     
-    func updateMeasurement(withSuccess success: @escaping (String)->(), 
-                           orFailure failure: @escaping (String)->(),
+    func updateMeasurement(withSuccess success: @escaping ()->(), 
+                           orFailure failure: @escaping (String, String)->(),
                            andMeasurement measurement: Measurement)
     {
         var parameters = Measurement().convertToDictionary(withMeasurement: measurement)
@@ -106,13 +116,21 @@ class MeasurementManager
                 
                 if (response.result.isSuccess)
                 {
-                    success("Succes!")
+                    success()
                 }
                 else
                 {
                     print(response.error!)
                     print(response.result.error!)
-                    failure("Er is iets fout gegaan tijdens het aanpassen van de meting.")
+
+                    if (SessionManager.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het aanpassen van de meting.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
                 }
         }
     }

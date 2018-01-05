@@ -94,11 +94,14 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         {
             let subject = inputOnderwerp.text
             let message = inputBericht.text
+            self.btnSend.isEnabled = false
             
-            service.sendMessage(withSuccess: { (message: String) in
+            service.sendMessage(withSuccess: { () in
+                self.btnSend.isEnabled = true
                 self.performSegue(withIdentifier: "send", sender: self)
-            }, orFailure: { (error: String) in
-                
+            }, orFailure: { (error: String, title: String) in
+                self.btnSend.isEnabled = true
+                self.showAlertBox(withMessage: error, andTitle: title)
             }, andSubject: subject!, andMessage: message!)
         }
     }
