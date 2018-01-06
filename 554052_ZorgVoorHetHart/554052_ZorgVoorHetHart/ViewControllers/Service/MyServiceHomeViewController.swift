@@ -55,6 +55,9 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var btnPopupLeft: UIButton!
     @IBOutlet weak var btnPopupRight: UIButton!
     
+    @IBOutlet weak var txtFAQ: UILabel!
+    @IBOutlet weak var imgFAQ: UIImageView!
+    @IBOutlet weak var txtDisclaimer: UILabel!
     
     // Save Settings in UserDefaults
     // https://www.hackingwithswift.com/example-code/system/how-to-save-user-settings-using-userdefaults
@@ -76,7 +79,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         txtMyAccount.text = "Mijn Account"
         txtMyAccount.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
         
-        txtDisclaimerTitle.text = "Disclaimer"
+        txtDisclaimerTitle.text = "Informatie"
         txtDisclaimerTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
         
         //imgBigText.backgroundColor = UIColor(rgb: 0xF8F8F8)
@@ -110,6 +113,14 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         imgLogout.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtLogout.text = "Uitloggen"
         txtLogout.font = txtLogout.font.withSize(12)
+        
+        imgFAQ.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtFAQ.text = "Veelgestelde vragen"
+        txtFAQ.font = txtFAQ.font.withSize(12)
+        txtDisclaimer.text = " Disclaimer"
+        txtDisclaimer.font = UIFont(name:"HelveticaNeue-Bold", size: 14.0)
+        txtDisclaimer.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtDisclaimer.isHidden = true
         
         txtDisclaimerInfo.text = "Deze app is met de grootst mogelijke zorgvuldigheid samengesteld. Wij kunnen echter niet garanderen dat de app altijd zonder onderbrekingen, fouten of gebreken beschikbaar zal zijn of werken en dat de verschafte informatie volledig, juist of up-to-date is."
         txtDisclaimerInfo.backgroundColor = UIColor(rgb: 0xF8F8F8)
@@ -198,6 +209,11 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         
         myScrollView.scrollToTop(animated: true)
         myScrollView.isScrollEnabled = false
+    }
+    
+    @IBAction func btnFAQ_OnClick(_ sender: Any)
+    {
+        // ...
     }
     
     @IBAction func btnPopupRight_OnClick(_ sender: Any)
