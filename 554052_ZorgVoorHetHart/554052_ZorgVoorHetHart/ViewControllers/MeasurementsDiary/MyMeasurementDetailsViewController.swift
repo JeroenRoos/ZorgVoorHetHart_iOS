@@ -58,14 +58,7 @@ class MyMeasurementDetailsViewController: UIViewController
         txtDatum.text = date
         txtDatum.font = txtDatum.font.withSize(12)
         
-        // Berekening over hoe goed de bloeddruk is
-        txtStatus.text = "Uw bloeddruk was prima!"
-        txtStatus.font = txtStatus.font.withSize(12)
-        txtStatus.textColor = UIColor(rgb: 0x35C264)
-        imgBackground.backgroundColor = UIColor(rgb: 0xE7F6EC)
-        // Red background color = 0xF8E2E3
-        // Red text color       = 0xEB6666
-        
+        setMeasurementFeedback(bovendruk: (clickedMeasurement?.bloodPressureUpper)!, onderdruk: (clickedMeasurement?.bloodPressureUpper)!)
         
         if (clickedMeasurement?.healthIssueIds != nil &&
             !(clickedMeasurement?.healthIssueIds?.isEmpty)! ||
@@ -78,6 +71,26 @@ class MyMeasurementDetailsViewController: UIViewController
             //self.txtKlachten.isHidden = true
             //self.txtKlachtenTitle.isHidden = false
             self.txtKlachten.text = "U had geen andere gezondheidsklachten."
+        }
+    }
+    
+    // Red background color = 0xF8E2E3
+    // Red text color       = 0xEB6666
+    private func setMeasurementFeedback(bovendruk: Int, onderdruk: Int)
+    {
+        if (bovendruk < 140 && onderdruk < 90)
+        {
+            txtStatus.text = "Uw bloeddruk was prima!"
+            txtStatus.font = txtStatus.font.withSize(12)
+            txtStatus.textColor = UIColor(rgb: 0x35C264)
+            imgBackground.backgroundColor = UIColor(rgb: 0xE7F6EC)
+        }
+        else
+        {
+            txtStatus.text = "Uw bloeddruk was te hoog!"
+            txtStatus.font = txtStatus.font.withSize(12)
+            txtStatus.textColor = UIColor(rgb: 0xEB6666)
+            imgBackground.backgroundColor = UIColor(rgb: 0xF8E2E3)
         }
     }
     

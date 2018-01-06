@@ -161,7 +161,7 @@ extension UITextField
         {
             errorLabel.isHidden = false
             self.layer.borderWidth = 1
-            if (!self.isValidNumberInput(minValue: 30, maxValue: 110))
+            if (!self.isValidNumberInput(minValue: 30, maxValue: 180))
             {
                 errorLabel.text = errorText
             }
@@ -179,7 +179,7 @@ extension UITextField
         {
             errorLabel.isHidden = false
             self.layer.borderWidth = 1
-            if (!self.isValidNumberInput(minValue: 60, maxValue: 200))
+            if (!self.isValidNumberInput(minValue: 60, maxValue: 230))
             {
                 errorLabel.text = errorText
             }
