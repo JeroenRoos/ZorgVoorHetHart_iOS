@@ -23,10 +23,18 @@ class MyBloodPressureInformationViewController: UIViewController
     @IBOutlet weak var txtAnwser03: UITextView!
     @IBOutlet weak var txtAnwser04: UITextView!
     
+    @IBOutlet weak var btnContact: UIButton!
+    @IBOutlet weak var txtOtherQuestions: UILabel!
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.title = "Bloeddruk informatie"
+        
+        txtOtherQuestions.text = "Staat uw vraag er niet bij? \nNeem contact op met uw consulent."
+        txtOtherQuestions.font = txtOtherQuestions.font?.withSize(12)
+        btnContact.setTitle("Contact opnemen", for: .normal)
+        btnContact.setTitleColor(UIColor.white, for: .normal)
+        btnContact.backgroundColor = UIColor(rgb: 0xE84A4A)
         
         // Link voor de tekst
         // www.bloeddruk.net/bloeddruk-meten.html
@@ -55,6 +63,12 @@ class MyBloodPressureInformationViewController: UIViewController
         txtAnwser04.font = txtAnwser04.font?.withSize(12)
     }
 
+    @IBAction func btnContact_OnClick(_ sender: Any)
+    {
+        self.tabBarController?.selectedIndex = 2
+        self.navigationController?.popToRootViewController(animated: false)
+    }
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()

@@ -98,6 +98,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
                     User.loggedinUser = user
                     self.btnLogin.isEnabled = true
                     self.performSegue(withIdentifier: "loginFinish", sender: self)
+                    self.navigationController?.popToRootViewController(animated: false)
             }, orFailure: { (error: String, title: String) in
                 
                 self.showAlertBox(withMessage: error, andTitle: title)

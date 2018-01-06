@@ -80,7 +80,7 @@ class MyNewMeasurementFinishedViewController: UIViewController
         let viewController = navigationController.childViewControllers[0] as! MyMeasurementsDiaryHomeViewController
         viewController.updateMeasurements = true
         self.tabBarController?.selectedIndex = 1
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
     override func didReceiveMemoryWarning()
