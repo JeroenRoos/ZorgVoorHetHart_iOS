@@ -81,6 +81,11 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     
     override func viewWillAppear(_ animated: Bool)
     {
+        if (tableViewMeasurements.indexPathForSelectedRow != nil)
+        {
+            tableViewMeasurements.deselectRow(at: tableViewMeasurements.indexPathForSelectedRow!, animated: false)
+        }
+        
         if (updateMeasurements)
         {
             lstMeasurements.removeAll()

@@ -58,7 +58,7 @@ class MyMeasurementDetailsViewController: UIViewController
         txtDatum.text = date
         txtDatum.font = txtDatum.font.withSize(12)
         
-        setMeasurementFeedback(bovendruk: (clickedMeasurement?.bloodPressureUpper)!, onderdruk: (clickedMeasurement?.bloodPressureUpper)!)
+        setMeasurementFeedback(bovendruk: (clickedMeasurement?.bloodPressureUpper)!, onderdruk: (clickedMeasurement?.bloodPressureLower)!)
         
         if (clickedMeasurement?.healthIssueIds != nil &&
             !(clickedMeasurement?.healthIssueIds?.isEmpty)! ||

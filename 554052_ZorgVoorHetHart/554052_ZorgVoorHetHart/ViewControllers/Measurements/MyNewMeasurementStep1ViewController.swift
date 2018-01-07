@@ -150,8 +150,8 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     {
         if (!(inputOnderdruk.text?.isEmpty)! &&
             !(inputBovendruk.text?.isEmpty)! &&
-            inputBovendruk.isValidNumberInput(minValue: 60, maxValue: 200) &&
-            inputOnderdruk.isValidNumberInput(minValue: 30, maxValue: 110))
+            inputBovendruk.isValidNumberInput(minValue: 60, maxValue: 230) &&
+            inputOnderdruk.isValidNumberInput(minValue: 30, maxValue: 180))
         {
             measurement?.bloodPressureLower = Int(inputOnderdruk.text!)!
             measurement?.bloodPressureUpper = Int(inputBovendruk.text!)!
