@@ -16,17 +16,10 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var inputOther: UITextField!
     @IBOutlet weak var txtOther: UILabel!
-    //@IBOutlet weak var checkComplaint05: CheckboxHelper!
-    //@IBOutlet weak var checkComplaint06: CheckboxHelper!
-    //@IBOutlet weak var checkComplaint04: CheckboxHelper!
-    //@IBOutlet weak var checkComplaint03: CheckboxHelper!
-    //@IBOutlet weak var checkComplaint02: CheckboxHelper!
-    //@IBOutlet weak var checkComplaint01: CheckboxHelper!
     @IBOutlet weak var radioComplaints: RadioButtonHelper!
     @IBOutlet weak var radioNoComplaints: RadioButtonHelper!
     @IBOutlet weak var tableViewHealthIssues: UITableView!
     
-    private var lstCheckboxes : [CheckboxHelper] = []
     private var lstHealthIssues : [HealthIssue] = []
     private let service: HealthIssuesService = HealthIssuesService()
     private let measurementService: MeasurementService = MeasurementService()
@@ -147,15 +140,6 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                     break
                 }
             }
-            /*for checkbox in lstCheckboxes
-            {
-                print(checkbox.accessibilityIdentifier ?? "")
-                if (checkbox.accessibilityIdentifier! == measurement?.healthIssueIds![i])
-                {
-                    checkbox.isChecked = true
-                    break
-                }
-            }*/
         }
         
         if (measurement?.healthIssueOther != "")
@@ -185,14 +169,6 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                 print(checkbox?.accessibilityIdentifier ?? "")
                 measurement?.healthIssueIds?.append((checkbox?.accessibilityIdentifier!)!)
             }
-            /*for checkbox in lstCheckboxes
-            {
-                if (checkbox.isChecked)
-                {
-                    print(checkbox.accessibilityIdentifier ?? "")
-                    measurement?.healthIssueIds?.append(checkbox.accessibilityIdentifier!)
-                }
-            }*/
         }
         
         measurement?.healthIssueOther? = inputOther.text!
@@ -229,11 +205,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     @IBAction func radioNoComplaints_OnClick(_ sender: Any)
     {
         complaintsHiddenStateChange(state: true)
-        
-        /*for checkbox in lstCheckboxes
-        {
-            checkbox.isChecked = false
-        }*/
+
         for index in 0 ..< lstHealthIssues.count
         {
             let indexPath = IndexPath(row: index, section: 0)
