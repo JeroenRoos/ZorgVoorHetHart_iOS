@@ -42,7 +42,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         errorEmail.font = errorEmail.font.withSize(10)
         errorEmail.isHidden = true
         
-        inputEmail.placeholder = "Voer uw emailaders in"
+        inputEmail.placeholder = "Voer uw e-mailadres in"
         inputEmail.placeholderTextColor = UIColor.gray
         inputEmail.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputEmail.layer.borderWidth = 0

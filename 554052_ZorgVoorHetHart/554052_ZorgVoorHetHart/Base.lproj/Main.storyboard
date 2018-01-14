@@ -2725,7 +2725,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EhP-wO-8gD" userLabel="checkStayLoggedin" customClass="CheckboxHelper" customModule="_54052_ZorgVoorHetHart" customModuleProvider="target">
                                 <rect key="frame" x="20" y="315" width="305" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" red="0.52103656210000004" green="1" blue="0.1013130872" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfm-lA-uO9" userLabel="btnForgotPassword">
                                 <rect key="frame" x="100" y="415" width="275" height="30"/>

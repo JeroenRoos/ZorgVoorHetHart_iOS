@@ -24,14 +24,14 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
         self.title = "Wachtwoord vergeten"
         self.hideKeyboardWhenTappedAround()
         
-        txtDescription.text = "Voer uw emailadres in om een nieuw wachtwoord aan te vragen. "
+        txtDescription.text = "Voer uw e-mailadres in om een nieuw wachtwoord aan te vragen. "
         txtDescription.font = txtDescription.font.withSize(12)
         
         errorEmail.textColor = UIColor.red
         errorEmail.font = errorEmail.font.withSize(10)
         errorEmail.isHidden = true
         
-        inputEmail.placeholder = "Voer uw emailaders in"
+        inputEmail.placeholder = "Voer uw e-mailadres in"
         inputEmail.placeholderTextColor = UIColor.gray
         inputEmail.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputEmail.layer.borderWidth = 0

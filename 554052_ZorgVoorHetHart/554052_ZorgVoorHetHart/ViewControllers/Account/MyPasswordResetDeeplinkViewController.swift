@@ -26,7 +26,7 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
         self.title = "Wachtwoord herstellen"
         self.hideKeyboardWhenTappedAround()
         
-        txtTitle.text = "U kunt uw wachtwoord hier aanpassen. Vul uw nieuwe wachtwoord in in het onderstaande veld."
+        txtTitle.text = "U kunt uw wachtwoord hier aanpassen. Vul uw nieuwe wachtwoord in in de onderstaande velden."
         txtTitle.font = txtTitle.font.withSize(12)
         
         btnFinish.setTitle("Aanpassen", for: .normal)

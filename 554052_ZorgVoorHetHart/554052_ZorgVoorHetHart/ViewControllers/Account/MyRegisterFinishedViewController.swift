@@ -32,7 +32,7 @@ class MyRegisterFinishedViewController: UIViewController
         txtTitleEmail.text = "Bedankt voor het registreren"
         txtTitleEmail.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         
-        txtDescriptionEmail.text = "U heeft een email ontvangen op:"
+        txtDescriptionEmail.text = "U heeft een e-mail ontvangen op:"
         
         if (user?.emailAddress != "")
         {

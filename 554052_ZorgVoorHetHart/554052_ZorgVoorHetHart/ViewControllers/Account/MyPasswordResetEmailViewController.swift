@@ -31,7 +31,7 @@ class MyPasswordResetEmailViewController: UIViewController
         txtTitle.text = "Email verzonden!"
         txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         
-        txtDescription.text = "U heeft een email ontvangen op:"
+        txtDescription.text = "U heeft een e-mail ontvangen op:"
         txtDescription.font = txtDescription.font.withSize(12)
         
         if (emailAddress != "")

@@ -41,7 +41,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         btnNext.setTitleColor(UIColor.white, for: .normal)
         btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)
         
-        inputEmail.placeholder = "Vul uw email in"
+        inputEmail.placeholder = "Vul uw e-mailadres in"
         inputEmail.placeholderTextColor = UIColor.gray
         inputEmail.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputEmail.layer.borderWidth = 0
