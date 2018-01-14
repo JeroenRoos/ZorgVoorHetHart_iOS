@@ -121,7 +121,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         {
             inputBovendruk.text = String((measurement?.bloodPressureUpper)!)
             inputOnderdruk.text = String((measurement?.bloodPressureLower)!)
-            txtDate.text = "Datum originele meting: " + Date().getDateInCorrectFormat(myDate: (measurement?.measurementDateTime)!)!
+            txtDate.text = "Datum originele meting: " + (self.measurement?.measurementDateTimeFormatted)!
             editingMeasurement = true
             self.title = "Meting aanpassen: stap 1 van 2"
         }

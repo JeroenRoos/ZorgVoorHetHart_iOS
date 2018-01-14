@@ -43,7 +43,8 @@ class MyMeasurementDetailsViewController: UIViewController
         txtBovendruk.text = "Bovendruk: " + String((clickedMeasurement?.bloodPressureUpper)!)
         txtBovendruk.font = txtBovendruk.font.withSize(12)
         
-        txtBloedrukTitle.text = "Bloeddruk"
+        txtBloedrukTitle.text = clickedMeasurement?.measurementDateTimeFormatted
+            //"Bloeddruk"
         txtBloedrukTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
         txtKlachtenTitle.text = "Gezondheidsklachten"
@@ -57,12 +58,14 @@ class MyMeasurementDetailsViewController: UIViewController
             //Date().getDateInCorrectFormat(myDate: (clickedMeasurement?.measurementDateTime)!)
         txtDatum.text = date
         txtDatum.font = txtDatum.font.withSize(12)
+        txtDatum.isHidden = true
         
-        setMeasurementFeedback(bovendruk: (clickedMeasurement?.bloodPressureUpper)!, onderdruk: (clickedMeasurement?.bloodPressureLower)!)
+        setMeasurementFeedback(result: (clickedMeasurement?.result)!, feedback: (clickedMeasurement?.feedback)!)
         
-        if (clickedMeasurement?.healthIssueIds != nil &&
-            !(clickedMeasurement?.healthIssueIds?.isEmpty)! ||
-            clickedMeasurement?.healthIssueOther != "")
+        if ((clickedMeasurement?.healthIssueIds != nil &&
+            !(clickedMeasurement?.healthIssueIds?.isEmpty)!) ||
+            (clickedMeasurement?.healthIssueOther != nil &&
+            clickedMeasurement?.healthIssueOther != ""))
         {
             getHealthIssues()
         }
@@ -76,19 +79,23 @@ class MyMeasurementDetailsViewController: UIViewController
     
     // Red background color = 0xF8E2E3
     // Red text color       = 0xEB6666
-    private func setMeasurementFeedback(bovendruk: Int, onderdruk: Int)
+    private func setMeasurementFeedback(result: Int, feedback: String)
     {
-        if (bovendruk < 140 && onderdruk < 90)
+        if (result == 0)
         {
-            txtStatus.text = "Uw bloeddruk was prima!"
-            txtStatus.font = txtStatus.font.withSize(12)
+            txtStatus.text = feedback
             txtStatus.textColor = UIColor(rgb: 0x35C264)
             imgBackground.backgroundColor = UIColor(rgb: 0xE7F6EC)
         }
+        else if (result == 1)
+        {
+            txtStatus.text = feedback
+            txtStatus.textColor = UIColor(rgb: 0xB27300)
+            imgBackground.backgroundColor = UIColor(rgb: 0xFFE4B2)
+        }
         else
         {
-            txtStatus.text = "Uw bloeddruk was te hoog!"
-            txtStatus.font = txtStatus.font.withSize(12)
+            txtStatus.text = feedback
             txtStatus.textColor = UIColor(rgb: 0xEB6666)
             imgBackground.backgroundColor = UIColor(rgb: 0xF8E2E3)
         }
@@ -106,7 +113,7 @@ class MyMeasurementDetailsViewController: UIViewController
                     self.txtKlachten.text?.append(issue.name + "\n")
                 }
                 
-                if (self.clickedMeasurement?.healthIssueOther != "")
+                if (self.clickedMeasurement?.healthIssueOther != nil && self.clickedMeasurement?.healthIssueOther != "")
                 {
                     self.txtKlachten.text?.append("\n\nAndere klachten: \n" + (self.clickedMeasurement?.healthIssueOther)!)
                 }

@@ -16,8 +16,10 @@ class Measurement: Decodable
     var healthIssueIds: [String]?
     var healthIssueOther: String?
     var userId: String = ""                         // ObjectId
-    var measurementDateTime: String = ""
+    //var measurementDateTime: String = ""
     var measurementDateTimeFormatted: String = ""
+    var feedback : String = ""
+    var result: Int = 0
     
     enum CodingKeys: String, CodingKey
     {
@@ -27,8 +29,10 @@ class Measurement: Decodable
         case healthIssueIds = "healthIssueIds"
         case healthIssueOther = "healthIssueOther"
         case userId = "userId"
-        case measurementDateTime = "measurementDateTime"
+        //case measurementDateTime = "measurementDateTime"
         case measurementDateTimeFormatted = "measurementDateFormatted"
+        case feedback = "feedback"
+        case result = "result"
     }
 
 }

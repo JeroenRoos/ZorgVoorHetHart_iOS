@@ -102,7 +102,8 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                 else
                 {
                     self.title = "Meting aanpassen: stap 2 van 2"
-                    self.txtDate.text = "Datum originele meting: " + Date().getDateInCorrectFormat(myDate: (self.measurement?.measurementDateTime)!)!
+                    self.txtDate.text = "Datum originele meting: " + (self.measurement?.measurementDateTimeFormatted)!
+                    //Date().getDateInCorrectFormat(myDate: (self.measurement?.measurementDateTime)!)!
                     
                     if (self.measurement?.healthIssueIds != nil &&
                         !(self.measurement?.healthIssueIds?.isEmpty)! ||
