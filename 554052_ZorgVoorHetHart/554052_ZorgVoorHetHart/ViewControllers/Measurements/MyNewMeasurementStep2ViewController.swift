@@ -8,21 +8,23 @@
 
 import UIKit
 
-class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
+class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate
 {
+    
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var txtDate: UILabel!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var inputOther: UITextField!
     @IBOutlet weak var txtOther: UILabel!
-    @IBOutlet weak var checkComplaint05: CheckboxHelper!
-    @IBOutlet weak var checkComplaint06: CheckboxHelper!
-    @IBOutlet weak var checkComplaint04: CheckboxHelper!
-    @IBOutlet weak var checkComplaint03: CheckboxHelper!
-    @IBOutlet weak var checkComplaint02: CheckboxHelper!
-    @IBOutlet weak var checkComplaint01: CheckboxHelper!
+    //@IBOutlet weak var checkComplaint05: CheckboxHelper!
+    //@IBOutlet weak var checkComplaint06: CheckboxHelper!
+    //@IBOutlet weak var checkComplaint04: CheckboxHelper!
+    //@IBOutlet weak var checkComplaint03: CheckboxHelper!
+    //@IBOutlet weak var checkComplaint02: CheckboxHelper!
+    //@IBOutlet weak var checkComplaint01: CheckboxHelper!
     @IBOutlet weak var radioComplaints: RadioButtonHelper!
     @IBOutlet weak var radioNoComplaints: RadioButtonHelper!
+    @IBOutlet weak var tableViewHealthIssues: UITableView!
     
     private var lstCheckboxes : [CheckboxHelper] = []
     private var lstHealthIssues : [HealthIssue] = []
@@ -54,13 +56,6 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         radioNoComplaints?.alternateButton = [radioComplaints!]
         radioNoComplaints.layer.borderWidth = 0
         
-        lstCheckboxes.append(checkComplaint01)
-        lstCheckboxes.append(checkComplaint02)
-        lstCheckboxes.append(checkComplaint03)
-        lstCheckboxes.append(checkComplaint04)
-        lstCheckboxes.append(checkComplaint05)
-        lstCheckboxes.append(checkComplaint06)
-        
         txtOther.text = "Anders, namelijk:"
         txtOther.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
@@ -74,8 +69,22 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         btnNext.setTitleColor(UIColor.white, for: .normal)
         btnNext.backgroundColor = UIColor(rgb: 0xE84A4A)
         
+        tableViewHealthIssues.delegate = self
+        tableViewHealthIssues.dataSource = self
         complaintsHiddenStateChange(state: true)
         getHealthIssues()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return lstHealthIssues.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let customCell = tableView.dequeueReusableCell(withIdentifier: "healthIssueCell", for: indexPath) as! MyHealthIssueTableViewCell
+        customCell.initCheckbox(healthIssue: lstHealthIssues[indexPath.row])
+        return customCell
     }
     
     private func getHealthIssues()
@@ -85,11 +94,8 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                 
                 // Sla deze health issues later opnieuw op
                 self.lstHealthIssues = healthIssues
-                
-                for i in 0 ..< self.lstHealthIssues.count
-                {
-                    self.lstCheckboxes[i].setTitle(self.lstHealthIssues[i].name, for: .normal)
-                    self.lstCheckboxes[i].accessibilityIdentifier = self.lstHealthIssues[i].issueId
+                DispatchQueue.main.async {
+                    self.tableViewHealthIssues.reloadData()
                 }
                 
                 if (!self.editingMeasurement)
@@ -103,22 +109,19 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                 {
                     self.title = "Meting aanpassen: stap 2 van 2"
                     self.txtDate.text = "Datum originele meting: " + (self.measurement?.measurementDateTimeFormatted)!
-                    //Date().getDateInCorrectFormat(myDate: (self.measurement?.measurementDateTime)!)!
                     
                     if (self.measurement?.healthIssueIds != nil &&
                         !(self.measurement?.healthIssueIds?.isEmpty)! ||
                         self.measurement?.healthIssueOther != "")
                     {
-                        self.setCheckboxesAndTextField()
+                        DispatchQueue.main.async {
+                            self.setCheckboxesAndTextField()
+                        }
                     }
                 }
+                
         }, orFailure: { (error: String, title) in
             self.title = "Nieuwe meting: stap 2 van 3"
-            for checkbox in self.lstCheckboxes
-            {
-                checkbox.setTitle("[placeholder]", for: .normal)
-                checkbox.setTitleColor(UIColor.black, for: .normal)
-            }
             self.showAlertBox(withMessage: error, andTitle: title)
         })
     }
@@ -128,10 +131,23 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         complaintsHiddenStateChange(state: false)
         radioComplaints.isChecked = true
         radioNoComplaints.isChecked = false
+        tableViewHealthIssues.isHidden = false
         
         for i in 0 ..< (self.measurement?.healthIssueIds?.count)!
         {
-            for checkbox in lstCheckboxes
+            for index in 0 ..< lstHealthIssues.count
+            {
+                let indexPath = IndexPath(row: index, section: 0)
+                let cell = self.tableViewHealthIssues.cellForRow(at: indexPath) as! MyHealthIssueTableViewCell
+                let checkbox = cell.checkboxHealthIssue
+                
+                if (checkbox?.accessibilityIdentifier! == measurement?.healthIssueIds![i])
+                {
+                    checkbox?.isChecked = true
+                    break
+                }
+            }
+            /*for checkbox in lstCheckboxes
             {
                 print(checkbox.accessibilityIdentifier ?? "")
                 if (checkbox.accessibilityIdentifier! == measurement?.healthIssueIds![i])
@@ -139,7 +155,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                     checkbox.isChecked = true
                     break
                 }
-            }
+            }*/
         }
         
         if (measurement?.healthIssueOther != "")
@@ -158,14 +174,25 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     {
         // Check if the list with ID's already contains the ID (needed when editing the measurement)
         measurement?.healthIssueIds?.removeAll()
-        for checkbox in lstCheckboxes
+        for index in 0 ..< lstHealthIssues.count
         {
-            if (checkbox.isChecked)
+            let indexPath = IndexPath(row: index, section: 0)
+            let cell = self.tableViewHealthIssues.cellForRow(at: indexPath) as! MyHealthIssueTableViewCell
+            let checkbox = cell.checkboxHealthIssue
+            
+            if (checkbox?.isChecked)!
             {
-                print(checkbox.accessibilityIdentifier ?? "")
-                measurement?.healthIssueIds?.append(checkbox.accessibilityIdentifier!)
-                
+                print(checkbox?.accessibilityIdentifier ?? "")
+                measurement?.healthIssueIds?.append((checkbox?.accessibilityIdentifier!)!)
             }
+            /*for checkbox in lstCheckboxes
+            {
+                if (checkbox.isChecked)
+                {
+                    print(checkbox.accessibilityIdentifier ?? "")
+                    measurement?.healthIssueIds?.append(checkbox.accessibilityIdentifier!)
+                }
+            }*/
         }
         
         measurement?.healthIssueOther? = inputOther.text!
@@ -203,10 +230,18 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     {
         complaintsHiddenStateChange(state: true)
         
-        for checkbox in lstCheckboxes
+        /*for checkbox in lstCheckboxes
         {
             checkbox.isChecked = false
+        }*/
+        for index in 0 ..< lstHealthIssues.count
+        {
+            let indexPath = IndexPath(row: index, section: 0)
+            let cell = self.tableViewHealthIssues.cellForRow(at: indexPath) as! MyHealthIssueTableViewCell
+            let checkbox = cell.checkboxHealthIssue
+            checkbox?.isChecked = false
         }
+        
         inputOther.text = ""
     }
     
@@ -219,11 +254,6 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     {
         inputOther.isHidden = state
         txtOther.isHidden = state
-        checkComplaint05.isHidden = state
-        checkComplaint06.isHidden = state
-        checkComplaint04.isHidden = state
-        checkComplaint03.isHidden = state
-        checkComplaint02.isHidden = state
-        checkComplaint01.isHidden = state
+        tableViewHealthIssues.isHidden = state
     }
 }

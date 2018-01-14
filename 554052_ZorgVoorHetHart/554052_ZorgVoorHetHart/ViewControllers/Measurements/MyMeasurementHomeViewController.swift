@@ -39,7 +39,7 @@ class MyMeasurementHomeViewController: UIViewController
             let sameDay = Calendar.current.isDateInToday(dateLastMeasurement as! Date)
             if (sameDay)
             {
-                btnNewMeasurement.isHidden = true
+                //btnNewMeasurement.isHidden = true
                 txtSquareMiddle.text = "U heeft vandaag al een meting gedaan. U kunt uw meting bekijken in uw dagboek"
             }
             else

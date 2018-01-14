@@ -57,6 +57,7 @@
 		E87921451FEFEFB20022F0FE /* KeychainServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87921441FEFEFB20022F0FE /* KeychainServiceExtension.swift */; };
 		E879722B1FDAECA5002A8A2E /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */; };
 		E881A4B11FE991620056E893 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E881A4B01FE991620056E893 /* ArrayExtension.swift */; };
+		E881E180200BE0F2008FABB8 /* MyHealthIssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E881E17F200BE0F2008FABB8 /* MyHealthIssueTableViewCell.swift */; };
 		E8AF1CA01FFE875F00C44ED1 /* 554052_ZorgVoorHetHart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8AF1C9E1FFE875F00C44ED1 /* 554052_ZorgVoorHetHart.xcdatamodeld */; };
 		E8B2E2411FF40DC4005E6057 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2E2401FF40DC4005E6057 /* SessionManager.swift */; };
 		E8C6CEB31FEAB021003E07A7 /* MyAccountActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */; };
@@ -154,6 +155,7 @@
 		E87921441FEFEFB20022F0FE /* KeychainServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceExtension.swift; sourceTree = "<group>"; };
 		E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		E881A4B01FE991620056E893 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		E881E17F200BE0F2008FABB8 /* MyHealthIssueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHealthIssueTableViewCell.swift; sourceTree = "<group>"; };
 		E8AF1C9F1FFE875F00C44ED1 /* 554052_ZorgVoorHetHart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 554052_ZorgVoorHetHart.xcdatamodel; sourceTree = "<group>"; };
 		E8B2E2401FF40DC4005E6057 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountActivatedViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				9018219E1FCC610100937DDB /* MyNewMeasurementStep3ViewController.swift */,
 				901821A01FCC9FD300937DDB /* MyNewMeasurementFinishedViewController.swift */,
 				900215B21FD1E61600D0E325 /* MyBloodPressureInformationViewController.swift */,
+				E881E17F200BE0F2008FABB8 /* MyHealthIssueTableViewCell.swift */,
 			);
 			path = Measurements;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E881E180200BE0F2008FABB8 /* MyHealthIssueTableViewCell.swift in Sources */,
 				E8F79C031FD85C7C00033926 /* ContactManager.swift in Sources */,
 				90088C711FC3074E003997B9 /* MyMeasurementHomeViewController.swift in Sources */,
 				90C953191FC7447B001FD3C2 /* MyServiceHomeViewController.swift in Sources */,
