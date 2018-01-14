@@ -15,7 +15,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var inputOnderwerp: UITextField!
     @IBOutlet weak var inputBericht: UITextField!
     @IBOutlet weak var txtBericht: UILabel!
-    @IBOutlet weak var btnCancel: UIButton!
+    //@IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var errorOnderwerp: UILabel!
     @IBOutlet weak var errorBericht: UILabel!
@@ -66,9 +66,9 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         btnSend.setTitleColor(UIColor.white, for: .normal)
         btnSend.backgroundColor = UIColor(rgb: 0xE84A4A)
         
-        btnCancel.setTitle("Annuleren", for: .normal)
-        btnCancel.setTitleColor(UIColor.white, for: .normal)
-        btnCancel.backgroundColor = UIColor(rgb: 0xA9A9A9)
+        //btnCancel.setTitle("Annuleren", for: .normal)
+        //btnCancel.setTitleColor(UIColor.white, for: .normal)
+        //btnCancel.backgroundColor = UIColor(rgb: 0xA9A9A9)
         
         let name = (User.loggedinUser?.consultant?.firstName)! + " " + (User.loggedinUser?.consultant?.lastName)!
         let email = User.loggedinUser?.consultant?.emailAddress
@@ -82,10 +82,10 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         inputOnderwerp.text = ""
     }
     
-    @IBAction func btnCancel_OnClick(_ sender: Any)
-    {
-        self.tabBarController?.selectedIndex = 0
-    }
+    //@IBAction func btnCancel_OnClick(_ sender: Any)
+    //{
+    //    self.tabBarController?.selectedIndex = 0
+    //}
     
     @IBAction func btnSend_OnClick(_ sender: Any)
     {

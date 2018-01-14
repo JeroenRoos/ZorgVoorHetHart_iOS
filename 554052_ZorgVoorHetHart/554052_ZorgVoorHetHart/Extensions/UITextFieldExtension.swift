@@ -190,5 +190,30 @@ extension UITextField
             }
         }
     }
-
+    
+    
+    func setErrorMessageInvalidDateOfBirth(errorLabel: UILabel, errorText: String)
+    {
+        if (!(self.text?.isEmpty)!)
+        {
+            let dateOfBirth = self.text!
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            dateFormatter.locale = Locale(identifier: "nl_NL")
+            let birthDate = dateFormatter.date(from: dateOfBirth)
+            let todayDate = Date()
+            
+            errorLabel.isHidden = false
+            self.layer.borderWidth = 1
+            if (birthDate! > todayDate)
+            {
+                errorLabel.text = errorText
+            }
+            else
+            {
+                errorLabel.isHidden = true
+                self.layer.borderWidth = 0
+            }
+        }
+    }
 }

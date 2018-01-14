@@ -97,6 +97,8 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         self.inputGewicht.delegate = self
         inputGewicht.addTarget(self, action: #selector(gewichtDidEndEditing(_:)), for: .editingDidEnd)
         inputGewicht.layer.borderColor = UIColor.red.cgColor
+        
+        let d = Date().getCurrentWeekdayAndDate()
     }
 
     override func didReceiveMemoryWarning()
@@ -164,6 +166,9 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
     {
         // Check and set error message if the textfield is empty
         textField.setErrorMessageEmptyField(errorLabel: errorDateOfBirth, errorText: "Geboortedatum kan niet leeg zijn")
+        
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageInvalidDateOfBirth(errorLabel: errorDateOfBirth, errorText: "Geboortedatum kan niet in de toekomst zijn")
     }
     
     @objc func lengteDidEndEditing(_ textField: UITextField)
@@ -198,6 +203,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
         dateFormatter.timeStyle = DateFormatter.Style.none
+        //dateFormatter.locale = Locale(identifier: "nl_NL")
         let dateOfBirth = dateFormatter.string(from: sender.date)
         let finalDate = dateOfBirth.replacingOccurrences(of: "/", with: "-")
         inputDatefOfBirth.text = finalDate

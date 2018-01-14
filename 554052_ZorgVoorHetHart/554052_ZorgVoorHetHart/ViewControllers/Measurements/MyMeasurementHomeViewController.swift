@@ -24,7 +24,6 @@ class MyMeasurementHomeViewController: UIViewController
         btnNewMeasurement.setTitleColor(UIColor.white, for: .normal)
         btnNewMeasurement.backgroundColor = UIColor(rgb: 0xE84A4A)
         btnNewMeasurement.setTitle("Start nieuwe meting", for: .normal)
-        txtSquareMiddle.text = "Vul uw eerste meting in"
 
         txtUpperBar.text = "Goedenmiddag " + (User.loggedinUser?.firstName)!
         txtUpperBar.font = txtUpperBar.font.withSize(14)
@@ -43,6 +42,14 @@ class MyMeasurementHomeViewController: UIViewController
                 btnNewMeasurement.isHidden = true
                 txtSquareMiddle.text = "U heeft vandaag al een meting gedaan. U kunt uw meting bekijken in uw dagboek"
             }
+            else
+            {
+                txtSquareMiddle.text = "Vul een nieuwe meting in"
+            }
+        }
+        else
+        {
+            txtSquareMiddle.text = "Vul uw eerste meting in"
         }
     }
     

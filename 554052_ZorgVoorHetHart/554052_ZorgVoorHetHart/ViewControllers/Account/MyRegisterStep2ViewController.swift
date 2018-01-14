@@ -30,7 +30,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         self.title = "Registreren stap 2 van 3"
         self.hideKeyboardWhenTappedAround()
         
-        txtTitle.text = "Logingegevens"
+        txtTitle.text = "Inloggegevens"
         txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         
         errorEmail.textColor = UIColor.red

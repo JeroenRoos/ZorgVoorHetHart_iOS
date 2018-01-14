@@ -11,7 +11,7 @@ import UIKit
 class MyMeasurementDetailsViewController: UIViewController
 {
     @IBOutlet weak var btnEdit: UIButton!
-    @IBOutlet weak var btnBack: UIButton!
+    //@IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var txtOnderdruk: UILabel!
     @IBOutlet weak var txtKlachten: UILabel!
     @IBOutlet weak var txtKlachtenTitle: UILabel!
@@ -29,9 +29,9 @@ class MyMeasurementDetailsViewController: UIViewController
     {
         super.viewDidLoad()
         
-        btnBack.setTitle("Terug", for: .normal)
-        btnBack.setTitleColor(UIColor.white, for: .normal)
-        btnBack.backgroundColor = UIColor(rgb: 0xE84A4A)
+        //btnBack.setTitle("Terug", for: .normal)
+        //btnBack.setTitleColor(UIColor.white, for: .normal)
+        //btnBack.backgroundColor = UIColor(rgb: 0xE84A4A)
         
         btnEdit.setTitle("Bewerken", for: .normal)
         btnEdit.setTitleColor(UIColor.white, for: .normal)
@@ -123,10 +123,10 @@ class MyMeasurementDetailsViewController: UIViewController
         self.performSegue(withIdentifier: "editMeasurement", sender: self)
     }
     
-    @IBAction func btnBack_OnClick(_ sender: Any)
-    {
-        self.navigationController?.popViewController(animated: true)
-    }
+    //@IBAction func btnBack_OnClick(_ sender: Any)
+    //{
+    //    self.navigationController?.popViewController(animated: true)
+    //}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {

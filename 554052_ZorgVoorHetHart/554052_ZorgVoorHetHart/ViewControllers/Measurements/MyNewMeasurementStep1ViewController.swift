@@ -17,7 +17,6 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var txtDate: UILabel!
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var btnNext: UIButton!
-    @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var errorBovendruk: UILabel!
     @IBOutlet weak var errorOnderdruk: UILabel!
     
@@ -110,10 +109,6 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         btnNext.setTitleColor(UIColor.white, for: .normal)
         btnNext.backgroundColor = UIColor(rgb: 0xE84A4A)
         
-        btnCancel.setTitle("Annuleren", for: .normal)
-        btnCancel.setTitleColor(UIColor.white, for: .normal)
-        btnCancel.backgroundColor = UIColor(rgb: 0xA9A9A9)
-        
         if (measurement == nil)
         {
             measurement = Measurement()
@@ -139,11 +134,6 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         self.inputLengte.isHidden = true
         self.inputGewicht.isHidden = true
         self.imgMiddelSquare.isHidden = true
-    }
-    
-    @IBAction func btnCancel_OnClick(_ sender: Any)
-    {
-        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnNext_OnClick(_ sender: Any)

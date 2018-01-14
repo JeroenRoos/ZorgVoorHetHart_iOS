@@ -13,7 +13,6 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var txtDate: UILabel!
     @IBOutlet weak var btnNext: UIButton!
-    @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var inputOther: UITextField!
     @IBOutlet weak var txtOther: UILabel!
     @IBOutlet weak var checkComplaint05: CheckboxHelper!
@@ -73,10 +72,6 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         btnNext.setTitle("Volgende", for: .normal)
         btnNext.setTitleColor(UIColor.white, for: .normal)
         btnNext.backgroundColor = UIColor(rgb: 0xE84A4A)
-        
-        btnBack.setTitle("Terug", for: .normal)
-        btnBack.setTitleColor(UIColor.white, for: .normal)
-        btnBack.backgroundColor = UIColor(rgb: 0xA9A9A9)
         
         complaintsHiddenStateChange(state: true)
         getHealthIssues()
@@ -156,11 +151,6 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func btnBack_OnClick(_ sender: Any)
-    {
-        self.navigationController?.popViewController(animated: true)
-    }
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
@@ -179,18 +169,18 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         measurement?.healthIssueOther? = inputOther.text!
         measurement?.userId = (User.loggedinUser?.userId)!
         
-        self.btnBack.isEnabled = false
+        self.btnNext.isEnabled = false
         if (!editingMeasurement)
         {
             measurementService.postNewMeasurement(
                 withSuccess: { () in
                     let key = (User.loggedinUser?.userId)! + "date"
                     self.defaults.set(Date(), forKey: key)
-                    self.btnBack.isEnabled = true
+                    self.btnNext.isEnabled = true
                     self.performSegue(withIdentifier: "measurementFinish", sender: self)
                     print(Date())
             }, orFailure: { (error: String, title: String) in
-                self.btnBack.isEnabled = true
+                self.btnNext.isEnabled = true
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andMeasurement: measurement!)
         }
@@ -198,10 +188,10 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         {
             measurementService.updateMeasurement(
                 withSuccess: { () in
-                    self.btnBack.isEnabled = true
+                    self.btnNext.isEnabled = true
                     self.performSegue(withIdentifier: "measurementFinish", sender: self)
             }, orFailure: { (error: String, title: String) in
-                self.btnBack.isEnabled = true
+                self.btnNext.isEnabled = true
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andMeasurement: measurement!)
         }

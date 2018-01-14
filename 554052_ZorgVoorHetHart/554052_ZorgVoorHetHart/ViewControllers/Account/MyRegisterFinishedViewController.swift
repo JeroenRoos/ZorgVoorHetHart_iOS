@@ -42,7 +42,7 @@ class MyRegisterFinishedViewController: UIViewController
         {
             txtEmail.text = "placeholder@email.com"
         }
-        txtEmail.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        txtEmail.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
         
         txtActivate.text = "Hiermee kunt u uw account activeren"
     }

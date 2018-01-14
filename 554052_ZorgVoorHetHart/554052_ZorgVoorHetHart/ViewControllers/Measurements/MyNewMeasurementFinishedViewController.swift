@@ -12,25 +12,40 @@ let defaults = UserDefaults.standard
 
 class MyNewMeasurementFinishedViewController: UIViewController
 {
+    @IBOutlet weak var btnNotNow: UIButton!
     @IBOutlet weak var btnCheckDiary: UIButton!
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var txtInfo: UILabel!
+    var editingMeasurement: Bool = false
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Nieuwe meting afgerond"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         btnCheckDiary.setTitle("Bekijk dagboek", for: .normal)
         btnCheckDiary.setTitleColor(UIColor.white, for: .normal)
         btnCheckDiary.backgroundColor = UIColor(rgb: 0xE84A4A)
         
-        txtTitle.text = "Uw meting is succesvol opgeslagen in uw dagboek!"
+        btnNotNow.setTitle("Niet nu", for: .normal)
+        btnNotNow.setTitleColor(UIColor.white, for: .normal)
+        btnNotNow.backgroundColor = UIColor(rgb: 0xA9A9A9)
+        
         txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         
         txtInfo.text = "U kunt gemakkelijk een overzicht van al uw metingen zien onder dagboek"
         txtInfo.font = txtInfo.font.withSize(12)
+        
+        if (editingMeasurement)
+        {
+            self.title = "Meting aanpassen afgerond"
+            txtTitle.text = "Uw meting is succesvol aangepast en opgeslagen in uw dagboek!"
+        }
+        else
+        {
+            self.title = "Nieuwe meting afgerond"
+            txtTitle.text = "Uw meting is succesvol opgeslagen in uw dagboek!"
+        }
         
         // Set the notifications for a reminder of the measurement the next day
         setNotificationNextMeasurement()
@@ -71,6 +86,11 @@ class MyNewMeasurementFinishedViewController: UIViewController
                 }
             }
         }
+    }
+    @IBAction func btnNotNow_OnClick(_ sender: Any)
+    {
+        //self.tabBarController?.selectedIndex = 0
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
     @IBAction func btnCheckDiary_OnClick(_ sender: Any)
