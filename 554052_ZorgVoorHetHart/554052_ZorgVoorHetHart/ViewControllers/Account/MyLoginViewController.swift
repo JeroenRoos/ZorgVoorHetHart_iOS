@@ -43,6 +43,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         errorEmail.isHidden = true
         
         inputEmail.placeholder = "Voer uw emailaders in"
+        inputEmail.placeholderTextColor = UIColor.gray
         inputEmail.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputEmail.layer.borderWidth = 0
         inputEmail.keyboardType = UIKeyboardType.emailAddress
@@ -56,6 +57,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         errorPassword.isHidden = true
         
         inputPassword.placeholder = "Voer uw wachtwoord in"
+        inputPassword.placeholderTextColor = UIColor.gray
         inputPassword.isSecureTextEntry = true
         inputPassword.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPassword.layer.borderWidth = 0

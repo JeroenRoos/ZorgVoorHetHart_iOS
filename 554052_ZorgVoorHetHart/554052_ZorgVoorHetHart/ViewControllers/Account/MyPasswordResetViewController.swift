@@ -32,6 +32,7 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
         errorEmail.isHidden = true
         
         inputEmail.placeholder = "Voer uw emailaders in"
+        inputEmail.placeholderTextColor = UIColor.gray
         inputEmail.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputEmail.layer.borderWidth = 0
         inputEmail.keyboardType = UIKeyboardType.emailAddress

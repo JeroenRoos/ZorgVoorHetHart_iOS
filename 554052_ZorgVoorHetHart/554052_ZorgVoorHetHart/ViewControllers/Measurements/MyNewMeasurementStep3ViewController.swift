@@ -29,6 +29,7 @@ class MyNewMeasurementStep3ViewController: UIViewController, UITextFieldDelegate
         txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
         inputMessage.placeholder = ""
+        inputMessage.placeholderTextColor = UIColor.gray
         inputMessage.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputMessage.layer.borderWidth = 0
         self.inputMessage.delegate = self

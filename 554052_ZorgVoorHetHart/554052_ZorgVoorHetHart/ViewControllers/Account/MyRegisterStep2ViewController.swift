@@ -42,6 +42,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)
         
         inputEmail.placeholder = "Vul uw email in"
+        inputEmail.placeholderTextColor = UIColor.gray
         inputEmail.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputEmail.layer.borderWidth = 0
         inputEmail.keyboardType = UIKeyboardType.emailAddress
@@ -54,6 +55,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         errorPassword.isHidden = true
         
         inputPassword.placeholder = "Vul uw wachtwoord in"
+        inputPassword.placeholderTextColor = UIColor.gray
         inputPassword.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPassword.layer.borderWidth = 0
         inputPassword.isSecureTextEntry = true
@@ -66,6 +68,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         errorPasswordCheck.isHidden = true
         
         inputPasswordCheck.placeholder = "Herhaal uw wachtwoord in"
+        inputPasswordCheck.placeholderTextColor = UIColor.gray
         inputPasswordCheck.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPasswordCheck.layer.borderWidth = 0
         inputPasswordCheck.isSecureTextEntry = true

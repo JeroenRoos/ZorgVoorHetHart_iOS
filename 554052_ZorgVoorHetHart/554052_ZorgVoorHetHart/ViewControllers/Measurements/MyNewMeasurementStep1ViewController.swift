@@ -86,6 +86,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         errorBovendruk.isHidden = true
         
         inputBovendruk.placeholder = "0"
+        inputBovendruk.placeholderTextColor = UIColor.gray
         inputBovendruk.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputBovendruk.layer.borderWidth = 0
         inputBovendruk.keyboardType = UIKeyboardType.numberPad
@@ -98,6 +99,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         errorOnderdruk.isHidden = true
         
         inputOnderdruk.placeholder = "0"
+        inputOnderdruk.placeholderTextColor = UIColor.gray
         inputOnderdruk.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOnderdruk.layer.borderWidth = 0
         inputOnderdruk.keyboardType = UIKeyboardType.numberPad

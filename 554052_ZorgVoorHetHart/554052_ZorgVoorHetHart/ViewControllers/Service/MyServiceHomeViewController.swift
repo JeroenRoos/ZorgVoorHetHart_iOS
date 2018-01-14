@@ -139,6 +139,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         txtPopupWeight.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
         inputPopupLength.placeholder = "0"
+        inputPopupLength.placeholderTextColor = UIColor.gray
         inputPopupLength.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPopupLength.layer.borderWidth = 0
         inputPopupLength.keyboardType = UIKeyboardType.numberPad
@@ -150,6 +151,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         }
         
         inputPopupWeight.placeholder = "0"
+        inputPopupWeight.placeholderTextColor = UIColor.gray
         inputPopupWeight.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPopupWeight.layer.borderWidth = 0
         inputPopupWeight.keyboardType = UIKeyboardType.numberPad

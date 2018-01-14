@@ -65,6 +65,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         txtOther.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
         inputOther.placeholder = "Vul hier uw andere gezondsheidsklachten in, als u deze heeft"
+        inputOther.placeholderTextColor = UIColor.gray
         inputOther.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOther.layer.borderWidth = 0
         self.inputOther.delegate = self

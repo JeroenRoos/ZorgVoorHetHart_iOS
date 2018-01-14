@@ -10,6 +10,14 @@ import UIKit
 
 extension UITextField
 {
+    @IBInspectable var placeholderTextColor: UIColor
+    {
+        get { return self.placeholderTextColor }
+        set
+        {
+            self.attributedPlaceholder = NSAttributedString(string: self.placeholder != nil ? self.placeholder! : "", attributes: [NSAttributedStringKey.foregroundColor: newValue])
+        }
+    }
     
     func isValidEmail() -> Bool
     {

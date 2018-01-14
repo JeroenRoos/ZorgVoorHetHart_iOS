@@ -38,6 +38,7 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
         errorPassword.isHidden = true
         
         inputPassword.placeholder = "Vul uw nieuwe wachtwoord in"
+        inputPassword.placeholderTextColor = UIColor.gray
         inputPassword.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPassword.layer.borderWidth = 0
         inputPassword.isSecureTextEntry = true
@@ -50,6 +51,7 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
         errorPasswordCheck.isHidden = true
         
         inputPasswordCheck.placeholder = "Herhaal uw nieuwe wachtwoord in"
+        inputPasswordCheck.placeholderTextColor = UIColor.gray
         inputPasswordCheck.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputPasswordCheck.layer.borderWidth = 0
         inputPasswordCheck.isSecureTextEntry = true

@@ -57,6 +57,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         errorDateOfBirth.isHidden = true
         
         inputDatefOfBirth.placeholder = "Uw geboortedatum"
+        inputDatefOfBirth.placeholderTextColor = UIColor.gray
         inputDatefOfBirth.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputDatefOfBirth.layer.borderWidth = 0
         inputDatefOfBirth.addTarget(self, action: #selector(dateOfBirthDidEndEditing(_:)), for: .editingDidEnd)
@@ -68,6 +69,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         errorName.isHidden = true
         
         inputName.placeholder = "Vul uw naam in"
+        inputName.placeholderTextColor = UIColor.gray
         inputName.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputName.layer.borderWidth = 0
         self.inputName.delegate = self
@@ -79,6 +81,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         errorLengte.isHidden = true
         
         inputLengte.placeholder = "Vul uw lengte in (cm)"
+        inputLengte.placeholderTextColor = UIColor.gray
         inputLengte.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputLengte.layer.borderWidth = 0
         inputLengte.keyboardType = UIKeyboardType.numberPad
@@ -91,6 +94,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         errorGewicht.isHidden = true
         
         inputGewicht.placeholder = "Vul uw gewicht in (KG)"
+        inputGewicht.placeholderTextColor = UIColor.gray
         inputGewicht.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputGewicht.layer.borderWidth = 0
         inputGewicht.keyboardType = UIKeyboardType.numberPad

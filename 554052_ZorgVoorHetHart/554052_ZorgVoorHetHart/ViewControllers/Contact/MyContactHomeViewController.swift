@@ -37,6 +37,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         txtOnderwerp.isHidden = true
         
         inputOnderwerp.placeholder = "Vul een onderwerp in"
+        inputOnderwerp.placeholderTextColor = UIColor.gray
         inputOnderwerp.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOnderwerp.layer.borderWidth = 0
         inputOnderwerp.addTarget(self, action: #selector(subjectDidEndEditing(_:)), for: .editingDidEnd)
@@ -52,6 +53,7 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         txtBericht.isHidden = true
         
         inputBericht.placeholder = "Schrijf hier uw bericht"
+        inputBericht.placeholderTextColor = UIColor.gray
         inputBericht.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputBericht.layer.borderWidth = 0
         inputBericht.addTarget(self, action: #selector(messageDidEndEditing(_:)), for: .editingDidEnd)
