@@ -56,6 +56,8 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         inputOther.placeholderTextColor = UIColor.gray
         inputOther.backgroundColor = UIColor(rgb: 0xEBEBEB)
         inputOther.layer.borderWidth = 0
+        inputOther.addTarget(self, action: #selector(textDidEndEditing(_:)), for: .editingDidEnd)
+        inputOther.addTarget(self, action: #selector(textDidBeginEditing(_:)), for: .editingDidBegin)
         self.inputOther.delegate = self
         
         btnNext.setTitle("Volgende", for: .normal)
@@ -215,6 +217,38 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         }
         
         inputOther.text = ""
+    }
+    
+    @objc func textDidEndEditing(_ textField: UITextField)
+    {
+        animateViewMoving(up: false, moveValue: 100)
+    }
+    
+    @objc func textDidBeginEditing(_ textField: UITextField)
+    {
+        animateViewMoving(up: true, moveValue: 100)
+    }
+    
+    // Lifting the view up
+    func animateViewMoving (up:Bool, moveValue :CGFloat)
+    {
+        let movementDistance:CGFloat = -130
+        let movementDuration: Double = 0.3
+        
+        var movement:CGFloat = 0
+        if up
+        {
+            movement = movementDistance
+        }
+        else
+        {
+            movement = -movementDistance
+        }
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
     
     @IBAction func radioComplaints_OnClick(_ sender: Any)

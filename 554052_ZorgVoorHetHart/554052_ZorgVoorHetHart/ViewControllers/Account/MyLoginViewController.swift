@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CryptoSwift
 
 class MyLoginViewController: UIViewController, UITextFieldDelegate
 {
@@ -84,7 +85,9 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
             let email = inputEmail.text!
             trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)
             password = inputPassword.text
+            let hashedPassword = password?.sha512()
             self.btnLogin.isEnabled = false
+            
             
             service.login(
                 withSuccess: { (user: User) in
@@ -94,7 +97,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
                     
                     if (value)
                     {
-                        self.storeCredentialsInKeyChain(withPassword: password!, andEmail: trimmedEmail!)
+                        self.storeCredentialsInKeyChain(withPassword: hashedPassword!, andEmail: trimmedEmail!)
                     }
                     
                     User.loggedinUser = user
@@ -105,7 +108,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
                 
                 self.showAlertBox(withMessage: error, andTitle: title)
                 self.btnLogin.isEnabled = true
-            }, andEmail: trimmedEmail!, andPassword: password!)
+            }, andEmail: trimmedEmail!, andPassword: hashedPassword!)
         }
     }
     

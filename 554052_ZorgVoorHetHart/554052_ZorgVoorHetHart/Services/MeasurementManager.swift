@@ -9,7 +9,7 @@
 import Alamofire
 import UIKit
 
-class MeasurementManager
+class MeasurementManager: MySessionManager
 {
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Measurements/")
 
@@ -40,7 +40,7 @@ class MeasurementManager
                     print(response.error!)
                     print(response.result.error!)
 
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                     failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.", "Sorry")
                     }
@@ -82,7 +82,7 @@ class MeasurementManager
                 case .failure(let error):
                     print(error)
 
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het ophalen van de metingen.", "Sorry")
                     }
@@ -123,7 +123,7 @@ class MeasurementManager
                     print(response.error!)
                     print(response.result.error!)
 
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het aanpassen van de meting.", "Sorry")
                     }

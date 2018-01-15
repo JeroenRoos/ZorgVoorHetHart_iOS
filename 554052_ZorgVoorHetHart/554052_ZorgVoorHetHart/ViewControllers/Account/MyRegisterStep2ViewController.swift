@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CryptoSwift
 
 class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
 {
@@ -87,10 +88,11 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         {
             let email = inputEmail.text!
             let trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)
+            let password = inputPassword.text!
+            let hashedPassword = password.sha512()
             
             user?.emailAddress = trimmedEmail
-            user?.password = inputPassword.text!
-            
+            user?.password = hashedPassword
             
             self.performSegue(withIdentifier: "registerNext2", sender: self)
         }

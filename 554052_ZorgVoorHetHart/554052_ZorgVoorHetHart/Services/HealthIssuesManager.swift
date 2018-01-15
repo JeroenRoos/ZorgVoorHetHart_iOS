@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class HealthIssuesManager
+class HealthIssuesManager: MySessionManager
 {
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Healthissues/")
 
@@ -43,7 +43,7 @@ class HealthIssuesManager
                 case .failure(let error):
                     print(error)
                     
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het ophalen van de gezondheidsproblemen.", "Sorry")
                     }

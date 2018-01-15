@@ -28,7 +28,7 @@ extension UIViewController
         return false
     }
     
-    func showAlertBox(withMessage message: String, andTitle title: String)// -> Bool
+    func showAlertBox(withMessage message: String, andTitle title: String)
     {
         
         //var shouldRetry = false
@@ -37,12 +37,7 @@ extension UIViewController
             
             let dismissAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             
-            //let retryAction = UIAlertAction(title: "Opnieuw", style: .default, handler: {action in
-            //    shouldRetry = true
-            //})
-            
             alertController.addAction(dismissAction)
-            //alertController.addAction(retryAction)
             self.present(alertController, animated: true, completion: nil)
         }
         

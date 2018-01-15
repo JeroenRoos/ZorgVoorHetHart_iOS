@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ConsultantsManager
+class ConsultantsManager: MySessionManager
 {
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Consultants/")
     
@@ -41,7 +41,7 @@ class ConsultantsManager
                     case .failure(let error):
                         print(error)
                        
-                        if (SessionManager.isConnectedToInternet)
+                        if (self.isConnectedToInternet)
                         {
                             failure("Er is iets fout gegaan tijdens het ophalen van de consulenten.", "Sorry")
                         }

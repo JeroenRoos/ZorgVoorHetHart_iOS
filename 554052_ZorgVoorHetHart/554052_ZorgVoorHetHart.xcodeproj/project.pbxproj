@@ -60,6 +60,7 @@
 		E881E180200BE0F2008FABB8 /* MyHealthIssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E881E17F200BE0F2008FABB8 /* MyHealthIssueTableViewCell.swift */; };
 		E8AF1CA01FFE875F00C44ED1 /* 554052_ZorgVoorHetHart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8AF1C9E1FFE875F00C44ED1 /* 554052_ZorgVoorHetHart.xcdatamodeld */; };
 		E8B2E2411FF40DC4005E6057 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B2E2401FF40DC4005E6057 /* SessionManager.swift */; };
+		E8C1D873200D1D2E00460914 /* UIToolbarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C1D872200D1D2E00460914 /* UIToolbarExtension.swift */; };
 		E8C6CEB31FEAB021003E07A7 /* MyAccountActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */; };
 		E8C7050F1FE9444A009806F2 /* MyRegisterStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C7050E1FE9444A009806F2 /* MyRegisterStep3ViewController.swift */; };
 		E8CF342B1FF52EB7000D57F3 /* MyPasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CF342A1FF52EB7000D57F3 /* MyPasswordResetViewController.swift */; };
@@ -158,6 +159,7 @@
 		E881E17F200BE0F2008FABB8 /* MyHealthIssueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHealthIssueTableViewCell.swift; sourceTree = "<group>"; };
 		E8AF1C9F1FFE875F00C44ED1 /* 554052_ZorgVoorHetHart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 554052_ZorgVoorHetHart.xcdatamodel; sourceTree = "<group>"; };
 		E8B2E2401FF40DC4005E6057 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		E8C1D872200D1D2E00460914 /* UIToolbarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolbarExtension.swift; sourceTree = "<group>"; };
 		E8C6CEB21FEAB021003E07A7 /* MyAccountActivatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountActivatedViewController.swift; sourceTree = "<group>"; };
 		E8C7050E1FE9444A009806F2 /* MyRegisterStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRegisterStep3ViewController.swift; sourceTree = "<group>"; };
 		E8CF342A1FF52EB7000D57F3 /* MyPasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPasswordResetViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				90D34D5E1FD580C900A17271 /* UIViewControllerExtension.swift */,
 				90E6E7341FCDAED800583804 /* UINavigationControllerExtension.swift */,
 				E879722A1FDAECA5002A8A2E /* UITextFieldExtension.swift */,
+				E8C1D872200D1D2E00460914 /* UIToolbarExtension.swift */,
 				90000AAC1FD2FF1000654235 /* DateExtension.swift */,
 				90000AAE1FD300DD00654235 /* StringExtension.swift */,
 				90000AB61FD35CF100654235 /* UserExtension.swift */,
@@ -658,11 +661,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-554052_ZorgVoorHetHart/Pods-554052_ZorgVoorHetHart-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Dropper/Dropper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dropper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -758,6 +763,7 @@
 				E881A4B11FE991620056E893 /* ArrayExtension.swift in Sources */,
 				E8F79C011FD85C5F00033926 /* ContactService.swift in Sources */,
 				E8CF34311FF54B98000D57F3 /* MyPasswordResetSuccessViewController.swift in Sources */,
+				E8C1D873200D1D2E00460914 /* UIToolbarExtension.swift in Sources */,
 				90023A041FBC9FC700DFCD23 /* MyRegisterStep1ViewController.swift in Sources */,
 				90023A081FBCD0D000DFCD23 /* RadioButtonHelper.swift in Sources */,
 				9065C5311FC22BDD00760062 /* MyRegisterFinishedViewController.swift in Sources */,

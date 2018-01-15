@@ -12,9 +12,10 @@ import UIKit
 // Debugging response
 // po String(data: response.request!.httpBody!, encoding: String.Encoding.utf8)
 
-class UserManager
+class UserManager: MySessionManager
 {
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Users/")
+    //private var sessionManager: MySessionManager = MySessionManager()
     
     // Try to login an user with an email and password
     func login(withSuccess success: @escaping (User)->(), 
@@ -22,12 +23,15 @@ class UserManager
                andEmail email: String,
                andPassword password: String)
     {
+        
         // Serialize the JSON with email and password
+        configureSSLPinning()
         let url = URL(string: "login", relativeTo: baseURL)
         let parameter: [String: Any] = ["emailAddress" : email,
                                    "password" : password]
         
-        Alamofire.request(url!,
+        // Trying SSL Pinning with Alamofire
+        sessionManager?.request(url!,
                           method: .post,
                           parameters: parameter,
                           encoding: JSONEncoding.default)
@@ -56,7 +60,7 @@ class UserManager
                 case .failure(let error):
                     print(error)
                     
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het inloggen.", "Sorry")
                     }
@@ -108,7 +112,7 @@ class UserManager
                     print(response.error!)
                     print(response.result.error!)
                     
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het registreren.", "Sorry")
                     }
@@ -149,7 +153,7 @@ class UserManager
                     print(response.error!)
                     print(response.result.error!)
                     
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.", "Sorry")
                     }
@@ -185,7 +189,7 @@ class UserManager
                 {
                     print(response.error!)
                     print(response.result.error!)
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het versturen van de email.", "Sorry")
                     }
@@ -240,7 +244,7 @@ class UserManager
                     print(error)
                     print(response.error!)
                     print(response.result.error!)
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het aanpassen van uw wachtwoord", "Sorry")
                     }
@@ -277,7 +281,7 @@ class UserManager
                     print(response.error!)
                     print(response.result.error!)
                     
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het activeren van uw account.", "Sorry")
                     }

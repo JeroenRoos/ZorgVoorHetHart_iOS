@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ContactManager
+class ContactManager: MySessionManager
 {
     private let connectionManager = NetworkReachabilityManager(host: "www.apple.com")
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Messages/")
@@ -44,7 +44,7 @@ class ContactManager
                     print(response.error!)
                     print(response.result.error!)
                     
-                    if (SessionManager.isConnectedToInternet)
+                    if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het sturen van het bericht.", "Sorry")
                     }

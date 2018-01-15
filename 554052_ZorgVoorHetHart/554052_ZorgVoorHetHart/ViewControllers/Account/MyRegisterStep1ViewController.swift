@@ -101,8 +101,6 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         self.inputGewicht.delegate = self
         inputGewicht.addTarget(self, action: #selector(gewichtDidEndEditing(_:)), for: .editingDidEnd)
         inputGewicht.layer.borderColor = UIColor.red.cgColor
-        
-        let d = Date().getCurrentWeekdayAndDate()
     }
 
     override func didReceiveMemoryWarning()
@@ -193,13 +191,33 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         textField.setErrorMessageInvalidWeight(errorLabel: errorGewicht, errorText: "Gewicht heeft geen geldige waarde")
     }
     
-    
     @IBAction func inputDateofBirth_EditDidBegin(_ sender: UITextField)
     {
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
+        datePickerView.maximumDate = Date()
+        
+        /*
+        let toolbar = UIToolbar()
+        toolbar.barStyle = UIBarStyle.default
+        toolbar.isTranslucent = true
+        toolbar.sizeToFit()
+        
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Klaar", style: UIBarButtonItemStyle.plain, target: self, action: Selector("donePicker"))
+        toolbar.setItems([spaceButton, spaceButton, doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+ */
+        let toolbar = UIToolbar().toolbarPiker(mySelect: #selector(dismissDatePicker))
         sender.inputView = datePickerView
+        sender.inputAccessoryView = toolbar
+        
         datePickerView.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
+    }
+    
+    @objc func dismissDatePicker()
+    {
+        view.endEditing(true)
     }
     
     @objc func datePickerValueChanged(sender:UIDatePicker)
