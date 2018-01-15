@@ -26,38 +26,7 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
         self.title = "Wachtwoord herstellen"
         self.hideKeyboardWhenTappedAround()
         
-        txtTitle.text = "U kunt uw wachtwoord hier aanpassen. Vul uw nieuwe wachtwoord in in de onderstaande velden."
-        txtTitle.font = txtTitle.font.withSize(12)
-        
-        btnFinish.setTitle("Aanpassen", for: .normal)
-        btnFinish.setTitleColor(UIColor.white, for: .normal)
-        btnFinish.backgroundColor = UIColor(rgb: 0x1BC1B7)
-        
-        errorPassword.textColor = UIColor.red
-        errorPassword.font = errorPassword.font.withSize(10)
-        errorPassword.isHidden = true
-        
-        inputPassword.placeholder = "Vul uw nieuwe wachtwoord in"
-        inputPassword.placeholderTextColor = UIColor.gray
-        inputPassword.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputPassword.layer.borderWidth = 0
-        inputPassword.isSecureTextEntry = true
-        inputPassword.addTarget(self, action: #selector(passwordDidEndEditing(_:)), for: .editingDidEnd)
-        self.inputPassword.delegate = self
-        inputPassword.layer.borderColor = UIColor.red.cgColor
-        
-        errorPasswordCheck.textColor = UIColor.red
-        errorPasswordCheck.font = errorPasswordCheck.font.withSize(10)
-        errorPasswordCheck.isHidden = true
-        
-        inputPasswordCheck.placeholder = "Herhaal uw nieuwe wachtwoord in"
-        inputPasswordCheck.placeholderTextColor = UIColor.gray
-        inputPasswordCheck.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputPasswordCheck.layer.borderWidth = 0
-        inputPasswordCheck.isSecureTextEntry = true
-        inputPasswordCheck.addTarget(self, action: #selector(passwordCheckDidEndEditing(_:)), for: .editingDidEnd)
-        self.inputPasswordCheck.delegate = self
-        inputPasswordCheck.layer.borderColor = UIColor.red.cgColor
+        initUserInterface()
     }
     
     @objc func passwordDidEndEditing(_ textField: UITextField)
@@ -95,6 +64,42 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
                andPasswordCheck: passwordCheck,
                andToken: resetToken)
         }
+    }
+    
+    private func initUserInterface()
+    {
+        txtTitle.text = "U kunt uw wachtwoord hier aanpassen. Vul uw nieuwe wachtwoord in in de onderstaande velden."
+        txtTitle.font = txtTitle.font.withSize(12)
+        
+        btnFinish.setTitle("Aanpassen", for: .normal)
+        btnFinish.setTitleColor(UIColor.white, for: .normal)
+        btnFinish.backgroundColor = UIColor(rgb: 0x1BC1B7)
+        
+        errorPassword.textColor = UIColor.red
+        errorPassword.font = errorPassword.font.withSize(10)
+        errorPassword.isHidden = true
+        
+        inputPassword.placeholder = "Vul uw nieuwe wachtwoord in"
+        inputPassword.placeholderTextColor = UIColor.gray
+        inputPassword.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputPassword.layer.borderWidth = 0
+        inputPassword.isSecureTextEntry = true
+        inputPassword.addTarget(self, action: #selector(passwordDidEndEditing(_:)), for: .editingDidEnd)
+        self.inputPassword.delegate = self
+        inputPassword.layer.borderColor = UIColor.red.cgColor
+        
+        errorPasswordCheck.textColor = UIColor.red
+        errorPasswordCheck.font = errorPasswordCheck.font.withSize(10)
+        errorPasswordCheck.isHidden = true
+        
+        inputPasswordCheck.placeholder = "Herhaal uw nieuwe wachtwoord in"
+        inputPasswordCheck.placeholderTextColor = UIColor.gray
+        inputPasswordCheck.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputPasswordCheck.layer.borderWidth = 0
+        inputPasswordCheck.isSecureTextEntry = true
+        inputPasswordCheck.addTarget(self, action: #selector(passwordCheckDidEndEditing(_:)), for: .editingDidEnd)
+        self.inputPasswordCheck.delegate = self
+        inputPasswordCheck.layer.borderColor = UIColor.red.cgColor
     }
     
     override func didReceiveMemoryWarning()

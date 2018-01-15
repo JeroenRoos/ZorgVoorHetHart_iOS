@@ -70,61 +70,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         self.title = "Service"
         self.hideKeyboardWhenTappedAround()
         
-        myView.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        myActualView.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        
-        txtMySettings.text = "Mijn instellingen"
-        txtMySettings.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
-        
-        txtMyAccount.text = "Mijn Account"
-        txtMyAccount.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
-        
-        txtDisclaimerTitle.text = "Informatie"
-        txtDisclaimerTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
-        
-        //imgBigText.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        //txtBigText.text = "Grotere tekst"
-        //txtBigText.font = txtBigText.font.withSize(12)
-        //switchBigText.setOn(defaults.bool(forKey: "bigText"), animated: false)
-        //switchDailyNotification.addTarget(self, action: #selector(switchBigTextChanged(_:)), for: .valueChanged)
-        
-        imgDailyNotification.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        txtDailyNotification.text = "Dagelijkse herinneringen voor uw metingen"
-        txtDailyNotification.font = txtDailyNotification.font.withSize(12)
-        switchDailyNotification.setOn(defaults.bool(forKey: "dailyNotifications"), animated: false)
-        switchDailyNotification.addTarget(self, action: #selector(switchDailyNotificationChanged(_:)), for: .valueChanged)
-        
-        imgWeeklyMeasurement.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        txtWeeklyMeasurement.text = "Weekelijks uw metingen opsturen naar uw consulent"
-        txtWeeklyMeasurement.font = txtWeeklyMeasurement.font.withSize(12)
-        switchWeeklyMeasurement.setOn(defaults.bool(forKey: "sendWeeklyMeasurement"), animated: false)
-        switchWeeklyMeasurement.addTarget(self, action: #selector(switchWeeklyMeasurementChanged(_:)), for: .valueChanged)
-        
-        imgWeightHeight.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        txtWeightHeight.text = "Uw lengte en gewicht aanpassen"
-        txtWeightHeight.font = txtWeightHeight.font.withSize(12)
-        
-        imgAutomaticLogin.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        txtAutomaticLogin.text = "Automatisch inloggen"
-        txtAutomaticLogin.font = txtAutomaticLogin.font.withSize(12)
-        switchAutomaticLogin.setOn(defaults.bool(forKey: "automaticLogin"), animated: false)
-        switchAutomaticLogin.addTarget(self, action: #selector(switchAutomaticLoginChanged(_:)), for: .valueChanged)
-        
-        imgLogout.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        txtLogout.text = "Uitloggen"
-        txtLogout.font = txtLogout.font.withSize(12)
-        
-        imgFAQ.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        txtFAQ.text = "Veelgestelde vragen"
-        txtFAQ.font = txtFAQ.font.withSize(12)
-        txtDisclaimer.text = " Disclaimer"
-        txtDisclaimer.font = UIFont(name:"HelveticaNeue-Bold", size: 14.0)
-        txtDisclaimer.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        txtDisclaimer.isHidden = true
-        
-        txtDisclaimerInfo.text = "Deze app is met de grootst mogelijke zorgvuldigheid samengesteld. Wij kunnen echter niet garanderen dat de app altijd zonder onderbrekingen, fouten of gebreken beschikbaar zal zijn of werken en dat de verschafte informatie volledig, juist of up-to-date is."
-        txtDisclaimerInfo.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        
+        initUserInterface()
         setPopupUI()
     }
     
@@ -299,6 +245,64 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
     {
         let value = mySwitch.isOn
         defaults.set(value, forKey: "automaticLogin")
+    }
+    
+    private func initUserInterface()
+    {
+        myView.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        myActualView.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        
+        txtMySettings.text = "Mijn instellingen"
+        txtMySettings.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
+        
+        txtMyAccount.text = "Mijn Account"
+        txtMyAccount.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
+        
+        txtDisclaimerTitle.text = "Informatie"
+        txtDisclaimerTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
+        
+        //imgBigText.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        //txtBigText.text = "Grotere tekst"
+        //txtBigText.font = txtBigText.font.withSize(12)
+        //switchBigText.setOn(defaults.bool(forKey: "bigText"), animated: false)
+        //switchDailyNotification.addTarget(self, action: #selector(switchBigTextChanged(_:)), for: .valueChanged)
+        
+        imgDailyNotification.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtDailyNotification.text = "Dagelijkse herinneringen voor uw metingen"
+        txtDailyNotification.font = txtDailyNotification.font.withSize(12)
+        switchDailyNotification.setOn(defaults.bool(forKey: "dailyNotifications"), animated: false)
+        switchDailyNotification.addTarget(self, action: #selector(switchDailyNotificationChanged(_:)), for: .valueChanged)
+        
+        imgWeeklyMeasurement.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtWeeklyMeasurement.text = "Weekelijks uw metingen opsturen naar uw consulent"
+        txtWeeklyMeasurement.font = txtWeeklyMeasurement.font.withSize(12)
+        switchWeeklyMeasurement.setOn(defaults.bool(forKey: "sendWeeklyMeasurement"), animated: false)
+        switchWeeklyMeasurement.addTarget(self, action: #selector(switchWeeklyMeasurementChanged(_:)), for: .valueChanged)
+        
+        imgWeightHeight.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtWeightHeight.text = "Uw lengte en gewicht aanpassen"
+        txtWeightHeight.font = txtWeightHeight.font.withSize(12)
+        
+        imgAutomaticLogin.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtAutomaticLogin.text = "Automatisch inloggen"
+        txtAutomaticLogin.font = txtAutomaticLogin.font.withSize(12)
+        switchAutomaticLogin.setOn(defaults.bool(forKey: "automaticLogin"), animated: false)
+        switchAutomaticLogin.addTarget(self, action: #selector(switchAutomaticLoginChanged(_:)), for: .valueChanged)
+        
+        imgLogout.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtLogout.text = "Uitloggen"
+        txtLogout.font = txtLogout.font.withSize(12)
+        
+        imgFAQ.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtFAQ.text = "Veelgestelde vragen"
+        txtFAQ.font = txtFAQ.font.withSize(12)
+        txtDisclaimer.text = " Disclaimer"
+        txtDisclaimer.font = UIFont(name:"HelveticaNeue-Bold", size: 14.0)
+        txtDisclaimer.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtDisclaimer.isHidden = true
+        
+        txtDisclaimerInfo.text = "Deze app is met de grootst mogelijke zorgvuldigheid samengesteld. Wij kunnen echter niet garanderen dat de app altijd zonder onderbrekingen, fouten of gebreken beschikbaar zal zijn of werken en dat de verschafte informatie volledig, juist of up-to-date is."
+        txtDisclaimerInfo.backgroundColor = UIColor(rgb: 0xF8F8F8)
     }
     
     override func didReceiveMemoryWarning()

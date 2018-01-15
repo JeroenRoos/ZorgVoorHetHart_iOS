@@ -19,9 +19,6 @@ class MyTabBarController: UITabBarController
     
     func setTabBarItems()
     {
-     
-        //self.navigationItem.hidesBackButton = true
-        
         // Unselected color:    737474          24x24 - 48x48 - 72x72
         // Selected color:      E84A4A          24x24 - 48x48 - 72x72
         

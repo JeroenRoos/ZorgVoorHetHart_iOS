@@ -20,6 +20,11 @@ class MyPasswordResetSuccessViewController: UIViewController
         self.title = "Succes"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        initUserInterface()
+    }
+    
+    private func initUserInterface()
+    {
         btnLogin.setTitle("Inloggen", for: .normal)
         btnLogin.setTitleColor(UIColor.white, for: .normal)
         btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)

@@ -47,17 +47,7 @@ class MyRegisterOrLoginViewController: UIViewController
             tryAutomaticLogin()
         }
         
-        txtOf.text = "of"
-        txtOf.textColor = UIColor.black
-        txtOf.font = txtOf.font.withSize(18)
-        
-        btnLogin.setTitle("Inloggen", for: .normal)
-        btnLogin.setTitleColor(UIColor.white, for: .normal)
-        btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)
-        
-        btnRegister.setTitle("Account aanmaken", for: .normal)
-        btnLogin.setTitleColor(UIColor.white, for: .normal)
-        btnRegister.backgroundColor = UIColor(rgb: 0x1BC1B7)
+        initUserInterface()
     }
     
     private func tryAutomaticLogin()
@@ -79,6 +69,21 @@ class MyRegisterOrLoginViewController: UIViewController
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andEmail: retrievedEmail, andPassword: retrievedPassword)
         }
+    }
+    
+    private func initUserInterface()
+    {
+        txtOf.text = "of"
+        txtOf.textColor = UIColor.black
+        txtOf.font = txtOf.font.withSize(18)
+        
+        btnLogin.setTitle("Inloggen", for: .normal)
+        btnLogin.setTitleColor(UIColor.white, for: .normal)
+        btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)
+        
+        btnRegister.setTitle("Account aanmaken", for: .normal)
+        btnLogin.setTitleColor(UIColor.white, for: .normal)
+        btnRegister.backgroundColor = UIColor(rgb: 0x1BC1B7)
     }
 
     override func didReceiveMemoryWarning()

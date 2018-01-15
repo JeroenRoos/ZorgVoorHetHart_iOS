@@ -33,74 +33,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         self.title = "Registreren stap 1 van 3"
         self.hideKeyboardWhenTappedAround()
 
-        btnNext.setTitle("Volgende", for: .normal)
-        btnNext.setTitleColor(UIColor.white, for: .normal)
-        btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)
-        
-        txtTitle.text = "Persoonsgegevens"
-        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
-        
-        txtGender.text = "Geslacht bij geboorte"
-        
-        radioButtonMan.setTitle("Man", for: .normal)
-        radioButtonMan.setTitleColor(UIColor.black, for: .normal)
-        radioButtonMan?.alternateButton = [radioButtonWoman!]
-        radioButtonMan.layer.borderWidth = 0
-        
-        radioButtonWoman.setTitle("Vrouw", for: .normal)
-        radioButtonWoman.setTitleColor(UIColor.black, for: .normal)
-        radioButtonWoman?.alternateButton = [radioButtonMan!]
-        radioButtonWoman.layer.borderWidth = 0
-        
-        errorDateOfBirth.textColor = UIColor.red
-        errorDateOfBirth.font = errorDateOfBirth.font.withSize(10)
-        errorDateOfBirth.isHidden = true
-        
-        inputDatefOfBirth.placeholder = "Uw geboortedatum"
-        inputDatefOfBirth.placeholderTextColor = UIColor.gray
-        inputDatefOfBirth.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputDatefOfBirth.layer.borderWidth = 0
-        inputDatefOfBirth.addTarget(self, action: #selector(dateOfBirthDidEndEditing(_:)), for: .editingDidEnd)
-        self.inputDatefOfBirth.delegate = self
-        inputDatefOfBirth.layer.borderColor = UIColor.red.cgColor
-        
-        errorName.textColor = UIColor.red
-        errorName.font = errorName.font.withSize(10)
-        errorName.isHidden = true
-        
-        inputName.placeholder = "Vul uw naam in"
-        inputName.placeholderTextColor = UIColor.gray
-        inputName.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputName.layer.borderWidth = 0
-        self.inputName.delegate = self
-        inputName.addTarget(self, action: #selector(nameDidEndEditing(_:)), for: .editingDidEnd)
-        inputName.layer.borderColor = UIColor.red.cgColor
-        
-        errorLengte.textColor = UIColor.red
-        errorLengte.font = errorLengte.font.withSize(10)
-        errorLengte.isHidden = true
-        
-        inputLengte.placeholder = "Vul uw lengte in (cm)"
-        inputLengte.placeholderTextColor = UIColor.gray
-        inputLengte.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputLengte.layer.borderWidth = 0
-        inputLengte.keyboardType = UIKeyboardType.numberPad
-        self.inputLengte.delegate = self
-        inputLengte.addTarget(self, action: #selector(lengteDidEndEditing(_:)), for: .editingDidEnd)
-        inputLengte.layer.borderColor = UIColor.red.cgColor
-        
-        errorGewicht.textColor = UIColor.red
-        errorGewicht.font = errorGewicht.font.withSize(10)
-        errorGewicht.isHidden = true
-        
-        inputGewicht.placeholder = "Vul uw gewicht in (KG)"
-        inputGewicht.placeholderTextColor = UIColor.gray
-        inputGewicht.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputGewicht.layer.borderWidth = 0
-        inputGewicht.keyboardType = UIKeyboardType.numberPad
-        self.inputGewicht.delegate = self
-        inputGewicht.addTarget(self, action: #selector(gewichtDidEndEditing(_:)), for: .editingDidEnd)
-        inputGewicht.layer.borderColor = UIColor.red.cgColor
+        initUserInterface()
     }
 
     override func didReceiveMemoryWarning()
@@ -229,6 +162,78 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         let dateOfBirth = dateFormatter.string(from: sender.date)
         let finalDate = dateOfBirth.replacingOccurrences(of: "/", with: "-")
         inputDatefOfBirth.text = finalDate
+    }
+    
+    private func initUserInterface()
+    {
+        btnNext.setTitle("Volgende", for: .normal)
+        btnNext.setTitleColor(UIColor.white, for: .normal)
+        btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)
+        
+        txtTitle.text = "Persoonsgegevens"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+        
+        txtGender.text = "Geslacht bij geboorte"
+        
+        radioButtonMan.setTitle("Man", for: .normal)
+        radioButtonMan.setTitleColor(UIColor.black, for: .normal)
+        radioButtonMan?.alternateButton = [radioButtonWoman!]
+        radioButtonMan.layer.borderWidth = 0
+        
+        radioButtonWoman.setTitle("Vrouw", for: .normal)
+        radioButtonWoman.setTitleColor(UIColor.black, for: .normal)
+        radioButtonWoman?.alternateButton = [radioButtonMan!]
+        radioButtonWoman.layer.borderWidth = 0
+        
+        errorDateOfBirth.textColor = UIColor.red
+        errorDateOfBirth.font = errorDateOfBirth.font.withSize(10)
+        errorDateOfBirth.isHidden = true
+        
+        inputDatefOfBirth.placeholder = "Uw geboortedatum"
+        inputDatefOfBirth.placeholderTextColor = UIColor.gray
+        inputDatefOfBirth.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputDatefOfBirth.layer.borderWidth = 0
+        inputDatefOfBirth.addTarget(self, action: #selector(dateOfBirthDidEndEditing(_:)), for: .editingDidEnd)
+        self.inputDatefOfBirth.delegate = self
+        inputDatefOfBirth.layer.borderColor = UIColor.red.cgColor
+        
+        errorName.textColor = UIColor.red
+        errorName.font = errorName.font.withSize(10)
+        errorName.isHidden = true
+        
+        inputName.placeholder = "Vul uw naam in"
+        inputName.placeholderTextColor = UIColor.gray
+        inputName.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputName.layer.borderWidth = 0
+        self.inputName.delegate = self
+        inputName.addTarget(self, action: #selector(nameDidEndEditing(_:)), for: .editingDidEnd)
+        inputName.layer.borderColor = UIColor.red.cgColor
+        
+        errorLengte.textColor = UIColor.red
+        errorLengte.font = errorLengte.font.withSize(10)
+        errorLengte.isHidden = true
+        
+        inputLengte.placeholder = "Vul uw lengte in (cm)"
+        inputLengte.placeholderTextColor = UIColor.gray
+        inputLengte.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputLengte.layer.borderWidth = 0
+        inputLengte.keyboardType = UIKeyboardType.numberPad
+        self.inputLengte.delegate = self
+        inputLengte.addTarget(self, action: #selector(lengteDidEndEditing(_:)), for: .editingDidEnd)
+        inputLengte.layer.borderColor = UIColor.red.cgColor
+        
+        errorGewicht.textColor = UIColor.red
+        errorGewicht.font = errorGewicht.font.withSize(10)
+        errorGewicht.isHidden = true
+        
+        inputGewicht.placeholder = "Vul uw gewicht in (KG)"
+        inputGewicht.placeholderTextColor = UIColor.gray
+        inputGewicht.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputGewicht.layer.borderWidth = 0
+        inputGewicht.keyboardType = UIKeyboardType.numberPad
+        self.inputGewicht.delegate = self
+        inputGewicht.addTarget(self, action: #selector(gewichtDidEndEditing(_:)), for: .editingDidEnd)
+        inputGewicht.layer.borderColor = UIColor.red.cgColor
     }
     
     override func awakeFromNib()

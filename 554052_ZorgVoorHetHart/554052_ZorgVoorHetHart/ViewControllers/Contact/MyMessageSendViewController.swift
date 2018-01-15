@@ -20,6 +20,17 @@ class MyMessageSendViewController: UIViewController
         self.title = "Bericht verzonden"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        initUserInterface()
+    }
+
+    @IBAction func btnDone_OnClick(_ sender: Any)
+    {
+        self.tabBarController!.selectedIndex = 0
+        self.navigationController?.popToRootViewController(animated: false)
+    }
+    
+    private func initUserInterface()
+    {
         btnDone.setTitle("Klaar", for: .normal)
         btnDone.setTitleColor(UIColor.white, for: .normal)
         btnDone.backgroundColor = UIColor(rgb: 0xE84A4A)
@@ -30,13 +41,6 @@ class MyMessageSendViewController: UIViewController
         txtInfo.text = "Uw consulent zal binnenkort contact met u opnemen."
         txtInfo.font = txtInfo.font.withSize(12)
     }
-
-    @IBAction func btnDone_OnClick(_ sender: Any)
-    {
-        self.tabBarController!.selectedIndex = 0
-        self.navigationController?.popToRootViewController(animated: false)
-    }
-    
     
     override func didReceiveMemoryWarning()
     {

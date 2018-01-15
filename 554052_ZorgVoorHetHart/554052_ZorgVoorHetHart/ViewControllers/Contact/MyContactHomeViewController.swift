@@ -29,6 +29,53 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         self.title = "Contact"
         self.hideKeyboardWhenTappedAround()
         
+        initUserInterface()
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        inputBericht.text = ""
+        inputOnderwerp.text = ""
+    }
+    
+    //@IBAction func btnCancel_OnClick(_ sender: Any)
+    //{
+    //    self.tabBarController?.selectedIndex = 0
+    //}
+    
+    @IBAction func btnSend_OnClick(_ sender: Any)
+    {
+        if (!(inputBericht.text?.isEmpty)!
+            && !(inputOnderwerp.text?.isEmpty)!)
+        {
+            let subject = inputOnderwerp.text
+            let message = inputBericht.text
+            self.btnSend.isEnabled = false
+            
+            service.sendMessage(withSuccess: { () in
+                self.btnSend.isEnabled = true
+                self.performSegue(withIdentifier: "send", sender: self)
+            }, orFailure: { (error: String, title: String) in
+                self.btnSend.isEnabled = true
+                self.showAlertBox(withMessage: error, andTitle: title)
+            }, andSubject: subject!, andMessage: message!)
+        }
+    }
+    
+    @objc func subjectDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorOnderwerp, errorText: "Onderwerp kan niet leeg zijn")
+    }
+    
+    @objc func messageDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorBericht, errorText: "Bericht kan niet leeg zijn")
+    }
+    
+    private func initUserInterface()
+    {
         txtTitle.text = "Heeft u vragen of wilt u een afspraak maken? Dan kunt u via dit formulier een bericht sturen naar uw consulent. In geval van spoed kunt u het best telefonisch contact opnemen met uw ziekenhuis of 112 bellen"
         txtTitle.font = txtTitle.font.withSize(12)
         
@@ -76,48 +123,6 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         let email = User.loggedinUser?.consultant?.emailAddress
         txtConsultantInfo.text = "Uw bericht wordt verstuurd naar: " + name + " - " + email!
         txtConsultantInfo.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
-    }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        inputBericht.text = ""
-        inputOnderwerp.text = ""
-    }
-    
-    //@IBAction func btnCancel_OnClick(_ sender: Any)
-    //{
-    //    self.tabBarController?.selectedIndex = 0
-    //}
-    
-    @IBAction func btnSend_OnClick(_ sender: Any)
-    {
-        if (!(inputBericht.text?.isEmpty)!
-            && !(inputOnderwerp.text?.isEmpty)!)
-        {
-            let subject = inputOnderwerp.text
-            let message = inputBericht.text
-            self.btnSend.isEnabled = false
-            
-            service.sendMessage(withSuccess: { () in
-                self.btnSend.isEnabled = true
-                self.performSegue(withIdentifier: "send", sender: self)
-            }, orFailure: { (error: String, title: String) in
-                self.btnSend.isEnabled = true
-                self.showAlertBox(withMessage: error, andTitle: title)
-            }, andSubject: subject!, andMessage: message!)
-        }
-    }
-    
-    @objc func subjectDidEndEditing(_ textField: UITextField)
-    {
-        // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorOnderwerp, errorText: "Onderwerp kan niet leeg zijn")
-    }
-    
-    @objc func messageDidEndEditing(_ textField: UITextField)
-    {
-        // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorBericht, errorText: "Bericht kan niet leeg zijn")
     }
     
     override func didReceiveMemoryWarning()

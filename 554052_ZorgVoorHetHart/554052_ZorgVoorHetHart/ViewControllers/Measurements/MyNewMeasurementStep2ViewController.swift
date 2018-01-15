@@ -32,37 +32,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         
-        txtDate.font = txtDate.font.withSize(12)
-        
-        txtTitle.text = "2. Gezondheidsklachten"
-        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
-        
-        radioComplaints.setTitle("Ja, namelijk", for: .normal)
-        radioComplaints.setTitleColor(UIColor.black, for: .normal)
-        radioComplaints.isChecked = false
-        radioComplaints?.alternateButton = [radioNoComplaints!]
-        radioComplaints.layer.borderWidth = 0
-        
-        radioNoComplaints.setTitle("Geen", for: .normal)
-        radioNoComplaints.setTitleColor(UIColor.black, for: .normal)
-        radioNoComplaints.isChecked = true
-        radioNoComplaints?.alternateButton = [radioComplaints!]
-        radioNoComplaints.layer.borderWidth = 0
-        
-        txtOther.text = "Anders, namelijk:"
-        txtOther.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
-        
-        inputOther.placeholder = "Vul hier uw andere gezondsheidsklachten in, als u deze heeft"
-        inputOther.placeholderTextColor = UIColor.gray
-        inputOther.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputOther.layer.borderWidth = 0
-        inputOther.addTarget(self, action: #selector(textDidEndEditing(_:)), for: .editingDidEnd)
-        inputOther.addTarget(self, action: #selector(textDidBeginEditing(_:)), for: .editingDidBegin)
-        self.inputOther.delegate = self
-        
-        btnNext.setTitle("Volgende", for: .normal)
-        btnNext.setTitleColor(UIColor.white, for: .normal)
-        btnNext.backgroundColor = UIColor(rgb: 0xE84A4A)
+        initUserInterface()
         
         tableViewHealthIssues.delegate = self
         tableViewHealthIssues.dataSource = self
@@ -254,6 +224,41 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     @IBAction func radioComplaints_OnClick(_ sender: Any)
     {
         complaintsHiddenStateChange(state: false)
+    }
+    
+    private func initUserInterface()
+    {
+        txtDate.font = txtDate.font.withSize(12)
+        
+        txtTitle.text = "2. Gezondheidsklachten"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        
+        radioComplaints.setTitle("Ja, namelijk", for: .normal)
+        radioComplaints.setTitleColor(UIColor.black, for: .normal)
+        radioComplaints.isChecked = false
+        radioComplaints?.alternateButton = [radioNoComplaints!]
+        radioComplaints.layer.borderWidth = 0
+        
+        radioNoComplaints.setTitle("Geen", for: .normal)
+        radioNoComplaints.setTitleColor(UIColor.black, for: .normal)
+        radioNoComplaints.isChecked = true
+        radioNoComplaints?.alternateButton = [radioComplaints!]
+        radioNoComplaints.layer.borderWidth = 0
+        
+        txtOther.text = "Anders, namelijk:"
+        txtOther.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        
+        inputOther.placeholder = "Vul hier uw andere gezondsheidsklachten in, als u deze heeft"
+        inputOther.placeholderTextColor = UIColor.gray
+        inputOther.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputOther.layer.borderWidth = 0
+        inputOther.addTarget(self, action: #selector(textDidEndEditing(_:)), for: .editingDidEnd)
+        inputOther.addTarget(self, action: #selector(textDidBeginEditing(_:)), for: .editingDidBegin)
+        self.inputOther.delegate = self
+        
+        btnNext.setTitle("Volgende", for: .normal)
+        btnNext.setTitleColor(UIColor.white, for: .normal)
+        btnNext.backgroundColor = UIColor(rgb: 0xE84A4A)
     }
     
     private func complaintsHiddenStateChange(state: Bool)

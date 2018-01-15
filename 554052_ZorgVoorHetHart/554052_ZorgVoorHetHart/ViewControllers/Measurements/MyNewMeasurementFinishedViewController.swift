@@ -23,29 +23,7 @@ class MyNewMeasurementFinishedViewController: UIViewController
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
         
-        btnCheckDiary.setTitle("Bekijk dagboek", for: .normal)
-        btnCheckDiary.setTitleColor(UIColor.white, for: .normal)
-        btnCheckDiary.backgroundColor = UIColor(rgb: 0xE84A4A)
-        
-        btnNotNow.setTitle("Niet nu", for: .normal)
-        btnNotNow.setTitleColor(UIColor.white, for: .normal)
-        btnNotNow.backgroundColor = UIColor(rgb: 0xA9A9A9)
-        
-        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
-        
-        txtInfo.text = "U kunt gemakkelijk een overzicht van al uw metingen zien onder dagboek"
-        txtInfo.font = txtInfo.font.withSize(12)
-        
-        if (editingMeasurement)
-        {
-            self.title = "Meting aanpassen afgerond"
-            txtTitle.text = "Uw meting is succesvol aangepast en opgeslagen in uw dagboek!"
-        }
-        else
-        {
-            self.title = "Nieuwe meting afgerond"
-            txtTitle.text = "Uw meting is succesvol opgeslagen in uw dagboek!"
-        }
+        initUserInterface()
         
         // Set the notifications for a reminder of the measurement the next day
         setNotificationNextMeasurement()
@@ -101,6 +79,33 @@ class MyNewMeasurementFinishedViewController: UIViewController
         viewController.updateMeasurements = true
         self.tabBarController?.selectedIndex = 1
         self.navigationController?.popToRootViewController(animated: false)
+    }
+    
+    private func initUserInterface()
+    {
+        btnCheckDiary.setTitle("Bekijk dagboek", for: .normal)
+        btnCheckDiary.setTitleColor(UIColor.white, for: .normal)
+        btnCheckDiary.backgroundColor = UIColor(rgb: 0xE84A4A)
+        
+        btnNotNow.setTitle("Niet nu", for: .normal)
+        btnNotNow.setTitleColor(UIColor.white, for: .normal)
+        btnNotNow.backgroundColor = UIColor(rgb: 0xA9A9A9)
+        
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+        
+        txtInfo.text = "U kunt gemakkelijk een overzicht van al uw metingen zien onder dagboek"
+        txtInfo.font = txtInfo.font.withSize(12)
+        
+        if (editingMeasurement)
+        {
+            self.title = "Meting aanpassen afgerond"
+            txtTitle.text = "Uw meting is succesvol aangepast en opgeslagen in uw dagboek!"
+        }
+        else
+        {
+            self.title = "Nieuwe meting afgerond"
+            txtTitle.text = "Uw meting is succesvol opgeslagen in uw dagboek!"
+        }
     }
     
     override func didReceiveMemoryWarning()

@@ -30,6 +30,17 @@ class MyBloodPressureInformationViewController: UIViewController
         super.viewDidLoad()
         self.title = "Bloeddruk informatie"
         
+        initUserInterface()
+    }
+
+    @IBAction func btnContact_OnClick(_ sender: Any)
+    {
+        self.tabBarController?.selectedIndex = 2
+        self.navigationController?.popToRootViewController(animated: false)
+    }
+    
+    private func initUserInterface()
+    {
         txtOtherQuestions.text = "Staat uw vraag er niet bij? \nNeem contact op met uw consulent."
         txtOtherQuestions.font = txtOtherQuestions.font?.withSize(12)
         btnContact.setTitle("Contact opnemen", for: .normal)
@@ -61,12 +72,6 @@ class MyBloodPressureInformationViewController: UIViewController
         txtTitle04.font = txtTitle04.font?.withSize(12)
         txtAnwser04.text = "De bloeddrukmeting kan zowel bij de rechter als de linkerarm gedaan worden. Er kan sprake zijn van klein verschil, maar dit zal normaalgesproken nooit meer dan 10 punten zijn. Een hoger verschil kan wijzen op een afwijking, bijvoorbeeld het bestaan van vernauwingen in de bloedvaten. In geval van twijfel is het altijd goed een arts te consulteren. De bloeddruk kan ook in de benen gemeten worden. Daarvoor is dan vaak wel een speciale band nodig die dikker is dan de ‘normale ‘ band."
         txtAnwser04.font = txtAnwser04.font?.withSize(12)
-    }
-
-    @IBAction func btnContact_OnClick(_ sender: Any)
-    {
-        self.tabBarController?.selectedIndex = 2
-        self.navigationController?.popToRootViewController(animated: false)
     }
     
     override func didReceiveMemoryWarning()

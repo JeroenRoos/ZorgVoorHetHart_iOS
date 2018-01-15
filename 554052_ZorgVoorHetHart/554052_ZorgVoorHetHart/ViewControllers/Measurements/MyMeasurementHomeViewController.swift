@@ -20,13 +20,7 @@ class MyMeasurementHomeViewController: UIViewController
         super.viewDidLoad()
         self.title = "Meting"
         
-        txtSquareMiddle.font = txtSquareMiddle.font.withSize(12)
-        btnNewMeasurement.setTitleColor(UIColor.white, for: .normal)
-        btnNewMeasurement.backgroundColor = UIColor(rgb: 0xE84A4A)
-        btnNewMeasurement.setTitle("Start nieuwe meting", for: .normal)
-
-        txtUpperBar.text = "Goedenmiddag " + (User.loggedinUser?.firstName)!
-        txtUpperBar.font = txtUpperBar.font.withSize(14)
+        initUserInterface()
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -73,5 +67,16 @@ class MyMeasurementHomeViewController: UIViewController
     {
         
         self.performSegue(withIdentifier: "information", sender: self)
+    }
+    
+    private func initUserInterface()
+    {
+        txtSquareMiddle.font = txtSquareMiddle.font.withSize(12)
+        btnNewMeasurement.setTitleColor(UIColor.white, for: .normal)
+        btnNewMeasurement.backgroundColor = UIColor(rgb: 0xE84A4A)
+        btnNewMeasurement.setTitle("Start nieuwe meting", for: .normal)
+        
+        txtUpperBar.text = "Goedenmiddag " + (User.loggedinUser?.firstName)!
+        txtUpperBar.font = txtUpperBar.font.withSize(14)
     }
 }

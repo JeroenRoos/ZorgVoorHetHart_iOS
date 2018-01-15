@@ -39,6 +39,54 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         
+        initUserInterface()
+    }
+    
+    @IBAction func btnNext_OnClick(_ sender: Any)
+    {
+        if (!(inputOnderdruk.text?.isEmpty)! &&
+            !(inputBovendruk.text?.isEmpty)! &&
+            inputBovendruk.isValidNumberInput(minValue: 60, maxValue: 230) &&
+            inputOnderdruk.isValidNumberInput(minValue: 30, maxValue: 180))
+        {
+            measurement?.bloodPressureLower = Int(inputOnderdruk.text!)!
+            measurement?.bloodPressureUpper = Int(inputBovendruk.text!)!
+            
+            self.performSegue(withIdentifier: "measurementNext", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        // Pass measurement to next ViewController
+        if(segue.identifier == "measurementNext")
+        {
+            if let viewController = segue.destination as? MyNewMeasurementStep2ViewController
+            {
+                viewController.measurement = measurement
+                viewController.editingMeasurement = editingMeasurement
+            }
+        }
+    }
+    
+    @objc func bovendrukDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorBovendruk, errorText: "Bovendruk kan niet leeg zijn")
+        
+        textField.setErrorMessageInvalidBloodPressureUpper(errorLabel: errorBovendruk, errorText: "Geen geldige waarde")
+    }
+    
+    @objc func onderdrukDidEndEditing(_ textField: UITextField)
+    {
+        // Check and set error message if the textfield is empty
+        textField.setErrorMessageEmptyField(errorLabel: errorOnderdruk, errorText: "Onderdruk kan niet leeg zijn")
+        
+        textField.setErrorMessageInvalidBloodPressureLower(errorLabel: errorOnderdruk, errorText: "Geen geldige waarde")
+    }
+    
+    private func initUserInterface()
+    {
         backgroundImage.alpha = 0.5
         
         txtTitlePopup.text = "Goed dat u een meting wilt doen. Voordat u verder kunt gaan hebben wij echter nog enkele gegevens nodig zodat we u beter kunnen assisteren. Namelijk: "
@@ -138,55 +186,14 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         self.imgMiddelSquare.isHidden = true
     }
     
-    @IBAction func btnNext_OnClick(_ sender: Any)
-    {
-        if (!(inputOnderdruk.text?.isEmpty)! &&
-            !(inputBovendruk.text?.isEmpty)! &&
-            inputBovendruk.isValidNumberInput(minValue: 60, maxValue: 230) &&
-            inputOnderdruk.isValidNumberInput(minValue: 30, maxValue: 180))
-        {
-            measurement?.bloodPressureLower = Int(inputOnderdruk.text!)!
-            measurement?.bloodPressureUpper = Int(inputBovendruk.text!)!
-            
-            self.performSegue(withIdentifier: "measurementNext", sender: self)
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        // Pass measurement to next ViewController
-        if(segue.identifier == "measurementNext")
-        {
-            if let viewController = segue.destination as? MyNewMeasurementStep2ViewController
-            {
-                viewController.measurement = measurement
-                viewController.editingMeasurement = editingMeasurement
-            }
-        }
-    }
-    
-    @objc func bovendrukDidEndEditing(_ textField: UITextField)
-    {
-        // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorBovendruk, errorText: "Bovendruk kan niet leeg zijn")
-        
-        textField.setErrorMessageInvalidBloodPressureUpper(errorLabel: errorBovendruk, errorText: "Geen geldige waarde")
-    }
-    
-    @objc func onderdrukDidEndEditing(_ textField: UITextField)
-    {
-        // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorOnderdruk, errorText: "Onderdruk kan niet leeg zijn")
-        
-        textField.setErrorMessageInvalidBloodPressureLower(errorLabel: errorOnderdruk, errorText: "Geen geldige waarde")
-    }
-    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
+
+
 
 
 

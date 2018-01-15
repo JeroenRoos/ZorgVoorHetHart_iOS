@@ -22,6 +22,11 @@ class MyAccountActivatedViewController: UIViewController
         super.viewDidLoad()
         self.title = "Account geactiveerd"
         
+        initUserInterface()
+    }
+
+    private func initUserInterface()
+    {
         btnLogin.setTitle("Inloggen", for: .normal)
         btnLogin.setTitleColor(UIColor.white, for: .normal)
         btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)
@@ -29,22 +34,8 @@ class MyAccountActivatedViewController: UIViewController
         txtDescription.font = txtDescription.font.withSize(12)
         txtTitle.text = "Uw account is geactiveerd!"
         txtDescription.text = "U kunt nu inloggen met uw account."
-        
-        //activateAccount()
     }
     
-    /*
-    private func activateAccount()
-    {
-        service.activateAccount(withSuccess: { (message) in
-            self.txtTitle.text = "Uw account is geactiveerd!"
-            self.txtDescription.text = "U kunt nu inloggen met uw account."
-        }, orFailure: { (error) in
-            self.txtTitle.text = "Er is iets fout gegaan tijdens het activeren van uw account"
-            self.txtDescription.text = "Probeer het opnieuw door de link in de mail opnieuw te openen."
-        }, andToken: activationToken!)
-    } */
-
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()

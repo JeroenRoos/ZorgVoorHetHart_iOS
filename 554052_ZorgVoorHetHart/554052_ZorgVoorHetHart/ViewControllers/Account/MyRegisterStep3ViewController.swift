@@ -29,32 +29,8 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         super.viewDidLoad()
         self.title = "Registreren stap 3 van 3"
         self.hideKeyboardWhenTappedAround()
-        
-        txtTitle.text = "Consultent"
-        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
-        
-        txtDescription.text = "Uw consulent bij het St. Antonius Ziekenhuis"
-        txtDescription.font = txtDescription.font.withSize(12)
-        
-        btnFinish.setTitle("Afronden", for: .normal)
-        btnFinish.setTitleColor(UIColor.white, for: .normal)
-        btnFinish.backgroundColor = UIColor(rgb: 0x1BC1B7)
-        
-        errorConsultant.textColor = UIColor.red
-        errorConsultant.font = errorConsultant.font.withSize(10)
-        errorConsultant.isHidden = true
-        
-        dropdown.setTitle("  Selecteer uw consulent", for: .normal)
-        dropdown.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        dropdown.setTitleColor(UIColor.gray, for: .normal)
-        dropdown.layer.cornerRadius = 5
-        dropdown.contentHorizontalAlignment = .left
-        dropdown.isHidden = true
-        dropdown.layer.borderColor = UIColor.red.cgColor
-        
-        // https://github.com/kirkbyo/Dropper
-        dropper = Dropper(width: dropdown.frame.width - 40, height: 300)
-        
+    
+        initUserInterface()
         fetchConsultants()
  }
     
@@ -133,6 +109,34 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
                 viewController.user = user
             }
         }
+    }
+    
+    private func initUserInterface()
+    {
+        txtTitle.text = "Consultent"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+        
+        txtDescription.text = "Uw consulent bij het St. Antonius Ziekenhuis"
+        txtDescription.font = txtDescription.font.withSize(12)
+        
+        btnFinish.setTitle("Afronden", for: .normal)
+        btnFinish.setTitleColor(UIColor.white, for: .normal)
+        btnFinish.backgroundColor = UIColor(rgb: 0x1BC1B7)
+        
+        errorConsultant.textColor = UIColor.red
+        errorConsultant.font = errorConsultant.font.withSize(10)
+        errorConsultant.isHidden = true
+        
+        dropdown.setTitle("  Selecteer uw consulent", for: .normal)
+        dropdown.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        dropdown.setTitleColor(UIColor.gray, for: .normal)
+        dropdown.layer.cornerRadius = 5
+        dropdown.contentHorizontalAlignment = .left
+        dropdown.isHidden = true
+        dropdown.layer.borderColor = UIColor.red.cgColor
+        
+        // https://github.com/kirkbyo/Dropper
+        dropper = Dropper(width: dropdown.frame.width - 40, height: 300)
     }
     
     override func didReceiveMemoryWarning()

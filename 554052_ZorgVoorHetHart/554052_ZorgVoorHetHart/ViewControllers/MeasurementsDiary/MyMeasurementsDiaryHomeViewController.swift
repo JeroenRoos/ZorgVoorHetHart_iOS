@@ -39,29 +39,8 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
      
         tableViewMeasurements.delegate = self
         tableViewMeasurements.dataSource = self
-        
-        btnWeekly.setTitle("Week overzicht", for: .normal)
-        btnWeekly.setTitleColor(UIColor.black, for: .normal)
-        btnWeekly.backgroundColor = UIColor(rgb: 0xEEEEEE)
-        btnWeekly.layer.cornerRadius = 17
-        btnWeekly.layer.borderWidth = 1
-        btnWeekly.layer.borderColor = UIColor.black.cgColor
-        
-        btnMonthly.setTitle("Maand overzicht", for: .normal)
-        btnMonthly.setTitleColor(UIColor.black, for: .normal)
-        btnMonthly.backgroundColor = UIColor(rgb: 0xFFFFFF)
-        btnMonthly.layer.cornerRadius = 17
-        btnMonthly.layer.borderWidth = 1
-        btnMonthly.layer.borderColor = UIColor.black.cgColor
-        
-        //txtOnderdruk.text = "Onderduk "
-        //txtOnderdruk.font = txtOnderdruk.font.withSize(12)
-        //imgOnderdruk.backgroundColor = UIColor(rgb: 0x491488)
-        
-        //txtBovendruk.text = "Bovendruk "
-        //txtBovendruk.font = txtBovendruk.font.withSize(12)
-        //imgOnderdruk.backgroundColor = UIColor(rgb: 0x039BE6)
-        
+    
+        initUserInterface()
         fetchMeasurements()
         
         //Set table height to cover entire view
@@ -165,6 +144,31 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
             showMonthly = true
             tableViewMeasurements.reloadData()
         }
+    }
+    
+    private func initUserInterface()
+    {
+        btnWeekly.setTitle("Week overzicht", for: .normal)
+        btnWeekly.setTitleColor(UIColor.black, for: .normal)
+        btnWeekly.backgroundColor = UIColor(rgb: 0xEEEEEE)
+        btnWeekly.layer.cornerRadius = 17
+        btnWeekly.layer.borderWidth = 1
+        btnWeekly.layer.borderColor = UIColor.black.cgColor
+        
+        btnMonthly.setTitle("Maand overzicht", for: .normal)
+        btnMonthly.setTitleColor(UIColor.black, for: .normal)
+        btnMonthly.backgroundColor = UIColor(rgb: 0xFFFFFF)
+        btnMonthly.layer.cornerRadius = 17
+        btnMonthly.layer.borderWidth = 1
+        btnMonthly.layer.borderColor = UIColor.black.cgColor
+        
+        //txtOnderdruk.text = "Onderduk "
+        //txtOnderdruk.font = txtOnderdruk.font.withSize(12)
+        //imgOnderdruk.backgroundColor = UIColor(rgb: 0x491488)
+        
+        //txtBovendruk.text = "Bovendruk "
+        //txtBovendruk.font = txtBovendruk.font.withSize(12)
+        //imgOnderdruk.backgroundColor = UIColor(rgb: 0x039BE6)
     }
     
     override func didReceiveMemoryWarning()

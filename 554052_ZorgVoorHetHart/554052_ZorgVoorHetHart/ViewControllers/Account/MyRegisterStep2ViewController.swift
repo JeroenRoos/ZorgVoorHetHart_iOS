@@ -31,51 +31,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         self.title = "Registreren stap 2 van 3"
         self.hideKeyboardWhenTappedAround()
         
-        txtTitle.text = "Inloggegevens"
-        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
-        
-        errorEmail.textColor = UIColor.red
-        errorEmail.font = errorEmail.font.withSize(10)
-        errorEmail.isHidden = true
-        
-        btnNext.setTitle("Volgende", for: .normal)
-        btnNext.setTitleColor(UIColor.white, for: .normal)
-        btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)
-        
-        inputEmail.placeholder = "Vul uw e-mailadres in"
-        inputEmail.placeholderTextColor = UIColor.gray
-        inputEmail.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputEmail.layer.borderWidth = 0
-        inputEmail.keyboardType = UIKeyboardType.emailAddress
-        inputEmail.addTarget(self, action: #selector(emailDidEndEditing(_:)), for: .editingDidEnd)
-        self.inputEmail.delegate = self
-        inputEmail.layer.borderColor = UIColor.red.cgColor
-        
-        errorPassword.textColor = UIColor.red
-        errorPassword.font = errorPassword.font.withSize(10)
-        errorPassword.isHidden = true
-        
-        inputPassword.placeholder = "Vul uw wachtwoord in"
-        inputPassword.placeholderTextColor = UIColor.gray
-        inputPassword.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputPassword.layer.borderWidth = 0
-        inputPassword.isSecureTextEntry = true
-        inputPassword.addTarget(self, action: #selector(passwordDidEndEditing(_:)), for: .editingDidEnd)
-        self.inputPassword.delegate = self
-        inputPassword.layer.borderColor = UIColor.red.cgColor
-        
-        errorPasswordCheck.textColor = UIColor.red
-        errorPasswordCheck.font = errorPasswordCheck.font.withSize(10)
-        errorPasswordCheck.isHidden = true
-        
-        inputPasswordCheck.placeholder = "Herhaal uw wachtwoord in"
-        inputPasswordCheck.placeholderTextColor = UIColor.gray
-        inputPasswordCheck.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputPasswordCheck.layer.borderWidth = 0
-        inputPasswordCheck.isSecureTextEntry = true
-        inputPasswordCheck.addTarget(self, action: #selector(passwordCheckDidEndEditing(_:)), for: .editingDidEnd)
-        self.inputPasswordCheck.delegate = self
-        inputPasswordCheck.layer.borderColor = UIColor.red.cgColor
+        initUserInterface()
     }
 
     @IBAction func btnNext_OnClick(_ sender: Any)
@@ -132,6 +88,55 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
                 viewController.user = user
             }
         }
+    }
+    
+    private func initUserInterface()
+    {
+        txtTitle.text = "Inloggegevens"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
+        
+        errorEmail.textColor = UIColor.red
+        errorEmail.font = errorEmail.font.withSize(10)
+        errorEmail.isHidden = true
+        
+        btnNext.setTitle("Volgende", for: .normal)
+        btnNext.setTitleColor(UIColor.white, for: .normal)
+        btnNext.backgroundColor = UIColor(rgb: 0x1BC1B7)
+        
+        inputEmail.placeholder = "Vul uw e-mailadres in"
+        inputEmail.placeholderTextColor = UIColor.gray
+        inputEmail.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputEmail.layer.borderWidth = 0
+        inputEmail.keyboardType = UIKeyboardType.emailAddress
+        inputEmail.addTarget(self, action: #selector(emailDidEndEditing(_:)), for: .editingDidEnd)
+        self.inputEmail.delegate = self
+        inputEmail.layer.borderColor = UIColor.red.cgColor
+        
+        errorPassword.textColor = UIColor.red
+        errorPassword.font = errorPassword.font.withSize(10)
+        errorPassword.isHidden = true
+        
+        inputPassword.placeholder = "Vul uw wachtwoord in"
+        inputPassword.placeholderTextColor = UIColor.gray
+        inputPassword.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputPassword.layer.borderWidth = 0
+        inputPassword.isSecureTextEntry = true
+        inputPassword.addTarget(self, action: #selector(passwordDidEndEditing(_:)), for: .editingDidEnd)
+        self.inputPassword.delegate = self
+        inputPassword.layer.borderColor = UIColor.red.cgColor
+        
+        errorPasswordCheck.textColor = UIColor.red
+        errorPasswordCheck.font = errorPasswordCheck.font.withSize(10)
+        errorPasswordCheck.isHidden = true
+        
+        inputPasswordCheck.placeholder = "Herhaal uw wachtwoord in"
+        inputPasswordCheck.placeholderTextColor = UIColor.gray
+        inputPasswordCheck.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputPasswordCheck.layer.borderWidth = 0
+        inputPasswordCheck.isSecureTextEntry = true
+        inputPasswordCheck.addTarget(self, action: #selector(passwordCheckDidEndEditing(_:)), for: .editingDidEnd)
+        self.inputPasswordCheck.delegate = self
+        inputPasswordCheck.layer.borderColor = UIColor.red.cgColor
     }
     
     override func didReceiveMemoryWarning()

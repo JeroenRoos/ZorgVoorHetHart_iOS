@@ -24,6 +24,11 @@ class MyPasswordResetEmailViewController: UIViewController
         self.title = "Email verzonden"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        initUserInterface()
+    }
+
+    private func initUserInterface()
+    {
         btnLogin.setTitle("Inloggen", for: .normal)
         btnLogin.setTitleColor(UIColor.white, for: .normal)
         btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)
@@ -47,7 +52,7 @@ class MyPasswordResetEmailViewController: UIViewController
         txtActivate.text = "Hiermee kunt u uw wachtwoord opnieuw instellen"
         txtActivate.font = txtActivate.font.withSize(12)
     }
-
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()

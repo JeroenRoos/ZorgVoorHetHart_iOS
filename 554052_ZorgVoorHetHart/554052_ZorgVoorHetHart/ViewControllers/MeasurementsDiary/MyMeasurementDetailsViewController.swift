@@ -29,36 +29,7 @@ class MyMeasurementDetailsViewController: UIViewController
     {
         super.viewDidLoad()
         
-        //btnBack.setTitle("Terug", for: .normal)
-        //btnBack.setTitleColor(UIColor.white, for: .normal)
-        //btnBack.backgroundColor = UIColor(rgb: 0xE84A4A)
-        
-        btnEdit.setTitle("Bewerken", for: .normal)
-        btnEdit.setTitleColor(UIColor.white, for: .normal)
-        btnEdit.backgroundColor = UIColor(rgb: 0xA9A9A9)
-        
-        txtOnderdruk.text = "Onderdruk: " + String((clickedMeasurement?.bloodPressureLower)!)
-        txtOnderdruk.font = txtOnderdruk.font.withSize(12)
-        
-        txtBovendruk.text = "Bovendruk: " + String((clickedMeasurement?.bloodPressureUpper)!)
-        txtBovendruk.font = txtBovendruk.font.withSize(12)
-        
-        txtBloedrukTitle.text = clickedMeasurement?.measurementDateTimeFormatted
-            //"Bloeddruk"
-        txtBloedrukTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
-        
-        txtKlachtenTitle.text = "Gezondheidsklachten"
-        txtKlachtenTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
-        
-        txtKlachten.text = ""
-        txtKlachten.font = txtKlachten.font.withSize(12)
-        
-        // di, 31 okt 2017
-        let date = clickedMeasurement?.measurementDateTimeFormatted
-            //Date().getDateInCorrectFormat(myDate: (clickedMeasurement?.measurementDateTime)!)
-        txtDatum.text = date
-        txtDatum.font = txtDatum.font.withSize(12)
-        txtDatum.isHidden = true
+        initUserInterface()
         
         setMeasurementFeedback(result: (clickedMeasurement?.result)!, feedback: (clickedMeasurement?.feedback)!)
         
@@ -145,6 +116,40 @@ class MyMeasurementDetailsViewController: UIViewController
                 viewController.measurement = clickedMeasurement
             }
         }
+    }
+    
+    private func initUserInterface()
+    {
+        //btnBack.setTitle("Terug", for: .normal)
+        //btnBack.setTitleColor(UIColor.white, for: .normal)
+        //btnBack.backgroundColor = UIColor(rgb: 0xE84A4A)
+        
+        btnEdit.setTitle("Bewerken", for: .normal)
+        btnEdit.setTitleColor(UIColor.white, for: .normal)
+        btnEdit.backgroundColor = UIColor(rgb: 0xA9A9A9)
+        
+        txtOnderdruk.text = "Onderdruk: " + String((clickedMeasurement?.bloodPressureLower)!)
+        txtOnderdruk.font = txtOnderdruk.font.withSize(12)
+        
+        txtBovendruk.text = "Bovendruk: " + String((clickedMeasurement?.bloodPressureUpper)!)
+        txtBovendruk.font = txtBovendruk.font.withSize(12)
+        
+        txtBloedrukTitle.text = clickedMeasurement?.measurementDateTimeFormatted
+        //"Bloeddruk"
+        txtBloedrukTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        
+        txtKlachtenTitle.text = "Gezondheidsklachten"
+        txtKlachtenTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
+        
+        txtKlachten.text = ""
+        txtKlachten.font = txtKlachten.font.withSize(12)
+        
+        // di, 31 okt 2017
+        let date = clickedMeasurement?.measurementDateTimeFormatted
+        //Date().getDateInCorrectFormat(myDate: (clickedMeasurement?.measurementDateTime)!)
+        txtDatum.text = date
+        txtDatum.font = txtDatum.font.withSize(12)
+        txtDatum.isHidden = true
     }
     
     override func didReceiveMemoryWarning()

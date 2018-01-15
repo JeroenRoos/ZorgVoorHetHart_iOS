@@ -22,26 +22,7 @@ class MyNewMeasurementStep3ViewController: UIViewController, UITextFieldDelegate
         self.title = "Nieuwe meting: stap 3 van 3"
         self.hideKeyboardWhenTappedAround()
         
-        txtDate.text = (Date().getCurrentWeekdayAndDate())
-        txtDate.font = txtDate.font.withSize(12)
-        
-        txtTitle.text = "3. Extra / Opmerkingen"
-        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
-        
-        inputMessage.placeholder = ""
-        inputMessage.placeholderTextColor = UIColor.gray
-        inputMessage.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputMessage.layer.borderWidth = 0
-        self.inputMessage.delegate = self
-        
-        btnSave.setTitle("Opslaan", for: .normal)
-        btnSave.setTitleColor(UIColor.white, for: .normal)
-        btnSave.backgroundColor = UIColor(rgb: 0xE84A4A)
-        
-        btnBack.setTitle("Terug", for: .normal)
-        btnBack.setTitleColor(UIColor.white, for: .normal)
-        btnBack.backgroundColor = UIColor(rgb: 0xA9A9A9)
-        
+        initUserInterface()
     }
 
     override func didReceiveMemoryWarning()
@@ -60,6 +41,29 @@ class MyNewMeasurementStep3ViewController: UIViewController, UITextFieldDelegate
     {
         
         self.performSegue(withIdentifier: "save", sender: self)
+    }
+    
+    private func initUserInterface()
+    {
+        txtDate.text = (Date().getCurrentWeekdayAndDate())
+        txtDate.font = txtDate.font.withSize(12)
+        
+        txtTitle.text = "3. Extra / Opmerkingen"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        
+        inputMessage.placeholder = ""
+        inputMessage.placeholderTextColor = UIColor.gray
+        inputMessage.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputMessage.layer.borderWidth = 0
+        self.inputMessage.delegate = self
+        
+        btnSave.setTitle("Opslaan", for: .normal)
+        btnSave.setTitleColor(UIColor.white, for: .normal)
+        btnSave.backgroundColor = UIColor(rgb: 0xE84A4A)
+        
+        btnBack.setTitle("Terug", for: .normal)
+        btnBack.setTitleColor(UIColor.white, for: .normal)
+        btnBack.backgroundColor = UIColor(rgb: 0xA9A9A9) 
     }
 
 }

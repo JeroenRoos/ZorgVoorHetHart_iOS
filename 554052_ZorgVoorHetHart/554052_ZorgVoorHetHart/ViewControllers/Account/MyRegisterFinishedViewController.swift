@@ -25,6 +25,23 @@ class MyRegisterFinishedViewController: UIViewController
         self.title = "Registratie afgerond"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        initUserInterface()
+    }
+
+    override func didReceiveMemoryWarning()
+    {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func btnLogin_OnClick(_ sender: Any)
+    {
+        
+        self.performSegue(withIdentifier: "waitingActivation", sender: self)
+    }
+    
+    private func initUserInterface()
+    {
         btnLogin.setTitle("Inloggen", for: .normal)
         btnLogin.setTitleColor(UIColor.white, for: .normal)
         btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)
@@ -45,17 +62,5 @@ class MyRegisterFinishedViewController: UIViewController
         txtEmail.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
         
         txtActivate.text = "Hiermee kunt u uw account activeren"
-    }
-
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func btnLogin_OnClick(_ sender: Any)
-    {
-        
-        self.performSegue(withIdentifier: "waitingActivation", sender: self)
     }
 }
