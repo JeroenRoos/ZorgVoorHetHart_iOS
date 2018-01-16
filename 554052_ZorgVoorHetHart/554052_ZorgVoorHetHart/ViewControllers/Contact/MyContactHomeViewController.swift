@@ -60,6 +60,11 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andSubject: subject!, andMessage: message!)
         }
+        else
+        {
+            subjectDidEndEditing(inputOnderwerp)
+            messageDidEndEditing(inputBericht)
+        }
     }
     
     @objc func subjectDidEndEditing(_ textField: UITextField)

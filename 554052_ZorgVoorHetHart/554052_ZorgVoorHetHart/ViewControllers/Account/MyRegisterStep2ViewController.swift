@@ -52,6 +52,12 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
             
             self.performSegue(withIdentifier: "registerNext2", sender: self)
         }
+        else
+        {
+            emailDidEndEditing(inputEmail)
+            passwordDidEndEditing(inputPassword)
+            passwordCheckDidEndEditing(inputPasswordCheck)
+        }
     }
     
     @objc func emailDidEndEditing(_ textField: UITextField)

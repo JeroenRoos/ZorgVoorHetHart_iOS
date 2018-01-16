@@ -74,6 +74,11 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
                 self.btnLogin.isEnabled = true
             }, andEmail: trimmedEmail!, andPassword: hashedPassword!)
         }
+        else
+        {
+            emailDidEndEditing(inputEmail)
+            passwordDidEndEditing(inputPassword)
+        }
     }
     
     private func storeCredentialsInKeyChain(withPassword password: String,

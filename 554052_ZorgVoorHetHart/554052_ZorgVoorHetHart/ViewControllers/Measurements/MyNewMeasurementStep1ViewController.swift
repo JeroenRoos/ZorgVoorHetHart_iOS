@@ -54,6 +54,11 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
             
             self.performSegue(withIdentifier: "measurementNext", sender: self)
         }
+        else
+        {
+            bovendrukDidEndEditing(inputBovendruk)
+            onderdrukDidEndEditing(inputOnderdruk)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)

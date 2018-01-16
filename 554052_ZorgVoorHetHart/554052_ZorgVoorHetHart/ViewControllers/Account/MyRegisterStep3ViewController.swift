@@ -88,6 +88,7 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
     {
         if (!(user?.consultantId.isEmpty)!)
         {
+            errorConsultant.isHidden = false
             self.btnFinish.isEnabled = false
             userService.register(withSuccess: { () in
                 self.btnFinish.isEnabled = true
@@ -96,6 +97,11 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
                 self.btnFinish.isEnabled = true
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andUser: user!)
+        }
+        else
+        {
+            errorConsultant.isHidden = false
+            self.errorConsultant.text = "Uw consultent kan niet leeg zijn"
         }
     }
     

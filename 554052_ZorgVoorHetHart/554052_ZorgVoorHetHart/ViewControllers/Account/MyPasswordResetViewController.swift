@@ -43,6 +43,10 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andEmail: emailAddress)
         }
+        else
+        {
+            emailDidEndEditing(inputEmail)
+        }
     }
     
     @objc func emailDidEndEditing(_ textField: UITextField)

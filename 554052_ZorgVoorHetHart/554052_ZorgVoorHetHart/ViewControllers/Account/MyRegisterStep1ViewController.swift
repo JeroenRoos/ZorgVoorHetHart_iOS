@@ -74,6 +74,13 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
             
             self.performSegue(withIdentifier: "registerNext", sender: self)
         }
+        else
+        {
+            nameDidEndEditing(inputName)
+            dateOfBirthDidEndEditing(inputDatefOfBirth)
+            lengteDidEndEditing(inputLengte)
+            gewichtDidEndEditing(inputGewicht)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)

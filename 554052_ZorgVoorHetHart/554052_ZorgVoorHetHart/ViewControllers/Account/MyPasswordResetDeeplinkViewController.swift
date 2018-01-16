@@ -67,6 +67,11 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
                andPasswordCheck: hashedPassword,
                andToken: resetToken)
         }
+        else
+        {
+            passwordDidEndEditing(inputPassword)
+            passwordCheckDidEndEditing(inputPasswordCheck)
+        }
     }
     
     private func initUserInterface()
