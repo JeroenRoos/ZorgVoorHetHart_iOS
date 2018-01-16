@@ -44,7 +44,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         
         if (!(inputEmail.text?.isEmpty)! &&
             !(inputPassword.text?.isEmpty)!)
-           // && inputEmail.isValidEmail())
+            && inputEmail.isValidEmail())
         {
             let email = inputEmail.text!
             trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)

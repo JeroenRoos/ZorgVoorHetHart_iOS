@@ -77,9 +77,12 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         {
             let name = lstConsultants[index].firstName
                 + " " + lstConsultants[index].lastName
+            
             if (consultant == name)
             {
                 user?.consultantId = lstConsultants[index].consultantId
+                errorConsultant.isHidden = true
+                break
             }
         }
     }
@@ -88,7 +91,6 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
     {
         if (!(user?.consultantId.isEmpty)!)
         {
-            errorConsultant.isHidden = false
             self.btnFinish.isEnabled = false
             userService.register(withSuccess: { () in
                 self.btnFinish.isEnabled = true
