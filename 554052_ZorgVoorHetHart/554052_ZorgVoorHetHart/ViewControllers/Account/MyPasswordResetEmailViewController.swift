@@ -29,7 +29,7 @@ class MyPasswordResetEmailViewController: UIViewController
 
     private func initUserInterface()
     {
-        btnLogin.setTitle("Inloggen", for: .normal)
+        btnLogin.setTitle("Terug naar home", for: .normal)
         btnLogin.setTitleColor(UIColor.white, for: .normal)
         btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)
         

@@ -120,8 +120,8 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         
         txtDate.font = txtDate.font.withSize(12)
         
-        txtTitle.text = "1. Vul uw bloeddruk in (mmHg)"
-        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        txtTitle.text = "Vul uw bloeddruk in"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 14.0)
         
         txtBovendruk.text = "Bovendruk / SYS"
         txtBovendruk.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
@@ -162,7 +162,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         if (measurement == nil)
         {
             measurement = Measurement()
-            txtDate.text = (Date().getCurrentWeekdayAndDate())
+            txtDate.text = "Datum: " + (Date().getCurrentWeekdayAndDate())!
             self.title = "Nieuwe meting: stap 1 van 2"
         }
         else
@@ -171,7 +171,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
             inputOnderdruk.text = String((measurement?.bloodPressureLower)!)
             txtDate.text = "Datum originele meting: " + (self.measurement?.measurementDateTimeFormatted)!
             editingMeasurement = true
-            self.title = "Meting aanpassen: stap 1 van 2"
+            self.title = "Meting bewerken: stap 1 van 2"
         }
         
         // Voor nu wordt lengte en gewicht verplaatst naar registreren

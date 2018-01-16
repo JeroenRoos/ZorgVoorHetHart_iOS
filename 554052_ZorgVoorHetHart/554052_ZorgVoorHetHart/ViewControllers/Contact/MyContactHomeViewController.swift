@@ -121,7 +121,8 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         
         let name = (User.loggedinUser?.consultant?.firstName)! + " " + (User.loggedinUser?.consultant?.lastName)!
         let email = User.loggedinUser?.consultant?.emailAddress
-        txtConsultantInfo.text = "Uw bericht wordt verstuurd naar: " + name + " - " + email!
+        txtConsultantInfo.text = "Consulent: " + name + "\nE-mail: " + email!
+            //"Uw bericht wordt verstuurd naar: " + name + " - " + email!
         txtConsultantInfo.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
     }
     

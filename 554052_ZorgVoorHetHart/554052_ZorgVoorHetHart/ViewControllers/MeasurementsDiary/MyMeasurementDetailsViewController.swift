@@ -86,7 +86,14 @@ class MyMeasurementDetailsViewController: UIViewController
                 
                 if (self.clickedMeasurement?.healthIssueOther != nil && self.clickedMeasurement?.healthIssueOther != "")
                 {
-                    self.txtKlachten.text?.append("\n\nAndere klachten: \n" + (self.clickedMeasurement?.healthIssueOther)!)
+                    if (self.clickedMeasurement?.healthIssueIds?.isEmpty)!
+                    {
+                        self.txtKlachten.text?.append((self.clickedMeasurement?.healthIssueOther)!)
+                    }
+                    else
+                    {
+                         self.txtKlachten.text?.append("\n\nOverige klachten: \n" + (self.clickedMeasurement?.healthIssueOther)!)
+                    }
                 }
                 
         }, orFailure: { (error: String, title: String) in
@@ -100,11 +107,6 @@ class MyMeasurementDetailsViewController: UIViewController
     {
         self.performSegue(withIdentifier: "editMeasurement", sender: self)
     }
-    
-    //@IBAction func btnBack_OnClick(_ sender: Any)
-    //{
-    //    self.navigationController?.popViewController(animated: true)
-    //}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -120,10 +122,6 @@ class MyMeasurementDetailsViewController: UIViewController
     
     private func initUserInterface()
     {
-        //btnBack.setTitle("Terug", for: .normal)
-        //btnBack.setTitleColor(UIColor.white, for: .normal)
-        //btnBack.backgroundColor = UIColor(rgb: 0xE84A4A)
-        
         btnEdit.setTitle("Bewerken", for: .normal)
         btnEdit.setTitleColor(UIColor.white, for: .normal)
         btnEdit.backgroundColor = UIColor(rgb: 0xA9A9A9)
@@ -135,7 +133,6 @@ class MyMeasurementDetailsViewController: UIViewController
         txtBovendruk.font = txtBovendruk.font.withSize(12)
         
         txtBloedrukTitle.text = clickedMeasurement?.measurementDateTimeFormatted
-        //"Bloeddruk"
         txtBloedrukTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
         
         txtKlachtenTitle.text = "Gezondheidsklachten"
@@ -146,7 +143,6 @@ class MyMeasurementDetailsViewController: UIViewController
         
         // di, 31 okt 2017
         let date = clickedMeasurement?.measurementDateTimeFormatted
-        //Date().getDateInCorrectFormat(myDate: (clickedMeasurement?.measurementDateTime)!)
         txtDatum.text = date
         txtDatum.font = txtDatum.font.withSize(12)
         txtDatum.isHidden = true

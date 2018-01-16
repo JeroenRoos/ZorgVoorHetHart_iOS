@@ -301,7 +301,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         txtDisclaimer.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtDisclaimer.isHidden = true
         
-        txtDisclaimerInfo.text = "Deze app is met de grootst mogelijke zorgvuldigheid samengesteld. Wij kunnen echter niet garanderen dat de app altijd zonder onderbrekingen, fouten of gebreken beschikbaar zal zijn of werken en dat de verschafte informatie volledig, juist of up-to-date is."
+        txtDisclaimerInfo.text = "Disclaimer:\n\nDeze app is met de grootst mogelijke zorgvuldigheid samengesteld. Wij kunnen echter niet garanderen dat de app altijd zonder onderbrekingen, fouten of gebreken beschikbaar zal zijn of werken en dat de verschafte informatie volledig, juist of up-to-date is."
         txtDisclaimerInfo.backgroundColor = UIColor(rgb: 0xF8F8F8)
     }
     

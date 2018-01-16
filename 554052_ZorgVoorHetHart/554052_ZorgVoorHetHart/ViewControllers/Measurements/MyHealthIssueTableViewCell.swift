@@ -16,6 +16,7 @@ class MyHealthIssueTableViewCell: UITableViewCell
     {
         checkboxHealthIssue.setTitle(healthIssue.name, for: .normal)
         checkboxHealthIssue.accessibilityIdentifier = healthIssue.issueId
+        checkboxHealthIssue.setTitleColor(UIColor.black, for: .normal)
     }
     
     override func awakeFromNib()

@@ -19,6 +19,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var radioComplaints: RadioButtonHelper!
     @IBOutlet weak var radioNoComplaints: RadioButtonHelper!
     @IBOutlet weak var tableViewHealthIssues: UITableView!
+    @IBOutlet weak var txtNoComplaints: UILabel!
     
     private var lstHealthIssues : [HealthIssue] = []
     private let service: HealthIssuesService = HealthIssuesService()
@@ -68,16 +69,17 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                     self.title = "Nieuwe meting: stap 2 van 2"
                     self.measurement?.healthIssueIds = []
                     self.measurement?.healthIssueOther = ""
-                    self.txtDate.text = (Date().getCurrentWeekdayAndDate())
+                    self.txtDate.text = "Datum: " + (Date().getCurrentWeekdayAndDate())!
                 }
                 else
                 {
-                    self.title = "Meting aanpassen: stap 2 van 2"
+                    self.title = "Meting bewerken: stap 2 van 2"
                     self.txtDate.text = "Datum originele meting: " + (self.measurement?.measurementDateTimeFormatted)!
                     
                     if (self.measurement?.healthIssueIds != nil &&
                         !(self.measurement?.healthIssueIds?.isEmpty)! ||
-                        self.measurement?.healthIssueOther != "")
+                        (self.measurement?.healthIssueOther != nil &&
+                        self.measurement?.healthIssueOther != ""))
                     {
                         DispatchQueue.main.async {
                             self.setCheckboxesAndTextField()
@@ -94,6 +96,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     private func setCheckboxesAndTextField()
     {
         complaintsHiddenStateChange(state: false)
+        txtNoComplaints.isHidden = true
         radioComplaints.isChecked = true
         radioNoComplaints.isChecked = false
         tableViewHealthIssues.isHidden = false
@@ -114,7 +117,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
             }
         }
         
-        if (measurement?.healthIssueOther != nil &&
+        if (//measurement?.healthIssueOther != nil &&
             measurement?.healthIssueOther != "")
         {
             inputOther.text = measurement?.healthIssueOther!
@@ -175,9 +178,22 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        // Pass measurement to next ViewController
+        if(segue.identifier == "measurementFinish")
+        {
+            if let viewController = segue.destination as? MyNewMeasurementFinishedViewController
+            {
+                viewController.editingMeasurement = editingMeasurement
+            }
+        }
+    }
+    
     @IBAction func radioNoComplaints_OnClick(_ sender: Any)
     {
         complaintsHiddenStateChange(state: true)
+        txtNoComplaints.isHidden = false
 
         for index in 0 ..< lstHealthIssues.count
         {
@@ -225,14 +241,15 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     @IBAction func radioComplaints_OnClick(_ sender: Any)
     {
         complaintsHiddenStateChange(state: false)
+        txtNoComplaints.isHidden = true
     }
     
     private func initUserInterface()
     {
         txtDate.font = txtDate.font.withSize(12)
         
-        txtTitle.text = "2. Gezondheidsklachten"
-        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        txtTitle.text = "Heeft u regelmatig last van een of meer van de volgende gezondheidsklachten?"
+        txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 14.0)
         
         radioComplaints.setTitle("Ja, namelijk", for: .normal)
         radioComplaints.setTitleColor(UIColor.black, for: .normal)
@@ -240,7 +257,10 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         radioComplaints?.alternateButton = [radioNoComplaints!]
         radioComplaints.layer.borderWidth = 0
         
-        radioNoComplaints.setTitle("Geen", for: .normal)
+        txtNoComplaints.text = "U heeft geen bijzondere klachten"
+        txtNoComplaints.font = txtNoComplaints.font.withSize(12)
+        
+        radioNoComplaints.setTitle("Nee", for: .normal)
         radioNoComplaints.setTitleColor(UIColor.black, for: .normal)
         radioNoComplaints.isChecked = true
         radioNoComplaints?.alternateButton = [radioComplaints!]

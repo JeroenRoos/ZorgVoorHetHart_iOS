@@ -151,14 +151,14 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         btnWeekly.setTitle("Week overzicht", for: .normal)
         btnWeekly.setTitleColor(UIColor.black, for: .normal)
         btnWeekly.backgroundColor = UIColor(rgb: 0xEEEEEE)
-        btnWeekly.layer.cornerRadius = 17
+        //btnWeekly.layer.cornerRadius = 17
         btnWeekly.layer.borderWidth = 1
         btnWeekly.layer.borderColor = UIColor.black.cgColor
         
         btnMonthly.setTitle("Maand overzicht", for: .normal)
         btnMonthly.setTitleColor(UIColor.black, for: .normal)
         btnMonthly.backgroundColor = UIColor(rgb: 0xFFFFFF)
-        btnMonthly.layer.cornerRadius = 17
+        //btnMonthly.layer.cornerRadius = 17
         btnMonthly.layer.borderWidth = 1
         btnMonthly.layer.borderColor = UIColor.black.cgColor
         

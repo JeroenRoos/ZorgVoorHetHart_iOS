@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CryptoSwift
 
 class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelegate
 {
@@ -51,7 +52,9 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
             inputPassword.text == inputPasswordCheck.text)
         {
             let password = inputPassword.text!
-            let passwordCheck = inputPasswordCheck.text!
+            let hashedPassword = password.sha512()
+            //let passwordCheck = inputPasswordCheck.text!
+            //let hashedPasswordCheck = passwordCheck.sha512()
             self.btnFinish.isEnabled = false
             
             service.resetPassword(withSuccess: { () in
@@ -60,8 +63,8 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
             }, orFailure: { (error: String, title: String) in
                 self.btnFinish.isEnabled = true
                 self.showAlertBox(withMessage: error, andTitle: title)
-            }, andPassword: password,
-               andPasswordCheck: passwordCheck,
+            }, andPassword: hashedPassword,
+               andPasswordCheck: hashedPassword,
                andToken: resetToken)
         }
     }

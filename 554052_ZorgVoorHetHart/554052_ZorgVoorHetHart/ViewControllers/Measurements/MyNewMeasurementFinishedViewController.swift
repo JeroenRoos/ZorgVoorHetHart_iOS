@@ -98,13 +98,13 @@ class MyNewMeasurementFinishedViewController: UIViewController
         
         if (editingMeasurement)
         {
-            self.title = "Meting aanpassen afgerond"
-            txtTitle.text = "Uw meting is succesvol aangepast en opgeslagen in uw dagboek!"
+            self.title = "Meting bewerken afgerond"
+            txtTitle.text = "U heeft het bewerken van uw meting succesvol afgerond!"
         }
         else
         {
             self.title = "Nieuwe meting afgerond"
-            txtTitle.text = "Uw meting is succesvol opgeslagen in uw dagboek!"
+            txtTitle.text = "U heeft uw meting succesvol afgerond!"
         }
     }
     
