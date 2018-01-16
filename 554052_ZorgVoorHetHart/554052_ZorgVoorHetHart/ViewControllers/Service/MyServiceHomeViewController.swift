@@ -39,21 +39,27 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
     //@IBOutlet weak var imgBigText: UIImageView!
     //@IBOutlet weak var txtBigText: UILabel!
     
-    @IBOutlet weak var txtWeightHeight: UILabel!
-    @IBOutlet weak var imgWeightHeight: UIImageView!
-    @IBOutlet weak var btnWeightHeight: UIButton!
+    @IBOutlet weak var txtLength: UILabel!
+    @IBOutlet weak var imgLength: UIImageView!
+    @IBOutlet weak var btnLength: UIButton!
+    
+    @IBOutlet weak var txtWeight: UILabel!
+    @IBOutlet weak var imgWeight: UIImageView!
+    @IBOutlet weak var btnWeight: UIButton!
     
     var popupLogoutActive: Bool = false
-    var popupLengthWeightActive: Bool = false
+    var popupLength: Bool = false
+    var popupWeight: Bool = false
     @IBOutlet weak var imgPopupBackground: UIImageView!
     @IBOutlet weak var imgPopup: UIImageView!
     @IBOutlet weak var txtPopupTitle: UILabel!
-    @IBOutlet weak var txtPopupLength: UILabel!
-    @IBOutlet weak var txtPopupWeight: UILabel!
-    @IBOutlet weak var inputPopupLength: UITextField!
-    @IBOutlet weak var inputPopupWeight: UITextField!
+    @IBOutlet weak var txtPopup: UILabel!
+    //@IBOutlet weak var txtPopupWeight: UILabel!
+    @IBOutlet weak var inputPopup: UITextField!
+    //@IBOutlet weak var inputPopupWeight: UITextField!
     @IBOutlet weak var btnPopupLeft: UIButton!
     @IBOutlet weak var btnPopupRight: UIButton!
+    @IBOutlet weak var errorLabelPopup: UILabel!
     
     @IBOutlet weak var txtFAQ: UILabel!
     @IBOutlet weak var imgFAQ: UIImageView!
@@ -71,81 +77,31 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         self.hideKeyboardWhenTappedAround()
         
         initUserInterface()
-        setPopupUI()
+        setPopupHidden(withValue: true)
     }
     
-    private func setPopupUI()
+    private func setPopupUI(updatingLength: Bool)
     {
-        imgPopupBackground.alpha = 0.5
-        
-        txtPopupLength.text = "Lengte (cm)"
-        txtPopupLength.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
-        
-        txtPopupWeight.text = "Gewicht (KG)"
-        txtPopupWeight.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
-        
-        inputPopupLength.placeholder = "0"
-        inputPopupLength.placeholderTextColor = UIColor.gray
-        inputPopupLength.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputPopupLength.layer.borderWidth = 0
-        inputPopupLength.keyboardType = UIKeyboardType.numberPad
-        self.inputPopupLength.delegate = self
-        
-        if (User.loggedinUser?.length != nil)
+        if (popupLength)
         {
-            inputPopupLength.text = String((User.loggedinUser?.length)!)
+            txtPopup.text = "Lengte (cm)"
+            txtPopupTitle.text = "Uw lengte aanpassen"
+            
+            if (User.loggedinUser?.length != nil)
+            {
+                inputPopup.text = String((User.loggedinUser?.length)!)
+            }
         }
-        
-        inputPopupWeight.placeholder = "0"
-        inputPopupWeight.placeholderTextColor = UIColor.gray
-        inputPopupWeight.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputPopupWeight.layer.borderWidth = 0
-        inputPopupWeight.keyboardType = UIKeyboardType.numberPad
-        self.inputPopupWeight.delegate = self
-        
-        if (User.loggedinUser?.weight != nil)
+        else
         {
-            inputPopupWeight.text = String((User.loggedinUser?.weight)!)
+            txtPopup.text = "Gewicht (KG)"
+            txtPopupTitle.text = "Uw gewicht aanpassen"
+            
+            if (User.loggedinUser?.weight != nil)
+            {
+                inputPopup.text = String((User.loggedinUser?.weight)!)
+            }
         }
-        
-        setPopupActive(withValue: true)
-    }
-    
-    @IBAction func btnLogout_OnClick(_ sender: Any)
-    {
-        popupLogoutActive = true
-        imgPopupBackground.isHidden = false
-        imgPopup.isHidden = false
-        txtPopupTitle.isHidden = false
-        txtPopupLength.isHidden = true
-        txtPopupWeight.isHidden = true
-        inputPopupLength.isHidden = true
-        inputPopupWeight.isHidden = true
-        btnPopupLeft.isHidden = false
-        btnPopupRight.isHidden = false
-        
-        txtPopupTitle.text = "Weet u zeker dat u wilt uitloggen?"
-        txtPopupTitle.font = txtPopupTitle.font.withSize(12)
-        
-        btnPopupRight.setTitle("Annuleren", for: .normal)
-        btnPopupRight.setTitleColor(UIColor.white, for: .normal)
-        btnPopupRight.backgroundColor = UIColor(rgb: 0xE84A4A)
-        
-        btnPopupLeft.setTitle("Uitloggen", for: .normal)
-        btnPopupLeft.setTitleColor(UIColor.white, for: .normal)
-        btnPopupLeft.backgroundColor = UIColor(rgb: 0xA9A9A9)
-        
-        myScrollView.scrollToTop(animated: true)
-        myScrollView.isScrollEnabled = false
-    }
-    
-    @IBAction func btnWeightHeight_OnClick(_ sender: Any)
-    {
-        setPopupActive(withValue: false)
-        popupLengthWeightActive = true
-        
-        txtPopupTitle.text = "Uw lengte en gewicht aanpassen"
-        txtPopupTitle.font = txtPopupTitle.font.withSize(12)
         
         btnPopupRight.setTitle("Opslaan", for: .normal)
         btnPopupRight.setTitleColor(UIColor.white, for: .normal)
@@ -157,6 +113,77 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         
         myScrollView.scrollToTop(animated: true)
         myScrollView.isScrollEnabled = false
+        
+        inputPopup.layer.borderWidth = 0
+
+        
+        /*inputPopupWeight.placeholder = "0"
+        inputPopupWeight.placeholderTextColor = UIColor.gray
+        inputPopupWeight.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputPopupWeight.layer.borderWidth = 0
+        inputPopupWeight.keyboardType = UIKeyboardType.numberPad
+        self.inputPopupWeight.delegate = self
+        
+        if (User.loggedinUser?.weight != nil)
+        {
+            inputPopupWeight.text = String((User.loggedinUser?.weight)!)
+        } */
+        
+    }
+    
+    @IBAction func btnLogout_OnClick(_ sender: Any)
+    {
+        if (!popupLength && !popupWeight && !popupLogoutActive)
+        {
+            popupLogoutActive = true
+            imgPopupBackground.isHidden = false
+            imgPopup.isHidden = false
+            txtPopupTitle.isHidden = false
+            txtPopup.isHidden = true
+            //txtPopupWeight.isHidden = true
+            inputPopup.isHidden = true
+            //inputPopupWeight.isHidden = true
+            btnPopupLeft.isHidden = false
+            errorLabelPopup.isHidden = true
+            btnPopupRight.isHidden = false
+            //setPopupHidden(withValue: false)
+            
+            txtPopupTitle.text = "Weet u zeker dat u wilt uitloggen?"
+            txtPopupTitle.font = txtPopupTitle.font.withSize(12)
+            
+            btnPopupRight.setTitle("Annuleren", for: .normal)
+            btnPopupRight.setTitleColor(UIColor.white, for: .normal)
+            btnPopupRight.backgroundColor = UIColor(rgb: 0xE84A4A)
+            
+            btnPopupLeft.setTitle("Uitloggen", for: .normal)
+            btnPopupLeft.setTitleColor(UIColor.white, for: .normal)
+            btnPopupLeft.backgroundColor = UIColor(rgb: 0xA9A9A9)
+            
+            myScrollView.scrollToTop(animated: true)
+            myScrollView.isScrollEnabled = false
+        }
+    }
+    
+    @IBAction func btnLength_OnClick(_ sender: Any)
+    {
+        if (!popupLength && !popupWeight && !popupLogoutActive)
+        {
+            popupLength = true
+            setPopupHidden(withValue: false)
+            setPopupUI(updatingLength: true)
+            errorLabelPopup.isHidden = true
+        }
+    }
+    
+    @IBAction func btnWeight_OnClick(_ sender: Any)
+    {
+        if (!popupLength && !popupWeight && !popupLogoutActive)
+        {
+            popupWeight = true
+            setPopupHidden(withValue: false)
+            setPopupUI(updatingLength: false)
+            errorLabelPopup.isHidden = true
+        }
     }
     
     @IBAction func btnFAQ_OnClick(_ sender: Any)
@@ -166,36 +193,82 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnPopupRight_OnClick(_ sender: Any)
     {
-        if (popupLengthWeightActive)
+        if (popupLength)
         {
-            // Update lenght and weight
-            let weight = Int(inputPopupWeight.text!)
-            let length = Int(inputPopupLength.text!)
-            
-            service.updateLengthAndWeight(withSuccess: { () in
-                self.setPopupActive(withValue: true)
-                self.popupLogoutActive = false
-                self.myScrollView.isScrollEnabled = true
-            }, orFailure: { (error: String, title: String) in
-                self.showAlertBox(withMessage: error, andTitle: title)
-            }, andLength: length!, andWeight: weight!)
+            if (!(inputPopup.text?.isEmpty)! &&
+                inputPopup.isValidNumberInput(minValue: 67, maxValue: 251))
+            {
+                // Update lenght
+                let length = Int(inputPopup.text!)
+                
+                service.updateLengthOrWeight(withSuccess: { () in
+                    User.loggedinUser?.length = length!
+                    self.setPopupHidden(withValue: true)
+                    self.popupLength = false
+                    self.errorLabelPopup.isHidden = true
+                    self.myScrollView.isScrollEnabled = true
+                }, orFailure: { (error: String, title: String) in
+                    self.showAlertBox(withMessage: error, andTitle: title)
+                }, andLength: length!, andWeight: nil)
+            }
+        }
+        else if (popupWeight)
+        {
+            if (!(inputPopup.text?.isEmpty)! &&
+                inputPopup.isValidNumberInput(minValue: 30, maxValue: 594))
+            {
+                // Update weight
+                let weight = Int(inputPopup.text!)
+                
+                service.updateLengthOrWeight(withSuccess: { () in
+                    User.loggedinUser?.weight = weight!
+                    self.setPopupHidden(withValue: true)
+                    self.errorLabelPopup.isHidden = true
+                    self.popupWeight = false
+                    self.myScrollView.isScrollEnabled = true
+                }, orFailure: { (error: String, title: String) in
+                    self.showAlertBox(withMessage: error, andTitle: title)
+                }, andLength: nil, andWeight: weight)
+            }
         }
         else
         {
-            setPopupActive(withValue: true)
+            setPopupHidden(withValue: true)
             popupLogoutActive = false
             myScrollView.isScrollEnabled = true
         }
     }
     
+    @objc func popupDidEndEditing(_ textField: UITextField)
+    {
+        if (popupLength)
+        {
+            // Check and set error message if the textfield is empty
+            textField.setErrorMessageEmptyField(errorLabel: errorLabelPopup, errorText: "Lengte kan niet leeg zijn")
+            
+            // Check and set error message if the length is not valid
+            textField.setErrorMessageInvalidLength(errorLabel: errorLabelPopup, errorText: "Lengte heeft geen geldige waarde")
+        }
+        else
+        {
+            // Check and set error message if the textfield is empty
+            textField.setErrorMessageEmptyField(errorLabel: errorLabelPopup, errorText: "Gewicht kan niet leeg zijn")
+            
+            // Check and set error message if the length is not valid
+            textField.setErrorMessageInvalidWeight(errorLabel: errorLabelPopup, errorText: "Gewicht heeft geen geldige waarde")
+        }
+
+    }
+    
     @IBAction func btnPopupLeft_OnClick(_ sender: Any)
     {
-        if (popupLengthWeightActive)
+        if (popupLength || popupWeight)
         {
-            inputPopupLength.text = ""
-            inputPopupWeight.text = ""
-            popupLengthWeightActive = false
-            setPopupActive(withValue: true)
+            inputPopup.text = ""
+            popupLength = false
+            errorLabelPopup.isHidden = true
+            popupWeight = false
+            setPopupHidden(withValue: true)
         }
         else
         {
@@ -209,25 +282,20 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         }
         myScrollView.isScrollEnabled = true
     }
+    
     //vanaf 16
-    private func setPopupActive(withValue value: Bool)
+    private func setPopupHidden(withValue value: Bool)
     {
         imgPopupBackground.isHidden = value
         imgPopup.isHidden = value
         txtPopupTitle.isHidden = value
-        txtPopupLength.isHidden = value
-        txtPopupWeight.isHidden = value
-        inputPopupLength.isHidden = value
-        inputPopupWeight.isHidden = value
+        txtPopup.isHidden = value
+        //txtPopupWeight.isHidden = value
+        inputPopup.isHidden = value
+        //inputPopupWeight.isHidden = value
         btnPopupLeft.isHidden = value
         btnPopupRight.isHidden = value
     }
-    
-    //@objc func switchBigTextChanged(_ mySwitch: UISwitch)
-    //{
-    //    let value = mySwitch.isOn
-    //    defaults.set(value, forKey: "bigText")
-    //}
     
     @objc func switchDailyNotificationChanged(_ mySwitch: UISwitch)
     {
@@ -279,9 +347,13 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         switchWeeklyMeasurement.setOn(defaults.bool(forKey: "sendWeeklyMeasurement"), animated: false)
         switchWeeklyMeasurement.addTarget(self, action: #selector(switchWeeklyMeasurementChanged(_:)), for: .valueChanged)
         
-        imgWeightHeight.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        txtWeightHeight.text = "Uw lengte en gewicht aanpassen"
-        txtWeightHeight.font = txtWeightHeight.font.withSize(12)
+        imgLength.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtLength.text = "Uw lengte aanpassen"
+        txtLength.font = txtLength.font.withSize(12)
+        
+        imgWeight.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        txtWeight.text = "Uw Gewicht aanpassen"
+        txtWeight.font = txtWeight.font.withSize(12)
         
         imgAutomaticLogin.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtAutomaticLogin.text = "Automatisch inloggen"
@@ -303,6 +375,24 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         
         txtDisclaimerInfo.text = "Disclaimer:\n\nDeze app is met de grootst mogelijke zorgvuldigheid samengesteld. Wij kunnen echter niet garanderen dat de app altijd zonder onderbrekingen, fouten of gebreken beschikbaar zal zijn of werken en dat de verschafte informatie volledig, juist of up-to-date is."
         txtDisclaimerInfo.backgroundColor = UIColor(rgb: 0xF8F8F8)
+        
+        // Popup UI
+        imgPopupBackground.alpha = 0.5
+        inputPopup.placeholder = "0"
+        inputPopup.placeholderTextColor = UIColor.gray
+        inputPopup.backgroundColor = UIColor(rgb: 0xEBEBEB)
+        inputPopup.layer.borderWidth = 0
+        inputPopup.keyboardType = UIKeyboardType.numberPad
+        self.inputPopup.delegate = self
+        inputPopup.addTarget(self, action: #selector(popupDidEndEditing(_:)), for: .editingDidEnd)
+        inputPopup.layer.borderColor = UIColor.red.cgColor
+        
+        errorLabelPopup.textColor = UIColor.red
+        errorLabelPopup.font = errorLabelPopup.font.withSize(10)
+        errorLabelPopup.isHidden = true
+        
+        txtPopupTitle.font = txtPopupTitle.font.withSize(12)
+        txtPopup.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
     }
     
     override func didReceiveMemoryWarning()

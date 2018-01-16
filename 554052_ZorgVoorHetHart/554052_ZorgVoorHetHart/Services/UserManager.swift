@@ -124,13 +124,13 @@ class UserManager: MySessionManager
         }
     }
     
-    func updateLengthAndWeight(withSuccess success: @escaping ()->(), 
+    func updateLengthOrWeight(withSuccess success: @escaping ()->(), 
                   orFailure failure: @escaping (String, String)->(),
-                  andLength length: Int,
-                  andWeight weight: Int)
+                  andLength length: Int?,
+                  andWeight weight: Int?)
     {
-        let parameters: [String: Any] = ["length" : length,
-                                         "weight" : weight]
+        let parameters: [String: Any] = ["length" : length ?? nil,
+                                         "weight" : weight ?? nil]
         let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         
         Alamofire.request(baseURL!,

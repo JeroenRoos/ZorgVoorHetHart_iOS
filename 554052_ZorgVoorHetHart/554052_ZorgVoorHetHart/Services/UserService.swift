@@ -36,12 +36,12 @@ class UserService
         }, andUser: user)
     }
     
-    func updateLengthAndWeight(withSuccess success: @escaping ()->(), 
+    func updateLengthOrWeight(withSuccess success: @escaping ()->(), 
                                orFailure failure: @escaping (String, String)->(),
-                               andLength length: Int,
-                               andWeight weight: Int)
+                               andLength length: Int?,
+                               andWeight weight: Int?)
     {
-        manager.updateLengthAndWeight(withSuccess: { () in
+        manager.updateLengthOrWeight(withSuccess: { () in
             success()
         }, orFailure: { (error: String, title: String) in
             failure(error, title)
