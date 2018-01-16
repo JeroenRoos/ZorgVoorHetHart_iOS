@@ -1143,7 +1143,7 @@
                                     <constraint firstAttribute="height" constant="125" id="Prr-0n-Ewe"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E3N-Nk-qk9" userLabel="inputBovendruk">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E3N-Nk-qk9" userLabel="inputBovendruk">
                                 <rect key="frame" x="165" y="188" width="190" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="7Qt-n9-odm"/>
@@ -1165,7 +1165,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jko-mX-5Sc" userLabel="inputOnderdruk">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jko-mX-5Sc" userLabel="inputOnderdruk">
                                 <rect key="frame" x="165" y="339" width="190" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="ox7-Ab-EKs"/>
@@ -1382,7 +1382,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZrT-fn-LAa" userLabel="inputOtherComplaints">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZrT-fn-LAa" userLabel="inputOtherComplaints">
                                 <rect key="frame" x="20" y="361" width="335" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="dX0-ov-kRF"/>
@@ -2904,7 +2904,7 @@
         <segue reference="6Dg-kW-OgJ"/>
         <segue reference="OmV-0a-2cP"/>
         <segue reference="lLp-v3-bRb"/>
-        <segue reference="DJM-Jk-l8O"/>
+        <segue reference="MsM-Qu-r2h"/>
         <segue reference="U9k-PS-t4F"/>
         <segue reference="3Bl-Uw-Ne3"/>
         <segue reference="tnK-BW-Yzp"/>

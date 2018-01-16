@@ -114,7 +114,8 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
             }
         }
         
-        if (measurement?.healthIssueOther != "")
+        if (measurement?.healthIssueOther != nil &&
+            measurement?.healthIssueOther != "")
         {
             inputOther.text = measurement?.healthIssueOther!
         }
