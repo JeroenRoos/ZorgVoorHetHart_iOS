@@ -1434,7 +1434,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-yu-vlU" userLabel="txtNoComplaints">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq1-yu-vlU" userLabel="txtNoComplaints">
                                 <rect key="frame" x="20" y="140" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -2938,7 +2938,7 @@
         <segue reference="6Dg-kW-OgJ"/>
         <segue reference="OmV-0a-2cP"/>
         <segue reference="lLp-v3-bRb"/>
-        <segue reference="DJM-Jk-l8O"/>
+        <segue reference="MsM-Qu-r2h"/>
         <segue reference="aqh-5G-AdK"/>
         <segue reference="3Bl-Uw-Ne3"/>
         <segue reference="tnK-BW-Yzp"/>

@@ -62,13 +62,27 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
             SwiftSpinner.show("Bezig met het ophalen van de benodigde data...")
             service.getHealthIssues(
                 withSuccess: { (healthIssues: [HealthIssue]) in
-                    
-                    // Sla deze health issues later opnieuw op
+                    HealthIssue.healthIssuesInstance = healthIssues
                     self.lstHealthIssues = healthIssues
                     self.InitCheckboxesAndTextWithData()
                     SwiftSpinner.hide()
             }, orFailure: { (error: String, title) in
-                self.title = "Nieuwe meting: stap 2 van 3"
+                if (self.editingMeasurement)
+                {
+                    self.title = "Nieuwe meting: stap 2 van 2"
+                    self.txtDate.text = "Datum originele meting: " + (self.measurement?.measurementDateTimeFormatted)!
+                }
+                else
+                {
+                    self.title = "Nieuwe meting: stap 2 van 2"
+                    self.txtDate.text = "Datum: " + (Date().getCurrentWeekdayAndDate())!
+                }
+                
+                self.radioNoComplaints_OnClick(self.radioNoComplaints)
+                self.radioComplaints.isEnabled = false
+                self.txtNoComplaints.textColor = UIColor.red
+                self.txtNoComplaints.text = "Er is iets fout gegaan bij het ophalen van de gezondheidsproblemen"
+                
                 SwiftSpinner.hide()
                 self.showAlertBox(withMessage: error, andTitle: title)
             })
@@ -135,7 +149,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
             }
         }
         
-        if (//measurement?.healthIssueOther != nil &&
+        if (measurement?.healthIssueOther != nil &&
             measurement?.healthIssueOther != "")
         {
             inputOther.text = measurement?.healthIssueOther!
@@ -271,7 +285,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     {
         txtDate.font = txtDate.font.withSize(12)
         
-        txtTitle.text = "Heeft u regelmatig last van een of meer van de volgende gezondheidsklachten?"
+        txtTitle.text = "Heeft u regelmatig last van gezondheidsklachten?"
         txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 14.0)
         
         radioComplaints.setTitle("Ja, namelijk", for: .normal)

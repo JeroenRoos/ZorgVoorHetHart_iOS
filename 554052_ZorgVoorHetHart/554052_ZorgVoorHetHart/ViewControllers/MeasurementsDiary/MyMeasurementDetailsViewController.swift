@@ -80,6 +80,7 @@ class MyMeasurementDetailsViewController: UIViewController
             SwiftSpinner.show("Bezig met het ophalen van de benodigde data...")
             service.getHealthIssues(
                 withSuccess: { (healthIssues: [HealthIssue]) in
+                    HealthIssue.healthIssuesInstance = healthIssues
                     self.lstHealthIssues = healthIssues
                     self.initHealthIssuesWithData()
                     SwiftSpinner.hide()
