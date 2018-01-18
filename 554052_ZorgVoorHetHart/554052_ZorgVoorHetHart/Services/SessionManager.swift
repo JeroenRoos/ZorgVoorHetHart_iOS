@@ -27,8 +27,7 @@ class MySessionManager: SessionManager
                 certificates: ServerTrustPolicy.certificates(),
                 validateCertificateChain: true,
                 validateHost: true
-            ),
-            "insecure.expired-apis.com": .disableEvaluation
+            )
         ]
         
         self.sessionManager = SessionManager(

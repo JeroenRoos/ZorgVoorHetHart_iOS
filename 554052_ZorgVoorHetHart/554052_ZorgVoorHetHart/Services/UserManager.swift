@@ -9,8 +9,9 @@
 import Alamofire
 import UIKit
 
-// Debugging response
-// po String(data: response.request!.httpBody!, encoding: String.Encoding.utf8)
+// Debugging terminal
+// View respsonse: po String(data: response.request!.httpBody!, encoding: String.Encoding.utf8)
+// View request: po String(data: response.request!.httpBody!, encoding: String.Encoding.utf8)
 
 class UserManager: MySessionManager
 {
@@ -23,7 +24,6 @@ class UserManager: MySessionManager
                andEmail email: String,
                andPassword password: String)
     {
-        
         // Serialize the JSON with email and password
         configureSSLPinning()
         let url = URL(string: "login", relativeTo: baseURL)
@@ -292,4 +292,58 @@ class UserManager: MySessionManager
                 }
         }
     }
+    
+    
+    
+    /*
+    func trySSLPinning(withSuccess success: @escaping (String)->(), 
+                       orFailure failure: @escaping (String, String)->(),
+                       andEmail email: String,
+                       andPassword password: String)
+    {
+        // Serialize the JSON with email and password
+        configureSSLPinning()
+        let _ = URL(string: "login", relativeTo: baseURL)
+        let parameter: [String: Any] = ["UserName": "jeroen", "Password": "roos"]
+        
+        sessionManager?.request("https://inhollandbackend.azurewebsites.net/api/Users/login",
+                                method: .post,
+                                parameters: parameter,
+                                encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON { response in
+                print("Request: \(String(describing: response.request))")
+                print("Result: \(response.result)")
+                switch response.result
+                {
+                // Response code 200 ..< 300
+                case .success:
+                    if let data = response.data
+                    {
+                        do
+                        {
+                            // Try to decode the received data to a User object
+                            let result = try JSONDecoder().decode([String: String].self, from: data )
+                            success("result")
+                        }
+                        catch
+                        {
+                            failure("Er is iets fout gegaan tijdens het inloggen.", "Sorry")
+                        }
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                    
+                    if (self.isConnectedToInternet)
+                    {
+                        failure("Er is iets fout gegaan tijdens het inloggen.", "Sorry")
+                    }
+                    else
+                    {
+                        failure("U heeft geen internet verbinding.", "Helaas")
+                    }
+                }
+        }
+    }*/
 }

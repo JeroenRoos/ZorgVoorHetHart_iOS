@@ -20,6 +20,7 @@ class MyRegisterOrLoginViewController: UIViewController
     private var retrievedPassword: String = ""
     private var retrievedEmail: String = ""
     let service: UserService = UserService()
+    let manager: UserManager = UserManager()
     let defaults = UserDefaults.standard
     
     override func viewDidLoad()
@@ -47,6 +48,12 @@ class MyRegisterOrLoginViewController: UIViewController
             }
             tryAutomaticLogin()
         }
+        
+        /*manager.trySSLPinning(withSuccess: { (error: String) in
+            
+        }, orFailure: { (title: String, Q: String) in
+            
+        }, andEmail: "jeroen", andPassword: "roos") */
         
         initUserInterface()
     }
