@@ -56,45 +56,59 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     
     private func getHealthIssues()
     {
-        SwiftSpinner.show("Bezig met het ophalen van de benodigde data...")
         
-        service.getHealthIssues(
-            withSuccess: { (healthIssues: [HealthIssue]) in
-                
-                // Sla deze health issues later opnieuw op
-                self.lstHealthIssues = healthIssues
-                DispatchQueue.main.async {
-                    self.tableViewHealthIssues.reloadData()
-                }
-                
-                if (!self.editingMeasurement)
-                {
-                    self.title = "Nieuwe meting: stap 2 van 2"
-                    self.measurement?.healthIssueIds = []
-                    self.measurement?.healthIssueOther = ""
-                    self.txtDate.text = "Datum: " + (Date().getCurrentWeekdayAndDate())!
-                }
-                else
-                {
-                    self.title = "Meting bewerken: stap 2 van 2"
-                    self.txtDate.text = "Datum originele meting: " + (self.measurement?.measurementDateTimeFormatted)!
+        if (HealthIssue.healthIssuesInstance.isEmpty)
+        {
+            SwiftSpinner.show("Bezig met het ophalen van de benodigde data...")
+            service.getHealthIssues(
+                withSuccess: { (healthIssues: [HealthIssue]) in
                     
-                    if (self.measurement?.healthIssueIds != nil &&
-                        !(self.measurement?.healthIssueIds?.isEmpty)! ||
-                        (self.measurement?.healthIssueOther != nil &&
-                        self.measurement?.healthIssueOther != ""))
-                    {
-                        DispatchQueue.main.async {
-                            self.setCheckboxesAndTextField()
-                        }
-                    }
-                }
+                    // Sla deze health issues later opnieuw op
+                    self.lstHealthIssues = healthIssues
+                    self.InitCheckboxesAndTextWithData()
+                    SwiftSpinner.hide()
+            }, orFailure: { (error: String, title) in
+                self.title = "Nieuwe meting: stap 2 van 3"
                 SwiftSpinner.hide()
-        }, orFailure: { (error: String, title) in
-            self.title = "Nieuwe meting: stap 2 van 3"
-            SwiftSpinner.hide()
-            self.showAlertBox(withMessage: error, andTitle: title)
-        })
+                self.showAlertBox(withMessage: error, andTitle: title)
+            })
+        }
+        else
+        {
+            // Sla deze health issues later opnieuw op
+            self.lstHealthIssues = HealthIssue.healthIssuesInstance
+            InitCheckboxesAndTextWithData()
+        }
+    }
+    
+    private func InitCheckboxesAndTextWithData()
+    {
+        DispatchQueue.main.async {
+            self.tableViewHealthIssues.reloadData()
+        }
+        
+        if (!self.editingMeasurement)
+        {
+            self.title = "Nieuwe meting: stap 2 van 2"
+            self.measurement?.healthIssueIds = []
+            self.measurement?.healthIssueOther = ""
+            self.txtDate.text = "Datum: " + (Date().getCurrentWeekdayAndDate())!
+        }
+        else
+        {
+            self.title = "Meting bewerken: stap 2 van 2"
+            self.txtDate.text = "Datum originele meting: " + (self.measurement?.measurementDateTimeFormatted)!
+            
+            if (self.measurement?.healthIssueIds != nil &&
+                !(self.measurement?.healthIssueIds?.isEmpty)! ||
+                (self.measurement?.healthIssueOther != nil &&
+                    self.measurement?.healthIssueOther != ""))
+            {
+                DispatchQueue.main.async {
+                    self.setCheckboxesAndTextField()
+                }
+            }
+        }
     }
     
     private func setCheckboxesAndTextField()

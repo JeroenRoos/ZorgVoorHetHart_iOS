@@ -8,18 +8,21 @@
 
 import UIKit
 import UserNotifications
+import SwiftSpinner
 
 class MyMeasurementHomeViewController: UIViewController
 {
     @IBOutlet weak var txtSquareMiddle: UILabel!
     @IBOutlet weak var txtUpperBar: UILabel!
     @IBOutlet weak var btnNewMeasurement: UIButton!
+    private let service: HealthIssuesService = HealthIssuesService()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.title = "Meting"
         
+        fetchHealthIssues()
         initUserInterface()
     }
     
@@ -44,6 +47,19 @@ class MyMeasurementHomeViewController: UIViewController
         {
             txtSquareMiddle.text = "Vul uw eerste meting in"
         }
+    }
+     
+    private func fetchHealthIssues()
+    {
+        SwiftSpinner.show("Bezig met inloggen...")
+        service.getHealthIssues(
+            withSuccess: { (healthIssues: [HealthIssue]) in
+                HealthIssue.healthIssuesInstance = healthIssues
+                SwiftSpinner.hide()
+        }, orFailure: { (error: String, title: String) in
+            SwiftSpinner.hide()
+            self.showAlertBox(withMessage: error, andTitle: title)
+        })
     }
     
     @IBAction func btnNewMeasuremnt_OnClick(_ sender: Any)

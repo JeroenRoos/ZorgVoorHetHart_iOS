@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class MyMeasurementDetailsViewController: UIViewController
 {
@@ -74,33 +75,47 @@ class MyMeasurementDetailsViewController: UIViewController
     
     private func getHealthIssues()
     {
-        service.getHealthIssues(
-            withSuccess: { (healthIssues: [HealthIssue]) in
-                self.lstHealthIssues = healthIssues
-                
-                for id in (self.clickedMeasurement?.healthIssueIds)!
-                {
-                    let issue = self.lstHealthIssues.filterHealthIssueForId(id: id)
-                    self.txtKlachten.text?.append(issue.name + "\n")
-                }
-                
-                if (self.clickedMeasurement?.healthIssueOther != nil && self.clickedMeasurement?.healthIssueOther != "")
-                {
-                    if (self.clickedMeasurement?.healthIssueIds?.isEmpty)!
-                    {
-                        self.txtKlachten.text?.append((self.clickedMeasurement?.healthIssueOther)!)
-                    }
-                    else
-                    {
-                         self.txtKlachten.text?.append("\n\nOverige klachten: \n" + (self.clickedMeasurement?.healthIssueOther)!)
-                    }
-                }
-                
-        }, orFailure: { (error: String, title: String) in
-            self.showAlertBox(withMessage: error, andTitle: title)
-            self.txtKlachtenTitle.text = "Er is fout gegaan bij het ophalen van de gezondheidsklachten"
-            self.txtKlachten.isHidden = true
-        })
+        if (HealthIssue.healthIssuesInstance.isEmpty)
+        {
+            SwiftSpinner.show("Bezig met het ophalen van de benodigde data...")
+            service.getHealthIssues(
+                withSuccess: { (healthIssues: [HealthIssue]) in
+                    self.lstHealthIssues = healthIssues
+                    self.initHealthIssuesWithData()
+                    SwiftSpinner.hide()
+            }, orFailure: { (error: String, title: String) in
+                self.txtKlachtenTitle.text = "Er is fout gegaan bij het ophalen van de gezondheidsklachten"
+                self.txtKlachten.isHidden = true
+                SwiftSpinner.hide()
+                self.showAlertBox(withMessage: error, andTitle: title)
+            })
+        }
+        else
+        {
+            self.lstHealthIssues = HealthIssue.healthIssuesInstance
+            initHealthIssuesWithData()
+        }
+    }
+    
+    private func initHealthIssuesWithData()
+    {
+        for id in (self.clickedMeasurement?.healthIssueIds)!
+        {
+            let issue = self.lstHealthIssues.filterHealthIssueForId(id: id)
+            self.txtKlachten.text?.append(issue.name + "\n")
+        }
+        
+        if (self.clickedMeasurement?.healthIssueOther != nil && self.clickedMeasurement?.healthIssueOther != "")
+        {
+            if (self.clickedMeasurement?.healthIssueIds?.isEmpty)!
+            {
+                self.txtKlachten.text?.append((self.clickedMeasurement?.healthIssueOther)!)
+            }
+            else
+            {
+                self.txtKlachten.text?.append("\n\nOverige klachten: \n" + (self.clickedMeasurement?.healthIssueOther)!)
+            }
+        }
     }
     
     @IBAction func btnEdit_OnClick(_ sender: Any)

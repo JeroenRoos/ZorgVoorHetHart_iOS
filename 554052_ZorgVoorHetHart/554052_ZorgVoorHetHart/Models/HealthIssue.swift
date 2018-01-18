@@ -10,6 +10,9 @@ import UIKit
 
 class HealthIssue : Decodable
 {
+    static var healthIssuesInstance = [HealthIssue]()
+    private init() {}
+    
     var issueId: String = ""                 // ObjectId
     var name: String = ""
     
