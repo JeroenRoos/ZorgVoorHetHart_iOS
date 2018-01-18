@@ -8,6 +8,7 @@
 
 import UIKit
 import CryptoSwift
+import SwiftSpinner
 
 class MyLoginViewController: UIViewController, UITextFieldDelegate
 {
@@ -43,9 +44,10 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         var password : String? = nil
         
         if (!(inputEmail.text?.isEmpty)! &&
-            !(inputPassword.text?.isEmpty)!)
-            && inputEmail.isValidEmail())
+            !(inputPassword.text?.isEmpty)! &&
+            inputEmail.isValidEmail())
         {
+            SwiftSpinner.show("Bezig met inloggen...")
             let email = inputEmail.text!
             trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)
             password = inputPassword.text
@@ -66,10 +68,11 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
                     
                     User.loggedinUser = user
                     self.btnLogin.isEnabled = true
+                    SwiftSpinner.hide()
                     self.performSegue(withIdentifier: "loginFinish", sender: self)
                     self.navigationController?.popToRootViewController(animated: false)
             }, orFailure: { (error: String, title: String) in
-                
+                SwiftSpinner.hide()
                 self.showAlertBox(withMessage: error, andTitle: title)
                 self.btnLogin.isEnabled = true
             }, andEmail: trimmedEmail!, andPassword: hashedPassword!)

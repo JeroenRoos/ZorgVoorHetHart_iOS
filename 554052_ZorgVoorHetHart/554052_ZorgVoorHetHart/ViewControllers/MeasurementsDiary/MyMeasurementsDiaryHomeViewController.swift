@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate
 {
@@ -75,13 +76,17 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     
     private func fetchMeasurements()
     {
+        SwiftSpinner.show("Bezig met het ophalen van uw metingen...")
+        
         service.getMeasurements(
             withSuccess: { (measurements: [Measurement]) in
                 self.lstMeasurements = measurements
                 DispatchQueue.main.async {
                     self.tableViewMeasurements.reloadData()
                 }
+                SwiftSpinner.hide()
         }, orFailure: { (error: String, title: String) in
+            SwiftSpinner.hide()
             self.showAlertBox(withMessage: error, andTitle: title)
         })
     }

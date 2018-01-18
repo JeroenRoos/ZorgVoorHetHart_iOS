@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
 {
@@ -198,6 +199,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
             if (!(inputPopup.text?.isEmpty)! &&
                 inputPopup.isValidNumberInput(minValue: 67, maxValue: 251))
             {
+                SwiftSpinner.show("Bezig met het aanpassen van uw lengte...")
                 // Update lenght
                 let length = Int(inputPopup.text!)
                 
@@ -207,7 +209,9 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
                     self.popupLength = false
                     self.errorLabelPopup.isHidden = true
                     self.myScrollView.isScrollEnabled = true
+                    SwiftSpinner.hide()
                 }, orFailure: { (error: String, title: String) in
+                    SwiftSpinner.hide()
                     self.showAlertBox(withMessage: error, andTitle: title)
                 }, andLength: length!, andWeight: nil)
             }
@@ -217,6 +221,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
             if (!(inputPopup.text?.isEmpty)! &&
                 inputPopup.isValidNumberInput(minValue: 30, maxValue: 594))
             {
+                SwiftSpinner.show("Bezig met het aanpassen van uw gewicht...")
                 // Update weight
                 let weight = Int(inputPopup.text!)
                 
@@ -226,7 +231,9 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
                     self.errorLabelPopup.isHidden = true
                     self.popupWeight = false
                     self.myScrollView.isScrollEnabled = true
+                    SwiftSpinner.hide()
                 }, orFailure: { (error: String, title: String) in
+                    SwiftSpinner.hide()
                     self.showAlertBox(withMessage: error, andTitle: title)
                 }, andLength: nil, andWeight: weight)
             }

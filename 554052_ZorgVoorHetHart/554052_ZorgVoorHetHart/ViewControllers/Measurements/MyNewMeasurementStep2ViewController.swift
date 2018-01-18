@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate
 {
@@ -55,6 +56,8 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     
     private func getHealthIssues()
     {
+        SwiftSpinner.show("Bezig met het ophalen van de benodigde data...")
+        
         service.getHealthIssues(
             withSuccess: { (healthIssues: [HealthIssue]) in
                 
@@ -86,9 +89,10 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                         }
                     }
                 }
-                
+                SwiftSpinner.hide()
         }, orFailure: { (error: String, title) in
             self.title = "Nieuwe meting: stap 2 van 3"
+            SwiftSpinner.hide()
             self.showAlertBox(withMessage: error, andTitle: title)
         })
     }
@@ -132,6 +136,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
+        SwiftSpinner.show("Bezig met het maken van uw meting...")
         // Check if the list with ID's already contains the ID (needed when editing the measurement)
         measurement?.healthIssueIds?.removeAll()
         for index in 0 ..< lstHealthIssues.count
@@ -158,10 +163,12 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
                     let key = (User.loggedinUser?.userId)! + "date"
                     self.defaults.set(Date(), forKey: key)
                     self.btnNext.isEnabled = true
+                    SwiftSpinner.hide()
                     self.performSegue(withIdentifier: "measurementFinish", sender: self)
                     print(Date())
             }, orFailure: { (error: String, title: String) in
                 self.btnNext.isEnabled = true
+                SwiftSpinner.hide()
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andMeasurement: measurement!)
         }
@@ -170,9 +177,11 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
             measurementService.updateMeasurement(
                 withSuccess: { () in
                     self.btnNext.isEnabled = true
+                    SwiftSpinner.hide()
                     self.performSegue(withIdentifier: "measurementFinish", sender: self)
             }, orFailure: { (error: String, title: String) in
                 self.btnNext.isEnabled = true
+                SwiftSpinner.hide()
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andMeasurement: measurement!)
         }

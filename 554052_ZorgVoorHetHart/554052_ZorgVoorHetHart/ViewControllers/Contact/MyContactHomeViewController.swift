@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class MyContactHomeViewController: UIViewController, UITextFieldDelegate
 {
@@ -38,25 +39,23 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         inputOnderwerp.text = ""
     }
     
-    //@IBAction func btnCancel_OnClick(_ sender: Any)
-    //{
-    //    self.tabBarController?.selectedIndex = 0
-    //}
-    
     @IBAction func btnSend_OnClick(_ sender: Any)
     {
         if (!(inputBericht.text?.isEmpty)!
             && !(inputOnderwerp.text?.isEmpty)!)
         {
+            SwiftSpinner.show("Bezig met het versturen van uw bericht...")
             let subject = inputOnderwerp.text
             let message = inputBericht.text
             self.btnSend.isEnabled = false
             
             service.sendMessage(withSuccess: { () in
                 self.btnSend.isEnabled = true
+                SwiftSpinner.hide()
                 self.performSegue(withIdentifier: "send", sender: self)
             }, orFailure: { (error: String, title: String) in
                 self.btnSend.isEnabled = true
+                SwiftSpinner.hide()
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andSubject: subject!, andMessage: message!)
         }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSpinner
 
 class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
 {
@@ -32,14 +33,17 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
         if (!(inputEmail.text?.isEmpty)! &&
             inputEmail.isValidEmail())
         {
+            SwiftSpinner.show("Bezig met het sturen van de mail...")
             emailAddress = inputEmail.text!
             self.btnSendEmail.isEnabled = false
             
             service.forgotPassword(withSuccess: { () in
                 self.btnSendEmail.isEnabled = true
+                SwiftSpinner.hide()
                 self.performSegue(withIdentifier: "forgotPassword", sender: self)
             }, orFailure: { (error: String, title: String) in
                 self.btnSendEmail.isEnabled = true
+                SwiftSpinner.hide()
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andEmail: emailAddress)
         }

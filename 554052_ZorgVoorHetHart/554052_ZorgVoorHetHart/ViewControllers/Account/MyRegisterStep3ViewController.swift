@@ -8,6 +8,7 @@
 
 import UIKit
 import Dropper
+import SwiftSpinner
 
 class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, DropperDelegate
 {
@@ -36,16 +37,19 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
     
     private func fetchConsultants()
     {
+        SwiftSpinner.show("Bezig met het ophalen van de benodigde data...")
         service.getConsultans(
             withSuccess: { (consultants: [Consultant]) in
                 self.dropdown.isHidden = false
                 self.lstConsultants = consultants
                 self.getConsultantsNames()
+                SwiftSpinner.hide()
         }, orFailure: { (error: String, title: String) in
-            self.showAlertBox(withMessage: error, andTitle: title)
             self.errorConsultant.isHidden = false
             self.errorConsultant.text = "Er is iets fout gegaan bij het ophalen van de consulenten"
             self.dropper?.layer.borderWidth = 1
+            SwiftSpinner.hide()
+            self.showAlertBox(withMessage: error, andTitle: title)
         })
     }
     
@@ -91,12 +95,16 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
     {
         if (!(user?.consultantId.isEmpty)!)
         {
+            SwiftSpinner.show("Bezig met registreren van uw account...")
+            
             self.btnFinish.isEnabled = false
             userService.register(withSuccess: { () in
                 self.btnFinish.isEnabled = true
+                SwiftSpinner.hide()
                 self.performSegue(withIdentifier: "registerFinish", sender: self)
             }, orFailure: { (error: String, title: String) in
                 self.btnFinish.isEnabled = true
+                SwiftSpinner.hide()
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andUser: user!)
         }

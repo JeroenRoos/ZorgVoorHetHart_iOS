@@ -8,6 +8,7 @@
 
 import UIKit
 import CryptoSwift
+import SwiftSpinner
 
 class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelegate
 {
@@ -51,17 +52,18 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
             !(inputPasswordCheck.text?.isEmpty)! &&
             inputPassword.text == inputPasswordCheck.text)
         {
+            SwiftSpinner.show("Bezig met het aanpassen van uw wachtwoord...")
             let password = inputPassword.text!
             let hashedPassword = password.sha512()
-            //let passwordCheck = inputPasswordCheck.text!
-            //let hashedPasswordCheck = passwordCheck.sha512()
             self.btnFinish.isEnabled = false
             
             service.resetPassword(withSuccess: { () in
                 self.btnFinish.isEnabled = true
+                SwiftSpinner.hide()
                 self.performSegue(withIdentifier: "resetSuccess", sender: self)
             }, orFailure: { (error: String, title: String) in
                 self.btnFinish.isEnabled = true
+                SwiftSpinner.hide()
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andPassword: hashedPassword,
                andPasswordCheck: hashedPassword,
