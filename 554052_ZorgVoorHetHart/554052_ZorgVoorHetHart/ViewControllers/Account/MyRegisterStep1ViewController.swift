@@ -174,6 +174,7 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.short
         dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.locale = Locale(identifier: "nl_NL")
         let dateOfBirth = dateFormatter.string(from: sender.date)
         
         // Make sure the text is in the right format
