@@ -11,7 +11,7 @@ import UIKit
 
 class MeasurementManager: MySessionManager
 {
-    // The baseURl for the Measurement Manager
+    // The base URL for the Measurement Manager
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Measurements/")
 
     // Request which posts a new measurement, result will be a success of failure callback
@@ -41,9 +41,10 @@ class MeasurementManager: MySessionManager
                 }
                 else
                 {
+                    // Check if the user has an internet connection
                     if (self.isConnectedToInternet)
                     {
-                    failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.", "Sorry")
+                        failure("Er is iets fout gegaan tijdens het aanpassen van lengte en gewicht.", "Sorry")
                     }
                     else
                     {
@@ -87,6 +88,7 @@ class MeasurementManager: MySessionManager
                     }
                     
                 case .failure( _):
+                    // Check if the user has an internet connection
                     if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het ophalen van de metingen.", "Sorry")
@@ -127,6 +129,7 @@ class MeasurementManager: MySessionManager
                 }
                 else
                 {
+                    // Check if the user has an internet connection
                     if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het aanpassen van de meting.", "Sorry")

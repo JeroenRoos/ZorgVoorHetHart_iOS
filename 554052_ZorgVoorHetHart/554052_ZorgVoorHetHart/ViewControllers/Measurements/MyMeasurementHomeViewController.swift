@@ -60,7 +60,7 @@ class MyMeasurementHomeViewController: UIViewController
     {
         SwiftSpinner.show("Bezig met inloggen...")
         
-        // Try to network request to get all health issues, this result will be a success or failure callback
+        // Try the network request to get all health issues, this result will be a success or failure callback
         service.getHealthIssues(
             withSuccess: { (healthIssues: [HealthIssue]) in
                 // Store the health issues for later use
@@ -77,23 +77,6 @@ class MyMeasurementHomeViewController: UIViewController
     {
         self.performSegue(withIdentifier: "newMeasurement", sender: self)
     }
-
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-    @IBAction func bntClick(_ sender: Any)
-    {
-        self.performSegue(withIdentifier: "next", sender: self)
-    }
-    
-    @IBAction func btnInformation_OnClick(_ sender: Any)
-    {
-        self.performSegue(withIdentifier: "information", sender: self)
-    }*/
     
     // Initialize the User Interface for this ViewController
     private func initUserInterface()
@@ -105,5 +88,10 @@ class MyMeasurementHomeViewController: UIViewController
         
         txtUpperBar.text = "Goedenmiddag " + (User.loggedinUser?.firstName)!
         txtUpperBar.font = txtUpperBar.font.withSize(14)
+    }
+    
+    override func didReceiveMemoryWarning()
+    {
+        super.didReceiveMemoryWarning()
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Extension for String which makes me use substring, this is used in the Date Extension
+// Extension for String which allows me to use substring, this is used in the Date Extension
 extension String
 {
     

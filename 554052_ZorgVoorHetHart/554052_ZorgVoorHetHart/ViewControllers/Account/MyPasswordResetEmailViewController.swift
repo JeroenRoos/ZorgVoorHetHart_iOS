@@ -21,7 +21,7 @@ class MyPasswordResetEmailViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Email verzonden"
+        self.title = "E-mail verzonden"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         // Initialize the User Interface for this ViewController
@@ -35,7 +35,7 @@ class MyPasswordResetEmailViewController: UIViewController
         btnLogin.setTitleColor(UIColor.white, for: .normal)
         btnLogin.backgroundColor = UIColor(rgb: 0xE84A4A)
         
-        txtTitle.text = "Email verzonden!"
+        txtTitle.text = "E-mail verzonden!"
         txtTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
         
         txtDescription.text = "U heeft een e-mail ontvangen op:"

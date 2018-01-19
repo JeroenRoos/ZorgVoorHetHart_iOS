@@ -32,12 +32,14 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
         initUserInterface()
     }
     
+    // The function that will be called when the user stops editing the password input field, this will determine if the name is correct and show an error message when this isn't the case
     @objc func passwordDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
         textField.setErrorMessageEmptyField(withLabel: errorPassword, andText: "Wachtwoord kan niet leeg zijn")
     }
     
+    // The function that will be called when the user stops editing the password input field, this will determine if the name is correct and show an error message when this isn't the case
     @objc func passwordCheckDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty

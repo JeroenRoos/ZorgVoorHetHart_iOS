@@ -50,8 +50,6 @@ class MyBloodPressureInformationViewController: UIViewController
         btnContact.setTitleColor(UIColor.white, for: .normal)
         btnContact.backgroundColor = UIColor(rgb: 0xE84A4A)
         
-        // Link voor de tekst
-        // www.bloeddruk.net/bloeddruk-meten.html
         imgView01.backgroundColor = UIColor(rgb: 0xEEEEEE)
         txtTitle01.text = "Hoe moet ik mijn bloeddruk meten?"
         txtTitle01.font = txtTitle01.font?.withSize(12)

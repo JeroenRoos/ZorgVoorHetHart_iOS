@@ -104,7 +104,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
         let emailService = KeychainService().emailService
         let account = KeychainService().keychainAccount
         
-        // Save the password and the email address in the Keychain
+        // Save the password and the email in the Keychain
         KeychainService.save(service: passwordService, account: account, data: password)
         KeychainService.save(service: emailService, account: account, data: email)
     }
@@ -113,7 +113,7 @@ class MyLoginViewController: UIViewController, UITextFieldDelegate
     @objc func emailDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(withLabel: errorEmail, andText: "Email kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorEmail, andText: "E-mail kan niet leeg zijn")
         
         // Check and set error message if the email address is not valid
         textField.setErrorMessageInvalidEmail(withLabel: errorEmail, andText: "Dit is geen correct emailadres")

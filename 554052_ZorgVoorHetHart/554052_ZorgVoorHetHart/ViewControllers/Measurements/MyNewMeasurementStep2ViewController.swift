@@ -44,7 +44,7 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
         // Set the UI for when the user has complaints to hidden
         complaintsHiddenStateChange(withValue: true)
         
-        // Get all the healt issues
+        // Get all the health issues
         getHealthIssues()
     }
     
@@ -370,6 +370,5 @@ class MyNewMeasurementStep2ViewController: UIViewController, UITextFieldDelegate
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

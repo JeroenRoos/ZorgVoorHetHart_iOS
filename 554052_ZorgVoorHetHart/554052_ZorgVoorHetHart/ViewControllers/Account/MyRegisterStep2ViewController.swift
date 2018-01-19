@@ -45,7 +45,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
             inputEmail.isValidEmail() &&
             inputPassword.text == inputPasswordCheck.text)
         {
-            // Get and trim the email, iOS automatically puts a space to the end if you use autocorrect to finish your words
+            // Get and trim the email, iOS automatically puts a space to the end of your word if you use autocorrect to finish your words
             let email = inputEmail.text!
             let trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)
             
@@ -73,7 +73,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
     @objc func emailDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(withLabel: errorEmail, andText: "Email kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorEmail, andText: "E-mail kan niet leeg zijn")
         
         // Check and set error message if the email address is not valid
         textField.setErrorMessageInvalidEmail(withLabel: errorEmail, andText: "Dit is geen correct emailadres")
@@ -163,6 +163,5 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

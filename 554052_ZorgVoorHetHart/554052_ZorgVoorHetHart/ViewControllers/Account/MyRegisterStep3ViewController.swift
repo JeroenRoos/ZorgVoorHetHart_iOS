@@ -181,7 +181,6 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         dropdown.isHidden = true
         dropdown.layer.borderColor = UIColor.red.cgColor
         
-        // https://github.com/kirkbyo/Dropper
         dropper = Dropper(width: dropdown.frame.width - 40, height: 300)
     }
     

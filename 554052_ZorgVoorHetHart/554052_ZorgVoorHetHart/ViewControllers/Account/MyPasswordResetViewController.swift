@@ -36,7 +36,7 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
         if (!(inputEmail.text?.isEmpty)! &&
             inputEmail.isValidEmail())
         {
-            SwiftSpinner.show("Bezig met het sturen van de mail...")
+            SwiftSpinner.show("Bezig met het sturen van de e-mail...")
             emailAddress = inputEmail.text!
             self.btnSendEmail.isEnabled = false
             
@@ -62,7 +62,7 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
     @objc func emailDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(withLabel: errorEmail, andText: "Email kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorEmail, andText: "E-mail kan niet leeg zijn")
         
         // Check and set error message if the email address is not valid
         textField.setErrorMessageInvalidEmail(withLabel: errorEmail, andText: "Dit is geen correct emailadres")

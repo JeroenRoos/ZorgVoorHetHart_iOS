@@ -81,6 +81,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         }
     }
     
+    // The function that will be called when the user stops editing the bloodpressure upper input field, this will determine if the name is correct and show an error message when this isn't the case
     @objc func bovendrukDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
@@ -89,6 +90,7 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         textField.setErrorMessageInvalidBloodPressureUpper(withLabel: errorBovendruk, andText: "Geen geldige waarde")
     }
     
+    // The function that will be called when the user stops editing the bloodpressure lower input field, this will determine if the name is correct and show an error message when this isn't the case
     @objc func onderdrukDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty

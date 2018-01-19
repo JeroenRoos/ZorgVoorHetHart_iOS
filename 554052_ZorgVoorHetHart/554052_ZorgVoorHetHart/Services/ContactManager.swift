@@ -43,6 +43,7 @@ class ContactManager: MySessionManager
                 }
                 else
                 {
+                    // Check if the user has an internet connection
                     if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het sturen van het bericht.", "Sorry")

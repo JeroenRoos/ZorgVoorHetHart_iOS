@@ -17,7 +17,7 @@ class MyPasswordResetSuccessViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Succes"
+        self.title = "Wachtwoord aangepast"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         // Initialize the User Interface for this ViewController

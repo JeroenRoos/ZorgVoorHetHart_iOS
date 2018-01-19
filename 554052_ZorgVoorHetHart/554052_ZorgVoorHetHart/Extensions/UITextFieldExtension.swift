@@ -57,6 +57,7 @@ extension UITextField
         }
     }
     
+    // Check if the input field is empty and set error message if needed
     func setErrorMessageEmptyField(withLabel errorLabel: UILabel, andText errorText: String)
     {
         errorLabel.isHidden = false
@@ -74,6 +75,7 @@ extension UITextField
         }
     }
     
+    // Check if the name is valid and set error message if needed
     func setErrorMessageInvalidName(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
@@ -93,6 +95,7 @@ extension UITextField
         }
     }
     
+    // Check if the email is valid and set error message if needed
     func setErrorMessageInvalidEmail(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
@@ -111,6 +114,7 @@ extension UITextField
         }
     }
     
+    // Check if the passwords are identical and set error message if needed
     func setErrorMessagePasswordIdentical(withLabel errorLabel: UILabel, andText errorText: String, andOtherPassword otherPassword: UITextField)
     {
         if (!(self.text?.isEmpty)!)
@@ -129,6 +133,7 @@ extension UITextField
         }
     }
     
+    // Check if the weight is valid and set error message if needed
     func setErrorMessageInvalidWeight(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
@@ -148,6 +153,7 @@ extension UITextField
         }
     }
     
+    // Check if the heigh is valid and set error message if needed
     func setErrorMessageInvalidLength(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
@@ -167,6 +173,7 @@ extension UITextField
         }
     }
     
+    // Check if the bloodpressure lower is valid and set error message if needed
     func setErrorMessageInvalidBloodPressureLower(withLabel errorLabel : UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
@@ -185,6 +192,7 @@ extension UITextField
         }
     }
     
+    // Check if the bloodpressure upper is valid and set error message if needed
     func setErrorMessageInvalidBloodPressureUpper(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
@@ -203,7 +211,7 @@ extension UITextField
         }
     }
     
-    
+    // Check if the date of birth is valid and set error message if needed
     func setErrorMessageInvalidDateOfBirth(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)

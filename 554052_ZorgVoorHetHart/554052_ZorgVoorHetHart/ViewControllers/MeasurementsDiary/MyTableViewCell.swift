@@ -19,7 +19,6 @@ class MyTableViewCell: UITableViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        // Initialization code
     }
     
     // Initialize the User Interface for this cell

@@ -12,7 +12,7 @@ class UserService
 {
     private let manager: UserManager = UserManager()
     
-    // Login an user with an email and password, result will be success of failure callback with the proper data
+    // Login a user with an email and password, result will be success of failure callback with the proper data
     func login(withSuccess success: @escaping (User)->(), 
                   orFailure failure: @escaping (String, String)->(),
                   andEmail email: String,

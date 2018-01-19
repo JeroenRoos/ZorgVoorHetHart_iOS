@@ -46,7 +46,7 @@ class MyRegisterOrLoginViewController: UIViewController
                 retrievedPassword = str
             }
             
-            // Try to get the e-mail from the Keychain
+            // Try to get the email from the Keychain
             if let str = KeychainService.load(service: emailService, account: account)
             {
                 retrievedEmail = str
@@ -70,7 +70,7 @@ class MyRegisterOrLoginViewController: UIViewController
             // Show the spinner indicating a network request is working
             SwiftSpinner.show("Bezig met inloggen...")
             
-            // Try the login call resulting in a success or failure callback. Set the disabled UI to visible for later use of this ViewController
+            // Try the login call resulting in a success or failure callback. Set the hidden UI to visible for later use of this ViewController
             service.login(withSuccess: { (user: User) in
                 self.btnLogin.isHidden = false
                 self.btnRegister.isHidden = false
@@ -118,7 +118,6 @@ class MyRegisterOrLoginViewController: UIViewController
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func unwindForm(sender: UIStoryboardSegue)

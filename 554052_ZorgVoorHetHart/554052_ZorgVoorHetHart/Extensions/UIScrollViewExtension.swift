@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Extension of the UIScrollView, this extension lets me scroll to the top of View(Controller) 
+// Extension of the UIScrollView, this extension allows me to scroll to the top of View(Controller) 
 extension UIScrollView
 {
     func scrollToTop(animated: Bool)

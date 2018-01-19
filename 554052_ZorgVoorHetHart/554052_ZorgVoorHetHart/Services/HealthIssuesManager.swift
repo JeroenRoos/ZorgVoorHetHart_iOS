@@ -49,6 +49,7 @@ class HealthIssuesManager: MySessionManager
                     
                 case .failure( _):
                     
+                    // Check if the user has an internet connection
                     if (self.isConnectedToInternet)
                     {
                         failure("Er is iets fout gegaan tijdens het ophalen van de gezondheidsproblemen.", "Sorry")

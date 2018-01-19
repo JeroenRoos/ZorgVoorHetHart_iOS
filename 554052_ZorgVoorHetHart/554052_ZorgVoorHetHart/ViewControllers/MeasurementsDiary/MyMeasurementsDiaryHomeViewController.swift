@@ -58,7 +58,7 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     {
         SwiftSpinner.show("Bezig met het ophalen van uw metingen...")
         
-        // The request to fetch all the measurements, result will be success or failure
+        // The request to fetch all the measurements, result will be success or failure callback
         service.getMeasurements(
             withSuccess: { (measurements: [Measurement]) in
                 self.lstMeasurements = measurements

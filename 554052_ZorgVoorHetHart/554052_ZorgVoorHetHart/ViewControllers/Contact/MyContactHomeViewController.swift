@@ -16,7 +16,6 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var inputOnderwerp: UITextField!
     @IBOutlet weak var inputBericht: UITextField!
     @IBOutlet weak var txtBericht: UILabel!
-    //@IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var errorOnderwerp: UILabel!
     @IBOutlet weak var errorBericht: UILabel!
@@ -128,20 +127,14 @@ class MyContactHomeViewController: UIViewController, UITextFieldDelegate
         btnSend.setTitleColor(UIColor.white, for: .normal)
         btnSend.backgroundColor = UIColor(rgb: 0xE84A4A)
         
-        //btnCancel.setTitle("Annuleren", for: .normal)
-        //btnCancel.setTitleColor(UIColor.white, for: .normal)
-        //btnCancel.backgroundColor = UIColor(rgb: 0xA9A9A9)
-        
         let name = (User.loggedinUser?.consultant?.firstName)! + " " + (User.loggedinUser?.consultant?.lastName)!
         let email = User.loggedinUser?.consultant?.emailAddress
         txtConsultantInfo.text = "Consulent: " + name + "\nE-mail: " + email!
-            //"Uw bericht wordt verstuurd naar: " + name + " - " + email!
         txtConsultantInfo.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
     }
     
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

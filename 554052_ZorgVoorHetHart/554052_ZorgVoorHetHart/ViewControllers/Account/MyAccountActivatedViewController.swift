@@ -41,7 +41,6 @@ class MyAccountActivatedViewController: UIViewController
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // Perform the segue to the Login ViewController when the User presses this button

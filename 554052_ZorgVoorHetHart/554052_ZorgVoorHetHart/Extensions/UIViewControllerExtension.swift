@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Extension of UIViewController to have some function available in all ViewControllers
+// Extension of UIViewController to have some functions available in all ViewControllers
 extension UIViewController
 {
     // Hides the keyboard when you tap anywhere on the screen
