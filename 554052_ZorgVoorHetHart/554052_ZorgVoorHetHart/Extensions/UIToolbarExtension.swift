@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Extension for UIToolbar which adds a "Klaar" button to the toolbar. Used during the date of birth DatePicker during Registering an account
 extension UIToolbar
 {
     func toolbarPiker(mySelect: Selector) -> UIToolbar

@@ -33,10 +33,7 @@ class KeychainService: NSObject
             
             if (status != errSecSuccess)
             {
-                //if let err = SecCopyErrorMessageString(status, nil)
-                //{
-                //    print("Read failed: \(err)")
-                //}
+                // ...
             }
         }
     }
@@ -55,10 +52,7 @@ class KeychainService: NSObject
         let status = SecItemDelete(keychainQuery as CFDictionary)
         if (status != errSecSuccess)
         {
-            //if let err = SecCopyErrorMessageString(status, nil)
-            //{
-            //    print("Remove failed: \(err)")
-            //}
+            // ...
         }
         
     }
@@ -77,10 +71,7 @@ class KeychainService: NSObject
             
             if (status != errSecSuccess)
             {    
-                //if let err = SecCopyErrorMessageString(status, nil)
-                //{
-                //    print("Write failed: \(err)")
-                //}
+                // ...
             }
         }
     }

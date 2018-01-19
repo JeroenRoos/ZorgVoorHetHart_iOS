@@ -12,7 +12,6 @@ import SwiftSpinner
 class MyMeasurementDetailsViewController: UIViewController
 {
     @IBOutlet weak var btnEdit: UIButton!
-    //@IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var txtOnderdruk: UILabel!
     @IBOutlet weak var txtKlachten: UILabel!
     @IBOutlet weak var txtKlachtenTitle: UILabel!

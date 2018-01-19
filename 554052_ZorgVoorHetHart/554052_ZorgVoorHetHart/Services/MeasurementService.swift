@@ -12,6 +12,7 @@ class MeasurementService
 {
     private let manager: MeasurementManager = MeasurementManager()
     
+    // Request which posts a new measurement, result will be a success of failure callback
     func postNewMeasurement(withSuccess success: @escaping ()->(), 
                             orFailure failure: @escaping (String, String)->(),
                             andMeasurement measurement: Measurement)
@@ -23,6 +24,7 @@ class MeasurementService
         }, andMeasurement: measurement)
     }
     
+    // Gets all the measurement, result will be a success of failure callback
     func getMeasurements(withSuccess success: @escaping ([Measurement])->(), 
                          orFailure failure: @escaping (String, String)->())
     {
@@ -33,6 +35,7 @@ class MeasurementService
         })
     }
     
+    // Request which updates a measurement, result will be a success of failure callback
     func updateMeasurement(withSuccess success: @escaping ()->(), 
                            orFailure failure: @escaping (String, String)->(),
                            andMeasurement measurement: Measurement)

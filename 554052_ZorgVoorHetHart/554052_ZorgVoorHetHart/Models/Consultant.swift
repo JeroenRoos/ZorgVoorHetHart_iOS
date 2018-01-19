@@ -15,6 +15,7 @@ class Consultant : Decodable
     var lastName: String = ""
     var emailAddress: String = ""
     
+    // Coding keys, A type that can be used as a key for coding/encoding
     enum CodingKeys: String, CodingKey
     {
         case consultantId = "_id"

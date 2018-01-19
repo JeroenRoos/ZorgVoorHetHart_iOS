@@ -12,6 +12,7 @@ class HealthIssuesService
 {
     private let manager: HealthIssuesManager = HealthIssuesManager()
     
+    // Gets all the Health Issues, result is a success or failure callback
     func getHealthIssues(withSuccess success: @escaping ([HealthIssue])->(), 
                        orFailure failure: @escaping (String, String)->())
     {

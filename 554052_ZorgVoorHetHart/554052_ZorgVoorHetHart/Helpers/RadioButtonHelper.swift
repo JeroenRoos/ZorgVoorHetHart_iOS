@@ -8,13 +8,14 @@
 
 import UIKit
 
+// Helper used to make a checkbox with a button
 class RadioButtonHelper: UIButton
 {
     var alternateButton:Array<RadioButtonHelper>?
     let checkedImage = UIImage(named: "ic_radio_button_checked")! as UIImage
     let uncheckedImage = UIImage(named: "ic_radio_button_unchecked")! as UIImage
     
-    // Bool property
+    // A boolean property that sets the correct image for each state and can be used to determine if a radiobutton is checked
     var isChecked: Bool = false
     {
         didSet
@@ -29,6 +30,7 @@ class RadioButtonHelper: UIButton
         }
     }
     
+    // Only one radio button can be selected, this unselects the other radio buttons when the users selects a button
     func unselectAlternateButtons()
     {
         if alternateButton != nil
@@ -56,7 +58,6 @@ class RadioButtonHelper: UIButton
         if sender == self
         {
             unselectAlternateButtons()
-            //isChecked = !isChecked
         }
     }
     

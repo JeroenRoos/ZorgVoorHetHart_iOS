@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Extension of Date which gives me the current date in the correct format needed during a new measurement
 extension Date
 {
     func getDateInCorrectFormat(myDate: String) -> String?

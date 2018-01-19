@@ -52,8 +52,8 @@ class MyRegisterStep1ViewController: UIViewController, UITextFieldDelegate
             inputName.isValidName() &&
             !(inputLengte.text?.isEmpty)! &&
             !(inputGewicht.text?.isEmpty)! &&
-            inputLengte.isValidNumberInput(minValue: 67, maxValue: 251) &&
-            inputGewicht.isValidNumberInput(minValue: 30, maxValue: 594))
+            inputLengte.isValidNumberInput(withMinValue: 67, andMaxValue: 251) &&
+            inputGewicht.isValidNumberInput(withMinValue: 30, andMaxValue: 594))
         {
             // Split the name textfield to get and first- and lastname
             let fullName = inputName.text!

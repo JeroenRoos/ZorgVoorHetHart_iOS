@@ -12,6 +12,7 @@ class UserService
 {
     private let manager: UserManager = UserManager()
     
+    // Login an user with an email and password, result will be success of failure callback with the proper data
     func login(withSuccess success: @escaping (User)->(), 
                   orFailure failure: @escaping (String, String)->(),
                   andEmail email: String,
@@ -25,6 +26,7 @@ class UserService
            andPassword: password)
     }
     
+    // Register an user with an User, result will be success of failure callback with the proper data
     func register(withSuccess success: @escaping ()->(), 
                   orFailure failure: @escaping (String, String)->(),
                   andUser user: User)
@@ -36,6 +38,7 @@ class UserService
         }, andUser: user)
     }
     
+    // Update the length or weight of a user, result will be success of failure callback with the proper data
     func updateLengthOrWeight(withSuccess success: @escaping ()->(), 
                                orFailure failure: @escaping (String, String)->(),
                                andLength length: Int?,
@@ -49,19 +52,19 @@ class UserService
            andWeight: weight)
     }
     
+    // Call that will send a email with the token needed to reset the password of the user, result will be success of failure callback with the proper data
     func forgotPassword(withSuccess success: @escaping ()->(), 
                         orFailure failure: @escaping (String, String)->(),
                         andEmail email: String)
     {
         manager.forgotPassword(withSuccess: { () in
-            
             success()
         }, orFailure: { (error: String, title: String) in
-            
             failure(error, title)
         }, andEmail: email)
     }
     
+    // Call that actually resets the password, result will be success of failure callback with the proper data
     func resetPassword(withSuccess success: @escaping ()->(), 
                        orFailure failure: @escaping (String, String)->(),
                        andPassword password: String,
@@ -69,25 +72,22 @@ class UserService
                        andToken token: String)
     {
         manager.resetPassword(withSuccess: { () in
-            
             success()
         }, orFailure: { (error: String, title: String) in
-            
             failure(error, title)
         }, andPassword: password,
            andPasswordCheck: confirmPassword,
            andToken: token)
     }
     
+    // Call that activates the account of the user, result will be success of failure callback with the proper data
     func activateAccount(withSuccess success: @escaping ()->(), 
                          orFailure failure: @escaping (String, String)->(),
                          andToken token: String)
     {
         manager.activateAccount(withSuccess: { () in
-            
             success()
         }, orFailure: { (error: String, title: String) in
-            
             failure(error, title)
         }, andToken: token)
     }

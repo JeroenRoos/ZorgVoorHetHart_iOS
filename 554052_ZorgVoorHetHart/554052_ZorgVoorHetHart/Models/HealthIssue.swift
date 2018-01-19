@@ -16,6 +16,7 @@ class HealthIssue : Decodable
     var issueId: String = ""                 // ObjectId
     var name: String = ""
     
+    // Coding keys, A type that can be used as a key for coding/encoding
     enum CodingKeys: String, CodingKey
     {
         case issueId = "_id"

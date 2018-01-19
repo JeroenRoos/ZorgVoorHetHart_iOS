@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Extension of the KeychainService to have a place to get the service and accounts from
 extension KeychainService
 {
     var passwordService: String

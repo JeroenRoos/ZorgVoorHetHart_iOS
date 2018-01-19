@@ -191,7 +191,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         {
             // Check if the input is valid
             if (!(inputPopup.text?.isEmpty)! &&
-                inputPopup.isValidNumberInput(minValue: 67, maxValue: 251))
+                inputPopup.isValidNumberInput(withMinValue: 67, andMaxValue: 251))
             {
                 SwiftSpinner.show("Bezig met het aanpassen van uw lengte...")
                 let length = Int(inputPopup.text!)
@@ -214,7 +214,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         {
             // Check if the input is valid
             if (!(inputPopup.text?.isEmpty)! &&
-                inputPopup.isValidNumberInput(minValue: 30, maxValue: 594))
+                inputPopup.isValidNumberInput(withMinValue: 30, andMaxValue: 594))
             {
                 SwiftSpinner.show("Bezig met het aanpassen van uw gewicht...")
                 let weight = Int(inputPopup.text!)

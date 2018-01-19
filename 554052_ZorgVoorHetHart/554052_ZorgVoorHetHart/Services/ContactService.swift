@@ -12,6 +12,7 @@ class ContactService
 {
     private let manager: ContactManager = ContactManager()
     
+    // Send a message to your consultant, result is a success or failure callback
     func sendMessage(withSuccess success: @escaping ()->(), 
                      orFailure failure: @escaping (String, String)->(),
                      andSubject subject: String,

@@ -11,12 +11,18 @@ import Alamofire
 
 class ConsultantsManager: MySessionManager
 {
+    // The base URL for the Consultant Manager
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Consultants/")
     
+    // Get all the consultants, result is a success or failure callback
     func getConsultans(withSuccess success: @escaping ([Consultant])->(), 
                      orFailure failure: @escaping (String, String)->())
     {
-        Alamofire.request(baseURL!,
+        // Configure the SSL Pinning
+        configureSSLPinning()
+        
+        // GET request with Alamofire using JSONEncoding and Response JSON
+        sessionManager?.request(baseURL!,
                           encoding: JSONEncoding.default)
             .validate()
             .responseJSON { response in
@@ -38,8 +44,7 @@ class ConsultantsManager: MySessionManager
                             }
                         }
                         
-                    case .failure(let error):
-                        print(error)
+                    case .failure( _):
                        
                         if (self.isConnectedToInternet)
                         {

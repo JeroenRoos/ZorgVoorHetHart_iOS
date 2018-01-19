@@ -19,7 +19,7 @@ class User : Codable
     var authToken: String?
     var firstName: String = ""
     var lastName: String = ""
-    var consultantId: String = ""         // ObjectId
+    var consultantId: String = ""           // ObjectId
     var dateOfBirth: String = ""
     var gender: Int = 0
     var length: Int = 0
@@ -29,6 +29,7 @@ class User : Codable
     var activationToken: String = ""
     var consultant: Consultant? = nil
     
+    // Coding keys, A type that can be used as a key for coding/encoding
     enum CodingKeys: String, CodingKey
     {
         case userId = "_id"

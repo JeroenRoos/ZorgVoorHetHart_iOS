@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Extension of Array, with this extension I'm able to get a Health Issue from an Array using where/filter on ID
 extension Array where Element : HealthIssue
 {
     func filterHealthIssueForId(id : String) -> Element

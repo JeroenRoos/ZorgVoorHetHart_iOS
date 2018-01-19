@@ -11,14 +11,21 @@ import Alamofire
 
 class HealthIssuesManager: MySessionManager
 {
+    // The base URL for the HealthIssues Manager
     private let baseURL = URL(string: "https://zvh-api.herokuapp.com/Healthissues/")
 
+    // Get all the Health Issues
     func getHealthIssues(withSuccess success: @escaping ([HealthIssue])->(), 
                        orFailure failure: @escaping (String, String)->())
     {
+        // Configure the SSL Pinning
+        configureSSLPinning()
+        
+        // The header
         let headers: HTTPHeaders = ["x-authtoken" : (User.loggedinUser?.authToken!)!]
         
-        Alamofire.request(baseURL!,
+        // GET request with Alamofire using JSONEncoding and Response JSON
+        sessionManager?.request(baseURL!,
                           encoding: JSONEncoding.default,
                           headers: headers)
             .validate()
@@ -40,8 +47,7 @@ class HealthIssuesManager: MySessionManager
                         }
                     }
                     
-                case .failure(let error):
-                    print(error)
+                case .failure( _):
                     
                     if (self.isConnectedToInternet)
                     {

@@ -12,6 +12,7 @@ class ConsultantsService
 {
     private let manager: ConsultantsManager = ConsultantsManager()
     
+    // Get all the consultants, result is a success or failure callback
     func getConsultans(withSuccess success: @escaping ([Consultant])->(), 
                        orFailure failure: @escaping (String, String)->())
     {

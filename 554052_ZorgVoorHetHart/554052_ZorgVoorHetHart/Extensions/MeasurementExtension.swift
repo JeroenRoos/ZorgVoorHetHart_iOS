@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Extension to convert the Measurement Model Class to a dictionary. This dictionary is used for Alamofire parameters
 extension Measurement
 {
     func convertToDictionary(withMeasurement measurement: Measurement) -> Dictionary<String, Any> {

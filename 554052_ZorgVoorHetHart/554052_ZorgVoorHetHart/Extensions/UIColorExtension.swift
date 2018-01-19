@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Extension of UIColor which makes me able to use hexadecimal color codes
 extension UIColor
 {
     convenience init(red: Int, green: Int, blue: Int)

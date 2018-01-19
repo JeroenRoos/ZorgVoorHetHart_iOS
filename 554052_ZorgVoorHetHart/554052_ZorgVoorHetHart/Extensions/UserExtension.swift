@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 
-
 extension User
 {
    func encode(to encoder: Encoder) throws
@@ -26,6 +25,7 @@ extension User
     }
 }
 
+// Extension to convert the User Model Class to a dictionary. This dictionary is used for Alamofire parameters
 extension User
 {
     func convertToDictionary(withUser user: User) -> Dictionary<String, Any> {

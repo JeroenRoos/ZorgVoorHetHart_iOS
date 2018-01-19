@@ -8,8 +8,10 @@
 
 import UIKit
 
+// Extension of UIViewController to have some function available in all ViewControllers
 extension UIViewController
 {
+    // Hides the keyboard when you tap anywhere on the screen
     func hideKeyboardWhenTappedAround()
     {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
@@ -28,10 +30,9 @@ extension UIViewController
         return false
     }
     
+    // Shows an alertbox in the Viewcontroller with a message and title
     func showAlertBox(withMessage message: String, andTitle title: String)
     {
-        
-        //var shouldRetry = false
         DispatchQueue.main.async() {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             
@@ -40,7 +41,5 @@ extension UIViewController
             alertController.addAction(dismissAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        
-        //return shouldRetry
     }
 }
