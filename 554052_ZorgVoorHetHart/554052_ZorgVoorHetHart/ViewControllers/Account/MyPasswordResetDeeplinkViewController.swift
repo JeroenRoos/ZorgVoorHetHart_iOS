@@ -28,35 +28,41 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
         self.title = "Wachtwoord herstellen"
         self.hideKeyboardWhenTappedAround()
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
     
     @objc func passwordDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorPassword, errorText: "Wachtwoord kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorPassword, andText: "Wachtwoord kan niet leeg zijn")
     }
     
     @objc func passwordCheckDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorPasswordCheck, errorText: "Wachtwoord kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorPasswordCheck, andText: "Wachtwoord kan niet leeg zijn")
         
         // Check and set error message if the password is identical with the first password
-        textField.setErrorMessagePasswordIdentical(errorLabel: errorPasswordCheck, errorText: "De wachtwoorden komen niet overeen", otherPassword: inputPassword)
+        textField.setErrorMessagePasswordIdentical(withLabel: errorPasswordCheck, andText: "De wachtwoorden komen niet overeen", andOtherPassword: inputPassword)
     }
     
+    // Called when the user pressed the "Verander Wachtwoord" button, this method wil check all the user input and determine the validity
     @IBAction func btnFinish_OnClick(_ sender: Any)
     {
+        // Check the user input
         if (!(inputPassword.text?.isEmpty)! &&
             !(inputPasswordCheck.text?.isEmpty)! &&
             inputPassword.text == inputPasswordCheck.text)
         {
             SwiftSpinner.show("Bezig met het aanpassen van uw wachtwoord...")
-            let password = inputPassword.text!
-            let hashedPassword = password.sha512()
             self.btnFinish.isEnabled = false
             
+            // Hash the password with Sha512 (CryptoSwift CocaoPod). This way the password will not be in plaintext when send to the API
+            let password = inputPassword.text!
+            let hashedPassword = password.sha512()
+            
+            // Perform the resetPassword network request
             service.resetPassword(withSuccess: { () in
                 self.btnFinish.isEnabled = true
                 SwiftSpinner.hide()
@@ -71,11 +77,13 @@ class MyPasswordResetDeeplinkViewController: UIViewController, UITextFieldDelega
         }
         else
         {
+            // If the input isn't valid, go through all the checks for the input fields, this wil display the error message if this wasn't already the case
             passwordDidEndEditing(inputPassword)
             passwordCheckDidEndEditing(inputPasswordCheck)
         }
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         txtTitle.text = "U kunt uw wachtwoord hier aanpassen. Vul uw nieuwe wachtwoord in in de onderstaande velden."

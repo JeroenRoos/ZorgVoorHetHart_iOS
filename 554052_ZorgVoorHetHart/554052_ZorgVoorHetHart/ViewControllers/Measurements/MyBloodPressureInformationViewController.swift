@@ -30,15 +30,18 @@ class MyBloodPressureInformationViewController: UIViewController
         super.viewDidLoad()
         self.title = "Bloeddruk informatie"
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
 
+    // Called when the user presses the Contact button
     @IBAction func btnContact_OnClick(_ sender: Any)
     {
         self.tabBarController?.selectedIndex = 2
         self.navigationController?.popToRootViewController(animated: false)
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         txtOtherQuestions.text = "Staat uw vraag er niet bij? \nNeem contact op met uw consulent."

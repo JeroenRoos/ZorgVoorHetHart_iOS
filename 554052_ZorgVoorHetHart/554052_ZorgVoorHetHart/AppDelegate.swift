@@ -22,8 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
-        // Start listening for changes in Network
-        //SessionManager.instance.listenForReachability()
+        // Initialize the notifications, the first time the user starts the app the app needs approval to send notifications
         initNotifications()
         
         return true
@@ -70,12 +69,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                       sourceApplication: String?,
                       annotation: Any) -> Bool
     {
+        // Determine which deeplink is used
         let urlString = url.absoluteString
         let array = urlString.split(separator: ":", maxSplits: 1).map(String.init)
-        print(array[1])
-            
+        
+        // Get the main storyboard
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        // If the activate account deeplink is used send the user to the correct ViewController
         if (array[1].contains("login"))
         {
             let destinationViewController = storyboard.instantiateViewController(withIdentifier: "activateAccountViewController") as! MyAccountActivatedViewController
@@ -84,11 +85,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let navigationController = self.window?.rootViewController as! UINavigationController
             navigationController.pushViewController(destinationViewController, animated: true)
         }
+        // If the reset password deeplink is used send the user to the correct ViewController
         else if (array[1].contains("resetpassword"))
         {
             let path = array[1].split(separator: "/")
-            print(path[0])
-            print(path[1])
             
             let destinationViewController = storyboard.instantiateViewController(withIdentifier: "passwordResetDeeplinkViewController") as! MyPasswordResetDeeplinkViewController
             destinationViewController.resetToken = String(path[1])

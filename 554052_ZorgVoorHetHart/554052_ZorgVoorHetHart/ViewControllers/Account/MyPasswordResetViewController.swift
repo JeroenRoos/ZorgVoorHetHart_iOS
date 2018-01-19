@@ -25,11 +25,14 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
         self.title = "Wachtwoord vergeten"
         self.hideKeyboardWhenTappedAround()
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
 
+    // Called when the user pressed the "Stuur email" button, this method wil check all the user input and determine the validity
     @IBAction func btnSendEmail_OnClick(_ sender: Any)
     {
+        // Check if the user input is valid
         if (!(inputEmail.text?.isEmpty)! &&
             inputEmail.isValidEmail())
         {
@@ -37,6 +40,7 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
             emailAddress = inputEmail.text!
             self.btnSendEmail.isEnabled = false
             
+            // Make the forgot password network request with a success or failure callback
             service.forgotPassword(withSuccess: { () in
                 self.btnSendEmail.isEnabled = true
                 SwiftSpinner.hide()
@@ -49,24 +53,28 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
         }
         else
         {
+            // If the input isn't valid, go through the check for the input field, this wil display the error message if this wasn't already the case
             emailDidEndEditing(inputEmail)
         }
     }
     
+    // The function that will be called when the user stops editing the email input field, this will determine if the name is correct and show an error message when this isn't the case
     @objc func emailDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorEmail, errorText: "Email kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorEmail, andText: "Email kan niet leeg zijn")
         
         // Check and set error message if the email address is not valid
-        textField.setErrorMessageInvalidEmail(errorLabel: errorEmail, errorText: "Dit is geen correct emailadres")
+        textField.setErrorMessageInvalidEmail(withLabel: errorEmail, andText: "Dit is geen correct emailadres")
     }
     
+    // Prepare the data for the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        // Pass user to next ViewController
+        // Identify the ViewController
         if(segue.identifier == "forgotPassword")
         {
+            // Pass the emailaddress to the next ViewController
             if let viewController = segue.destination as? MyPasswordResetEmailViewController
             {
                 viewController.emailAddress = emailAddress
@@ -74,6 +82,7 @@ class MyPasswordResetViewController: UIViewController, UITextFieldDelegate
         }
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         txtDescription.text = "Voer uw e-mailadres in om een nieuw wachtwoord aan te vragen. "

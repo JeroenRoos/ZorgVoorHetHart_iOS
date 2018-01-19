@@ -11,26 +11,13 @@ import SwiftSpinner
 
 class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate
 {
-    //@IBOutlet weak var txtOnderdruk: UILabel!
-    //@IBOutlet weak var txtBovendruk: UILabel!
-    //@IBOutlet weak var imgOnderdruk: UIImageView!
-    //@IBOutlet weak var imgBovendruk: UIImageView!
     @IBOutlet weak var btnMonthly: UIButton!
     @IBOutlet weak var btnWeekly: UIButton!
     @IBOutlet weak var tableViewMeasurements: UITableView!
     
-    // Everything BarChart!
-    //@IBOutlet weak var barChartView: BarChartView!
-    var months: [String]!
-    
-    var lstMeasurements: [Measurement] = []
-    let service: MeasurementService = MeasurementService()
+    private var lstMeasurements: [Measurement] = []
+    private let service: MeasurementService = MeasurementService()
     var updateMeasurements: Bool = false
-    
-    // SCROLLING
-    @IBOutlet weak var myScrollView: UIScrollView!
-    let screenHeight = UIScreen.main.bounds.height
-    let scrollViewContentHeight = 1200 as CGFloat
     private var showMonthly: Bool = false
     
     override func viewDidLoad()
@@ -38,34 +25,26 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         super.viewDidLoad()
         self.title = "Mijn Dagboek"
      
+        // Set the tableview delegates
         tableViewMeasurements.delegate = self
         tableViewMeasurements.dataSource = self
     
+        // Initialize the User Interface for this ViewController
         initUserInterface()
-        fetchMeasurements()
         
-        //Set table height to cover entire view
-        //if navigation bar is not translucent, reduce navigation bar height from view height
-        //tableHeight.constant = self.view.frame.height-64
-        //tableViewMeasurements.isScrollEnabled = false
-        //tableViewMeasurements.contentSize.height = 800 as CGFloat
-        //myScrollView.bounces = false
-        //tableViewMeasurements.bounces = true
-        //myScrollView.contentSize = CGSizeMake(scrollViewContentWidth, scrollViewContentHeight)
-        //tableViewMeasurements.bounces = false
-        //tableViewMeasurements.scrollEnabled = false
-        //myScrollView.bounces = false
-        //myScrollView.delegate = self
-        //initBarChart()
+        // Fetch the measurements from the database
+        fetchMeasurements()
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
+        // Deselect the selected TableView row to remove the grey collor from the selected row
         if (tableViewMeasurements.indexPathForSelectedRow != nil)
         {
             tableViewMeasurements.deselectRow(at: tableViewMeasurements.indexPathForSelectedRow!, animated: false)
         }
         
+        // If the measurements need to be updated (determined when completing a measurement) remove all the entries and fetch all the measurements again. This is needed because the feedback and status of the measurement are determined in the API
         if (updateMeasurements)
         {
             lstMeasurements.removeAll()
@@ -74,13 +53,17 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         }
     }
     
+    // Fetch all the measurements from the database
     private func fetchMeasurements()
     {
         SwiftSpinner.show("Bezig met het ophalen van uw metingen...")
         
+        // The request to fetch all the measurements, result will be success or failure
         service.getMeasurements(
             withSuccess: { (measurements: [Measurement]) in
                 self.lstMeasurements = measurements
+                
+                // Reload the table view data
                 DispatchQueue.main.async {
                     self.tableViewMeasurements.reloadData()
                 }
@@ -93,12 +76,14 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        // If the user wants to see all the measurements from the last month
         if (showMonthly)
         {
             return lstMeasurements.count
         }
         else
         {
+            // If the user only wants to see the last 7 or less days of measurements
             if (lstMeasurements.count < 7)
             {
                 return lstMeasurements.count
@@ -110,14 +95,19 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         }
     }
     
+    // Initialize the table view cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        // Get the cell
         let customCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyTableViewCell
+        
+        // Initialize the UI of the cell
         customCell.initUserInterface(measurement: lstMeasurements[indexPath.row])
         
         return customCell
     }
     
+    // Prepare the data for the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let viewController = segue.destination as? MyMeasurementDetailsViewController
@@ -127,11 +117,13 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         }
     }
     
+    // Called when the weekly measurements button is clicked
     @IBAction func btnWeekly_OnClick(_ sender: Any)
     {
         btnWeekly.backgroundColor = UIColor(rgb: 0xEEEEEE)
         btnMonthly.backgroundColor = UIColor(rgb: 0xFFFFFF)
         
+        // Set the table view row number and reload the data in the tableview
         if (showMonthly)
         {
             showMonthly = false
@@ -139,11 +131,13 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         }
     }
     
+    // Called when the monthly measurements button is clicked
     @IBAction func btnMonthly_OnClick(_ sender: Any)
     {
         btnWeekly.backgroundColor = UIColor(rgb: 0xFFFFFF)
         btnMonthly.backgroundColor = UIColor(rgb: 0xEEEEEE)
         
+        // Set the tableview row number and reload the data in the tableview
         if (!showMonthly)
         {
             showMonthly = true
@@ -151,29 +145,20 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         }
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         btnWeekly.setTitle("Week overzicht", for: .normal)
         btnWeekly.setTitleColor(UIColor.black, for: .normal)
         btnWeekly.backgroundColor = UIColor(rgb: 0xEEEEEE)
-        //btnWeekly.layer.cornerRadius = 17
         btnWeekly.layer.borderWidth = 1
         btnWeekly.layer.borderColor = UIColor.black.cgColor
         
         btnMonthly.setTitle("Maand overzicht", for: .normal)
         btnMonthly.setTitleColor(UIColor.black, for: .normal)
         btnMonthly.backgroundColor = UIColor(rgb: 0xFFFFFF)
-        //btnMonthly.layer.cornerRadius = 17
         btnMonthly.layer.borderWidth = 1
         btnMonthly.layer.borderColor = UIColor.black.cgColor
-        
-        //txtOnderdruk.text = "Onderduk "
-        //txtOnderdruk.font = txtOnderdruk.font.withSize(12)
-        //imgOnderdruk.backgroundColor = UIColor(rgb: 0x491488)
-        
-        //txtBovendruk.text = "Bovendruk "
-        //txtBovendruk.font = txtBovendruk.font.withSize(12)
-        //imgOnderdruk.backgroundColor = UIColor(rgb: 0x039BE6)
     }
     
     override func didReceiveMemoryWarning()
@@ -181,33 +166,4 @@ class MyMeasurementsDiaryHomeViewController: UIViewController, UITableViewDataSo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    /*func scrollViewDidScroll(_ scrollView: UIScrollView)
-     {
-        if scrollView == self.myScrollView
-        {
-            tableViewMeasurements.isScrollEnabled = (self.myScrollView.contentOffset.y >= 200)
-        }
-     
-        if scrollView == self.tableViewMeasurements
-        {
-            self.tableViewMeasurements.isScrollEnabled = (tableViewMeasurements.contentOffset.y > 0)
-        }
-     }*/
-    
-    /*private func initBarChart()
-     {
-        let entry1 = BarChartDataEntry(x: 1.0, y: Double(55.0))
-        let entry2 = BarChartDataEntry(x: 2.0, y: Double(45.0))
-        let entry3 = BarChartDataEntry(x: 3.0, y: Double(50.0))
-        let dataSet = BarChartDataSet(values: [entry1, entry2, entry3], label: "Widgets Type")
-        let data = BarChartData(dataSets: [dataSet])
-        barChartView.data = data
-        barChartView.chartDescription?.text = "Number of Widgets by Type"
-     
-        //All other additions to this function will go here
-     
-        //This must stay at end of function
-        barChartView.notifyDataSetChanged()
-     }*/
 }

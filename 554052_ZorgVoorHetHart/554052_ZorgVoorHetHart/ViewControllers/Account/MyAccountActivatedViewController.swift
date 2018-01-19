@@ -22,9 +22,11 @@ class MyAccountActivatedViewController: UIViewController
         super.viewDidLoad()
         self.title = "Account geactiveerd"
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
 
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         btnLogin.setTitle("Inloggen", for: .normal)
@@ -42,6 +44,7 @@ class MyAccountActivatedViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
 
+    // Perform the segue to the Login ViewController when the User presses this button
     @IBAction func btnLogin_OnClick(_ sender: Any)
     {
         self.performSegue(withIdentifier: "continueLogin", sender: self)

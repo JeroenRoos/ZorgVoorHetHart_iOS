@@ -22,17 +22,23 @@ class MyMeasurementHomeViewController: UIViewController
         super.viewDidLoad()
         self.title = "Meting"
         
+        // Fetch all the HealthIssues, they aren't needed in this ViewController, but they are almost 100% needed when the app is used
         fetchHealthIssues()
+        
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
-        // This needs to be called not only on viewDidLoad but on viewDidAppear
+        // Get the date from the last measurement from the UserDefaults
         let key = (User.loggedinUser?.userId)! + "date"
         let dateLastMeasurement = UserDefaults.standard.object(forKey: key)
+        
+        // Check if the date isn't nil, if this is the case it is the first measurement of the user and the text will be set
         if (dateLastMeasurement != nil)
         {
+            // Check if the date of the last measurement is the same as today
             let sameDay = Calendar.current.isDateInToday(dateLastMeasurement as! Date)
             if (sameDay)
             {
@@ -48,12 +54,16 @@ class MyMeasurementHomeViewController: UIViewController
             txtSquareMiddle.text = "Vul uw eerste meting in"
         }
     }
-     
+    
+    // Fetch all the Health Issues from the database
     private func fetchHealthIssues()
     {
         SwiftSpinner.show("Bezig met inloggen...")
+        
+        // Try to network request to get all health issues, this result will be a success or failure callback
         service.getHealthIssues(
             withSuccess: { (healthIssues: [HealthIssue]) in
+                // Store the health issues for later use
                 HealthIssue.healthIssuesInstance = healthIssues
                 SwiftSpinner.hide()
         }, orFailure: { (error: String, title: String) in
@@ -62,6 +72,7 @@ class MyMeasurementHomeViewController: UIViewController
         })
     }
     
+    // Called when the user presses the "Nieuwe Meting" button
     @IBAction func btnNewMeasuremnt_OnClick(_ sender: Any)
     {
         self.performSegue(withIdentifier: "newMeasurement", sender: self)
@@ -73,17 +84,18 @@ class MyMeasurementHomeViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+    /*
     @IBAction func bntClick(_ sender: Any)
     {
-            self.performSegue(withIdentifier: "next", sender: self)
+        self.performSegue(withIdentifier: "next", sender: self)
     }
     
     @IBAction func btnInformation_OnClick(_ sender: Any)
     {
-        
         self.performSegue(withIdentifier: "information", sender: self)
-    }
+    }*/
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         txtSquareMiddle.font = txtSquareMiddle.font.withSize(12)

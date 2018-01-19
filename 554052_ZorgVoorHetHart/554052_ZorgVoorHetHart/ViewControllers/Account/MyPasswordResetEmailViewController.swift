@@ -24,9 +24,11 @@ class MyPasswordResetEmailViewController: UIViewController
         self.title = "Email verzonden"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
 
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         btnLogin.setTitle("Terug naar home", for: .normal)

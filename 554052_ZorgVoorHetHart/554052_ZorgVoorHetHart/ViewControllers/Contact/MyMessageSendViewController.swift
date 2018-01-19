@@ -20,15 +20,18 @@ class MyMessageSendViewController: UIViewController
         self.title = "Bericht verzonden"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
 
+    // Called when the user presses the "Klaar" button
     @IBAction func btnDone_OnClick(_ sender: Any)
     {
         self.tabBarController!.selectedIndex = 0
         self.navigationController?.popToRootViewController(animated: false)
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         btnDone.setTitle("Klaar", for: .normal)

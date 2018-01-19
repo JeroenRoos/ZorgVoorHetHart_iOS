@@ -22,6 +22,7 @@ class MyNewMeasurementStep3ViewController: UIViewController, UITextFieldDelegate
         self.title = "Nieuwe meting: stap 3 van 3"
         self.hideKeyboardWhenTappedAround()
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
 
@@ -31,18 +32,19 @@ class MyNewMeasurementStep3ViewController: UIViewController, UITextFieldDelegate
         // Dispose of any resources that can be recreated.
     }
     
+    // Called when the user presses the back button
     @IBAction func btnBack_OnClick(_ sender: Any)
     {
-        
         self.navigationController?.popViewController(animated: true)
     }
     
+    // Called when the user presses the save button
     @IBAction func btnSave_OnClick(_ sender: Any)
     {
-        
         self.performSegue(withIdentifier: "save", sender: self)
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         txtDate.text = (Date().getCurrentWeekdayAndDate())

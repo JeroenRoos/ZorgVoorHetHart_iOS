@@ -30,10 +30,13 @@ class MyMeasurementDetailsViewController: UIViewController
     {
         super.viewDidLoad()
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
         
-        setMeasurementFeedback(result: (clickedMeasurement?.result)!, feedback: (clickedMeasurement?.feedback)!)
+        // Set the feedback of this measurement based upon the result integer
+        setMeasurementFeedback(withResult: (clickedMeasurement?.result)!, andFeedback: (clickedMeasurement?.feedback)!)
         
+        // If the measurements contains health issues, get the health issues
         if ((clickedMeasurement?.healthIssueIds != nil &&
             !(clickedMeasurement?.healthIssueIds?.isEmpty)!) ||
             (clickedMeasurement?.healthIssueOther != nil &&
@@ -43,47 +46,48 @@ class MyMeasurementDetailsViewController: UIViewController
         }
         else
         {
-            //self.txtKlachten.isHidden = true
-            //self.txtKlachtenTitle.isHidden = false
             self.txtKlachten.text = "U had geen andere gezondheidsklachten."
         }
     }
     
-    // Red background color = 0xF8E2E3
-    // Red text color       = 0xEB6666
-    private func setMeasurementFeedback(result: Int, feedback: String)
+    // Set the feedback of the measurement based on the result integer
+    private func setMeasurementFeedback(withResult result: Int, andFeedback feedback: String)
     {
+        // Set the colors of the cell based upon the feedback
         if (result == 0)
         {
-            txtStatus.text = feedback
             txtStatus.textColor = UIColor(rgb: 0x35C264)
             imgBackground.backgroundColor = UIColor(rgb: 0xE7F6EC)
         }
         else if (result == 1)
         {
-            txtStatus.text = feedback
             txtStatus.textColor = UIColor(rgb: 0xB27300)
             imgBackground.backgroundColor = UIColor(rgb: 0xFFE4B2)
         }
         else
         {
-            txtStatus.text = feedback
             txtStatus.textColor = UIColor(rgb: 0xEB6666)
             imgBackground.backgroundColor = UIColor(rgb: 0xF8E2E3)
         }
+        
+        txtStatus.text = feedback
     }
     
+    // Get all the Health Issues if needed
     private func getHealthIssues()
     {
+        // Check if the health issues instance is not empty, this is needed to make sure there won't be a new network requests if the health issues are already received in Meting home
         if (HealthIssue.healthIssuesInstance.isEmpty)
         {
             SwiftSpinner.show("Bezig met het ophalen van de benodigde data...")
-            service.getHealthIssues(
-                withSuccess: { (healthIssues: [HealthIssue]) in
-                    HealthIssue.healthIssuesInstance = healthIssues
-                    self.lstHealthIssues = healthIssues
-                    self.initHealthIssuesWithData()
-                    SwiftSpinner.hide()
+            
+            // Network request to get all the health issues
+            service.getHealthIssues(withSuccess: { (healthIssues: [HealthIssue]) in
+                // Save the healthissues and initialize the UI for the health issues
+                HealthIssue.healthIssuesInstance = healthIssues
+                self.lstHealthIssues = healthIssues
+                self.initHealthIssuesWithData()
+                SwiftSpinner.hide()
             }, orFailure: { (error: String, title: String) in
                 self.txtKlachtenTitle.text = "Er is fout gegaan bij het ophalen van de gezondheidsklachten"
                 self.txtKlachten.isHidden = true
@@ -93,21 +97,26 @@ class MyMeasurementDetailsViewController: UIViewController
         }
         else
         {
+            // If the previous request worked get the health issues and initialize the health issues UI
             self.lstHealthIssues = HealthIssue.healthIssuesInstance
-            initHealthIssuesWithData()
+            self.initHealthIssuesWithData()
         }
     }
     
+    // Initialize the UI for the health issues after the data is received
     private func initHealthIssuesWithData()
     {
+        // Set the name of each health issue in the label
         for id in (self.clickedMeasurement?.healthIssueIds)!
         {
             let issue = self.lstHealthIssues.filterHealthIssueForId(id: id)
             self.txtKlachten.text?.append(issue.name + "\n")
         }
         
+        // Set the other health issues from the input field if there are any
         if (self.clickedMeasurement?.healthIssueOther != nil && self.clickedMeasurement?.healthIssueOther != "")
         {
+            // Set the other health issue text based on the other health issues
             if (self.clickedMeasurement?.healthIssueIds?.isEmpty)!
             {
                 self.txtKlachten.text?.append((self.clickedMeasurement?.healthIssueOther)!)
@@ -119,14 +128,16 @@ class MyMeasurementDetailsViewController: UIViewController
         }
     }
     
+    // Called when the user presses the "Aanpassen" button
     @IBAction func btnEdit_OnClick(_ sender: Any)
     {
         self.performSegue(withIdentifier: "editMeasurement", sender: self)
     }
     
+    // Prepare the data in the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        // Pass measurement to next ViewController
+        // Identify the segue
         if(segue.identifier == "editMeasurement")
         {
             if let viewController = segue.destination as? MyNewMeasurementStep1ViewController
@@ -136,6 +147,7 @@ class MyMeasurementDetailsViewController: UIViewController
         }
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         btnEdit.setTitle("Bewerken", for: .normal)
@@ -157,7 +169,6 @@ class MyMeasurementDetailsViewController: UIViewController
         txtKlachten.text = ""
         txtKlachten.font = txtKlachten.font.withSize(12)
         
-        // di, 31 okt 2017
         let date = clickedMeasurement?.measurementDateTimeFormatted
         txtDatum.text = date
         txtDatum.font = txtDatum.font.withSize(12)

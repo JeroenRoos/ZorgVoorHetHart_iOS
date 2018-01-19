@@ -25,6 +25,7 @@ class MyRegisterFinishedViewController: UIViewController
         self.title = "Registratie afgerond"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
 
@@ -34,12 +35,13 @@ class MyRegisterFinishedViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+    // Perform the segue to the Login ViewController when the User presses this button
     @IBAction func btnLogin_OnClick(_ sender: Any)
     {
-        
         self.performSegue(withIdentifier: "waitingActivation", sender: self)
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         btnLogin.setTitle("Inloggen", for: .normal)

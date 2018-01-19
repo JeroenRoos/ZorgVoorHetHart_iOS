@@ -20,9 +20,11 @@ class MyPasswordResetSuccessViewController: UIViewController
         self.title = "Succes"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         btnLogin.setTitle("Inloggen", for: .normal)

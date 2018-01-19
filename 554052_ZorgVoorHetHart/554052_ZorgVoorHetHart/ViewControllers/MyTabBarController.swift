@@ -17,11 +17,9 @@ class MyTabBarController: UITabBarController
         setTabBarItems()
     }
     
+    // Set the UI for the tab bar
     func setTabBarItems()
     {
-        // Unselected color:    737474          24x24 - 48x48 - 72x72
-        // Selected color:      E84A4A          24x24 - 48x48 - 72x72
-        
         let metingTab = (self.tabBar.items?[0])! as UITabBarItem
         metingTab.image = UIImage(named: "ic_meting_unselected")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
         metingTab.selectedImage = UIImage(named: "ic_meting_selected")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
@@ -60,6 +58,7 @@ class MyTabBarController: UITabBarController
         serviceTab.setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor(rgb: 0xE84A4A)], for: UIControlState.selected)
     }
     
+    // Disable rotation
     override var shouldAutorotate: Bool
     {
         return false

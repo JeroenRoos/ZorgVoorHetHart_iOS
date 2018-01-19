@@ -31,64 +31,78 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         self.title = "Registreren stap 2 van 3"
         self.hideKeyboardWhenTappedAround()
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
-
+    
+    // Called when the user pressed the "Volgende" button, this method wil check all the user input and determine the validity
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
+        // Check the password and email for validity
         if (!(inputEmail.text?.isEmpty)! &&
             !(inputPassword.text?.isEmpty)! &&
             !(inputPasswordCheck.text?.isEmpty)! &&
             inputEmail.isValidEmail() &&
             inputPassword.text == inputPasswordCheck.text)
         {
+            // Get and trim the email, iOS automatically puts a space to the end if you use autocorrect to finish your words
             let email = inputEmail.text!
             let trimmedEmail = email.trimmingCharacters(in: NSCharacterSet.whitespaces)
+            
+            // Hash the password with Sha512 (CryptoSwift CocaoPod). This way the password will not be in plaintext when send to the API
             let password = inputPassword.text!
             let hashedPassword = password.sha512()
             
+            // Put the values in user
             user?.emailAddress = trimmedEmail
             user?.password = hashedPassword
             
+            // Perform a segue to the next ViewController
             self.performSegue(withIdentifier: "registerNext2", sender: self)
         }
         else
         {
+            // If the input isn't valid, go through all the checks for each input field, this wil display the error message if this wasn't already the case
             emailDidEndEditing(inputEmail)
             passwordDidEndEditing(inputPassword)
             passwordCheckDidEndEditing(inputPasswordCheck)
         }
     }
     
+    // The function that will be called when the user stops editing the email input field, this will determine if the name is correct and show an error message when this isn't the case
     @objc func emailDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorEmail, errorText: "Email kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorEmail, andText: "Email kan niet leeg zijn")
         
         // Check and set error message if the email address is not valid
-        textField.setErrorMessageInvalidEmail(errorLabel: errorEmail, errorText: "Dit is geen correct emailadres")
+        textField.setErrorMessageInvalidEmail(withLabel: errorEmail, andText: "Dit is geen correct emailadres")
     }
     
+    // The function that will be called when the user stops editing the password input field, this will determine if the name is correct and show an error message when this isn't the case
     @objc func passwordDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorPassword, errorText: "Wachtwoord kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorPassword, andText: "Wachtwoord kan niet leeg zijn")
     }
     
+    // The function that will be called when the user stops editing the password input field, this will determine if the name is correct and show an error message when this isn't the case
     @objc func passwordCheckDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorPasswordCheck, errorText: "Wachtwoord kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorPasswordCheck, andText: "Wachtwoord kan niet leeg zijn")
         
         // Check and set error message if the password is identical with the first password
-        textField.setErrorMessagePasswordIdentical(errorLabel: errorPasswordCheck, errorText: "De wachtwoorden komen niet overeen", otherPassword: inputPassword)
+        textField.setErrorMessagePasswordIdentical(withLabel: errorPasswordCheck, andText: "De wachtwoorden komen niet overeen", andOtherPassword: inputPassword)
     }
     
+    // Perpare the data for the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        // Pass user to next ViewController
+        // Identify the segue
         if(segue.identifier == "registerNext2")
         {
+            // Pass the registering user to the next ViewController
             if let viewController = segue.destination as? MyRegisterStep3ViewController
             {
                 viewController.user = user
@@ -96,6 +110,7 @@ class MyRegisterStep2ViewController: UIViewController, UITextFieldDelegate
         }
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         txtTitle.text = "Inloggegevens"

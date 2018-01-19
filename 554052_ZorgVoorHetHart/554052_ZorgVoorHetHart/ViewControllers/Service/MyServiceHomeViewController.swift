@@ -34,11 +34,8 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var switchWeeklyMeasurement: UISwitch!
     
     @IBOutlet weak var txtMyAccount: UILabel!
-    //@IBOutlet weak var switchBigText: UISwitch!
     @IBOutlet weak var txtMySettings: UILabel!
     @IBOutlet var myView: UIView!
-    //@IBOutlet weak var imgBigText: UIImageView!
-    //@IBOutlet weak var txtBigText: UILabel!
     
     @IBOutlet weak var txtLength: UILabel!
     @IBOutlet weak var imgLength: UIImageView!
@@ -49,15 +46,13 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var btnWeight: UIButton!
     
     var popupLogoutActive: Bool = false
-    var popupLength: Bool = false
-    var popupWeight: Bool = false
+    var popupLengthActive: Bool = false
+    var popupWeightActive: Bool = false
     @IBOutlet weak var imgPopupBackground: UIImageView!
     @IBOutlet weak var imgPopup: UIImageView!
     @IBOutlet weak var txtPopupTitle: UILabel!
     @IBOutlet weak var txtPopup: UILabel!
-    //@IBOutlet weak var txtPopupWeight: UILabel!
     @IBOutlet weak var inputPopup: UITextField!
-    //@IBOutlet weak var inputPopupWeight: UITextField!
     @IBOutlet weak var btnPopupLeft: UIButton!
     @IBOutlet weak var btnPopupRight: UIButton!
     @IBOutlet weak var errorLabelPopup: UILabel!
@@ -65,9 +60,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var txtFAQ: UILabel!
     @IBOutlet weak var imgFAQ: UIImageView!
     @IBOutlet weak var txtDisclaimer: UILabel!
-    
-    // Save Settings in UserDefaults
-    // https://www.hackingwithswift.com/example-code/system/how-to-save-user-settings-using-userdefaults
+  
     let defaults = UserDefaults.standard
     private let service: UserService = UserService()
     
@@ -77,17 +70,23 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         self.title = "Service"
         self.hideKeyboardWhenTappedAround()
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
+        
+        // Set the popup UI to hidden
         setPopupHidden(withValue: true)
     }
     
-    private func setPopupUI(updatingLength: Bool)
+    // Set the UI for the popup
+    private func setPopupUI()
     {
-        if (popupLength)
+        // Check which popup is active and set the UI
+        if (popupLengthActive)
         {
             txtPopup.text = "Lengte (cm)"
             txtPopupTitle.text = "Uw lengte aanpassen"
             
+            // Set the current length of the user in the textfield
             if (User.loggedinUser?.length != nil)
             {
                 inputPopup.text = String((User.loggedinUser?.length)!)
@@ -98,6 +97,7 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
             txtPopup.text = "Gewicht (KG)"
             txtPopupTitle.text = "Uw gewicht aanpassen"
             
+            // Set the current weight of the user in the textfield
             if (User.loggedinUser?.weight != nil)
             {
                 inputPopup.text = String((User.loggedinUser?.weight)!)
@@ -116,38 +116,23 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         myScrollView.isScrollEnabled = false
         
         inputPopup.layer.borderWidth = 0
-
-        
-        /*inputPopupWeight.placeholder = "0"
-        inputPopupWeight.placeholderTextColor = UIColor.gray
-        inputPopupWeight.backgroundColor = UIColor(rgb: 0xEBEBEB)
-        inputPopupWeight.layer.borderWidth = 0
-        inputPopupWeight.keyboardType = UIKeyboardType.numberPad
-        self.inputPopupWeight.delegate = self
-        
-        if (User.loggedinUser?.weight != nil)
-        {
-            inputPopupWeight.text = String((User.loggedinUser?.weight)!)
-        } */
-        
     }
     
+    // Called whe the user presses the logout button
     @IBAction func btnLogout_OnClick(_ sender: Any)
     {
-        if (!popupLength && !popupWeight && !popupLogoutActive)
+        // Check if any popups are active to make sure it is not called when the user doesn't want it to
+        if (!popupLengthActive && !popupWeightActive && !popupLogoutActive)
         {
             popupLogoutActive = true
             imgPopupBackground.isHidden = false
             imgPopup.isHidden = false
             txtPopupTitle.isHidden = false
             txtPopup.isHidden = true
-            //txtPopupWeight.isHidden = true
             inputPopup.isHidden = true
-            //inputPopupWeight.isHidden = true
             btnPopupLeft.isHidden = false
             errorLabelPopup.isHidden = true
             btnPopupRight.isHidden = false
-            //setPopupHidden(withValue: false)
             
             txtPopupTitle.text = "Weet u zeker dat u wilt uitloggen?"
             txtPopupTitle.font = txtPopupTitle.font.withSize(12)
@@ -160,53 +145,62 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
             btnPopupLeft.setTitleColor(UIColor.white, for: .normal)
             btnPopupLeft.backgroundColor = UIColor(rgb: 0xA9A9A9)
             
+            // Scroll to the top to view the popup and disable scrolling
             myScrollView.scrollToTop(animated: true)
             myScrollView.isScrollEnabled = false
         }
     }
     
+    // Called when the user presses the button for editing length
     @IBAction func btnLength_OnClick(_ sender: Any)
     {
-        if (!popupLength && !popupWeight && !popupLogoutActive)
+        // Check if any popups are active to make sure it is not called when the user doesn't want it to
+        if (!popupLengthActive && !popupWeightActive && !popupLogoutActive)
         {
-            popupLength = true
+            popupLengthActive = true
             setPopupHidden(withValue: false)
-            setPopupUI(updatingLength: true)
+            setPopupUI()
             errorLabelPopup.isHidden = true
         }
     }
     
+    // Called when the user presses the button for editing weight
     @IBAction func btnWeight_OnClick(_ sender: Any)
     {
-        if (!popupLength && !popupWeight && !popupLogoutActive)
+        // Check if any popups are active to make sure it is not called when the user doesn't want it to
+        if (!popupLengthActive && !popupWeightActive && !popupLogoutActive)
         {
-            popupWeight = true
+            popupWeightActive = true
             setPopupHidden(withValue: false)
-            setPopupUI(updatingLength: false)
+            setPopupUI()
             errorLabelPopup.isHidden = true
         }
     }
     
+    // Called when the user presses the FAQ button
     @IBAction func btnFAQ_OnClick(_ sender: Any)
     {
         // ...
     }
     
+    // Called when the user presses the right button in the popup
     @IBAction func btnPopupRight_OnClick(_ sender: Any)
     {
-        if (popupLength)
+        // Check which popup is active
+        if (popupLengthActive)
         {
+            // Check if the input is valid
             if (!(inputPopup.text?.isEmpty)! &&
                 inputPopup.isValidNumberInput(minValue: 67, maxValue: 251))
             {
                 SwiftSpinner.show("Bezig met het aanpassen van uw lengte...")
-                // Update lenght
                 let length = Int(inputPopup.text!)
                 
+                // Network request to update the length
                 service.updateLengthOrWeight(withSuccess: { () in
                     User.loggedinUser?.length = length!
                     self.setPopupHidden(withValue: true)
-                    self.popupLength = false
+                    self.popupLengthActive = false
                     self.errorLabelPopup.isHidden = true
                     self.myScrollView.isScrollEnabled = true
                     SwiftSpinner.hide()
@@ -216,20 +210,21 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
                 }, andLength: length!, andWeight: nil)
             }
         }
-        else if (popupWeight)
+        else if (popupWeightActive)
         {
+            // Check if the input is valid
             if (!(inputPopup.text?.isEmpty)! &&
                 inputPopup.isValidNumberInput(minValue: 30, maxValue: 594))
             {
                 SwiftSpinner.show("Bezig met het aanpassen van uw gewicht...")
-                // Update weight
                 let weight = Int(inputPopup.text!)
                 
+                // Network request to update the weight
                 service.updateLengthOrWeight(withSuccess: { () in
                     User.loggedinUser?.weight = weight!
                     self.setPopupHidden(withValue: true)
                     self.errorLabelPopup.isHidden = true
-                    self.popupWeight = false
+                    self.popupWeightActive = false
                     self.myScrollView.isScrollEnabled = true
                     SwiftSpinner.hide()
                 }, orFailure: { (error: String, title: String) in
@@ -240,88 +235,98 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         }
         else
         {
+            // If any of the other popup is active, close the popup
             setPopupHidden(withValue: true)
             popupLogoutActive = false
             myScrollView.isScrollEnabled = true
         }
     }
     
+    // The function that will be called when the user stops editing the length/weight input field, this will determine if the name is correct and show an error message when this isn't the case
     @objc func popupDidEndEditing(_ textField: UITextField)
     {
-        if (popupLength)
+        // Check which popup is active
+        if (popupLengthActive)
         {
             // Check and set error message if the textfield is empty
-            textField.setErrorMessageEmptyField(errorLabel: errorLabelPopup, errorText: "Lengte kan niet leeg zijn")
+            textField.setErrorMessageEmptyField(withLabel: errorLabelPopup, andText: "Lengte kan niet leeg zijn")
             
             // Check and set error message if the length is not valid
-            textField.setErrorMessageInvalidLength(errorLabel: errorLabelPopup, errorText: "Lengte heeft geen geldige waarde")
+            textField.setErrorMessageInvalidLength(withLabel: errorLabelPopup, andText: "Lengte heeft geen geldige waarde")
         }
         else
         {
             // Check and set error message if the textfield is empty
-            textField.setErrorMessageEmptyField(errorLabel: errorLabelPopup, errorText: "Gewicht kan niet leeg zijn")
+            textField.setErrorMessageEmptyField(withLabel: errorLabelPopup, andText: "Gewicht kan niet leeg zijn")
             
             // Check and set error message if the length is not valid
-            textField.setErrorMessageInvalidWeight(errorLabel: errorLabelPopup, errorText: "Gewicht heeft geen geldige waarde")
+            textField.setErrorMessageInvalidWeight(withLabel: errorLabelPopup, andText: "Gewicht heeft geen geldige waarde")
         }
-
     }
     
+    // Called when the left button in the popup is called
     @IBAction func btnPopupLeft_OnClick(_ sender: Any)
     {
-        if (popupLength || popupWeight)
+        // Check which popup is active
+        if (popupLengthActive || popupWeightActive)
         {
             inputPopup.text = ""
-            popupLength = false
+            popupLengthActive = false
             errorLabelPopup.isHidden = true
-            popupWeight = false
+            popupWeightActive = false
             setPopupHidden(withValue: true)
         }
         else
         {
+            // This means the logout button is pressed. Remove the credentials from the keychain and set the automatic login UserDefault back to false
             defaults.set(false, forKey: "automaticLogin")
             KeychainService.remove(service: KeychainService().emailService, account: KeychainService().keychainAccount)
             KeychainService.remove(service: KeychainService().passwordService, account: KeychainService().keychainAccount)
             
-            // Perform logout code (clear caches if they exist, clear loggedinUser)
+            // Dismiss the current Navigation/Tab/ViewController and return to the login screen
             self.dismiss(animated: true, completion:{ })
             User.loggedinUser = nil
         }
         myScrollView.isScrollEnabled = true
     }
     
-    //vanaf 16
+    // Set the UI for the popup hidden or visible
     private func setPopupHidden(withValue value: Bool)
     {
         imgPopupBackground.isHidden = value
         imgPopup.isHidden = value
         txtPopupTitle.isHidden = value
         txtPopup.isHidden = value
-        //txtPopupWeight.isHidden = value
         inputPopup.isHidden = value
-        //inputPopupWeight.isHidden = value
         btnPopupLeft.isHidden = value
         btnPopupRight.isHidden = value
     }
     
+    // Called when the switch for the daily notifications is switched
     @objc func switchDailyNotificationChanged(_ mySwitch: UISwitch)
     {
+        // Get the value from the switch and update the user defaults 
         let value = mySwitch.isOn
         defaults.set(value, forKey: "dailyNotifications")
     }
     
+    // Called when the switch for the weekly measurements is switched
     @objc func switchWeeklyMeasurementChanged(_ mySwitch: UISwitch)
     {
+        // Get the value from the switch and update the user defaults
         let value = mySwitch.isOn
         defaults.set(value, forKey: "sendWeeklyMeasurement")
     }
     
+    // Called when the switch for the automatic login is switched
     @objc func switchAutomaticLoginChanged(_ mySwitch: UISwitch)
     {
+        // Get the value from the switch and update the user defaults
         let value = mySwitch.isOn
         defaults.set(value, forKey: "automaticLogin")
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         myView.backgroundColor = UIColor(rgb: 0xEBEBEB)
@@ -335,12 +340,6 @@ class MyServiceHomeViewController: UIViewController, UITextFieldDelegate
         
         txtDisclaimerTitle.text = "Informatie"
         txtDisclaimerTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 15.0)
-        
-        //imgBigText.backgroundColor = UIColor(rgb: 0xF8F8F8)
-        //txtBigText.text = "Grotere tekst"
-        //txtBigText.font = txtBigText.font.withSize(12)
-        //switchBigText.setOn(defaults.bool(forKey: "bigText"), animated: false)
-        //switchDailyNotification.addTarget(self, action: #selector(switchBigTextChanged(_:)), for: .valueChanged)
         
         imgDailyNotification.backgroundColor = UIColor(rgb: 0xF8F8F8)
         txtDailyNotification.text = "Dagelijkse herinneringen voor uw metingen"

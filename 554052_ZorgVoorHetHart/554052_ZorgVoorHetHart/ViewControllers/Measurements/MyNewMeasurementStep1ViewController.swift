@@ -39,31 +39,38 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
     }
     
+    // Called when the user pressed the "Volgende" button, this method wil check all the user input and determine the validity
     @IBAction func btnNext_OnClick(_ sender: Any)
     {
+        // Check all the user input for valid values
         if (!(inputOnderdruk.text?.isEmpty)! &&
             !(inputBovendruk.text?.isEmpty)! &&
             inputBovendruk.isValidNumberInput(minValue: 60, maxValue: 230) &&
             inputOnderdruk.isValidNumberInput(minValue: 30, maxValue: 180))
         {
+            // Put the bloodpressure values in the Measurement
             measurement?.bloodPressureLower = Int(inputOnderdruk.text!)!
             measurement?.bloodPressureUpper = Int(inputBovendruk.text!)!
             
+            // Perform the segue to the next ViewController
             self.performSegue(withIdentifier: "measurementNext", sender: self)
         }
         else
         {
+            // If the input isn't valid, go through all the checks for each input field, this wil display the error message if this wasn't already the case
             bovendrukDidEndEditing(inputBovendruk)
             onderdrukDidEndEditing(inputOnderdruk)
         }
     }
     
+    // Prepare the data for the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        // Pass measurement to next ViewController
+        // Identify the segue
         if(segue.identifier == "measurementNext")
         {
             if let viewController = segue.destination as? MyNewMeasurementStep2ViewController
@@ -77,19 +84,20 @@ class MyNewMeasurementStep1ViewController: UIViewController, UITextFieldDelegate
     @objc func bovendrukDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorBovendruk, errorText: "Bovendruk kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorBovendruk, andText: "Bovendruk kan niet leeg zijn")
         
-        textField.setErrorMessageInvalidBloodPressureUpper(errorLabel: errorBovendruk, errorText: "Geen geldige waarde")
+        textField.setErrorMessageInvalidBloodPressureUpper(withLabel: errorBovendruk, andText: "Geen geldige waarde")
     }
     
     @objc func onderdrukDidEndEditing(_ textField: UITextField)
     {
         // Check and set error message if the textfield is empty
-        textField.setErrorMessageEmptyField(errorLabel: errorOnderdruk, errorText: "Onderdruk kan niet leeg zijn")
+        textField.setErrorMessageEmptyField(withLabel: errorOnderdruk, andText: "Onderdruk kan niet leeg zijn")
         
-        textField.setErrorMessageInvalidBloodPressureLower(errorLabel: errorOnderdruk, errorText: "Geen geldige waarde")
+        textField.setErrorMessageInvalidBloodPressureLower(withLabel: errorOnderdruk, andText: "Geen geldige waarde")
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         backgroundImage.alpha = 0.5

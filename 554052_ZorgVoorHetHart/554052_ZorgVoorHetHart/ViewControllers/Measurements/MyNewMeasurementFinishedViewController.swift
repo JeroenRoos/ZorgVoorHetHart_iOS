@@ -23,6 +23,7 @@ class MyNewMeasurementFinishedViewController: UIViewController
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        // Initialize the User Interface for this ViewController
         initUserInterface()
         
         // Set the notifications for a reminder of the measurement the next day
@@ -31,7 +32,7 @@ class MyNewMeasurementFinishedViewController: UIViewController
     
     private func setNotificationNextMeasurement()
     {
-        // Because users can change the notification settings for your app at any time, check if the app is authorized
+        // Because users can change the notification settings for your app at any time, check again if the app is authorized
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { (settings) in
             if (settings.authorizationStatus == .authorized &&
@@ -65,14 +66,17 @@ class MyNewMeasurementFinishedViewController: UIViewController
             }
         }
     }
+    
+    // Called when the user doesn't want to view the Diary now
     @IBAction func btnNotNow_OnClick(_ sender: Any)
     {
-        //self.tabBarController?.selectedIndex = 0
         self.navigationController?.popToRootViewController(animated: false)
     }
     
+    // Called when the user does want to view the Diary now
     @IBAction func btnCheckDiary_OnClick(_ sender: Any)
     {
+        // Get the viewControlelr and let the VC know a new network request has to be made because a new measurement is added or an already existing measurement is edited. This is needed because the feedback and status of the measurement are determined in the API
         let lstViewControllers = self.tabBarController?.viewControllers!
         let navigationController = lstViewControllers![1]
         let viewController = navigationController.childViewControllers[0] as! MyMeasurementsDiaryHomeViewController
@@ -81,6 +85,7 @@ class MyNewMeasurementFinishedViewController: UIViewController
         self.navigationController?.popToRootViewController(animated: false)
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         btnCheckDiary.setTitle("Bekijk dagboek", for: .normal)

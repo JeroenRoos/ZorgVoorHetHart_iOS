@@ -53,7 +53,7 @@ extension UITextField
         }
     }
     
-    func setErrorMessageEmptyField(errorLabel: UILabel, errorText: String)
+    func setErrorMessageEmptyField(withLabel errorLabel: UILabel, andText errorText: String)
     {
         errorLabel.isHidden = false
         self.layer.borderWidth = 1
@@ -70,7 +70,7 @@ extension UITextField
         }
     }
     
-    func setErrorMessageInvalidName(errorLabel: UILabel, errorText: String)
+    func setErrorMessageInvalidName(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
         {
@@ -89,7 +89,7 @@ extension UITextField
         }
     }
     
-    func setErrorMessageInvalidEmail(errorLabel: UILabel, errorText: String)
+    func setErrorMessageInvalidEmail(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
         {
@@ -107,7 +107,7 @@ extension UITextField
         }
     }
     
-    func setErrorMessagePasswordIdentical(errorLabel: UILabel, errorText: String, otherPassword: UITextField)
+    func setErrorMessagePasswordIdentical(withLabel errorLabel: UILabel, andText errorText: String, andOtherPassword otherPassword: UITextField)
     {
         if (!(self.text?.isEmpty)!)
         {
@@ -125,7 +125,7 @@ extension UITextField
         }
     }
     
-    func setErrorMessageInvalidWeight(errorLabel: UILabel, errorText: String)
+    func setErrorMessageInvalidWeight(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
         {
@@ -144,7 +144,7 @@ extension UITextField
         }
     }
     
-    func setErrorMessageInvalidLength(errorLabel: UILabel, errorText: String)
+    func setErrorMessageInvalidLength(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
         {
@@ -163,7 +163,7 @@ extension UITextField
         }
     }
     
-    func setErrorMessageInvalidBloodPressureLower(errorLabel: UILabel, errorText: String)
+    func setErrorMessageInvalidBloodPressureLower(withLabel errorLabel : UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
         {
@@ -181,7 +181,7 @@ extension UITextField
         }
     }
     
-    func setErrorMessageInvalidBloodPressureUpper(errorLabel: UILabel, errorText: String)
+    func setErrorMessageInvalidBloodPressureUpper(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
         {
@@ -200,7 +200,7 @@ extension UITextField
     }
     
     
-    func setErrorMessageInvalidDateOfBirth(errorLabel: UILabel, errorText: String)
+    func setErrorMessageInvalidDateOfBirth(withLabel errorLabel: UILabel, andText errorText: String)
     {
         if (!(self.text?.isEmpty)!)
         {

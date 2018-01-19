@@ -31,20 +31,29 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         self.title = "Registreren stap 3 van 3"
         self.hideKeyboardWhenTappedAround()
     
+        // Initialize the User Interface for this ViewController
         initUserInterface()
+        
+        // Fetch all the consultants from the Database
         fetchConsultants()
- }
+    }
     
+    // Perform the network request to get all the consultants, the result will either be a failure or success callback
     private func fetchConsultants()
     {
+        // Show the spinner to make sure the user knows the app didn't freeze
         SwiftSpinner.show("Bezig met het ophalen van de benodigde data...")
+        
+        // Perform the network request
         service.getConsultans(
             withSuccess: { (consultants: [Consultant]) in
+                // Make the dropdown with consultants visible and make sure the dropdown shows the names of the Consultants
                 self.dropdown.isHidden = false
                 self.lstConsultants = consultants
                 self.getConsultantsNames()
                 SwiftSpinner.hide()
         }, orFailure: { (error: String, title: String) in
+            // Show the error messages, hide the spinner and show an alert box letting the user know the request failed
             self.errorConsultant.isHidden = false
             self.errorConsultant.text = "Er is iets fout gegaan bij het ophalen van de consulenten"
             self.dropper?.layer.borderWidth = 1
@@ -53,6 +62,7 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         })
     }
     
+    // Put the first- and lastname of each consultant together to show in the dropdown
     private func getConsultantsNames()
     {
         for index in 0 ..< lstConsultants.count
@@ -63,6 +73,7 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         }
     }
     
+    // Set the dropdown (Dropper CocaoPod)
     @IBAction func DropdownAction(_ sender: Any)
     {
         dropper?.delegate = self
@@ -72,16 +83,23 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         dropper?.showWithAnimation(0.15, options: Dropper.Alignment.center, button: dropdown)
     }
     
+    // When the user selects an consultant from the dropdown
     func DropperSelectedRow(_ path: IndexPath, contents: String, tag: Int)
     {
+        // Get the name of the pressed consultant from the dropdown
         let consultant = lstConsultantsNames[path.row]
+        
+        // Set the title of the dropdown to the selected name
         dropdown.setTitle("  " + consultant, for: .normal)
         
+        // Loop through the consultants and compare the names with the selected name, this is needed because I need the ID of the consultant for the User
         for index in 0 ..< lstConsultants.count
         {
+            // Get the name of the consultant from the loop
             let name = lstConsultants[index].firstName
                 + " " + lstConsultants[index].lastName
             
+            // Compare the selected name with the name of the consultant, if the names are equal, get the consultant ID and put it in User
             if (consultant == name)
             {
                 user?.consultantId = lstConsultants[index].consultantId
@@ -91,35 +109,46 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         }
     }
 
+    // Called when the user pressed the "Afronden" button, this method wil check all the user input and determine the validity
     @IBAction func btnFinish_OnClick(_ sender: Any)
     {
+        // Check if the consultant ID isn't empty
         if (!(user?.consultantId.isEmpty)!)
         {
+            // Show the spinner and disable the Finish button to make sure the user can't press twice
             SwiftSpinner.show("Bezig met registreren van uw account...")
-            
             self.btnFinish.isEnabled = false
+            
+            // Perform the register request
             userService.register(withSuccess: { () in
                 self.btnFinish.isEnabled = true
                 SwiftSpinner.hide()
+                
+                // Perform the segue to the next ViewController
                 self.performSegue(withIdentifier: "registerFinish", sender: self)
             }, orFailure: { (error: String, title: String) in
                 self.btnFinish.isEnabled = true
                 SwiftSpinner.hide()
+                
+                // Show the alert that something went wrong
                 self.showAlertBox(withMessage: error, andTitle: title)
             }, andUser: user!)
         }
         else
         {
+            // If the user didn't choose an consultant show the error message
             errorConsultant.isHidden = false
             self.errorConsultant.text = "Uw consultent kan niet leeg zijn"
         }
     }
     
+    // Perpare the next ViewController with the data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        // Pass user to next ViewController
+        // Identify the segue
         if(segue.identifier == "registerFinish")
         {
+            // Pass the user to the next ViewController
             if let viewController = segue.destination as? MyRegisterFinishedViewController
             {
                 viewController.user = user
@@ -127,6 +156,7 @@ class MyRegisterStep3ViewController: UIViewController, UITextFieldDelegate, Drop
         }
     }
     
+    // Initialize the User Interface for this ViewController
     private func initUserInterface()
     {
         txtTitle.text = "Consultent"
